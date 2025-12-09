@@ -1,6 +1,6 @@
 import pytest
 import httpx
-from pydantic import json
+import json
 
 BASE_URL = 'http://fat-pos.reabam.com:60030/api/dock'
 
@@ -12,7 +12,7 @@ def client():
 
 # 美团推单
 # @pytest.mark.paramret()
-@pytest.fixture
+# @pytest.fixture
 def create_order(client):
     order_dict = {
         "avgSendTime": 1802.0,
@@ -116,7 +116,7 @@ def create_order(client):
         headers={"Content-Type": "application/x-www-form-urlencoded"}
     )
 
-    # assert create_resp.status_code == 201
+    assert create_resp.json()['data'] == "OK"
     print("调通了！！")
     return create_resp.json().get('data')
 
@@ -146,6 +146,11 @@ def cancel_order(client):
 
 
 if __name__ == '__main__':
-    def push_order(create_order):
-        data = create_order
-        print(data)
+    # def push_order(create_order):
+    #     data = create_order
+    #     print(data)
+    # 1. 手动实例化 Client
+    with httpx.Client(base_url=BASE_URL) as client:
+        # 2. 调用逻辑函数
+        result = create_order(client)
+        print("最终结果:", result)
