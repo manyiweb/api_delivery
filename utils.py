@@ -1,10 +1,14 @@
 import time
+
+import httpx
 import yaml
 import os
 import json
 
+from api.base import safe_post, BASE_URL  # 调试
 
-# 读取delivery_data.yaml数据
+
+# 读取数据
 def load_yaml_data(file_path):
     """从 YAML 文件中加载原始配置数据"""
     try:
@@ -76,7 +80,7 @@ def build_final_payload(raw_data):
 
     # --- 4. 构建最终 payload ---
     final_payload = raw_data['final_payload_params'].copy()
-    print(final_payload)
+    # print(final_payload)
     # 序列化整个 order_dict 作为 'order' 参数的值
     final_payload['order'] = json.dumps(
         order_dict,
@@ -86,16 +90,39 @@ def build_final_payload(raw_data):
 
     return final_payload, order_id
 
+
 # 构建美团取消订单接口参数
-def build_cancel_payload(raw_data):
+def build_cancel_payload(raw_data, order_id):
     """
     根据美团接口要求，执行多层 JSON 序列化，并构建最终的请求 payload。
 
     注意：使用 separators=(',', ':') 保证输出的 JSON 字符串是紧凑的，
           避免因空格导致的签名校验失败。
     """
+
+    print("当前要取消的订单ID:", order_id)
     if not raw_data:
         return None
+
+    cancelOrder_list = raw_data['orderCancel_list'].copy()
+    print('cancelOrder_list:', cancelOrder_list)
+    # 替换新生成的订单ID
+    cancelOrder_list['orderId'] = order_id
+    # 序列化整个 cancelOrder_list 去除空格 ,
+    cancelOrder_list = json.dumps(
+        cancelOrder_list,
+        ensure_ascii=False,
+        separators=(',', ':')
+    )
+    print('cancelOrder_list2:', cancelOrder_list)
+
+    # 构建最终参数
+    cancel_payload = raw_data['final_cancelOrder_params'].copy()
+    cancel_payload['orderCancel'] = cancelOrder_list
+    print('cancel_payload', cancel_payload)
+
+
+    return cancel_payload
 
 
 
@@ -104,6 +131,17 @@ if __name__ == '__main__':
     file_path = os.path.join(current_dir, 'data', 'delivery_data.yaml')
     raw_data = load_yaml_data(file_path)
     final_payload, order_id = build_final_payload(raw_data)
-    print(final_payload)
+    print('生成的订单ID为:', order_id)
+    # print('final_payload', final_payload)
+    #
+    # print(get_data_file_path('cancel_order.yaml'))
 
-    print(get_data_file_path('cancel_order.yaml'))
+    # 调试取消订单接口
+    raw_data2 = load_yaml_data(get_data_file_path('cancel_order.yaml'))
+    print('raw_data2', raw_data2)
+    cancel_payload = build_cancel_payload(raw_data2, 530189019046131710)
+
+    with httpx.Client(base_url=BASE_URL) as client:
+        responses = safe_post(client, '/mt/v2/order/cancel/callback', data=cancel_payload)
+        resp = responses.json().get('data')
+        print('取消订单响应:', resp)
