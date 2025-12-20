@@ -14,7 +14,6 @@ def client():
 # @pytest.mark.paramret()
 # @pytest.fixture
 def create_order(client):
-
     reconciliation_extras_dict = {
         "technicalServiceFee": 0.0,
         "slaFee": 0.0,
@@ -178,19 +177,47 @@ def drict_refund(client):
     })
 
 
-# 取消订单
-@pytest.fixture
-def cancel_order(client):
-    cnacelOrder = client.post('/mt/v2/order/cancel/callback', josn={
+cancel_dict = {
+    "orderEntranceType": 0,
+    "orderId": 530189019643134967,
+    "orderTagList": "[]",
+    "reason": "没有备注",
+    "reasonCode": "1301"
+}
+cancelload = {
+    "developerId": "106825",
+    "ePoiId": "reabamts_5ad586a8721e49518998aedef9fd3b5c",
+    "orderCancel": json.dumps(cancel_dict, ensure_ascii=False, separators=(',', ':')),
+    "sign": "3c730a1aa91e99c7c0bac596828370cafe722618"
+}
 
-    })
+cancel_dict1 = json.dumps(cancel_dict, ensure_ascii=False, separators=(',', ':'))
+print(cancel_dict1)
+
+cancelload1 = json.dumps(cancelload, ensure_ascii=False, separators=(',', ':'))
+print(cancelload1)
+# 取消订单
+# @pytest.fixture
+def cancel_order(client):
+    cnacelOrder = client.post('/mt/v2/order/cancel/callback',
+                              data=json.dumps(cancelload, ensure_ascii=False, separators=(',', ':')),
+                              headers={"Content-Type": "application/x-www-form-urlencoded"}
+
+                              )
+    print(cnacelOrder.json().get('data'))
+    return cnacelOrder.json().get('data')
 
 
 if __name__ == '__main__':
     # def push_order(create_order):
     #     data = create_order
     #     print(data)
+    # with httpx.Client(base_url=BASE_URL) as client:
+    #     print("推单中")
+    #     result = create_order(client)
+    #     print("输出的结果是:", result)
+
     with httpx.Client(base_url=BASE_URL) as client:
-        print("推单中")
-        result = create_order(client)
-        print("输出的结果是:", result)
+        print("取消中")
+        result = cancel_order(client)
+        print("取消结果是:", result)
