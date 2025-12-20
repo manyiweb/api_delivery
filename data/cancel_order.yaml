@@ -1,0 +1,11 @@
+orderCancel_list:
+  orderEntranceType: 0
+  orderId: "5301904581577520896"
+  orderTagList: "[]"
+  reason: "没有备注"
+  reasonCode: "1301"
+
+final_cancelOrder_params:
+  developerId: "106825"
+  ePoiId: "reabamts_5ad586a8721e49518998aedef9fd3b5c"
+  sign: "146bcdd348c4f7e90895af13faa123e201fe2686"
