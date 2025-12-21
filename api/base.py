@@ -3,7 +3,7 @@ import httpx
 import json
 import logging
 
-BASE_URL = 'http://fat-pos.reabam.com:60030/api/dock'
+BASE_URL = 'http://fat-pos.reabam.com:60030/api'
 
 logger = logging.getLogger(__name__)
 
