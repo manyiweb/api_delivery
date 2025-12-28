@@ -1,9 +1,9 @@
 orderCancel_list:
   orderEntranceType: 0
-  orderId: "5301904581577520896"
-  orderTagList: "[]"
-  reason: "没有备注"
-  reasonCode: "1301"
+  orderId: 5301904581577520896
+  orderTagList: []
+  reason: 没有备注
+  reasonCode: 1301
 
 final_cancelOrder_params:
   developerId: "106825"
