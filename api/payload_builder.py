@@ -2,7 +2,8 @@ import json
 import time
 import allure
 
-from utils import get_data_file_path, load_yaml_data
+from utils.file_loader import get_data_file_path, load_yaml_data
+from utils.logger import logger
 
 
 # 构建美团推单接口参数
@@ -18,7 +19,6 @@ def build_final_payload(raw_data):
 
     # --- 1. 动态生成唯一ID，防止订单重复 ---
     timestamp_part = int((time.time() * 1000))  # 标准美团订单号 5301890193521352344
-    print("当前时间戳后9位:", timestamp_part)
     order_id = int('5301890196' + str(timestamp_part)[-9:])  # 模拟生成唯一订单ID
 
     # --- 2. 处理 poiReceiveDetail 内部的 JSON 字符串 (reconciliationExtras) ---
@@ -85,7 +85,7 @@ def build_cancel_payload(raw_data, order_id):
         return None
 
     cancelOrder_list = raw_data['orderCancel_list'].copy()
-    print('cancelOrder_list:', cancelOrder_list)
+    logger.debug(f"取消订单列表: {cancelOrder_list}")
     # 替换新生成的订单ID
     cancelOrder_list['orderId'] = order_id
     # 序列化整个 cancelOrder_list 去除空格 ,
@@ -94,18 +94,18 @@ def build_cancel_payload(raw_data, order_id):
         ensure_ascii=False,
         separators=(',', ':')
     )
-    print('cancelOrder_list2:', cancelOrder_list)
+    logger.debug(f"序列化后的取消订单列表: {cancelOrder_list}")
 
     # 构建最终参数
     cancel_payload = raw_data['final_cancelOrder_params'].copy()
     cancel_payload['orderCancel'] = cancelOrder_list
-    print('cancel_payload', cancel_payload)
+    logger.info(f"取消订单最终参数: {cancel_payload}")
 
     return cancel_payload
 
 
 # 构建申请订单整单退接口参数
-def build_apply_refund_payload(raw_data):
+def build_apply_refund_payload(raw_data,order_id):
     """
     根据美团接口要求，执行多层 JSON 序列化，并构建最终的请求 payload。
 
@@ -117,6 +117,7 @@ def build_apply_refund_payload(raw_data):
 
     # 序列化 orderRefund_list 参数
     orderRefund_list = raw_data['orderRefund_list'].copy()
+    orderRefund_list['orderId'] = order_id
     orderRefund_list = json.dumps(
         orderRefund_list,
         ensure_ascii=False,
@@ -128,7 +129,6 @@ def build_apply_refund_payload(raw_data):
     final_applyOrder_params = raw_data['final_applyOrder_params'].copy()
     final_applyOrder_params['orderRefund'] = orderRefund_list
     final_payload = final_applyOrder_params
-    # print(final_payload)
     return final_payload
 
 

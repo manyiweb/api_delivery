@@ -1,16 +1,15 @@
 import pytest
 import httpx
 import json
-import logging
+
+from utils.logger import logger
 
 BASE_URL = 'http://fat-pos.reabam.com:60030/api'
 
-logger = logging.getLogger(__name__)
 
-
-@pytest.fixture
-def client():
-    return httpx.Client(base_url=BASE_URL)
+# @pytest.fixture(scope="function")
+# def client():
+#     return httpx.Client(base_url=BASE_URL)
 
 
 def handle_response(response, order_id=None):
