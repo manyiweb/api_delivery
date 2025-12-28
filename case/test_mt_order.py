@@ -1,5 +1,6 @@
 import allure
 from api.order_callback import mt_push_order_callback, mt_cancel_order_callback, mt_full_refund_callback
+from assertions.order_db_assert import assert_order_created
 from utils.logger import logger
 # 添加time模块用于延迟
 import time
