@@ -7,7 +7,7 @@ def assert_order_created(conn, order_id, timeout=10, interval=1):
     """
     校验订单是否成功入库（支持异步）
     """
-    sql = "SELECT order_id FROM dorder WHERE order_id = %s"
+    sql = "SELECT * FROM dorder_dock WHERE dock_order_no = %s"
     start = time.time()
 
     while time.time() - start < timeout:

@@ -26,3 +26,4 @@ def db_conn():
     )
     yield conn
     conn.close()
+
