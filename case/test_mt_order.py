@@ -1,5 +1,6 @@
 import allure
 from api.order_callback import mt_push_order_callback, mt_cancel_order_callback, mt_full_refund_callback
+from assertions.order_db_assert import assert_order_created
 from utils.logger import logger
 # 添加time模块用于延迟
 import time
@@ -21,7 +22,7 @@ class TestMtPushOrder:
         with allure.step("验证推单结果"):
             allure.attach(str(result), name="推单响应", attachment_type=allure.attachment_type.TEXT)
             assert result == "OK", f"推单失败，返回结果: {result}"
-
+            assert assert_order_created(db_conn, order_id), "订单入库失败"
     @allure.story("订单取消")
     @allure.title("美团取消订单回调后，订单状态更新为已取消")
     @allure.severity(allure.severity_level.CRITICAL)

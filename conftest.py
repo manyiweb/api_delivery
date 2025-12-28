@@ -16,13 +16,37 @@ def client():
 @pytest.fixture(scope="session")
 def db_conn():
     conn = pymysql.connect(
-        host='你的DB_HOST',
+        host='192.168.1.151',
         port=3306,
-        user='你的DB_USER',
-        password='你的DB_PASSWORD',
-        database='你的DB_NAME',
+        user='zhoujiman@mop#mop',
+        password='reabam123@mop',
+        database='rb_ts_core',
         charset='utf8mb4',
         cursorclass=pymysql.cursors.DictCursor
     )
     yield conn
     conn.close()
+
+
+if __name__ == '__main__':
+    # 在main函数中验证数据库连接
+    try:
+        test_conn = pymysql.connect(
+            host='192.168.1.151',
+            port=3306,
+            user='zhoujiman@mop#mop',
+            password='reabam123@mop',
+            database='rb_ts_core',
+            charset='utf8mb4',
+            cursorclass=pymysql.cursors.DictCursor
+        )
+        with test_conn.cursor() as cursor:
+            cursor.execute("SELECT 1")
+            result = cursor.fetchone()
+            if result:
+                print("数据库连接验证成功")
+            else:
+                print("数据库连接验证失败")
+        test_conn.close()
+    except Exception as e:
+        print(f"数据库连接验证失败: {str(e)}")

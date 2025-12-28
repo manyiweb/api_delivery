@@ -1,15 +1,9 @@
-import pytest
 import httpx
 import json
 
 from utils.logger import logger
 
 BASE_URL = 'http://fat-pos.reabam.com:60030/api'
-
-
-# @pytest.fixture(scope="function")
-# def client():
-#     return httpx.Client(base_url=BASE_URL)
 
 
 def handle_response(response, order_id=None):
@@ -28,6 +22,7 @@ def handle_response(response, order_id=None):
             return False, response_json
 
     except json.JSONDecodeError:
+
         logger.error(f"❌ 响应不是有效 JSON: {response.text}")
         return False, None
 
