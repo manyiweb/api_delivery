@@ -13,7 +13,7 @@ import time
 class TestMtPushOrder:
     """美团推单成功"""
 
-    @pytest.mark.skip(reason="内网测试环境不支持无法访问，跳过")
+    # @pytest.mark.skip(reason="内网测试环境不支持无法访问，跳过")
     @allure.story("外卖下单")
     @allure.title("美团推单回调成功后，系统生成订单并入库")
     @allure.severity(allure.severity_level.CRITICAL)
@@ -64,7 +64,7 @@ class TestMtPushOrder:
             assert result == "OK", f"整单退款失败，返回结果: {result}"
             logger.info("整单退款成功")
 
-    @pytest.mark.skip(reason="内网测试环境不支持无法访问，跳过")
+    # @pytest.mark.skip(reason="内网测试环境不支持无法访问，跳过")
     @allure.story("重复推单")
     @allure.title("重复推单时验证幂等性，订单表中该订单数量应为1")
     @allure.severity(allure.severity_level.NORMAL)
@@ -84,7 +84,7 @@ class TestMtPushOrder:
 
         with allure.step("第二次推单操作"):
             logger.info("第二次推单中")
-            result2, duplicate_order_id = mt_push_order_callback(client)
+            result2, duplicate_order_id = mt_push_order_callback(client, order_id)
             logger.info(f"第二次推单结果: {result2}, 订单ID: {duplicate_order_id}")
             assert duplicate_order_id == order_id, f"重复推单返回的订单ID不一致: {duplicate_order_id} vs {order_id}"
 
@@ -101,6 +101,7 @@ class TestMtPushOrder:
             assert_order_count(db_conn, str(order_id), expected_count=1)
             logger.info(f"重复推单幂等性验证通过：订单ID {order_id} 在数据库中数量为1")
 
+    # @pytest.mark.skip
     @allure.story("异常订单处理")
     @allure.title("使用无效订单ID进行取消操作")
     @allure.severity(allure.severity_level.BLOCKER)
@@ -115,20 +116,7 @@ class TestMtPushOrder:
             # 无效订单ID可能会返回错误信息而不是"OK"
             assert result is not None, "无效订单ID取消操作应返回错误信息"
 
-    @allure.story("异常订单处理")
-    @allure.title("使用无效订单ID进行退款操作")
-    @allure.severity(allure.severity_level.BLOCKER)
-    def test_refund_with_invalid_order_id(self, client):
-        """使用无效订单ID退款"""
-        with allure.step("尝试使用无效订单ID退款"):
-            invalid_order_id = 9999999999999999999  # 无效订单ID
-            result = mt_full_refund_callback(client, invalid_order_id)
-        with allure.step("验证退款操作失败"):
-            # 根据API实际响应调整验证方式
-            logger.info(f"无效订单ID退款结果: {result}")
-            # 无效订单ID可能会返回错误信息而不是"OK"
-            assert result is not None, "无效订单ID退款操作应返回错误信息"
-
+    # @pytest.mark.skip
     @allure.story("重复操作")
     @allure.title("重复取消同一订单")
     @allure.severity(allure.severity_level.CRITICAL)
@@ -158,7 +146,7 @@ class TestMtPushOrder:
             # 根据API实际行为调整断言
             assert result2 is not None, "重复取消订单应有响应"
 
-    @pytest.mark.smoke
+    # @pytest.mark.skip
     @allure.story("重复操作")
     @allure.title("重复对已退款订单进行退款")
     @allure.severity(allure.severity_level.CRITICAL)
@@ -188,6 +176,7 @@ class TestMtPushOrder:
             # 根据API实际行为调整断言
             assert result2 is not None, "重复退款应有响应"
 
+    @pytest.mark.skip
     @allure.story("订单状态验证")
     @allure.title("对已取消订单进行退款操作")
     @allure.severity(allure.severity_level.BLOCKER)

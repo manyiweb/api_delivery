@@ -7,7 +7,7 @@ from utils.logger import logger
 
 
 # 构建美团推单接口参数
-def build_final_payload(raw_data):
+def build_final_payload(raw_data, order_id=None):
     """
     根据美团接口要求，执行多层 JSON 序列化，并构建最终的请求 payload。
 
@@ -19,7 +19,8 @@ def build_final_payload(raw_data):
 
     # --- 1. 动态生成唯一ID，防止订单重复 ---
     timestamp_part = int((time.time() * 1000))  # 标准美团订单号 5301890193521352344
-    order_id = int('5301890196' + str(timestamp_part)[-9:])  # 模拟生成唯一订单ID
+    if order_id is None:
+        order_id = int('5301890196' + str(timestamp_part)[-9:])  # 模拟生成唯一订单ID
 
     # --- 2. 处理 poiReceiveDetail 内部的 JSON 字符串 (reconciliationExtras) ---
     reconciliation_extras_str = json.dumps(

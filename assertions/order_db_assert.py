@@ -34,7 +34,15 @@ def assert_order_count(conn, order_id, expected_count=1, timeout=10, interval=1)
 
     while time.time() - start < timeout:
         result = query_order_count(conn, sql, (order_id,))
-        actual_count = result[0] if result else 0
+        if result:
+            # 如果result是字典格式，使用'count'键获取值
+            if isinstance(result, dict):
+                actual_count = result.get('count', 0) if result else 0
+            else:
+                # 如果result是元组格式，使用索引获取值
+                actual_count = result[0] if result else 0
+        else:
+            actual_count = 0
         
         if actual_count == expected_count:
             allure.attach(

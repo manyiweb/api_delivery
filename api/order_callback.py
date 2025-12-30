@@ -8,12 +8,12 @@ from utils.file_loader import load_yaml_data, get_data_file_path
 from utils.logger import logger
 
 
-def mt_push_order_callback(client):
+def mt_push_order_callback(client, order_id=None):
     with allure.step("读取推单数据"):
         raw_data = load_yaml_data(get_data_file_path('delivery_data.yaml'))
 
     with allure.step("构建推单参数"):
-        final_push_order_payload, order_id = build_final_payload(raw_data)
+        final_push_order_payload, order_id = build_final_payload(raw_data, order_id)
         allure.attach(str(order_id), name="生成的订单ID", attachment_type=allure.attachment_type.TEXT)
         logger.info(f"推单参数: {final_push_order_payload}")
 
@@ -77,10 +77,10 @@ if __name__ == '__main__':
     #     print(data)
     with httpx.Client(base_url=BASE_URL) as client:
         print("推单中")
-        result1 = mt_push_order_callback(client)
-        result2 = mt_cancel_order_callback(client)
+        result1, order_id = mt_push_order_callback(client)
+        result2 = mt_cancel_order_callback(client, order_id)
         print("推单输出的结果是:", result1)
         print("取消输出的结果是:", result2)
         # cancel_order(client, order_id)
-        result = mt_full_refund_callback(client)
+        result = mt_full_refund_callback(client, order_id)
         print("输出的结果是:", result)
