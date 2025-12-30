@@ -7,11 +7,6 @@ from utils.logger import logger
 BASE_URL = 'http://fat-pos.reabam.com:60030/api'
 
 
-# @pytest.fixture(scope="function")
-# def client():
-#     return httpx.Client(base_url=BASE_URL)
-
-
 def handle_response(response, order_id=None):
     """通用响应处理"""
     logger.info(f"状态码: {response.status_code}")

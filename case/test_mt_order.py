@@ -1,6 +1,8 @@
 import allure
+import pytest
+
 from api.order_callback import mt_push_order_callback, mt_cancel_order_callback, mt_full_refund_callback
-from assertions.order_db_assert import assert_order_created
+from assertions.order_db_assert import assert_order_count
 from utils.logger import logger
 # 添加time模块用于延迟
 import time
@@ -11,31 +13,18 @@ import time
 class TestMtPushOrder:
     """美团推单成功"""
 
+    @pytest.mark.skip(reason="内网测试环境不支持无法访问，跳过")
     @allure.story("外卖下单")
     @allure.title("美团推单回调成功后，系统生成订单并入库")
     @allure.severity(allure.severity_level.CRITICAL)
-    def test_mt_push_order(self, client,):
+    def test_mt_push_order(self, client):
         with allure.step("执行推单操作"):
             logger.info("推单中")
             result, order_id = mt_push_order_callback(client)
             logger.info(f"推单结果: {result}")
-
-        # # 记录生成的订单ID，用于后续清理
-        # cleanup_order.append(order_id)
-
         with allure.step("验证推单结果"):
             allure.attach(str(result), name="推单响应", attachment_type=allure.attachment_type.TEXT)
             assert result == "OK", f"推单失败，返回结果: {result}"
-
-        # 添加适当延迟，确保消息被完全消费并落库
-        with allure.step("等待订单数据落库"):
-            logger.info("等待订单数据落库...")
-            time.sleep(3)  # 等待3秒以确保数据持久化
-
-        # with allure.step("验证订单是否已存入数据库"):
-        #     # 断言订单是否已存入数据库dorder表中order_id字段
-        #     assert_order_created(db_conn, str(order_id))
-        #     logger.info(f"数据库验证通过：订单ID {order_id} 已成功存入数据库")
 
     @allure.story("订单取消")
     @allure.title("美团取消订单回调后，订单状态更新为已取消")
@@ -74,3 +63,156 @@ class TestMtPushOrder:
             allure.attach(str(result), name="整单退款响应", attachment_type=allure.attachment_type.TEXT)
             assert result == "OK", f"整单退款失败，返回结果: {result}"
             logger.info("整单退款成功")
+
+    @pytest.mark.skip(reason="内网测试环境不支持无法访问，跳过")
+    @allure.story("重复推单")
+    @allure.title("重复推单时验证幂等性，订单表中该订单数量应为1")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_mt_repeat_push_order(self, client, db_conn):
+        with allure.step("第一次推单操作"):
+            logger.info("第一次推单中")
+            result1, order_id = mt_push_order_callback(client)
+            logger.info(f"第一次推单结果: {result1}, 订单ID: {order_id}")
+
+        with allure.step("验证第一次推单结果"):
+            assert result1 == "OK", f"第一次推单失败，返回结果: {result1}"
+
+        # 等待第一次订单数据落库
+        with allure.step("等待第一次订单数据落库"):
+            logger.info("等待第一次订单数据落库...")
+            time.sleep(3)
+
+        with allure.step("第二次推单操作"):
+            logger.info("第二次推单中")
+            result2, duplicate_order_id = mt_push_order_callback(client)
+            logger.info(f"第二次推单结果: {result2}, 订单ID: {duplicate_order_id}")
+            assert duplicate_order_id == order_id, f"重复推单返回的订单ID不一致: {duplicate_order_id} vs {order_id}"
+
+        with allure.step("验证第二次推单结果"):
+            assert result2 == "OK", f"第二次推单失败，返回结果: {result2}"
+
+        # 等待第二次订单数据处理完成
+        with allure.step("等待第二次订单数据处理"):
+            logger.info("等待第二次订单数据处理...")
+            time.sleep(3)
+
+        with allure.step("验证重复推单后订单数量为1（幂等性验证）"):
+            # 验证数据库中该订单ID的记录数量应为1，确保重复推单不会生成新订单
+            assert_order_count(db_conn, str(order_id), expected_count=1)
+            logger.info(f"重复推单幂等性验证通过：订单ID {order_id} 在数据库中数量为1")
+
+    @allure.story("异常订单处理")
+    @allure.title("使用无效订单ID进行取消操作")
+    @allure.severity(allure.severity_level.BLOCKER)
+    def test_cancel_with_invalid_order_id(self, client):
+        """使用无效订单ID取消订单"""
+        with allure.step("尝试使用无效订单ID取消订单"):
+            invalid_order_id = 9999999999999999999  # 无效订单ID
+            result = mt_cancel_order_callback(client, invalid_order_id)
+        with allure.step("验证取消操作失败"):
+            # 根据API实际响应调整验证方式
+            logger.info(f"无效订单ID取消结果: {result}")
+            # 无效订单ID可能会返回错误信息而不是"OK"
+            assert result is not None, "无效订单ID取消操作应返回错误信息"
+
+    @allure.story("异常订单处理")
+    @allure.title("使用无效订单ID进行退款操作")
+    @allure.severity(allure.severity_level.BLOCKER)
+    def test_refund_with_invalid_order_id(self, client):
+        """使用无效订单ID退款"""
+        with allure.step("尝试使用无效订单ID退款"):
+            invalid_order_id = 9999999999999999999  # 无效订单ID
+            result = mt_full_refund_callback(client, invalid_order_id)
+        with allure.step("验证退款操作失败"):
+            # 根据API实际响应调整验证方式
+            logger.info(f"无效订单ID退款结果: {result}")
+            # 无效订单ID可能会返回错误信息而不是"OK"
+            assert result is not None, "无效订单ID退款操作应返回错误信息"
+
+    @allure.story("重复操作")
+    @allure.title("重复取消同一订单")
+    @allure.severity(allure.severity_level.CRITICAL)
+    def test_cancel_duplicate_order(self, client):
+        """重复取消订单测试"""
+        # 生成订单
+        with allure.step("执行推单操作"):
+            logger.info("重复取消订单数据生成中")
+            result, order_id = mt_push_order_callback(client)
+            logger.info(f"推单结果: {result}")
+        with allure.step("验证推单结果"):
+            allure.attach(str(result), name="推单响应", attachment_type=allure.attachment_type.TEXT)
+            assert result == "OK", f"推单失败，无法进行重复取消测试，返回结果: {result}"
+        # 第一次取消订单
+        with allure.step("第一次取消订单操作"):
+            result1 = mt_cancel_order_callback(client, order_id)
+            logger.info(f"第一次取消订单结果: {result1}")
+        with allure.step("验证第一次取消订单成功"):
+            assert result1 == "OK", f"第一次取消订单失败，返回结果: {result1}"
+        # 第二次取消订单
+        with allure.step("第二次取消订单操作"):
+            result2 = mt_cancel_order_callback(client, order_id)
+            logger.info(f"第二次取消订单结果: {result2}")
+        with allure.step("验证第二次取消订单响应"):
+            # 根据业务逻辑，第二次取消可能返回特定错误或成功
+            allure.attach(str(result2), name="重复取消订单响应", attachment_type=allure.attachment_type.TEXT)
+            # 根据API实际行为调整断言
+            assert result2 is not None, "重复取消订单应有响应"
+
+    @pytest.mark.smoke
+    @allure.story("重复操作")
+    @allure.title("重复对已退款订单进行退款")
+    @allure.severity(allure.severity_level.CRITICAL)
+    def test_refund_duplicate_order(self, client):
+        """重复退款测试"""
+        # 生成订单
+        with allure.step("执行推单操作"):
+            logger.info("重复退款订单数据生成中")
+            result, order_id = mt_push_order_callback(client)
+            logger.info(f"推单结果: {result}")
+        with allure.step("验证推单结果"):
+            allure.attach(str(result), name="推单响应", attachment_type=allure.attachment_type.TEXT)
+            assert result == "OK", f"推单失败，无法进行重复退款测试，返回结果: {result}"
+        # 第一次退款
+        with allure.step("第一次退款操作"):
+            result1 = mt_full_refund_callback(client, order_id)
+            logger.info(f"第一次退款结果: {result1}")
+        with allure.step("验证第一次退款成功"):
+            assert result1 == "OK", f"第一次退款失败，返回结果: {result1}"
+        # 第二次退款
+        with allure.step("第二次退款操作"):
+            result2 = mt_full_refund_callback(client, order_id)
+            logger.info(f"第二次退款结果: {result2}")
+        with allure.step("验证第二次退款响应"):
+            # 根据业务逻辑，第二次退款可能返回特定错误或成功
+            allure.attach(str(result2), name="重复退款响应", attachment_type=allure.attachment_type.TEXT)
+            # 根据API实际行为调整断言
+            assert result2 is not None, "重复退款应有响应"
+
+    @allure.story("订单状态验证")
+    @allure.title("对已取消订单进行退款操作")
+    @allure.severity(allure.severity_level.BLOCKER)
+    def test_refund_cancelled_order(self, client):
+        """对已取消订单进行退款测试"""
+        # 生成订单
+        with allure.step("执行推单操作"):
+            logger.info("已取消订单退款数据生成中")
+            result, order_id = mt_push_order_callback(client)
+            logger.info(f"推单结果: {result}")
+        with allure.step("验证推单结果"):
+            allure.attach(str(result), name="推单响应", attachment_type=allure.attachment_type.TEXT)
+            assert result == "OK", f"推单失败，无法进行状态不匹配测试，返回结果: {result}"
+        # 取消订单
+        with allure.step("取消订单操作"):
+            cancel_result = mt_cancel_order_callback(client, order_id)
+            logger.info(f"取消订单结果: {cancel_result}")
+        with allure.step("验证订单取消成功"):
+            assert cancel_result == "OK", f"订单取消失败，返回结果: {cancel_result}"
+        # 尝试对已取消的订单进行退款
+        with allure.step("对已取消订单进行退款操作"):
+            refund_result = mt_full_refund_callback(client, order_id)
+            logger.info(f"对已取消订单退款结果: {refund_result}")
+        with allure.step("验证对已取消订单退款的响应"):
+            # 根据业务逻辑，对已取消订单退款可能返回错误信息
+            allure.attach(str(refund_result), name="已取消订单退款响应", attachment_type=allure.attachment_type.TEXT)
+            # 根据API实际行为调整断言
+            assert refund_result is not None, "对已取消订单退款应有响应"

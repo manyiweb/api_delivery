@@ -6,6 +6,14 @@ def query_order_exist(conn, sql, params=None):
         cursor.execute(sql, params)
         return cursor.fetchone()
 
+
+def query_order_count(conn, sql, params=None):
+    with conn.cursor() as cursor:
+        cursor.execute(sql, params)
+        result = cursor.fetchone()
+        return result
+
+
 def cleanup_test_order(conn, order_id):
     """
     清理测试生成的订单数据
