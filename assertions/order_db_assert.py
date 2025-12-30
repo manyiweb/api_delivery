@@ -1,6 +1,6 @@
 import time
 import allure
-from utils.db_helper import query_order_exist
+from utils.db_helper import query_order_exist, query_order_count
 
 
 def assert_order_created(conn, order_id, timeout=10, interval=1):
@@ -23,3 +23,27 @@ def assert_order_created(conn, order_id, timeout=10, interval=1):
         time.sleep(interval)
 
     raise AssertionError(f"订单 {order_id} 在 {timeout}s 内未入库")
+
+
+def assert_order_count(conn, order_id, expected_count=1, timeout=10, interval=1):
+    """
+    校验订单在数据库中的数量，用于验证重复推单的幂等性
+    """
+    sql = "SELECT COUNT(*) as count FROM dorder_dock WHERE dock_order_no = %s"
+    start = time.time()
+
+    while time.time() - start < timeout:
+        result = query_order_count(conn, sql, (order_id,))
+        actual_count = result[0] if result else 0
+        
+        if actual_count == expected_count:
+            allure.attach(
+                f"订单 {order_id} 数量验证成功: {actual_count}",
+                name="订单数量验证",
+                attachment_type=allure.attachment_type.TEXT
+            )
+            return
+
+        time.sleep(interval)
+
+    raise AssertionError(f"订单 {order_id} 数量验证失败: 期望 {expected_count}, 实际 {actual_count}")
