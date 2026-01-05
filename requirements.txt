@@ -3,4 +3,5 @@ allure-pytest==2.9.45
 httpx==0.23.0
 PyMySQL==1.0.2
 PyYAML==6.0
+pytest-html==4.1.1
 
