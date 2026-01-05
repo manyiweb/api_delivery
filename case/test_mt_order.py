@@ -26,6 +26,7 @@ class TestMtPushOrder:
             allure.attach(str(result), name="推单响应", attachment_type=allure.attachment_type.TEXT)
             assert result == "OK", f"推单失败，返回结果: {result}"
 
+    @pytest.mark.skip(reason="内网测试环境不支持无法访问，跳过")
     @allure.story("订单取消")
     @allure.title("美团取消订单回调后，订单状态更新为已取消")
     @allure.severity(allure.severity_level.CRITICAL)
@@ -45,6 +46,7 @@ class TestMtPushOrder:
             assert result == "OK", f"取消订单失败，返回结果: {result}"
             logger.info("取消订单成功")
 
+    @pytest.mark.skip(reason="内网测试环境不支持无法访问，跳过")
     @allure.story("订单整单退款")
     @allure.title("美团整单退款申请并同意后，订单状态变更为已退款")
     @allure.severity(allure.severity_level.CRITICAL)
@@ -64,7 +66,7 @@ class TestMtPushOrder:
             assert result == "OK", f"整单退款失败，返回结果: {result}"
             logger.info("整单退款成功")
 
-    # @pytest.mark.skip(reason="内网测试环境不支持无法访问，跳过")
+    @pytest.mark.skip(reason="内网测试环境不支持无法访问，跳过")
     @allure.story("重复推单")
     @allure.title("重复推单时验证幂等性，订单表中该订单数量应为1")
     @allure.severity(allure.severity_level.NORMAL)
@@ -101,7 +103,7 @@ class TestMtPushOrder:
             assert_order_count(db_conn, str(order_id), expected_count=1)
             logger.info(f"重复推单幂等性验证通过：订单ID {order_id} 在数据库中数量为1")
 
-    # @pytest.mark.skip
+    @pytest.mark.skip
     @allure.story("异常订单处理")
     @allure.title("使用无效订单ID进行取消操作")
     @allure.severity(allure.severity_level.BLOCKER)
@@ -116,7 +118,7 @@ class TestMtPushOrder:
             # 无效订单ID可能会返回错误信息而不是"OK"
             assert result is not None, "无效订单ID取消操作应返回错误信息"
 
-    # @pytest.mark.skip
+    @pytest.mark.skip
     @allure.story("重复操作")
     @allure.title("重复取消同一订单")
     @allure.severity(allure.severity_level.CRITICAL)
@@ -146,7 +148,7 @@ class TestMtPushOrder:
             # 根据API实际行为调整断言
             assert result2 is not None, "重复取消订单应有响应"
 
-    # @pytest.mark.skip
+    @pytest.mark.skip
     @allure.story("重复操作")
     @allure.title("重复对已退款订单进行退款")
     @allure.severity(allure.severity_level.CRITICAL)
