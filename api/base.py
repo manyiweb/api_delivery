@@ -3,7 +3,8 @@ import json
 
 from utils.logger import logger
 
-BASE_URL = 'http://fat-pos.reabam.com:60030/api'
+BASE_URL = 'http://fat-pos.reabam.com:60030/api'  # 测试环境
+UAT_URL = 'https://pos.reabam.com:60030/api'  # 生产环境
 
 
 def handle_response(response, order_id=None):
