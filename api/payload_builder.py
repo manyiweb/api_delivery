@@ -1,18 +1,29 @@
+"""Payload构建器模块
+负责构建美团接口请求参数
+"""
 import json
 import time
 import allure
+from typing import Tuple, Optional, Dict, Any
 
+from config import config
 from utils.file_loader import get_data_file_path, load_yaml_data
 from utils.logger import logger
 
 
-# 构建美团推单接口参数
-def build_final_payload(raw_data, order_id=None):
-    """
-    根据美团接口要求，执行多层 JSON 序列化，并构建最终的请求 payload。
-
-    注意：使用 separators=(',', ':') 保证输出的 JSON 字符串是紧凑的，
-          避免因空格导致的签名校验失败。
+def build_final_payload(raw_data: Dict, order_id: Optional[str] = None) -> Tuple[Dict[str, str], str]:
+    """根据美团接口要求，执行多层 JSON 序列化，并构建最终的请求 payload
+    
+    Args:
+        raw_data: YAML原始数据
+        order_id: 订单ID（可选，用于幂等性测试）
+        
+    Returns:
+        (最终payload, 订单ID)
+        
+    Note:
+        使用 separators=(',', ':') 保证输出的 JSON 字符串是紧凑的，
+        避免因空格导致的签名校验失败
     """
     if not raw_data:
         return None
@@ -60,8 +71,7 @@ def build_final_payload(raw_data, order_id=None):
     )
 
     # --- 4. 构建最终 payload ---
-    final_payload = raw_data['final_payload_params'].copy()
-    # print(final_payload)
+    final_payload = config.get_final_payload_params().copy()
     # 序列化整个 order_dict 作为 'order' 参数的值
     final_payload['order'] = json.dumps(
         order_dict,
@@ -72,13 +82,19 @@ def build_final_payload(raw_data, order_id=None):
     return final_payload, order_id
 
 
-# 构建美团取消订单接口参数
-def build_cancel_payload(raw_data, order_id):
-    """
-    根据美团接口要求，执行多层 JSON 序列化，并构建最终的请求 payload。
-
-    注意：使用 separators=(',', ':') 保证输出的 JSON 字符串是紧凑的，
-          避免因空格导致的签名校验失败。
+def build_cancel_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
+    """根据美团接口要求，执行多层 JSON 序列化，并构建最终的请求 payload
+    
+    Args:
+        raw_data: YAML原始数据
+        order_id: 要取消的订单ID
+        
+    Returns:
+        最终取消订单payload
+        
+    Note:
+        使用 separators=(',', ':') 保证输出的 JSON 字符串是紧凑的，
+        避免因空格导致的签名校验失败
     """
 
     print("当前要取消的订单ID:", order_id)
@@ -98,20 +114,26 @@ def build_cancel_payload(raw_data, order_id):
     logger.debug(f"序列化后的取消订单列表: {cancelOrder_list}")
 
     # 构建最终参数
-    cancel_payload = raw_data['final_cancelOrder_params'].copy()
+    cancel_payload = config.get_final_payload_params().copy()
     cancel_payload['orderCancel'] = cancelOrder_list
     logger.info(f"取消订单最终参数: {cancel_payload}")
 
     return cancel_payload
 
 
-# 构建申请订单整单退接口参数
-def build_apply_refund_payload(raw_data,order_id):
-    """
-    根据美团接口要求，执行多层 JSON 序列化，并构建最终的请求 payload。
-
-    注意：使用 separators=(',', ':') 保证输出的 JSON 字符串是紧凑的，
-          避免因空格导致的签名校验失败。
+def build_apply_refund_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
+    """根据美团接口要求，执行多层 JSON 序列化，并构建最终的请求 payload
+    
+    Args:
+        raw_data: YAML原始数据
+        order_id: 要退款的订单ID
+        
+    Returns:
+        最终退款payload
+        
+    Note:
+        使用 separators=(',', ':') 保证输出的 JSON 字符串是紧凑的，
+        避免因空格导致的签名校验失败
     """
     if not raw_data:
         return None
@@ -127,7 +149,7 @@ def build_apply_refund_payload(raw_data,order_id):
 
     allure.attach(json.dumps(raw_data, ensure_ascii=False, indent=2),
                   name="申请订单整单退原始参数", attachment_type=allure.attachment_type.JSON)
-    final_applyOrder_params = raw_data['final_applyOrder_params'].copy()
+    final_applyOrder_params = config.get_final_payload_params().copy()
     final_applyOrder_params['orderRefund'] = orderRefund_list
     final_payload = final_applyOrder_params
     return final_payload

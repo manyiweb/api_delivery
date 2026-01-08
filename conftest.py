@@ -5,46 +5,45 @@ import allure
 import sys
 import os
 
-from api.base import BASE_URL
-from utils.db_helper import cleanup_test_order
+from config import config
+from utils.db_helper import cleanup_test_order, get_db_connection
 
 @pytest.fixture(scope="session")
 def client():
     """创建 HTTP 客户端，测试结束自动关闭"""
-    with httpx.Client(base_url=BASE_URL) as c:
-        allure.attach(BASE_URL, name="API Base URL", attachment_type=allure.attachment_type.TEXT)
+    base_url = config.get_base_url()
+    with httpx.Client(base_url=base_url, timeout=config.DEFAULT_TIMEOUT) as c:
+        allure.attach(base_url, name="API Base URL", attachment_type=allure.attachment_type.TEXT)
         yield c
 
 
 @pytest.fixture(scope="session")
 def db_conn():
+    """创建数据库连接，测试结束自动关闭"""
     conn = pymysql.connect(
-        host='192.168.1.151',
-        port=3306,
-        user='zhoujiman@mop#mop',
-        password='reabam123@mop',
-        database='rb_ts_core',
-        charset='utf8mb4',
+        **config.DB_CONFIG,
         cursorclass=pymysql.cursors.DictCursor
+    )
+    allure.attach(
+        f"Database: {config.DB_CONFIG['host']}:{config.DB_CONFIG['port']}/{config.DB_CONFIG['database']}",
+        name="数据库连接信息",
+        attachment_type=allure.attachment_type.TEXT
     )
     yield conn
     conn.close()
 
-@pytest.fixture
-def cleanup_order():
+@pytest.fixture(scope="function")
+def cleanup_order(db_conn):
+    """测试用例级别的订单清理 fixture"""
     created_orders = []
     yield created_orders
     # Teardown: 清理测试数据
     for order_id in created_orders:
-        db_conn = db_conn()  # 获取连接
         cleanup_test_order(db_conn, order_id)
-        db_conn.close()
 
 # 添加pytest钩子函数来发送通知
-def pytest_terminal_summary(terminalreporter, exitstatus, config):
+def pytest_terminal_summary(terminalreporter, exitstatus, config_obj):
     """在终端输出摘要时调用"""
-    # 这个钩子函数在pytest输出测试结果到终端后调用
-    # 可以用来获取测试统计信息并发送通知
     from utils.notification import NotificationSender, create_test_report_message
     from utils.logger import logger
     
@@ -57,9 +56,7 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     logger.info(f"测试统计: 总数={total}, 通过={passed}, 失败={failed}, 跳过={skipped}")
     
     # 创建通知发送器
-    sender = NotificationSender(
-        wechat_webhook="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=b97e1f07-9f2c-45b9-a2bc-999b744c2ca4"
-    )
+    sender = NotificationSender(wechat_webhook=config.WECHAT_WEBHOOK)
     
     # 创建测试报告消息
     content = create_test_report_message(

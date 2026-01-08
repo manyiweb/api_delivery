@@ -117,7 +117,6 @@ order_core_params:
   wmPoiReceiveCent: 0
 
 # --- 最终 Payload 参数 ---
-final_payload_params:
-  developerId: "106825"
-  ePoiId: "reabamts_5ad586a8721e49518998aedef9fd3b5c"
-  sign: "146bcdd348c4f7e90895af13faa123e201fe2686"
+# 注意：这些参数已移至 config.py 统一管理
+# 如需修改，请在 config.py 或环境变量中配置
+final_payload_params: {}

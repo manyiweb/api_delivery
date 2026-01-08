@@ -1,6 +1,7 @@
 import httpx
 import allure
 import json
+from typing import Tuple, Optional
 
 from api.base import BASE_URL, safe_post
 from api.payload_builder import build_final_payload, build_cancel_payload, build_apply_refund_payload
@@ -8,7 +9,16 @@ from utils.file_loader import load_yaml_data, get_data_file_path
 from utils.logger import logger
 
 
-def mt_push_order_callback(client, order_id=None):
+def push_order(client: httpx.Client, order_id: Optional[str] = None) -> Tuple[str, str]:
+    """美团推单接口
+    
+    Args:
+        client: HTTP客户端
+        order_id: 订单ID（可选，用于幂等性测试）
+        
+    Returns:
+        (API响应数据, 订单ID)
+    """
     with allure.step("读取推单数据"):
         raw_data = load_yaml_data(get_data_file_path('delivery_data.yaml'))
 
@@ -25,7 +35,22 @@ def mt_push_order_callback(client, order_id=None):
         return response_data.get('data'), order_id
 
 
-def mt_cancel_order_callback(client, order_id):
+# 为了兼容性，保留旧的函数名，但使用新名称调用
+def mt_push_order_callback(client: httpx.Client, order_id: Optional[str] = None) -> Tuple[str, str]:
+    """美团推单回调（兼容旧命名）"""
+    return push_order(client, order_id)
+
+
+def cancel_order(client: httpx.Client, order_id: str) -> str:
+    """美团取消订单接口
+    
+    Args:
+        client: HTTP客户端
+        order_id: 订单ID
+        
+    Returns:
+        API响应数据
+    """
     with allure.step("读取取消订单数据"):
         logger.info(f"取消订单中, 订单ID: {order_id}")
         raw_data = load_yaml_data(get_data_file_path('cancel_order.yaml'))
@@ -44,8 +69,22 @@ def mt_cancel_order_callback(client, order_id):
         return response_data.get('data')
 
 
-# 整单退款
-def mt_full_refund_callback(client, order_id):
+# 为了兼容性，保留旧的函数名，但使用新名称调用
+def mt_cancel_order_callback(client: httpx.Client, order_id: str) -> str:
+    """美团取消订单回调（兼容旧命名）"""
+    return cancel_order(client, order_id)
+
+
+def refund_order(client: httpx.Client, order_id: str) -> str:
+    """美团整单退款接口
+    
+    Args:
+        client: HTTP客户端
+        order_id: 订单ID
+        
+    Returns:
+        API响应数据
+    """
     with allure.step("读取申请订单整单退数据"):
         logger.info(f"生成整单退款订单中, 订单ID: {order_id}")
         raw_data = load_yaml_data(get_data_file_path('refund_order.yaml'))
@@ -64,11 +103,21 @@ def mt_full_refund_callback(client, order_id):
         return response_data.get('data')
 
 
-# 部分退款
-def partial_refund(client):
-    partialRefund = client.post('/mt/v2/order/partial/refund/callback', json={
+# 为了兼容性，保留旧的函数名，但使用新名称调用
+def mt_full_refund_callback(client: httpx.Client, order_id: str) -> str:
+    """美团整单退款回调（兼容旧命名）"""
+    return refund_order(client, order_id)
 
-    })
+
+# 部分退款（待实现）
+def partial_refund(client: httpx.Client):
+    """部分退款接口（待实现）
+    
+    Args:
+        client: HTTP客户端
+    """
+    partialRefund = client.post('/mt/v2/order/partial/refund/callback', json={})
+    # TODO: 实现部分退款逻辑
 
 
 if __name__ == '__main__':

@@ -1,9 +1,14 @@
+"""日志模块
+提供全局日志记录器配置
+"""
 from datetime import datetime
 import logging
 import os
 
+from config import config
+
 # 创建 logs 目录
-log_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'logs')
+log_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), config.LOG_DIR)
 if not os.path.exists(log_dir):
     os.makedirs(log_dir)
 
@@ -11,13 +16,14 @@ if not os.path.exists(log_dir):
 log_filename = os.path.join(log_dir, f'test_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log')
 
 # 配置日志
+log_level = getattr(logging, config.LOG_LEVEL.upper(), logging.INFO)
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=log_level,
+    format='%(asctime)s - %(name)s - %(levelname)s - [%(filename)s:%(lineno)d] - %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S',
     handlers=[
         logging.FileHandler(log_filename, encoding='utf-8'),  # 输出到文件
-            logging.StreamHandler()  # 同时输出到控制台
+        logging.StreamHandler()  # 同时输出到控制台
     ]
 )
 

@@ -1,12 +1,27 @@
+"""订单数据库断言模块
+提供订单相关的数据库断言方法
+"""
 import time
 import allure
-from utils.db_helper import query_order_exist, query_order_count
+from typing import Optional, Any, Dict
+
+from config import config
+from utils.db_helper import query_order_exist, query_order_count, query_order_detail
 
 
-def assert_order_created(conn, order_id, timeout=10, interval=1):
+def assert_order_created(conn, order_id: str, timeout: int = None, interval: int = 1):
+    """校验订单是否成功入库（支持异步）
+    
+    Args:
+        conn: 数据库连接
+        order_id: 订单ID
+        timeout: 超时时间（秒）
+        interval: 轮询间隔（秒）
+        
+    Raises:
+        AssertionError: 订单未在预期时间内入库
     """
-    校验订单是否成功入库（支持异步）
-    """
+    timeout = timeout or config.DEFAULT_TIMEOUT
     sql = "SELECT * FROM dorder_dock WHERE dock_order_no = %s"
     start = time.time()
 
@@ -22,13 +37,23 @@ def assert_order_created(conn, order_id, timeout=10, interval=1):
 
         time.sleep(interval)
 
-    raise AssertionError(f"订单 {order_id} 在 {timeout}s 内未入库")
+    raise AssertionError(f"❌ 订单 {order_id} 在 {timeout}s 内未入库")
 
 
-def assert_order_count(conn, order_id, expected_count=1, timeout=10, interval=1):
+def assert_order_count(conn, order_id: str, expected_count: int = 1, timeout: int = None, interval: int = 1):
+    """校验订单在数据库中的数量，用于验证重复推单的幂等性
+    
+    Args:
+        conn: 数据库连接
+        order_id: 订单ID
+        expected_count: 期望的订单数量
+        timeout: 超时时间（秒）
+        interval: 轮询间隔（秒）
+        
+    Raises:
+        AssertionError: 订单数量不符合预期
     """
-    校验订单在数据库中的数量，用于验证重复推单的幂等性
-    """
+    timeout = timeout or config.DEFAULT_TIMEOUT
     sql = "SELECT COUNT(*) as count FROM dorder_dock WHERE dock_order_no = %s"
     start = time.time()
 
@@ -46,7 +71,7 @@ def assert_order_count(conn, order_id, expected_count=1, timeout=10, interval=1)
         
         if actual_count == expected_count:
             allure.attach(
-                f"订单 {order_id} 数量验证成功: {actual_count}",
+                f"✅ 订单 {order_id} 数量验证成功: {actual_count}",
                 name="订单数量验证",
                 attachment_type=allure.attachment_type.TEXT
             )
@@ -54,4 +79,4 @@ def assert_order_count(conn, order_id, expected_count=1, timeout=10, interval=1)
 
         time.sleep(interval)
 
-    raise AssertionError(f"订单 {order_id} 数量验证失败: 期望 {expected_count}, 实际 {actual_count}")
+    raise AssertionError(f"❌ 订单 {order_id} 数量验证失败: 期望 {expected_count}, 实际 {actual_count}")
