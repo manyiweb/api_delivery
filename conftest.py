@@ -42,7 +42,7 @@ def cleanup_order(db_conn):
         cleanup_test_order(db_conn, order_id)
 
 # 添加pytest钩子函数来发送通知
-def pytest_terminal_summary(terminalreporter, exitstatus, config_obj):
+def pytest_terminal_summary(terminalreporter):
     """在终端输出摘要时调用"""
     from utils.notification import NotificationSender, create_test_report_message
     from utils.logger import logger
@@ -78,13 +78,12 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config_obj):
     # 检查发送结果
     for ntype, success in results.items():
         if success:
-            logger.info(f"✅ {ntype} 通知发送成功")
+            logger.info(f"{ntype} 通知发送成功")
         else:
-            logger.error(f"❌ {ntype} 通知发送失败")
-
+            logger.error(f"{ntype} 通知发送失败")
 
 @pytest.hookimpl(tryfirst=True)
-def pytest_configure(config_obj):
+def pytest_configure():
     """在pytest配置阶段添加Allure环境信息"""
     # 创建allure-results目录
     allure_dir = config.ALLURE_RESULTS_DIR

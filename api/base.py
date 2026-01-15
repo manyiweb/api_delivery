@@ -1,6 +1,3 @@
-"""API基础模块
-提供通用的HTTP请求处理、响应解析和异常处理
-"""
 import httpx
 import json
 import time
@@ -38,10 +35,10 @@ def retry_on_failure(max_retries: int = 3, delay: int = 2):
                 except httpx.HTTPError as e:
                     last_exception = e
                     if attempt < max_retries - 1:
-                        logger.warning(f"⚠️ 请求失败，{delay}秒后重试 ({attempt + 1}/{max_retries}): {e}")
+                        logger.warning(f"请求失败，{delay}秒后重试 ({attempt + 1}/{max_retries}): {e}")
                         time.sleep(delay)
                     else:
-                        logger.error(f"❌ 请求失败，已达到最大重试次数 {max_retries}: {e}")
+                        logger.error(f"请求失败，已达到最大重试次数 {max_retries}: {e}")
             raise last_exception
         return wrapper
     return decorator
@@ -65,17 +62,17 @@ def handle_response(response: httpx.Response, order_id: Optional[str] = None) ->
 
         if response.status_code == 200 and response_json.get('data') == "OK":
             order_info = f"订单 {order_id}" if order_id else "请求"
-            logger.info(f"✅ {order_info} 推送成功")
+            logger.info(f"{order_info} 推送成功")
             return True, response_json
         else:
-            logger.error(f"❌ 推送失败，状态码: {response.status_code}，响应: {response_json}")
+            logger.error(f"推送失败，状态码: {response.status_code}，响应: {response_json}")
             return False, response_json
 
     except json.JSONDecodeError as e:
-        logger.error(f"❌ 响应不是有效 JSON: {response.text}, 错误: {e}")
+        logger.error(f"响应不是有效 JSON: {response.text}, 错误: {e}")
         return False, None
     except Exception as e:
-        logger.error(f"❌ 处理响应时发生未知错误: {e}")
+        logger.error(f"处理响应时发生未知错误: {e}")
         return False, None
 
 
@@ -99,20 +96,20 @@ def safe_post(client: httpx.Client, endpoint: str, trace_id: Optional[str] = Non
     start_time = time.time()
     
     try:
-        logger.info(f"📤 发送POST请求: {endpoint}, TraceID: {trace_id}")
+        logger.info(f"发送POST请求: {endpoint}, TraceID: {trace_id}")
         response = client.post(endpoint, **kwargs)
         elapsed_time = time.time() - start_time
-        logger.info(f"⏱️ 请求耗时: {elapsed_time:.2f}秒")
+        logger.info(f"请求耗时: {elapsed_time:.2f}秒")
         
         response.raise_for_status()
         return response
         
     except httpx.HTTPStatusError as e:
-        logger.error(f"❌ HTTP状态错误 (TraceID: {trace_id}): {e.response.status_code} - {e}")
+        logger.error(f"HTTP状态错误 (TraceID: {trace_id}): {e.response.status_code} - {e}")
         raise
     except httpx.RequestError as e:
-        logger.error(f"❌ 请求错误 (TraceID: {trace_id}): {e}")
+        logger.error(f"请求错误 (TraceID: {trace_id}): {e}")
         raise
     except httpx.HTTPError as e:
-        logger.error(f"❌ HTTP请求错误 (TraceID: {trace_id}): {e}")
+        logger.error(f"HTTP请求错误 (TraceID: {trace_id}): {e}")
         raise
