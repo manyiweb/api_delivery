@@ -1,12 +1,18 @@
 @echo off
 chcp 65001 > nul
-echo 🧪 正在运行测试用例...
-pytest
+echo Running tests...
+python -m pytest
 
 echo.
-echo 📊 正在生成 Allure 报告...
+where allure >nul 2>nul
+if %errorlevel% neq 0 (
+  echo Allure CLI not found, skipping report generation.
+  exit /b 0
+)
+
+echo Generating Allure report...
 allure generate reports/allure-results -o reports/allure-report --clean
 
 echo.
-echo 🌐 正在打开 Allure 报告...
+echo Opening Allure report...
 start reports/allure-report/index.html
