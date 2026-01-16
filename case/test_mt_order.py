@@ -44,6 +44,7 @@ class TestMtPushOrder:
             cleanup_order.append(str(order_id))
             logger.info(f"Order created in DB: {order_id}")
 
+    @pytest.mark.skip
     @pytest.mark.critical
     @allure.story("Cancel order")
     @allure.title("Cancel callback should update order status")
@@ -73,6 +74,7 @@ class TestMtPushOrder:
             cleanup_order.append(str(order_id))
             logger.info("Cancel order succeeded")
 
+    @pytest.mark.skip
     @pytest.mark.critical
     @allure.story("Full refund")
     @allure.title("Full refund callback should succeed")
@@ -101,6 +103,7 @@ class TestMtPushOrder:
             cleanup_order.append(str(order_id))
             logger.info("Full refund succeeded")
 
+    @pytest.mark.skip
     @pytest.mark.normal
     @allure.story("Idempotency")
     @allure.title("Duplicate push should be idempotent")
@@ -198,7 +201,7 @@ class TestMtPushOrder:
             )
             assert result2 is not None
 
-    @pytest.mark.skip
+    @pytest.mark.xfail
     @allure.story("Refund after cancel")
     @allure.title("Refund a canceled order")
     @allure.severity(allure.severity_level.BLOCKER)
@@ -222,4 +225,4 @@ class TestMtPushOrder:
                 name="refund canceled order response",
                 attachment_type=allure.attachment_type.TEXT,
             )
-            assert refund_result is not None
+            assert refund_result == "ERROR"

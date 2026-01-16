@@ -8,7 +8,7 @@ class Config:
 
     # API settings
     BASE_URL = os.getenv("BASE_URL", "http://fat-pos.reabam.com:60030/api")
-    UAT_URL = os.getenv("UAT_URL", "https://pos.reabam.com:60030/api")
+    UAT_URL = os.getenv("UAT_URL", "https://pos.reabam.com/api")
 
     # Database settings
     DB_CONFIG: Dict[str, Any] = {
@@ -47,7 +47,7 @@ class Config:
     @classmethod
     def get_base_url(cls) -> str:
         """Return base URL based on ENV."""
-        env = os.getenv("ENV", "test")
+        env = os.getenv("ENV", "fat")
         return cls.UAT_URL if env == "uat" else cls.BASE_URL
 
     @classmethod
