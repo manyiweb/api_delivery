@@ -1,6 +1,7 @@
 import os
 
 import yaml
+from dotenv import load_dotenv
 
 from utils.logger import logger
 
@@ -32,7 +33,7 @@ def get_data_file_path(filename):
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     # 获取当前环境
-    env = os.getenv("ENV", "test")
+    env = os.getenv("ENV")
 
     # 如果是 uat 环境，优先查找带 _uat 后缀的文件
     if env == "uat":
@@ -45,7 +46,12 @@ def get_data_file_path(filename):
             return uat_path
 
     return os.path.join(project_root, 'data', filename)
-# ... existing code ...
 
 if __name__ == '__main__':
-    print(get_data_file_path('delivery_data.yaml'))
+    load_dotenv()
+    if os.getenv("ENV") == "uat":
+        raw_data = get_data_file_path("delivery_data_uat.yaml")
+        print(raw_data)
+    else:
+        raw_data = get_data_file_path("delivery_data.yaml")
+        print(raw_data)
