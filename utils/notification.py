@@ -17,6 +17,7 @@ class NotificationSender:
 
     def __init__(self, wechat_webhook=None, smtp_config=None, dingtalk_webhook=None):
         self.wechat_webhook = wechat_webhook
+        print("NotificationSender initialized""生产地址", self.wechat_webhook)
         self.smtp_config = smtp_config
         self.dingtalk_webhook = dingtalk_webhook
 
@@ -135,17 +136,23 @@ def get_current_time():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
-def create_test_report_message(passed=0, failed=0, skipped=0, total=0):
+def create_test_report_message(passed=0, failed=0, skipped=0, total=0, xfailed=0):
     """Create a test report message."""
     status_text = "ALL PASSED" if failed == 0 and passed > 0 else "FAILURES PRESENT"
     content = f"""
-[Automated Test Report]
-Total: {total}
-Passed: {passed}
-Failed: {failed}
-Skipped: {skipped}
+[自动化测试报告]
+总数: {total}
+通过: {passed}
+错误: {failed}
+跳过: {skipped}
+预错误: {xfailed}
 
-Status: {status_text}
-Time: {get_current_time()}
+
+状态: {status_text}
+时间: {get_current_time()}
     """.strip()
     return content
+
+
+if __name__ == '__main__':
+    NotificationSender = NotificationSender()

@@ -1,4 +1,5 @@
 import json
+import os
 from typing import Optional, Tuple
 
 import allure
@@ -42,8 +43,12 @@ def _post_and_extract(
 
 def push_order(client: httpx.Client, order_id: Optional[str] = None) -> Tuple[str, str]:
     """Push order callback."""
-    with allure.step("Load push order data"):
-        raw_data = load_yaml_data(get_data_file_path("delivery_data.yaml"))
+    if os.getenv("ENV") == "uat":
+        with allure.step("Load push order data"):
+            raw_data = load_yaml_data(get_data_file_path("delivery_data_uat.yaml"))
+    else:
+        with allure.step("Load push order data"):
+            raw_data = load_yaml_data(get_data_file_path("delivery_data.yaml"))
 
     with allure.step("Build push order payload"):
         final_payload, order_id = build_final_payload(raw_data, order_id)

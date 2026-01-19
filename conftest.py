@@ -58,15 +58,16 @@ def pytest_runtest_logreport(report):
         logger.error(str(getattr(report, "longrepr", report)))
 
 
-def pytest_terminal_summary(terminalreporter, exitstatus, pytest_config):
+def pytest_terminal_summary(terminalreporter):
     """Send a test summary notification."""
     passed = len(terminalreporter.stats.get("passed", []))
     failed = len(terminalreporter.stats.get("failed", []))
     skipped = len(terminalreporter.stats.get("skipped", []))
-    total = passed + failed + skipped
+    xfailed = len(terminalreporter.stats.get("xfailed", []))
+    total = passed + failed + skipped + xfailed
 
     logger.info(
-        f"Test summary: total={total}, passed={passed}, failed={failed}, skipped={skipped}"
+        f"Test summary: total={total}, passed={passed}, failed={failed}, skipped={skipped}, xfailed={xfailed}"
     )
 
     sender = NotificationSender(wechat_webhook=config.WECHAT_WEBHOOK)
@@ -74,6 +75,7 @@ def pytest_terminal_summary(terminalreporter, exitstatus, pytest_config):
         passed=passed,
         failed=failed,
         skipped=skipped,
+        xfailed=xfailed,
         total=total,
     )
 
@@ -93,7 +95,7 @@ def pytest_terminal_summary(terminalreporter, exitstatus, pytest_config):
 
 
 @pytest.hookimpl(tryfirst=True)
-def pytest_configure(pytest_config):
+def pytest_configure():
     """Write Allure environment properties."""
     allure_dir = config.ALLURE_RESULTS_DIR
     if not os.path.exists(allure_dir):

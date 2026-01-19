@@ -2,43 +2,49 @@
 import os
 from typing import Any, Dict, List
 
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv()
+except ImportError:
+    pass
+
 
 class Config:
     """Global configuration."""
 
     # API settings
-    BASE_URL = os.getenv("BASE_URL", "http://fat-pos.reabam.com:60030/api")
-    UAT_URL = os.getenv("UAT_URL", "https://pos.reabam.com:60030/api")
+    BASE_URL = os.getenv("BASE_URL")
+    UAT_URL = os.getenv("UAT_URL")
 
     # Database settings
     DB_CONFIG: Dict[str, Any] = {
-        "host": os.getenv("DB_HOST", "192.168.1.151"),
-        "port": int(os.getenv("DB_PORT", "3306")),
-        "user": os.getenv("DB_USER", "zhoujiman@mop#mop"),
-        "password": os.getenv("DB_PASSWORD", "reabam123@mop"),
-        "database": os.getenv("DB_NAME", "rb_ts_core"),
+        "host": os.getenv("DB_HOST"),
+        "port": int(os.getenv("DB_PORT")),
+        "user": os.getenv("DB_USER"),
+        "password": os.getenv("DB_PASSWORD"),
+        "database": os.getenv("DB_NAME"),
         "charset": "utf8mb4",
     }
 
     # Notification settings
     WECHAT_WEBHOOK = os.getenv(
-        "WECHAT_WEBHOOK",
-        "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=b97e1f07-9f2c-45b9-a2bc-999b744c2ca4",
+        "WECHAT_WEBHOOK"
     )
 
     # Business settings
-    DEVELOPER_ID = os.getenv("DEVELOPER_ID", "106825")
-    E_POI_ID = os.getenv("E_POI_ID", "reabamts_5ad586a8721e49518998aedef9fd3b5c")
-    SIGN = os.getenv("SIGN", "146bcdd348c4f7e90895af13faa123e201fe2686")
+    DEVELOPER_ID = os.getenv("DEVELOPER_ID")
+    E_POI_ID = os.getenv("E_POI_ID")
+    SIGN = os.getenv("SIGN")
 
     # Test settings
-    DEFAULT_TIMEOUT = int(os.getenv("DEFAULT_TIMEOUT", "10"))
-    RETRY_TIMES = int(os.getenv("RETRY_TIMES", "3"))
-    RETRY_INTERVAL = int(os.getenv("RETRY_INTERVAL", "2"))
+    DEFAULT_TIMEOUT = int(os.getenv("DEFAULT_TIMEOUT"))
+    RETRY_TIMES = int(os.getenv("RETRY_TIMES"))
+    RETRY_INTERVAL = int(os.getenv("RETRY_INTERVAL"))
 
     # Logging
-    LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
-    LOG_DIR = os.getenv("LOG_DIR", "logs")
+    LOG_LEVEL = os.getenv("LOG_LEVEL")
+    LOG_DIR = os.getenv("LOG_DIR")
 
     # Allure
     ALLURE_RESULTS_DIR = "reports/allure-results"
@@ -47,16 +53,24 @@ class Config:
     @classmethod
     def get_base_url(cls) -> str:
         """Return base URL based on ENV."""
-        env = os.getenv("ENV", "test")
+        env = os.getenv("ENV")
         return cls.UAT_URL if env == "uat" else cls.BASE_URL
 
     @classmethod
     def get_final_payload_params(cls) -> Dict[str, str]:
         """Return common payload params for requests."""
+        print(os.getenv("ENV"))
+        if os.getenv("ENV") == "uat":
+            return {
+                'developerId': os.getenv('DEVELOPER_ID_UAT'),
+                'ePoiId': os.getenv('E_POI_ID_UAT'),
+                'sign': os.getenv('SIGN_UAT')
+            }
+
         return {
-            "developerId": cls.DEVELOPER_ID,
-            "ePoiId": cls.E_POI_ID,
-            "sign": cls.SIGN,
+            'developerId': cls.DEVELOPER_ID,
+            'ePoiId': cls.E_POI_ID,
+            'sign': cls.SIGN
         }
 
     @classmethod
@@ -79,3 +93,10 @@ class Config:
 
 
 config = Config()
+
+if __name__ == '__main__':
+    print(f"加载前: {os.getenv('ENV')}")
+    # load_dotenv()
+    print(f"加载后: {os.getenv('ENV')}")
+    print("生产地址", config.get_base_url())
+    print(config.get_final_payload_params())
