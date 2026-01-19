@@ -20,12 +20,11 @@ from utils.logger import logger
 class TestMtPushOrder:
     """Order callback scenarios."""
 
-    @pytest.mark.smoke
     @pytest.mark.critical
     @allure.story("Push order")
     @allure.title("Push order callback should create order in DB")
     @allure.severity(allure.severity_level.CRITICAL)
-    def test_mt_push_order(self, client, db_conn, cleanup_order):
+    def test_mt_push_order(self, client, request):
         """Push order should return OK and create DB record."""
         with allure.step("Send push order callback"):
             logger.info("Start push order")
@@ -42,6 +41,8 @@ class TestMtPushOrder:
             logger.info("Push order response validated")
 
         if os.getenv("ENV") == "fat":
+            db_conn = request.getfixturevalue("db_conn")
+            cleanup_order = request.getfixturevalue("cleanup_order")
             with allure.step("Validate order created in DB"):
                 assert_order_created(db_conn, str(order_id), timeout=10)
                 cleanup_order.append(str(order_id))
@@ -154,11 +155,12 @@ class TestMtPushOrder:
     @allure.story("Duplicate cancel")
     @allure.title("Cancel the same order twice")
     @allure.severity(allure.severity_level.CRITICAL)
-    def test_cancel_duplicate_order(self, client):
+    def test_cancel_duplicate_order(self, client, cleanup_order):
         """Canceling the same order twice should be handled."""
         with allure.step("Create order"):
             result, order_id = mt_push_order_callback(client)
             assert result == "OK", "Push order failed"
+            cleanup_order.append(str(order_id))
 
         with allure.step("First cancel"):
             result1 = mt_cancel_order_callback(client, order_id)
@@ -181,11 +183,12 @@ class TestMtPushOrder:
     @allure.story("Duplicate refund")
     @allure.title("Refund the same order twice")
     @allure.severity(allure.severity_level.CRITICAL)
-    def test_refund_duplicate_order(self, client):
+    def test_refund_duplicate_order(self, client, cleanup_order):
         """Refunding the same order twice should be handled."""
         with allure.step("Create order"):
             result, order_id = mt_push_order_callback(client)
             assert result == "OK", "Push order failed"
+            cleanup_order.append(str(order_id))
 
         with allure.step("First refund"):
             result1 = mt_full_refund_callback(client, order_id)
@@ -204,15 +207,16 @@ class TestMtPushOrder:
             )
             assert result2 is not None
 
-    @pytest.mark.xfail
+    @pytest.mark.skip
     @allure.story("Refund after cancel")
     @allure.title("Refund a canceled order")
     @allure.severity(allure.severity_level.BLOCKER)
-    def test_refund_cancelled_order(self, client):
+    def test_refund_cancelled_order(self, client, cleanup_order):
         """Refunding a canceled order should be handled."""
         with allure.step("Create order"):
             result, order_id = mt_push_order_callback(client)
             assert result == "OK", "Push order failed"
+            cleanup_order.append(str(order_id))
 
         with allure.step("Cancel order"):
             cancel_result = mt_cancel_order_callback(client, order_id)

@@ -43,10 +43,10 @@ def build_final_payload(raw_data: Dict, order_id: Optional[str] = None) -> Tuple
         separators=(",", ":"),
     )
 
-    poi_receive_detail = data["poi_receive_detail"].copy()
+    poi_receive_detail = copy.deepcopy(data["poi_receive_detail"])
     poi_receive_detail["reconciliationExtras"] = reconciliation_extras_str
 
-    order_dict = data["order_core_params"].copy()
+    order_dict = copy.deepcopy(data["order_core_params"])
     order_dict["ctime"] = timestamp_part
     order_dict["utime"] = timestamp_part
     order_dict["orderId"] = order_id

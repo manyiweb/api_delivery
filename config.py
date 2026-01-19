@@ -20,7 +20,7 @@ class Config:
     # Database settings
     DB_CONFIG: Dict[str, Any] = {
         "host": os.getenv("DB_HOST"),
-        "port": int(os.getenv("DB_PORT")),
+        "port": int(os.getenv("DB_PORT", 3306)),
         "user": os.getenv("DB_USER"),
         "password": os.getenv("DB_PASSWORD"),
         "database": os.getenv("DB_NAME"),
@@ -31,6 +31,7 @@ class Config:
     WECHAT_WEBHOOK = os.getenv(
         "WECHAT_WEBHOOK"
     )
+    print("WECHAT_WEBHOOK", WECHAT_WEBHOOK)
 
     # Business settings
     DEVELOPER_ID = os.getenv("DEVELOPER_ID")

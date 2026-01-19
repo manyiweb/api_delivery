@@ -11,7 +11,6 @@ from config import config
 from utils.logger import logger
 
 BASE_URL = config.get_base_url()
-UAT_URL = config.UAT_URL
 
 
 def generate_trace_id() -> str:

@@ -5,7 +5,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 import requests
-
 from utils.logger import logger
 
 DEFAULT_HTTP_TIMEOUT = 10

@@ -23,6 +23,8 @@ def client():
 @pytest.fixture(scope="session")
 def db_conn():
     """Create a database connection for tests."""
+    if os.getenv("ENV") == "uat":
+        pytest.skip("Skip database connection in prod environment")
     conn = pymysql.connect(
         **config.DB_CONFIG,
         cursorclass=pymysql.cursors.DictCursor,
