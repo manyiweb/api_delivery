@@ -17,6 +17,7 @@ class NotificationSender:
 
     def __init__(self, wechat_webhook=None, smtp_config=None, dingtalk_webhook=None):
         self.wechat_webhook = wechat_webhook
+        print("NotificationSender initialized""生产地址", self.wechat_webhook)
         self.smtp_config = smtp_config
         self.dingtalk_webhook = dingtalk_webhook
 
@@ -151,3 +152,7 @@ def create_test_report_message(passed=0, failed=0, skipped=0, total=0, xfailed=0
 时间: {get_current_time()}
     """.strip()
     return content
+
+
+if __name__ == '__main__':
+    NotificationSender = NotificationSender()

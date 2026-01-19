@@ -4,9 +4,11 @@ from typing import Any, Dict, List
 
 try:
     from dotenv import load_dotenv
+
     load_dotenv()
 except ImportError:
     pass
+
 
 class Config:
     """Global configuration."""
@@ -93,8 +95,8 @@ class Config:
 config = Config()
 
 if __name__ == '__main__':
-
     print(f"加载前: {os.getenv('ENV')}")
-    load_dotenv()
+    # load_dotenv()
     print(f"加载后: {os.getenv('ENV')}")
+    print("生产地址", config.get_base_url())
     print(config.get_final_payload_params())

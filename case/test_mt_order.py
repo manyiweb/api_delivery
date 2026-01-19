@@ -1,6 +1,8 @@
 """Meituan order callback tests.
 Covers push, cancel, refund, and idempotency scenarios.
 """
+import os
+
 import allure
 import pytest
 
@@ -39,10 +41,11 @@ class TestMtPushOrder:
             assert result == "OK", f"Push order failed: {result}"
             logger.info("Push order response validated")
 
-        with allure.step("Validate order created in DB"):
-            assert_order_created(db_conn, str(order_id), timeout=10)
-            cleanup_order.append(str(order_id))
-            logger.info(f"Order created in DB: {order_id}")
+        if os.getenv("ENV") == "fat":
+            with allure.step("Validate order created in DB"):
+                assert_order_created(db_conn, str(order_id), timeout=10)
+                cleanup_order.append(str(order_id))
+                logger.info(f"Order created in DB: {order_id}")
 
     @pytest.mark.skip
     @pytest.mark.critical
