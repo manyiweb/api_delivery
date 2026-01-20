@@ -1,4 +1,4 @@
-"""Logging module."""
+"""日志模块"""
 from datetime import datetime
 import logging
 import os
@@ -22,4 +22,4 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger('api_delivery')
-logger.info(f"Log file created: {log_filename}")
+logger.info(f"日志文件已创建: {log_filename}")

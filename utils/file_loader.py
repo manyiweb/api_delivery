@@ -7,7 +7,7 @@ from utils.logger import logger
 
 
 def load_yaml_data(file_path):
-    """Load YAML data from a file path."""
+    """从文件路径加载 YAML 数据"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             return yaml.safe_load(f)
@@ -23,11 +23,11 @@ def load_yaml_data(file_path):
 
 
 # def get_data_file_path(filename):
-#     """Return the absolute path for a data file under /data."""
+#     """返回 /data 下数据文件的绝对路径"""
 #     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #     return os.path.join(project_root, 'data', filename)
 
-# ... existing code ...
+# ... 现有代码 ...
 def get_data_file_path(filename):
     """获取 data 目录下的文件路径，支持环境自动切换"""
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

@@ -42,24 +42,24 @@ def _post_and_extract(
 
 
 def push_order(client: httpx.Client, order_id: Optional[str] = None) -> Tuple[str, str]:
-    """Push order callback."""
+    """推单回调"""
     if os.getenv("ENV") == "uat":
-        with allure.step("Load push order data"):
+        with allure.step("加载推单数据"):
             raw_data = load_yaml_data(get_data_file_path("delivery_data_uat.yaml"))
     else:
-        with allure.step("Load push order data"):
+        with allure.step("加载推单数据"):
             raw_data = load_yaml_data(get_data_file_path("delivery_data.yaml"))
 
-    with allure.step("Build push order payload"):
+    with allure.step("构建推单请求体"):
         final_payload, order_id = build_final_payload(raw_data, order_id)
         allure.attach(
             str(order_id),
             name="order_id",
             attachment_type=allure.attachment_type.TEXT,
         )
-        logger.info(f"Push order payload: {final_payload}")
+        logger.info(f"推单请求体: {final_payload}")
 
-    with allure.step("Send push order callback"):
+    with allure.step("发送推单回调"):
         result = _post_and_extract(
             client,
             "/dock/mt/v2/order/callback",
@@ -71,26 +71,26 @@ def push_order(client: httpx.Client, order_id: Optional[str] = None) -> Tuple[st
 
 
 def mt_push_order_callback(client: httpx.Client, order_id: Optional[str] = None) -> Tuple[str, str]:
-    """Compatibility wrapper for push order callback."""
+    """推单回调的兼容包装"""
     return push_order(client, order_id)
 
 
 def cancel_order(client: httpx.Client, order_id: str) -> Optional[str]:
-    """Cancel order callback."""
-    with allure.step("Load cancel order data"):
-        logger.info(f"Cancel order: {order_id}")
+    """取消订单回调"""
+    with allure.step("加载取消订单数据"):
+        logger.info(f"取消订单: {order_id}")
         raw_data = load_yaml_data(get_data_file_path("cancel_order.yaml"))
 
-    with allure.step("Build cancel order payload"):
+    with allure.step("构建取消订单请求体"):
         final_payload = build_cancel_payload(raw_data, order_id)
         allure.attach(
             str(order_id),
             name="cancel order id",
             attachment_type=allure.attachment_type.TEXT,
         )
-        logger.info(f"Cancel order payload: {final_payload}")
+        logger.info(f"取消订单请求体: {final_payload}")
 
-    with allure.step("Send cancel order callback"):
+    with allure.step("发送取消订单回调"):
         return _post_and_extract(
             client,
             "/dock/mt/v2/order/cancel/callback",
@@ -101,21 +101,21 @@ def cancel_order(client: httpx.Client, order_id: str) -> Optional[str]:
 
 
 def mt_cancel_order_callback(client: httpx.Client, order_id: str) -> Optional[str]:
-    """Compatibility wrapper for cancel order callback."""
+    """取消订单回调的兼容包装"""
     return cancel_order(client, order_id)
 
 
 def refund_order(client: httpx.Client, order_id: str) -> Optional[str]:
-    """Full refund callback."""
-    with allure.step("Load refund data"):
-        logger.info(f"Refund order: {order_id}")
+    """全额退款回调"""
+    with allure.step("加载退款数据"):
+        logger.info(f"退款订单: {order_id}")
         raw_data = load_yaml_data(get_data_file_path("refund_order.yaml"))
 
-    with allure.step("Build refund payload"):
+    with allure.step("构建退款请求体"):
         final_payload = build_apply_refund_payload(raw_data, order_id)
-        logger.info(f"Refund payload: {final_payload}")
+        logger.info(f"退款请求体: {final_payload}")
 
-    with allure.step("Send refund callback"):
+    with allure.step("发送退款回调"):
         return _post_and_extract(
             client,
             "/reabam-external-access/dock/mt/v2/order/refund/callback",
@@ -126,11 +126,11 @@ def refund_order(client: httpx.Client, order_id: str) -> Optional[str]:
 
 
 def mt_full_refund_callback(client: httpx.Client, order_id: str) -> Optional[str]:
-    """Compatibility wrapper for full refund callback."""
+    """全额退款回调的兼容包装"""
     return refund_order(client, order_id)
 
 
 def partial_refund(client: httpx.Client):
-    """Placeholder for partial refund."""
+    """部分退款占位实现"""
     logger.warning("Partial refund not implemented")
     client.post("/mt/v2/order/partial/refund/callback", json={})

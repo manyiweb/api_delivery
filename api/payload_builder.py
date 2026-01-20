@@ -1,4 +1,4 @@
-"""Payload builder for Meituan callbacks."""
+"""美团回调请求体的构建器"""
 import copy
 import json
 import time
@@ -17,7 +17,7 @@ def _require_keys(data: Dict, keys):
 
 
 def build_final_payload(raw_data: Dict, order_id: Optional[str] = None) -> Tuple[Dict[str, str], str]:
-    """Build payload for push order callback."""
+    """构建推单回调的请求体"""
     if not raw_data:
         raise ValueError("raw_data is empty")
 
@@ -79,7 +79,7 @@ def build_final_payload(raw_data: Dict, order_id: Optional[str] = None) -> Tuple
 
 
 def build_cancel_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
-    """Build payload for cancel order callback."""
+    """构建取消订单回调的请求体"""
     if not raw_data:
         raise ValueError("raw_data is empty")
 
@@ -102,7 +102,7 @@ def build_cancel_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
 
 
 def build_apply_refund_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
-    """Build payload for full refund callback."""
+    """构建全额退款回调的请求体"""
     if not raw_data:
         raise ValueError("raw_data is empty")
 

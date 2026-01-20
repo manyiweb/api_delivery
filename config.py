@@ -1,4 +1,4 @@
-"""Configuration module for tests and API clients."""
+"""用于测试和 API 客户端的配置模块"""
 import os
 from typing import Any, Dict, List
 
@@ -11,13 +11,13 @@ except ImportError:
 
 
 class Config:
-    """Global configuration."""
+    """全局配置"""
 
-    # API settings
+    # API 设置
     BASE_URL = os.getenv("BASE_URL")
     UAT_URL = os.getenv("UAT_URL")
 
-    # Database settings
+    # 数据库设置
     DB_CONFIG: Dict[str, Any] = {
         "host": os.getenv("DB_HOST"),
         "port": int(os.getenv("DB_PORT", 3306)),
@@ -27,39 +27,39 @@ class Config:
         "charset": "utf8mb4",
     }
 
-    # Notification settings
+    # 通知设置
     WECHAT_WEBHOOK = os.getenv(
         "WECHAT_WEBHOOK"
     )
     print("WECHAT_WEBHOOK", WECHAT_WEBHOOK)
 
-    # Business settings
+    # 业务设置
     DEVELOPER_ID = os.getenv("DEVELOPER_ID")
     E_POI_ID = os.getenv("E_POI_ID")
     SIGN = os.getenv("SIGN")
 
-    # Test settings
+    # 测试设置
     DEFAULT_TIMEOUT = int(os.getenv("DEFAULT_TIMEOUT"))
     RETRY_TIMES = int(os.getenv("RETRY_TIMES"))
     RETRY_INTERVAL = int(os.getenv("RETRY_INTERVAL"))
 
-    # Logging
+    # 日志设置
     LOG_LEVEL = os.getenv("LOG_LEVEL")
     LOG_DIR = os.getenv("LOG_DIR")
 
-    # Allure
+    # Allure 设置
     ALLURE_RESULTS_DIR = "reports/allure-results"
     ALLURE_REPORT_DIR = "reports/allure-report"
 
     @classmethod
     def get_base_url(cls) -> str:
-        """Return base URL based on ENV."""
+        """根据 ENV 返回基础 URL"""
         env = os.getenv("ENV")
         return cls.UAT_URL if env == "uat" else cls.BASE_URL
 
     @classmethod
     def get_final_payload_params(cls) -> Dict[str, str]:
-        """Return common payload params for requests."""
+        """返回请求通用的参数"""
         print(os.getenv("ENV"))
         if os.getenv("ENV") == "uat":
             return {
@@ -76,7 +76,7 @@ class Config:
 
     @classmethod
     def validate(cls) -> List[str]:
-        """Return configuration warnings for missing env values."""
+        """返回缺失环境变量的配置警告"""
         warnings: List[str] = []
 
         if not os.getenv("DB_PASSWORD"):

@@ -48,18 +48,18 @@ def handle_response(
     response: httpx.Response, order_id: Optional[str] = None
 ) -> Tuple[bool, Optional[Dict]]:
     """解析 JSON 响应并记录详细信息"""
-    logger.info(f"Status code: {response.status_code}")
+    logger.info(f"状态码: {response.status_code}")
 
     try:
         response_json = response.json()
         logger.info(
-            "Response body: %s",
+            "响应内容: %s",
             json.dumps(response_json, indent=2, ensure_ascii=False),
         )
 
         if response.status_code == 200 and response_json.get("data") == "OK":
-            order_info = f"order {order_id}" if order_id else "request"
-            logger.info(f"[OK] {order_info} succeeded")
+            order_info = f"订单 {order_id}" if order_id else "请求"
+            logger.info(f"[OK] {order_info} 成功")
             return True, response_json
 
         logger.error(
@@ -87,10 +87,10 @@ def safe_post(
     start_time = time.time()
 
     try:
-        logger.info(f"POST {endpoint}, TraceID={trace_id}")
+        logger.info(f"发送 POST 请求 {endpoint}, 追踪ID={trace_id}")
         response = client.post(endpoint, **kwargs)
         elapsed_time = time.time() - start_time
-        logger.info(f"Request time: {elapsed_time:.2f}s")
+        logger.info(f"请求耗时: {elapsed_time:.2f}s")
 
         response.raise_for_status()
         return response

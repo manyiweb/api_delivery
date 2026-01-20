@@ -13,7 +13,7 @@ from utils.notification import NotificationSender, create_test_report_message
 
 @pytest.fixture(scope="session")
 def client():
-    """Create an HTTP client for tests."""
+    """创建用于测试的 HTTP 客户端"""
     base_url = config.get_base_url()
     with httpx.Client(base_url=base_url, timeout=config.DEFAULT_TIMEOUT) as c:
         allure.attach(base_url, name="API Base URL", attachment_type=allure.attachment_type.TEXT)
@@ -22,7 +22,7 @@ def client():
 
 @pytest.fixture(scope="session")
 def db_conn():
-    """Create a database connection for tests."""
+    """创建用于测试的数据库连接"""
     if os.getenv("ENV") == "uat":
         pytest.skip("Skip database connection in prod environment")
     conn = pymysql.connect(
@@ -40,7 +40,7 @@ def db_conn():
 
 @pytest.fixture(scope="function")
 def cleanup_order(db_conn):
-    """Collect created orders for cleanup."""
+    """收集已创建的订单用于清理"""
     created_orders = []
     yield created_orders
     for order_id in created_orders:
@@ -48,7 +48,7 @@ def cleanup_order(db_conn):
 
 
 def pytest_runtest_logreport(report):
-    """Log failed test details to the file logger."""
+    """将失败的测试详情记录到文件日志"""
     if report.outcome != "failed" or getattr(report, "wasxfail", False):
         return
     nodeid = getattr(report, "nodeid", "unknown")
@@ -61,7 +61,7 @@ def pytest_runtest_logreport(report):
 
 
 def pytest_terminal_summary(terminalreporter):
-    """Send a test summary notification."""
+    """发送测试汇总通知"""
     passed = len(terminalreporter.stats.get("passed", []))
     failed = len(terminalreporter.stats.get("failed", []))
     skipped = len(terminalreporter.stats.get("skipped", []))
@@ -69,7 +69,7 @@ def pytest_terminal_summary(terminalreporter):
     total = passed + failed + skipped + xfailed
 
     logger.info(
-        f"Test summary: total={total}, passed={passed}, failed={failed}, skipped={skipped}, xfailed={xfailed}"
+        f"测试汇总: 总数={total}, 通过={passed}, 失败={failed}, 跳过={skipped}, 预期失败={xfailed}"
     )
 
     sender = NotificationSender(wechat_webhook=config.WECHAT_WEBHOOK)
@@ -81,7 +81,7 @@ def pytest_terminal_summary(terminalreporter):
         total=total,
     )
 
-    logger.info("Sending test result notification...")
+    logger.info("发送测试结果通知")
 
     results = sender.send_notification(
         content=content,
@@ -91,14 +91,14 @@ def pytest_terminal_summary(terminalreporter):
 
     for ntype, success in results.items():
         if success:
-            logger.info(f"[OK] {ntype} notification sent")
+            logger.info(f"[OK] {ntype} 通知发送成功")
         else:
             logger.error(f"[FAIL] {ntype} notification failed")
 
 
 @pytest.hookimpl(tryfirst=True)
 def pytest_configure():
-    """Write Allure environment properties."""
+    """写入 Allure 环境属性"""
     allure_dir = config.ALLURE_RESULTS_DIR
     if not os.path.exists(allure_dir):
         os.makedirs(allure_dir)
