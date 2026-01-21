@@ -76,12 +76,12 @@ def assert_order_status(
 
     while time.time() - start < timeout:
         result = query_order_status(conn, sql, (order_id,))
-        logger
+        logger.info(f"Order status: {result}")
         if result:
-            if isinstance(result, dict):
+            if isinstance(result, str):
                 actual_status = result.get("OrderStatus")
             else:
-                actual_status = result[0] if result else None
+                actual_status = result
         else:
             actual_status = None
 

@@ -51,7 +51,7 @@ class TestMtPushOrder:
 
     @pytest.mark.critical
     @allure.story("订单取消")
-    @allure.title("美团取消订单回调后，订单状态更新为已取消")
+    @allure.title("美团取消订单回调后，订单状态更新为已退货")
     @allure.severity(allure.severity_level.CRITICAL)
     def test_mt_cancel_order(self, client, db_conn, cleanup_order, request):
         """成功推单后，取消订单应返回 OK"""
