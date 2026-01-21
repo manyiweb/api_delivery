@@ -85,14 +85,14 @@ def query_order_detail(conn, order_id: str) -> Optional[Dict[str, Any]]:
         logger.error(f"Query order detail failed: {e}")
         raise
 
-def query_order_status(conn, sql: str, order_id: str) -> Optional[str]:
+def query_order_status(conn, sql: str, order_id: str) ->  Optional[Dict]:
     """按订单 ID 查询订单状态"""
     # sql = "SELECT OrderStatus FROM dorder WHERE SourceNo = %s"
     try:
         with conn.cursor() as cursor:
             cursor.execute(sql, (order_id,))
             result = cursor.fetchone()
-            logger.debug(f"查询订单状态: order_id={order_id}, result={result}")
+            logger.info(f"查询订单状态: order_id={order_id}, result={result}")
             return result["OrderStatus"] if result else None
     except pymysql.Error as e:
         logger.error(f"查询订单状态失败: {e}")
@@ -113,3 +113,4 @@ def get_db_connection(db_config: Dict):
         if conn:
             conn.close()
             logger.info("数据库连接已关闭")
+

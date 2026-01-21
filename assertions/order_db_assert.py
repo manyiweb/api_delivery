@@ -3,6 +3,7 @@ import time
 from typing import Any, Dict, Optional
 
 import allure
+from utils.log_helper import logger
 
 from config import config
 from utils.db_helper import query_order_count, query_order_exist, query_order_status
@@ -75,9 +76,10 @@ def assert_order_status(
 
     while time.time() - start < timeout:
         result = query_order_status(conn, sql, (order_id,))
+        logger
         if result:
             if isinstance(result, dict):
-                actual_status = result.get("OrderStatus",)
+                actual_status = result.get("OrderStatus")
             else:
                 actual_status = result[0] if result else None
         else:
