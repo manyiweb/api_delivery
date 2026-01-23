@@ -40,7 +40,7 @@ def cleanup_test_order(conn, order_id: str) -> bool:
     """按订单 ID 删除测试订单"""
     try:
         with conn.cursor() as cursor:
-            delete_sql = "DELETE FROM dorder_dock WHERE dock_order_no = %s"
+            delete_sql = "DELETE FROM dorder WHERE SourceNo = %s"
             cursor.execute(delete_sql, (order_id,))
             conn.commit()
             logger.info(f"[OK] 清除测试订单: {order_id}")
@@ -55,7 +55,7 @@ def cleanup_test_data(conn, test_prefix: str) -> bool:
     """按订单 ID 前缀删除测试数据"""
     try:
         with conn.cursor() as cursor:
-            delete_sql = "DELETE FROM dorder_dock WHERE dock_order_no LIKE %s"
+            delete_sql = "DELETE FROM dorder WHERE SourceNo = %s"
             cursor.execute(delete_sql, (f"{test_prefix}%",))
             deleted_count = cursor.rowcount
             conn.commit()
@@ -79,10 +79,10 @@ def query_order_detail(conn, order_id: str) -> Optional[Dict[str, Any]]:
         with conn.cursor() as cursor:
             cursor.execute(sql, (order_id,))
             result = cursor.fetchone()
-            logger.debug(f"Query order detail: order_id={order_id}, result={result}")
+            logger.debug(f"查询订单详情: order_id={order_id}, result={result}")
             return result
     except pymysql.Error as e:
-        logger.error(f"Query order detail failed: {e}")
+        logger.error(f"查询订单详情失败: {e}")
         raise
 
 def query_order_status(conn, sql: str, order_id: str) ->  Optional[Dict]:
@@ -107,7 +107,7 @@ def get_db_connection(db_config: Dict):
         logger.info("[OK] 数据库连接已建立")
         yield conn
     except pymysql.Error as e:
-        logger.error(f"[FAIL] database connection failed: {e}")
+        logger.error(f"[FAIL] 数据库连接失败: {e}")
         raise
     finally:
         if conn:

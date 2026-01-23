@@ -24,7 +24,7 @@ def client():
 def db_conn():
     """创建用于测试的数据库连接"""
     if os.getenv("ENV") == "uat":
-        pytest.skip("Skip database connection in prod environment")
+        pytest.skip("生产环境不进行数据库连接")
     conn = pymysql.connect(
         **config.DB_CONFIG,
         cursorclass=pymysql.cursors.DictCursor,
@@ -66,10 +66,11 @@ def pytest_terminal_summary(terminalreporter):
     failed = len(terminalreporter.stats.get("failed", []))
     skipped = len(terminalreporter.stats.get("skipped", []))
     xfailed = len(terminalreporter.stats.get("xfailed", []))
+    xpassed = len(terminalreporter.stats.get("xpassed", []))
     total = passed + failed + skipped + xfailed
 
     logger.info(
-        f"测试汇总: 总数={total}, 通过={passed}, 失败={failed}, 跳过={skipped}, 预期失败={xfailed}"
+        f"测试汇总: 总数={total}, 通过={passed}, 失败={failed}, 跳过={skipped}, 预期失败={xfailed}, 预期通过={xpassed}"
     )
 
     sender = NotificationSender(wechat_webhook=config.WECHAT_WEBHOOK)
@@ -78,6 +79,7 @@ def pytest_terminal_summary(terminalreporter):
         failed=failed,
         skipped=skipped,
         xfailed=xfailed,
+        xpassed=xpassed,
         total=total,
     )
 

@@ -3,13 +3,15 @@ import time
 from typing import Any, Dict, Optional
 
 import allure
-from utils.log_helper import logger
 
 from config import config
+from utils.logger import logger
 from utils.db_helper import query_order_count, query_order_exist, query_order_status
 
 
-def assert_order_created(conn, order_id: str, timeout: int = None, interval: int = 1):
+def assert_order_created(
+        conn, order_id: str, timeout: int = None, interval: int = 1
+):
     """断言订单在超时内写入数据库"""
     timeout = timeout or config.DEFAULT_TIMEOUT
     sql = "SELECT * FROM dorder_dock WHERE dock_order_no = %s"
@@ -30,7 +32,7 @@ def assert_order_created(conn, order_id: str, timeout: int = None, interval: int
 
 
 def assert_order_count(
-    conn, order_id: str, expected_count: int = 1, timeout: int = None, interval: int = 1
+        conn, order_id: str, expected_count: int = 1, timeout: int = None, interval: int = 1
 ):
     """断言订单数量在超时内等于预期值"""
     timeout = timeout or config.DEFAULT_TIMEOUT
@@ -63,11 +65,7 @@ def assert_order_count(
 
 
 def assert_order_status(
-    conn,
-    order_id: str,
-    expected_status: str,
-    timeout: int = None,
-    interval: int = 1,
+        conn, order_id: str, expected_status: str, timeout: int = None, interval: int = 1,
 ):
     """断言订单状态为已退货"""
     timeout = timeout or config.DEFAULT_TIMEOUT
@@ -76,9 +74,9 @@ def assert_order_status(
 
     while time.time() - start < timeout:
         result = query_order_status(conn, sql, (order_id,))
-        logger.info(f"Order status: {result}")
+        logger.info(f"轮询中.....当前订单状态为: {result}")
         if result:
-            if isinstance(result, str):
+            if isinstance(result, dict):
                 actual_status = result.get("OrderStatus")
             else:
                 actual_status = result

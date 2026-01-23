@@ -134,7 +134,7 @@ def get_current_time():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
-def create_test_report_message(passed=0, failed=0, skipped=0, total=0, xfailed=0):
+def create_test_report_message(passed=0, failed=0, skipped=0, total=0, xfailed=0, xpassed=0):
     """生成测试报告消息"""
     status_text = "ALL PASSED" if failed == 0 and passed > 0 else "FAILURES PRESENT"
     content = f"""
@@ -144,6 +144,7 @@ def create_test_report_message(passed=0, failed=0, skipped=0, total=0, xfailed=0
 错误: {failed}
 跳过: {skipped}
 预错误: {xfailed}
+预通过: {xpassed}
 
 
 状态: {status_text}
