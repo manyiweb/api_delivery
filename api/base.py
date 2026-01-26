@@ -31,13 +31,13 @@ def retry_on_failure(max_retries: int = 3, delay: int = 2):
                     last_exception = e
                     if attempt < max_retries - 1:
                         logger.warning(
-                            f"Request failed, retrying in {delay}s "
+                            f"请求失败，{delay}s 后重试 "
                             f"({attempt + 1}/{max_retries}): {e}"
                         )
                         time.sleep(delay)
                     else:
                         logger.error(
-                            f"Request failed after {max_retries} attempts: {e}"
+                            f"请求失败，重试 {max_retries} 次后仍失败: {e}"
                         )
             raise last_exception
         return wrapper
@@ -59,19 +59,19 @@ def handle_response(
 
         if response.status_code == 200 and response_json.get("data") == "OK":
             order_info = f"订单 {order_id}" if order_id else "请求"
-            logger.info(f"[OK] {order_info} 成功")
+            logger.info(f"[成功] {order_info} 成功")
             return True, response_json
 
         logger.error(
-            f"[FAIL] status={response.status_code}, response={response_json}"
+            f"[失败] status={response.status_code}, response={response_json}"
         )
         return False, response_json
 
     except json.JSONDecodeError as e:
-        logger.error(f"Response is not valid JSON: {response.text}, error={e}")
+        logger.error(f"响应不是合法 JSON: {response.text}, 错误={e}")
         return False, None
     except Exception as e:
-        logger.error(f"Unexpected response handling error: {e}")
+        logger.error(f"处理响应时发生未知错误: {e}")
         return False, None
 
 
@@ -87,7 +87,7 @@ def safe_post(
     start_time = time.time()
 
     try:
-        logger.info(f"发送 POST 请求 {endpoint}, 追踪ID={trace_id}")
+        logger.info(f"发送请求 {endpoint}，追踪号={trace_id}")
         response = client.post(endpoint, **kwargs)
         elapsed_time = time.time() - start_time
         logger.info(f"请求耗时: {elapsed_time:.2f}s")
@@ -97,13 +97,13 @@ def safe_post(
 
     except httpx.HTTPStatusError as e:
         logger.error(
-            f"HTTP status error (TraceID: {trace_id}): "
+            f"状态码错误（追踪号: {trace_id}）: "
             f"{e.response.status_code} - {e}"
         )
         raise
     except httpx.RequestError as e:
-        logger.error(f"Request error (TraceID: {trace_id}): {e}")
+        logger.error(f"请求错误（追踪号: {trace_id}）: {e}")
         raise
     except httpx.HTTPError as e:
-        logger.error(f"HTTP error (TraceID: {trace_id}): {e}")
+        logger.error(f"网络错误（追踪号: {trace_id}）: {e}")
         raise

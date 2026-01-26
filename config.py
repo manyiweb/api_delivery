@@ -13,7 +13,7 @@ except ImportError:
 class Config:
     """全局配置"""
 
-    # API 设置
+    # 接口设置
     BASE_URL = os.getenv("BASE_URL")
     UAT_URL = os.getenv("UAT_URL")
 
@@ -47,7 +47,7 @@ class Config:
     LOG_LEVEL = os.getenv("LOG_LEVEL")
     LOG_DIR = os.getenv("LOG_DIR")
 
-    # Allure 设置
+    # 测试报告设置
     ALLURE_RESULTS_DIR = "reports/allure-results"
     ALLURE_REPORT_DIR = "reports/allure-report"
 
@@ -80,15 +80,15 @@ class Config:
         warnings: List[str] = []
 
         if not os.getenv("DB_PASSWORD"):
-            warnings.append("DB_PASSWORD not set; using default value from config.py")
+            warnings.append("未设置 DB_PASSWORD；请在环境变量或 .env 中配置")
         if not os.getenv("WECHAT_WEBHOOK"):
-            warnings.append("WECHAT_WEBHOOK not set; notifications will be disabled")
+            warnings.append("未设置 WECHAT_WEBHOOK；通知将被禁用")
         if not os.getenv("SIGN"):
-            warnings.append("SIGN not set; using default value from config.py")
+            warnings.append("未设置 SIGN；请在环境变量或 .env 中配置")
         if not os.getenv("DEVELOPER_ID"):
-            warnings.append("DEVELOPER_ID not set; using default value from config.py")
+            warnings.append("未设置 DEVELOPER_ID；请在环境变量或 .env 中配置")
         if not os.getenv("E_POI_ID"):
-            warnings.append("E_POI_ID not set; using default value from config.py")
+            warnings.append("未设置 E_POI_ID；请在环境变量或 .env 中配置")
 
         return warnings
 
@@ -97,7 +97,7 @@ config = Config()
 
 if __name__ == '__main__':
     print(f"加载前: {os.getenv('ENV')}")
-    # load_dotenv()
+    # 如需加载 .env，可调用 load_dotenv()
     print(f"加载后: {os.getenv('ENV')}")
     print("生产地址", config.get_base_url())
     print(config.get_final_payload_params())

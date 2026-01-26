@@ -13,11 +13,11 @@ def query_order_exist(conn, sql: str, params: Optional[Tuple] = None) -> Optiona
             cursor.execute(sql, params)
             result = cursor.fetchone()
             logger.debug(
-                f"Query order exist: sql={sql}, params={params}, result={result}"
+                f"查询订单是否存在: sql={sql}, params={params}, result={result}"
             )
             return result
     except pymysql.Error as e:
-        logger.error(f"Query order exist failed: {e}")
+        logger.error(f"查询订单是否存在失败: {e}")
         raise
 
 
@@ -43,10 +43,10 @@ def cleanup_test_order(conn, order_id: str) -> bool:
             delete_sql = "DELETE FROM dorder WHERE SourceNo = %s"
             cursor.execute(delete_sql, (order_id,))
             conn.commit()
-            logger.info(f"[OK] 清除测试订单: {order_id}")
+            logger.info(f"[成功] 清除测试订单: {order_id}")
             return True
     except pymysql.Error as e:
-        logger.error(f"[FAIL] 清除测试订单失败: {e}")
+        logger.error(f"[失败] 清除测试订单失败: {e}")
         conn.rollback()
         return False
 
@@ -60,11 +60,11 @@ def cleanup_test_data(conn, test_prefix: str) -> bool:
             deleted_count = cursor.rowcount
             conn.commit()
             logger.info(
-                f"[OK] 清理测试数据前缀={test_prefix}, 数量={deleted_count}"
+                f"[成功] 清理测试数据前缀={test_prefix}, 数量={deleted_count}"
             )
             return True
     except pymysql.Error as e:
-        logger.error(f"[FAIL] cleanup test data failed: {e}")
+        logger.error(f"[失败] 清理测试数据失败: {e}")
         conn.rollback()
         return False
 
@@ -79,7 +79,7 @@ def query_order_detail(conn, order_id: str) -> Optional[Dict[str, Any]]:
         with conn.cursor() as cursor:
             cursor.execute(sql, (order_id,))
             result = cursor.fetchone()
-            logger.debug(f"查询订单详情: order_id={order_id}, result={result}")
+            logger.debug(f"查询订单详情: 订单号={order_id}, result={result}")
             return result
     except pymysql.Error as e:
         logger.error(f"查询订单详情失败: {e}")
@@ -87,12 +87,11 @@ def query_order_detail(conn, order_id: str) -> Optional[Dict[str, Any]]:
 
 def query_order_status(conn, sql: str, order_id: str) ->  Optional[Dict]:
     """按订单 ID 查询订单状态"""
-    # sql = "SELECT OrderStatus FROM dorder WHERE SourceNo = %s"
     try:
         with conn.cursor() as cursor:
             cursor.execute(sql, (order_id,))
             result = cursor.fetchone()
-            logger.info(f"查询订单状态: order_id={order_id}, result={result}")
+            logger.info(f"查询订单状态: 订单号={order_id}, result={result}")
             return result["OrderStatus"] if result else None
     except pymysql.Error as e:
         logger.error(f"查询订单状态失败: {e}")
@@ -104,10 +103,10 @@ def get_db_connection(db_config: Dict):
     conn = None
     try:
         conn = pymysql.connect(**db_config, cursorclass=pymysql.cursors.DictCursor)
-        logger.info("[OK] 数据库连接已建立")
+        logger.info("[成功] 数据库连接已建立")
         yield conn
     except pymysql.Error as e:
-        logger.error(f"[FAIL] 数据库连接失败: {e}")
+        logger.error(f"[失败] 数据库连接失败: {e}")
         raise
     finally:
         if conn:

@@ -12,20 +12,15 @@ def load_yaml_data(file_path):
         with open(file_path, 'r', encoding='utf-8') as f:
             return yaml.safe_load(f)
     except FileNotFoundError:
-        logger.error(f"YAML file not found: {file_path}")
+        logger.error(f"YAML 文件不存在: {file_path}")
         return None
     except yaml.YAMLError as e:
-        logger.error(f"YAML parse error: {file_path}: {e}")
+        logger.error(f"YAML 解析错误: {file_path}: {e}")
         return None
     except Exception as e:
-        logger.error(f"Failed to load YAML: {file_path}: {e}")
+        logger.error(f"加载 YAML 失败: {file_path}: {e}")
         return None
 
-
-# def get_data_file_path(filename):
-#     """返回 /data 下数据文件的绝对路径"""
-#     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-#     return os.path.join(project_root, 'data', filename)
 
 # ... 现有代码 ...
 def get_data_file_path(filename):

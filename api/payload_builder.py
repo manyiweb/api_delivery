@@ -13,13 +13,13 @@ from utils.logger import logger
 def _require_keys(data: Dict, keys):
     missing = [key for key in keys if key not in data]
     if missing:
-        raise KeyError(f"Missing required keys: {', '.join(missing)}")
+        raise KeyError(f"缺少必填字段: {', '.join(missing)}")
 
 
 def build_final_payload(raw_data: Dict, order_id: Optional[str] = None) -> Tuple[Dict[str, str], str]:
     """构建推单回调的请求体"""
     if not raw_data:
-        raise ValueError("raw_data is empty")
+        raise ValueError("原始数据为空")
 
     data = copy.deepcopy(raw_data)
     _require_keys(
@@ -74,14 +74,14 @@ def build_final_payload(raw_data: Dict, order_id: Optional[str] = None) -> Tuple
         separators=(",", ":"),
     )
 
-    logger.debug(f"Push order payload built for order_id={order_id}")
+    logger.debug(f"推单回调请求体构建完成: 订单号={order_id}")
     return final_payload, order_id
 
 
 def build_cancel_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
     """构建取消订单回调的请求体"""
     if not raw_data:
-        raise ValueError("raw_data is empty")
+        raise ValueError("原始数据为空")
 
     data = copy.deepcopy(raw_data)
     _require_keys(data, ["orderCancel_list"])
@@ -96,7 +96,7 @@ def build_cancel_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
 
     cancel_payload = config.get_final_payload_params().copy()
     cancel_payload["orderCancel"] = cancel_order_json
-    logger.debug(f"Cancel order payload built for order_id={order_id}")
+    logger.debug(f"取消回调请求体构建完成: 订单号={order_id}")
 
     return cancel_payload
 
@@ -104,7 +104,7 @@ def build_cancel_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
 def build_apply_refund_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
     """构建全额退款回调的请求体"""
     if not raw_data:
-        raise ValueError("raw_data is empty")
+        raise ValueError("原始数据为空")
 
     data = copy.deepcopy(raw_data)
     _require_keys(data, ["orderRefund_list"])
@@ -119,13 +119,13 @@ def build_apply_refund_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
 
     allure.attach(
         json.dumps(data, ensure_ascii=False, indent=2),
-        name="refund request raw data",
+        name="退款请求原始数据",
         attachment_type=allure.attachment_type.JSON,
     )
 
     final_payload = config.get_final_payload_params().copy()
     final_payload["orderRefund"] = order_refund_json
-    logger.debug(f"Refund payload built for order_id={order_id}")
+    logger.debug(f"退款回调请求体构建完成: 订单号={order_id}")
 
     return final_payload
 

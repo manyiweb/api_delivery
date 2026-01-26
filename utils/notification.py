@@ -19,7 +19,7 @@ class NotificationSender:
         self.smtp_config = smtp_config
         self.dingtalk_webhook = dingtalk_webhook
 
-    def send_notification(self, content, title="Notification", notification_types=None):
+    def send_notification(self, content, title="通知", notification_types=None):
         """通过已配置的渠道发送通知"""
         if notification_types is None:
             notification_types = ["wechat"]
@@ -34,10 +34,10 @@ class NotificationSender:
                 results["dingtalk"] = self.send_dingtalk_message(content, title)
         return results
 
-    def send_wechat_work_message(self, content, title="Notification"):
+    def send_wechat_work_message(self, content, title="通知"):
         """发送企业微信消息"""
         if not self.wechat_webhook:
-            logger.error("WeChat webhook not configured")
+            logger.error("企业微信回调地址未配置")
             return False
 
         headers = {"Content-Type": "application/json"}
@@ -58,17 +58,17 @@ class NotificationSender:
                 logger.info("企业微信消息已发送")
                 return True
 
-            logger.error(f"WeChat message failed: {result.get('errmsg')}")
+            logger.error(f"企业微信消息发送失败: {result.get('errmsg')}")
             return False
 
         except requests.exceptions.RequestException as e:
-            logger.error(f"WeChat message error: {e}")
+            logger.error(f"企业微信消息发送异常: {e}")
             return False
 
-    def send_email(self, content, subject="Notification"):
+    def send_email(self, content, subject="通知"):
         """发送邮件消息"""
         if not self.smtp_config or not self.smtp_config.get("to_emails"):
-            logger.error("SMTP config or recipients missing")
+            logger.error("邮件服务器或收件人未配置")
             return False
 
         try:
@@ -94,13 +94,13 @@ class NotificationSender:
             return True
 
         except Exception as e:
-            logger.error(f"Email send error: {e}")
+            logger.error(f"邮件发送异常: {e}")
             return False
 
-    def send_dingtalk_message(self, content, title="Notification"):
+    def send_dingtalk_message(self, content, title="通知"):
         """发送钉钉消息"""
         if not self.dingtalk_webhook:
-            logger.error("DingTalk webhook not configured")
+            logger.error("钉钉回调地址未配置")
             return False
 
         headers = {"Content-Type": "application/json"}
@@ -121,11 +121,11 @@ class NotificationSender:
                 logger.info("钉钉消息已发送")
                 return True
 
-            logger.error(f"DingTalk message failed: {result.get('errmsg')}")
+            logger.error(f"钉钉消息发送失败: {result.get('errmsg')}")
             return False
 
         except requests.exceptions.RequestException as e:
-            logger.error(f"DingTalk message error: {e}")
+            logger.error(f"钉钉消息发送异常: {e}")
             return False
 
 
@@ -136,7 +136,7 @@ def get_current_time():
 
 def create_test_report_message(passed=0, failed=0, skipped=0, total=0, xfailed=0, xpassed=0):
     """生成测试报告消息"""
-    status_text = "ALL PASSED" if failed == 0 and passed > 0 else "FAILURES PRESENT"
+    status_text = "全部通过" if failed == 0 and passed > 0 else "存在失败"
     content = f"""
 [自动化测试报告]
 总数: {total}

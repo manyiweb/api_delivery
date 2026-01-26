@@ -54,7 +54,7 @@ def push_order(client: httpx.Client, order_id: Optional[str] = None) -> Tuple[st
         final_payload, order_id = build_final_payload(raw_data, order_id)
         allure.attach(
             str(order_id),
-            name="order_id",
+            name="外卖单号",
             attachment_type=allure.attachment_type.TEXT,
         )
         logger.info(f"推单请求体: {final_payload}")
@@ -64,7 +64,7 @@ def push_order(client: httpx.Client, order_id: Optional[str] = None) -> Tuple[st
             client,
             "/dock/mt/v2/order/callback",
             final_payload,
-            attach_name="push order response",
+            attach_name="推单响应",
             order_id=str(order_id),
         )
         return result, order_id
@@ -85,7 +85,7 @@ def cancel_order(client: httpx.Client, order_id: str) -> Optional[str]:
         final_payload = build_cancel_payload(raw_data, order_id)
         allure.attach(
             str(order_id),
-            name="cancel order id",
+            name="取消订单ID",
             attachment_type=allure.attachment_type.TEXT,
         )
         logger.info(f"取消订单请求体: {final_payload}")
@@ -95,7 +95,7 @@ def cancel_order(client: httpx.Client, order_id: str) -> Optional[str]:
             client,
             "/dock/mt/v2/order/cancel/callback",
             final_payload,
-            attach_name="cancel order response",
+            attach_name="取消订单响应",
             order_id=str(order_id),
         )
 
@@ -120,7 +120,7 @@ def refund_order(client: httpx.Client, order_id: str) -> Optional[str]:
             client,
             "/reabam-external-access/dock/mt/v2/order/refund/callback",
             final_payload,
-            attach_name="refund response",
+            attach_name="退款响应",
             order_id=str(order_id),
         )
 
@@ -132,5 +132,5 @@ def mt_full_refund_callback(client: httpx.Client, order_id: str) -> Optional[str
 
 def partial_refund(client: httpx.Client):
     """部分退款占位实现"""
-    logger.warning("Partial refund not implemented")
+    logger.warning("部分退款暂未实现")
     client.post("/mt/v2/order/partial/refund/callback", json={})

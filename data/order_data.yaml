@@ -1,0 +1,29 @@
+# 查询最近的美团订单列表入参
+orderList:
+  orderField: "newOrder"
+  orderSort: "desc"
+  searchBeans: []
+  brandCodes: []
+  expressNumber: ""
+  expressCompany: ""
+  # 用于筛选外卖单的关键字（按需修改）
+  orderRemark: "收餐人隐私号"
+  itemTypefCodes: []
+  seriesCodes: []
+  pageIndex: 1
+  pageSize: 20
+  flagUndeliveredOrder: false
+  sword: ""
+  notWhiOutErr: true
+  # tokenId 由用例运行时注入（不要写死在 YAML）
+  tokenId: ""
+
+# POS 订单详情入参
+orderDetail:
+  # orderId 由用例运行时注入
+  orderId: ""
+  # tokenId 由用例运行时注入（不要写死在 YAML）
+  tokenId: ""
+  # 下面字段如有必要可按环境配置/覆盖
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"

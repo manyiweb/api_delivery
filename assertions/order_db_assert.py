@@ -22,13 +22,13 @@ def assert_order_created(
         if result:
             allure.attach(
                 str(result),
-                name="order created",
+                name="订单已创建",
                 attachment_type=allure.attachment_type.TEXT,
             )
             return
         time.sleep(interval)
 
-    raise AssertionError(f"Order {order_id} not created within {timeout}s")
+    raise AssertionError(f"订单 {order_id} 在 {timeout}s 内未写入数据库")
 
 
 def assert_order_count(
@@ -51,8 +51,8 @@ def assert_order_count(
 
         if actual_count == expected_count:
             allure.attach(
-                f"order {order_id} count ok: {actual_count}",
-                name="order count validated",
+                f"订单 {order_id} 数量校验通过: {actual_count}",
+                name="订单数量校验通过",
                 attachment_type=allure.attachment_type.TEXT,
             )
             return
@@ -60,7 +60,7 @@ def assert_order_count(
         time.sleep(interval)
 
     raise AssertionError(
-        f"Order {order_id} count mismatch: expected {expected_count}, actual {actual_count}"
+        f"订单 {order_id} 数量不一致: 期望 {expected_count}, 实际 {actual_count}"
     )
 
 

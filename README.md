@@ -23,7 +23,7 @@ pytest.ini      # pytest 配置
 ```
 
 ## 环境要求
-- Python 3.8+
+- Python 3.12+
 - Allure CLI（生成报告用，需自行安装）
 
 ## 安装依赖

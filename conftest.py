@@ -16,9 +16,28 @@ def client():
     """创建用于测试的 HTTP 客户端"""
     base_url = config.get_base_url()
     with httpx.Client(base_url=base_url, timeout=config.DEFAULT_TIMEOUT) as c:
-        allure.attach(base_url, name="API Base URL", attachment_type=allure.attachment_type.TEXT)
+        allure.attach(base_url, name="接口基础地址", attachment_type=allure.attachment_type.TEXT)
         yield c
 
+@pytest.fixture(scope="session")
+def access_token():
+    """创建用于测试的访问令牌"""
+    with httpx.Client(timeout=config.DEFAULT_TIMEOUT) as c:
+        resp = c.post(
+            config.get_base_url() + "/reabam-manage-login/user/login",
+            json={
+                "mobile": "19977958582",
+                "loginType": "checkstand",
+                "appType": "pc",
+                "appVersion": "1.6.2.1",
+                "loginWord": "e10adc3949ba59abbe56e057f20f883e",
+                "clientVersion": "25091901",
+                "systemVersion": "2512.29.34",
+                "companyId": ""
+            },
+        )
+        assert resp.status_code == 200, "获取访问令牌失败"
+        return resp.json()["data"].get("tokenId")
 
 @pytest.fixture(scope="session")
 def db_conn():
@@ -31,7 +50,7 @@ def db_conn():
     )
     allure.attach(
         f"Database: {config.DB_CONFIG['host']}:{config.DB_CONFIG['port']}/{config.DB_CONFIG['database']}",
-        name="Database connection info",
+        name="数据库连接信息",
         attachment_type=allure.attachment_type.TEXT,
     )
     yield conn
@@ -46,13 +65,12 @@ def cleanup_order(db_conn):
     for order_id in created_orders:
         cleanup_test_order(db_conn, order_id)
 
-
 def pytest_runtest_logreport(report):
     """将失败的测试详情记录到文件日志"""
     if report.outcome != "failed" or getattr(report, "wasxfail", False):
         return
     nodeid = getattr(report, "nodeid", "unknown")
-    logger.error(f"Test failed: {nodeid}")
+    logger.error(f"用例失败: {nodeid}")
     longrepr = getattr(report, "longreprtext", None)
     if longrepr:
         logger.error(longrepr)
@@ -87,15 +105,15 @@ def pytest_terminal_summary(terminalreporter):
 
     results = sender.send_notification(
         content=content,
-        title="Automated test report",
+        title="自动化测试报告",
         notification_types=["wechat"],
     )
 
     for ntype, success in results.items():
         if success:
-            logger.info(f"[OK] {ntype} 通知发送成功")
+            logger.info(f"[成功] {ntype} 通知发送成功")
         else:
-            logger.error(f"[FAIL] {ntype} notification failed")
+            logger.error(f"[失败] {ntype} 通知发送失败")
 
 
 @pytest.hookimpl(tryfirst=True)
@@ -115,3 +133,6 @@ def pytest_configure():
         f.write(f"DB_HOST={config.DB_CONFIG['host']}\n")
         f.write(f"DB_PORT={config.DB_CONFIG['port']}\n")
         f.write(f"PYTHON_VERSION={os.sys.version}\n")
+
+if __name__ == '__main__':
+    print(access_token())
