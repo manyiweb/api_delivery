@@ -19,7 +19,7 @@ def client():
         allure.attach(base_url, name="接口基础地址", attachment_type=allure.attachment_type.TEXT)
         yield c
 
-@pytest.fixture(scope="session")
+# @pytest.fixture(scope="session")
 def access_token():
     """创建用于测试的访问令牌"""
     with httpx.Client(timeout=config.DEFAULT_TIMEOUT) as c:

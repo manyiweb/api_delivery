@@ -1,0 +1,21 @@
+replaceType: "none"
+invoiceApplyOrderType: 0
+billingType: 0
+invoiceType: "SPECIAL"
+titleType: "PERSONAL"
+invoiceTitle: "wq"
+taxNo: ""
+openAccountBank: ""
+bankAccount: ""
+companyAddress: ""
+companyPhone: ""
+orderIds:
+  - ""
+remark: ""
+companyId: "5ad586a8721e49518998aedef9fd3b5c"
+orderAmountList:
+  - currentInvoiceAmount: 2
+    orderId: ""
+    replaceType: "none"
+noticeEmail: ""
+tokenId: ""

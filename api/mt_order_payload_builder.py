@@ -16,7 +16,7 @@ def _require_keys(data: Dict, keys):
         raise KeyError(f"缺少必填字段: {', '.join(missing)}")
 
 
-def build_final_payload(raw_data: Dict, order_id: Optional[str] = None) -> Tuple[Dict[str, str], str]:
+def build_mt_push_payload(raw_data: Dict, mt_order_id: Optional[str] = None) -> Tuple[Dict[str, str], str]:
     """构建推单回调的请求体"""
     if not raw_data:
         raise ValueError("原始数据为空")
@@ -33,9 +33,9 @@ def build_final_payload(raw_data: Dict, order_id: Optional[str] = None) -> Tuple
         ],
     )
 
-    timestamp_part = int(time.time() * 1000)
-    if order_id is None:
-        order_id = int("5301890196" + str(timestamp_part)[-9:])
+    timestamp_part = int(time.time() * 1000000)
+    if mt_order_id is None:
+        mt_order_id = int("5301890" + str(timestamp_part)[-12:])
 
     reconciliation_extras_str = json.dumps(
         data["reconciliation_extras"],
@@ -49,8 +49,8 @@ def build_final_payload(raw_data: Dict, order_id: Optional[str] = None) -> Tuple
     order_dict = copy.deepcopy(data["order_core_params"])
     order_dict["ctime"] = timestamp_part
     order_dict["utime"] = timestamp_part
-    order_dict["orderId"] = order_id
-    order_dict["orderIdView"] = order_id
+    order_dict["orderId"] = mt_order_id
+    order_dict["orderIdView"] = mt_order_id
     order_dict["detail"] = json.dumps(
         data["detail_list"],
         ensure_ascii=False,
@@ -67,18 +67,18 @@ def build_final_payload(raw_data: Dict, order_id: Optional[str] = None) -> Tuple
         separators=(",", ":"),
     )
 
-    final_payload = config.get_final_payload_params().copy()
-    final_payload["order"] = json.dumps(
+    final_push_payload = config.get_final_payload_params().copy()
+    final_push_payload["order"] = json.dumps(
         order_dict,
         ensure_ascii=False,
         separators=(",", ":"),
     )
 
-    logger.debug(f"推单回调请求体构建完成: 订单号={order_id}")
-    return final_payload, order_id
+    logger.debug(f"推单回调请求体构建完成: 订单号={mt_order_id}")
+    return final_push_payload, mt_order_id
 
 
-def build_cancel_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
+def build_mt_cancel_payload(raw_data: Dict, mt_order_id: str) -> Dict[str, str]:
     """构建取消订单回调的请求体"""
     if not raw_data:
         raise ValueError("原始数据为空")
@@ -87,21 +87,21 @@ def build_cancel_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
     _require_keys(data, ["orderCancel_list"])
 
     cancel_order_list = data["orderCancel_list"].copy()
-    cancel_order_list["orderId"] = order_id
+    cancel_order_list["orderId"] = mt_order_id
     cancel_order_json = json.dumps(
         cancel_order_list,
         ensure_ascii=False,
         separators=(",", ":"),
     )
 
-    cancel_payload = config.get_final_payload_params().copy()
-    cancel_payload["orderCancel"] = cancel_order_json
-    logger.debug(f"取消回调请求体构建完成: 订单号={order_id}")
+    final_cancel_payload = config.get_final_payload_params().copy()
+    final_cancel_payload["orderCancel"] = cancel_order_json
+    logger.debug(f"取消回调请求体构建完成: 订单号={mt_order_id}")
 
-    return cancel_payload
+    return final_cancel_payload
 
 
-def build_apply_refund_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
+def build_mt_apply_refund_payload(raw_data: Dict, mt_order_id: str) -> Dict[str, str]:
     """构建全额退款回调的请求体"""
     if not raw_data:
         raise ValueError("原始数据为空")
@@ -110,7 +110,7 @@ def build_apply_refund_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
     _require_keys(data, ["orderRefund_list"])
 
     order_refund_list = data["orderRefund_list"].copy()
-    order_refund_list["orderId"] = order_id
+    order_refund_list["orderId"] = mt_order_id
     order_refund_json = json.dumps(
         order_refund_list,
         ensure_ascii=False,
@@ -123,9 +123,9 @@ def build_apply_refund_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
         attachment_type=allure.attachment_type.JSON,
     )
 
-    final_payload = config.get_final_payload_params().copy()
-    final_payload["orderRefund"] = order_refund_json
-    logger.debug(f"退款回调请求体构建完成: 订单号={order_id}")
+    final_refund_payload = config.get_final_payload_params().copy()
+    final_refund_payload["orderRefund"] = order_refund_json
+    logger.debug(f"退款回调请求体构建完成: 订单号={mt_order_id}")
 
-    return final_payload
+    return final_refund_payload
 
