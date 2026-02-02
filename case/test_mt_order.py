@@ -59,7 +59,7 @@ class TestMtPushOrder:
                 )
                 logger.info(f"接口验证订单已可查询，内部订单编号: {internal_order_id}")
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     @pytest.mark.critical
     @allure.story("订单取消")
     @allure.title("美团取消订单回调后，订单状态更新为已退货")
