@@ -1,6 +1,3 @@
-"""美团订单回调测试
-涵盖推单、取消、退款和幂等场景
-"""
 import os
 
 import allure

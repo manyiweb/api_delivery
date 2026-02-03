@@ -27,3 +27,18 @@ orderDetail:
   # 下面字段如有必要可按环境配置/覆盖
   userId: "f57342198c3147178e5b3ffa63f97a65"
   companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+createOrder:
+  specId: "c2fb5a6c41684b30b887fd21c235267d"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  quantity: 1
+  tokenId: ""
+  couponCode: ""
+
+addOrder:
+  payType: "CashPay",
+  amountActuallyPaid: 2,
+  tokenId: "",
+  userId: "f57342198c3147178e5b3ffa63f97a65",
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"

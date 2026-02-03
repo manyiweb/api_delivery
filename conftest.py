@@ -19,7 +19,7 @@ def client():
         allure.attach(base_url, name="接口基础地址", attachment_type=allure.attachment_type.TEXT)
         yield c
 
-# @pytest.fixture(scope="session")
+@pytest.fixture(scope="session")
 def access_token():
     """创建用于测试的访问令牌"""
     with httpx.Client(timeout=config.DEFAULT_TIMEOUT) as c:
@@ -39,7 +39,7 @@ def access_token():
         assert resp.status_code == 200, "获取访问令牌失败"
         return resp.json()["data"].get("tokenId")
 
-@pytest.fixture(scope="session")
+# @pytest.fixture(scope="session")
 def db_conn():
     """创建用于测试的数据库连接"""
     if os.getenv("ENV") == "uat":
