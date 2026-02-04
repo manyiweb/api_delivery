@@ -63,7 +63,7 @@ def handle_response(
             return True, response_json
 
         logger.error(
-            f"[失败] status={response.status_code}, response={response_json}"
+            f"[失败] 状态码={response.status_code}, 响应={response_json}"
         )
         return False, response_json
 
@@ -80,6 +80,7 @@ def safe_post(
     client: httpx.Client,
     endpoint: str,
     trace_id: Optional[str] = None,
+    check_biz_code: bool = False,
     **kwargs,
 ) -> httpx.Response:
     """带重试和错误日志的 POST 请求"""
@@ -93,6 +94,26 @@ def safe_post(
         logger.info(f"请求耗时: {elapsed_time:.2f}s")
 
         response.raise_for_status()
+
+        if check_biz_code:
+            try:
+                response_json = response.json()
+            except json.JSONDecodeError as e:
+                logger.error(f"响应不是合法 JSON: {response.text}, 错误={e}")
+                raise ValueError("响应不是合法 JSON") from e
+
+            code = response_json.get("code")
+            success = response_json.get("success")
+            if str(code) == "500" or success is False:
+                msg = response_json.get("msg")
+                trace = response_json.get("traceId")
+                logger.error(
+                    f"业务错误: code={code}, success={success}, msg={msg}, traceId={trace}"
+                )
+                raise RuntimeError(
+                    f"业务错误: code={code}, msg={msg}, traceId={trace}"
+                )
+
         return response
 
     except httpx.HTTPStatusError as e:

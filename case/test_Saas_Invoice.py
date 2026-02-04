@@ -92,20 +92,20 @@ def invoice_context(client):
     token_id = access_token()
     order_id = _resolve_order_id(client, token_id)
     if not order_id:
-        pytest.skip("No order id found. Set INVOICE_ORDER_ID to run invoice tests.")
+        pytest.skip("未找到订单号，请设置 INVOICE_ORDER_ID 后再运行发票用例。")
 
-    with allure.step("Apply invoice"):
+    with allure.step("????"):
         apply_resp = mgr_apply_invoice(client, order_id, token_id=token_id)
         allure.attach(
             str(apply_resp),
-            name="apply_invoice_response",
+            name="申请开票响应",
             attachment_type=allure.attachment_type.TEXT,
         )
         _assert_basic_success(apply_resp)
 
     invoice_id = _extract_invoice_id(apply_resp)
     if not invoice_id:
-        pytest.skip("Apply invoice did not return invoice id.")
+        pytest.skip("申请开票未返回发票ID。")
 
     return {
         "token_id": token_id,
@@ -115,36 +115,36 @@ def invoice_context(client):
     }
 
 
-@allure.epic("Invoice API")
-@allure.feature("SaaS Invoice")
+@allure.epic("发票接口")
+@allure.feature("SaaS 发票")
 class TestSaasInvoice:
     @pytest.mark.critical
-    @allure.story("Apply invoice")
-    @allure.title("Apply invoice should return a successful response")
+    @allure.story("申请开票")
+    @allure.title("申请开票应返回成功响应")
     def test_apply_invoice(self, invoice_context):
         apply_resp = invoice_context["apply_resp"]
         _assert_basic_success(apply_resp)
 
     @pytest.mark.normal
-    @allure.story("Refresh invoice status")
-    @allure.title("Refresh invoice status should return a successful response")
+    @allure.story("刷新发票状态")
+    @allure.title("刷新发票状态应返回成功响应")
     def test_refresh_invoice_status(self, client, invoice_context):
         invoice_id = invoice_context["invoice_id"]
         token_id = invoice_context["token_id"]
         refresh_resp = refresh_invoice_status(client, invoice_id, token_id=token_id)
         allure.attach(
             str(refresh_resp),
-            name="refresh_invoice_response",
+            name="刷新发票响应",
             attachment_type=allure.attachment_type.TEXT,
         )
         _assert_basic_success(refresh_resp)
 
     @pytest.mark.normal
-    @allure.story("Query invoice status")
-    @allure.title("Query invoice status should return a status")
+    @allure.story("查询发票状态")
+    @allure.title("申请开票应返回成功响应")
     def test_query_invoice_status(self, client, invoice_context):
         invoice_id = invoice_context["invoice_id"]
         token_id = invoice_context["token_id"]
         status = query_invoice_status(client, invoice_id, token_id=token_id)
-        logger.info("Invoice status: %s", status)
+        logger.info("发票状态: %s", status)
         assert status is not None

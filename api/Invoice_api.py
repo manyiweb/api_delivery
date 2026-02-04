@@ -75,7 +75,7 @@ def query_invoice_status(
     )
     data = resp.json().get("data") or {}
     if not data:
-        logger.warning("Invoice detail 返回空数据: invoice_id=%s", invoice_id)
+        logger.warning("发票详情返回空数据: invoice_id=%s", invoice_id)
     return data.get("status")
 
 
