@@ -1,4 +1,5 @@
-import copy
+﻿import copy
+import time
 from typing import Any, Dict, Optional
 
 import httpx
@@ -76,25 +77,37 @@ def query_invoice_status(
         token_id: Optional[str] = None,
 ) -> Optional[Any]:
     token_id = token_id
-    resp = safe_post(
-        client,
-        INVOICE_DETAIL_ENDPOINT,
-        json={"id": invoice_id, "token": token_id},
-        headers={"Authorization": f"Bearer {token_id}"},
+    max_attempts = 5
+    last_status: Optional[str] = None
+    last_response: Optional[Dict[str, Any]] = None
+
+    for attempt in range(1, max_attempts + 1):
+        resp = safe_post(
+            client,
+            INVOICE_DETAIL_ENDPOINT,
+            json={"id": invoice_id, "token": token_id},
+            headers={"Authorization": f"Bearer {token_id}"},
+        )
+        response_json = resp.json()
+        last_response = response_json if isinstance(response_json, dict) else None
+        logger.info("Invoice detail response (%s/%s): %s", attempt, max_attempts, response_json)
+
+        data = last_response.get("data") if isinstance(last_response, dict) else None
+        last_status = data.get("status") if isinstance(data, dict) else None
+
+        logger.info("Invoice status=%s", last_status)
+        if last_status == "INVOICED":
+            return last_status
+
+        if attempt < max_attempts:
+            time.sleep(2)
+
+    raise RuntimeError(
+        f"Invoice status not INVOICED after {max_attempts} attempts: "
+        f"invoice_id={invoice_id}, status={last_status}, response={last_response}"
     )
-    invoice_status = resp.json()["data"]["status"]
-    code = resp.json().get("code")
-    try:
-        invoice_status = resp.json()["data"]["status"]
-        logger.info("详情接口响应: invoice_id=%s, status=%s", invoice_id, invoice_status)
-    except KeyError as e:
-        logger.error("Invoice detail 返回非0码: invoice_id=%s, code=%s, error=%s", invoice_id, code, e)
-        raise KeyError(e)
-
-    return invoice_status if invoice_status else None
 
 
-# 刷新发票状态
 def refresh_invoice_status(
         client: httpx.Client,
         invoice_id: str,
@@ -123,7 +136,7 @@ def red_punch_invoice(
     resp = safe_post(
         client,
         RED_PUNCH_ENDPOINT,
-        json={"id": invoice_id, "token": token_id},
+        json={"id": invoice_id, "tokenId": token_id},
         headers={"Authorization": f"Bearer {token_id}"},
     )
     logger.info("红冲接口响应: %s", resp.json())
