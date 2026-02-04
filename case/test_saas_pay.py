@@ -11,7 +11,7 @@ class TestSaaSPay:
         token = access_token
         # 添加服务导购
         add_service_guide(client, token)
-        # 新增购物车商品
+        # 新增购物车商品weqw
         add_result = add_item_shoppingcart(client, token)
         # 新增现金支付订单
         resp, order_id = add_order_cash(client, token)
