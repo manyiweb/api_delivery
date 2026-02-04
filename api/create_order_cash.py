@@ -5,11 +5,12 @@ import httpx
 from api.base import safe_post
 from conftest import access_token
 from utils.file_loader import load_yaml_data, get_data_file_path
+from utils.logger import logger
 
 ADD_ITEM_SHOPPING_CART = "/retail-shoppingcart-front/app/shopping/cart/item/addShopCartItem"
 ADD_ORDER_CASH = "/retail-order-front/app/sales/order/add"
 CASH_PAY = "/retail-pay-front/app/pay/CashPay"
-
+ADD_SERVICE_GUIDE = "/retail-shoppingcart-front/app/shopping/cart/updateItemStaff"
 
 # 构建请求参数
 def build_request_params(
@@ -24,14 +25,14 @@ def build_request_params(
         raise ValueError(f"Missing/invalid payload section: {data_List_name!r}")
 
     final_payload = final_payload.copy()
-    final_payload["tokenId"] = token_id or access_token()
+    final_payload["tokenId"] = token_id
     if order_id is not None:
         final_payload["orderId"] = order_id
     return final_payload
 
 
 # 添加购物车商品
-def add_item_shopppingcart(client: httpx.Client, token):
+def add_item_shoppingcart(client: httpx.Client, token):
     payload = build_request_params("createOrder", token_id=token)
     resp = safe_post(client,
                      ADD_ITEM_SHOPPING_CART,
@@ -48,8 +49,9 @@ def add_order_cash(client: httpx.Client, token):
                      ADD_ORDER_CASH,
                      headers={"Authorization": f"Bearer {token}"},
                      json=payload)
-    order_id = resp.json().get("data").get("orderId")
-    return resp, order_id
+    logger.info("新增订单接口响应: %s", resp.json())
+    order_id = resp.json()["data"]["orderId"]
+    return order_id
 
 
 # 现金支付
@@ -59,8 +61,16 @@ def cash_pay(client: httpx.Client, token, order_id):
                      CASH_PAY,
                      headers={"Authorization": f"Bearer {token}"},
                      json=payload)
-
+    logger.info("现金支付接口响应: %s", resp.json())
     return resp
 
-
+# 添加服务导购
+def add_service_guide(client: httpx.Client, token):
+    payload = build_request_params("addServiceGuide", token_id=token)
+    resp = safe_post(client,
+                     ADD_SERVICE_GUIDE,
+                     headers={"Authorization": f"Bearer {token}"},
+                     json=payload)
+    logger.info("添加服务导购接口响应: %s", resp.json())
+    return resp
 
