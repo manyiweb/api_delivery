@@ -1,61 +1,208 @@
+﻿import json
+from typing import Any, List
+
 import allure
 import httpx
 import pytest
 
-from api.Invoice_api import mgr_apply_invoice, query_invoice_status, refresh_invoice_status, red_punch_invoice
+from api.Invoice_api import (
+    build_apply_invoice_payload,
+    build_merge_invoice_payload,
+    mgr_apply_invoice,
+    mgr_apply_invoice_payload,
+    query_invoice_status,
+    refresh_invoice_status,
+    red_punch_invoice,
+)
 from api.create_order_cash import add_service_guide, add_item_shoppingcart, add_order_cash, cash_pay
-from conftest import access_token
+from assertions.order_invoice_assert import (
+    assert_apply_response,
+    assert_detail_response,
+    assert_refresh_response,
+    assert_red_punch_response,
+)
 from utils.logger import logger
+
+
+def _attach_json(name: str, data: Any) -> None:
+    allure.attach(
+        json.dumps(data, ensure_ascii=False, indent=2),
+        name=name,
+        attachment_type=allure.attachment_type.JSON,
+    )
+
+
+def _attach_text(name: str, value: Any) -> None:
+    allure.attach(
+        str(value),
+        name=name,
+        attachment_type=allure.attachment_type.TEXT,
+    )
+
+
+def _create_invoice_order(client: httpx.Client, token_id: str, index: int) -> str:
+    with allure.step(f"创建第{index}笔订单"):
+        with allure.step("添加服务导购"):
+            add_service_guide(client, token_id)
+        with allure.step("添加购物车商品"):
+            add_item_shoppingcart(client, token_id)
+        with allure.step("创建现金订单"):
+            order_id = add_order_cash(client, token_id)
+        with allure.step("现金支付"):
+            cash_pay(client, token_id, order_id)
+        logger.info("第%s笔订单创建成功，订单号=%s", index, order_id)
+        _attach_text(f"第{index}笔订单号", order_id)
+        return order_id
 
 
 @pytest.fixture(scope="function")
 def create_invoice_order(client: httpx.Client, access_token):
     token_id = access_token
     with allure.step("创建开票订单"):
-        # 添加服务导购
-        add_service_guide(client, token_id)
-        # 新增购物车商品
-        add_item_shoppingcart(client, token_id)
-        # 新增现金支付订单
-        order_id = add_order_cash(client, token_id)
-        # 现金支付
-        cash_pay(client, token_id, order_id)
-        logger.info("订单 %s 创建成功", order_id)
-        return order_id
+        return _create_invoice_order(client, token_id, 1)
 
 
+@pytest.fixture(scope="function")
+def create_merge_invoice_orders(client: httpx.Client, access_token) -> List[str]:
+    token_id = access_token
+    with allure.step("创建合并开票订单"):
+        order_ids = [
+            _create_invoice_order(client, token_id, 1),
+            _create_invoice_order(client, token_id, 2),
+        ]
+        _attach_json("合并订单号列表", order_ids)
+        return order_ids
 
 
-@allure.epic("开票 API")
-@allure.feature("SaaS 开票")
+@allure.epic("开票业务")
+@allure.feature("软件服务开票")
 class TestSaasInvoice:
     @pytest.mark.critical
     @allure.story("申请开票")
-    @allure.title("申请开票后查询开票状态并获取开票信息")
+    @allure.title("申请开票后刷新并查询状态")
     def test_apply_invoice(self, client, create_invoice_order, access_token):
         order_id = create_invoice_order
         token_id = access_token
-        # 申请开票
-        invoice_id = mgr_apply_invoice(client, order_id, token_id=token_id)
-        # 刷新开票状态
-        refresh_invoice_status(client, invoice_id, token_id=token_id)
-        # 查询开票状态
-        invoice_status = query_invoice_status(client, invoice_id, token_id=token_id)
-        # assert invoice_status == "INVOICED"
+
+        with allure.step("申请开票"):
+            invoice_id, apply_resp = mgr_apply_invoice(
+                client, order_id, token_id=token_id, return_response=True
+            )
+            _attach_text("开票号", invoice_id)
+            _attach_json("开票接口响应", apply_resp)
+            assert_apply_response(apply_resp, invoice_id, order_id)
+
+        with allure.step("刷新开票状态"):
+            refresh_resp = refresh_invoice_status(client, invoice_id, token_id=token_id)
+            _attach_json("刷新开票状态接口响应", refresh_resp)
+            assert_refresh_response(refresh_resp)
+
+        with allure.step("查询开票状态"):
+            invoice_status, detail_resp = query_invoice_status(
+                client, invoice_id, token_id=token_id, return_response=True
+            )
+            _attach_text("开票状态", invoice_status)
+            _attach_json("查询开票状态接口响应", detail_resp)
+            assert_detail_response(detail_resp, invoice_id, order_id, invoice_status)
 
     @allure.story("红冲开票")
-    @allure.title("申请开票后红冲开票")
+    @allure.title("申请开票后红冲")
     def test_red_punch(self, client, create_invoice_order, access_token):
         order_id = create_invoice_order
         token_id = access_token
-        # 申请开票
-        invoice_id = mgr_apply_invoice(client, order_id, token_id=token_id)
-        # 刷新开票状态
-        refresh_invoice_status(client, invoice_id, token_id=token_id)
-        # 查询开票状态
-        invoice_status = query_invoice_status(client, invoice_id, token_id=token_id)
-        # 红冲发票
-        red_punch_invoice(client, invoice_id, token_id=token_id)
 
-    # @allure.story("合并开票")
-    # def test_together_invoice(self, client, create_invoice_order, access_token):
+        with allure.step("申请开票"):
+            invoice_id, apply_resp = mgr_apply_invoice(
+                client, order_id, token_id=token_id, return_response=True
+            )
+            _attach_text("开票号", invoice_id)
+            _attach_json("开票接口响应", apply_resp)
+            assert_apply_response(apply_resp, invoice_id, order_id)
+
+        with allure.step("刷新开票状态"):
+            refresh_resp = refresh_invoice_status(client, invoice_id, token_id=token_id)
+            _attach_json("刷新开票状态接口响应", refresh_resp)
+            assert_refresh_response(refresh_resp)
+
+        with allure.step("查询开票状态"):
+            invoice_status, detail_resp = query_invoice_status(
+                client, invoice_id, token_id=token_id, return_response=True
+            )
+            _attach_text("开票状态", invoice_status)
+            _attach_json("查询开票状态接口响应", detail_resp)
+            assert_detail_response(detail_resp, invoice_id, order_id, invoice_status)
+
+        with allure.step("红冲开票"):
+            red_resp = red_punch_invoice(client, invoice_id, token_id=token_id)
+            _attach_json("红冲接口响应", red_resp)
+            assert_red_punch_response(red_resp)
+            logger.info("红冲完成，开票号=%s", invoice_id)
+
+    @allure.story("合并开票")
+    @allure.title("合并开票后红冲")
+    def test_together_invoice(self, client, create_merge_invoice_orders, access_token):
+        order_ids = create_merge_invoice_orders
+        token_id = access_token
+        payload = build_merge_invoice_payload(order_ids, token_id)
+
+        with allure.step("合并开票"):
+            _attach_json("合并开票请求参数", payload)
+            invoice_id, apply_resp = mgr_apply_invoice_payload(
+                client, payload, token_id=token_id, return_response=True
+            )
+            _attach_text("开票号", invoice_id)
+            _attach_json("开票接口响应", apply_resp)
+            assert_apply_response(apply_resp, invoice_id, order_ids)
+
+        with allure.step("刷新开票状态"):
+            refresh_resp = refresh_invoice_status(client, invoice_id, token_id=token_id)
+            _attach_json("刷新开票状态接口响应", refresh_resp)
+            assert_refresh_response(refresh_resp)
+
+        with allure.step("查询开票状态"):
+            invoice_status, detail_resp = query_invoice_status(
+                client, invoice_id, token_id=token_id, return_response=True
+            )
+            _attach_text("开票状态", invoice_status)
+            _attach_json("查询开票状态接口响应", detail_resp)
+            assert_detail_response(detail_resp, invoice_id, order_ids, invoice_status)
+
+        with allure.step("红冲开票"):
+            red_resp = red_punch_invoice(client, invoice_id, token_id=token_id)
+            _attach_json("红冲接口响应", red_resp)
+            assert_red_punch_response(red_resp)
+            logger.info("红冲完成，开票号=%s", invoice_id)
+
+    @allure.story("异常场景")
+    @allure.title("合并开票订单为空时提示异常")
+    def test_merge_invoice_empty_orders(self, access_token):
+        token_id = access_token
+        with allure.step("构建合并开票请求"):
+            with pytest.raises(ValueError) as exc_info:
+                build_merge_invoice_payload([], token_id)
+            _attach_text("异常信息", str(exc_info.value))
+
+    @allure.story("异常场景")
+    @allure.title("合并开票金额数量不一致时提示异常")
+    def test_merge_invoice_amount_mismatch(self, access_token):
+        token_id = access_token
+        order_ids = ["order-1", "order-2"]
+        with allure.step("构建合并开票请求"):
+            with pytest.raises(ValueError) as exc_info:
+                build_merge_invoice_payload(order_ids, token_id, amount_list=[2])
+            _attach_text("异常信息", str(exc_info.value))
+
+    @allure.story("逆向场景")
+    @allure.title("无效令牌申请开票")
+    def test_apply_invoice_invalid_token(self, client, create_invoice_order, access_token):
+        order_id = create_invoice_order
+        token_id = f"{access_token}x"
+        payload = build_apply_invoice_payload(order_id, token_id)
+
+        with allure.step("准备无效令牌请求"):
+            _attach_json("开票请求参数", payload)
+
+        with allure.step("发送开票请求并校验失败"):
+            with pytest.raises((httpx.HTTPStatusError, ValueError, RuntimeError)) as exc_info:
+                mgr_apply_invoice_payload(client, payload, token_id=token_id)
+            _attach_text("异常信息", str(exc_info.value))

@@ -13,7 +13,7 @@ from assertions.order_api_assert import assert_order_persisted_via_list_detail, 
 from utils.logger import logger
 
 
-@allure.epic("美团接口")
+@allure.epic("美团外卖业务")
 @allure.feature("订单回调")
 class TestMtPushOrder:
     """订单回调场景"""
@@ -116,7 +116,7 @@ class TestMtPushOrder:
                 )
                 logger.info("取消订单状态校验通过")
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     @pytest.mark.critical
     @allure.story("全额退款")
     @allure.title("美团全额退款回调后，订单状态更新为已退款")
@@ -175,7 +175,7 @@ class TestMtPushOrder:
                 )
                 logger.info("整单退款状态校验通过")
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     @pytest.mark.normal
     @allure.story("幂等性")
     @allure.title("重复推单时验证幂等性，订单表中该订单数量应为1")
@@ -207,7 +207,7 @@ class TestMtPushOrder:
                 cleanup_order.append(str(order_id))
                 logger.info("幂等性校验通过")
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     @allure.story("异常订单处理")
     @allure.title("使用无效订单ID进行取消操作")
     @allure.severity(allure.severity_level.BLOCKER)
@@ -253,18 +253,18 @@ class TestMtPushOrder:
             logger.info(f"第一次取消结果: {result1}")
 
         with allure.step("校验第一次取消后订单状态为 R4"):
-            # if os.getenv("ENV") == "fat":
-            #     assert_order_status(db_conn, str(mt_order_id), expected_status="R4")
-            # else:
-            assert internal_order_id is not None
-            assert token_id is not None
-            assert_order_status_via_detail(
-                client,
-                token_id,
-                internal_order_id,
-                expected_status="R4",
-                timeout=60,
-            )
+            if os.getenv("ENV") == "fat":
+                assert_order_status(db_conn, str(mt_order_id), expected_status="R4")
+            else:
+                assert internal_order_id is not None
+                assert token_id is not None
+                assert_order_status_via_detail(
+                    client,
+                    token_id,
+                    internal_order_id,
+                    expected_status="R4",
+                    timeout=60,
+                )
 
         with allure.step("第二次取消"):
             result2 = mt_cancel_order_callback(client, mt_order_id)

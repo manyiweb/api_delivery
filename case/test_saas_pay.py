@@ -3,7 +3,7 @@ from api.create_order_cash import add_item_shoppingcart, add_order_cash, cash_pa
 import allure
 
 
-@allure.story("现金支付测试")
+@allure.story("支付业务")
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.feature("现金支付")
 class TestSaaSPay:
