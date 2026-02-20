@@ -15,7 +15,10 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat '"D://python/python.exe" -m pip install -r requirements.txt'
+                bat '''
+                set PYTHONUTF8=1
+                D://python/python.exe -m pip install -r requirements.txt
+                '''
             }
         }
 
