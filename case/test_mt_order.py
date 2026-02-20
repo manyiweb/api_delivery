@@ -386,7 +386,6 @@ class TestMtPushOrder:
             cleanup_order.append(str(mt_order_id))
 
     # @pytest.mark.skip
-    @pytest.mark.xpass
     @allure.story("订单状态验证")
     @allure.title("对已取消订单进行退款操作")
     @allure.severity(allure.severity_level.BLOCKER)

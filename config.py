@@ -66,9 +66,9 @@ class Config:
             }
 
         return {
-            'developerId': cls.DEVELOPER_ID,
-            'ePoiId': cls.E_POI_ID,
-            'sign': cls.SIGN
+            'developerId': os.getenv('DEVELOPER_ID_UAT'),
+            'ePoiId': os.getenv('E_POI_ID_UAT'),
+            'sign': os.getenv('SIGN_UAT')
         }
 
     @classmethod

@@ -33,7 +33,7 @@ def build_mt_push_payload(raw_data: Dict, mt_order_id: Optional[str] = None) -> 
         ],
     )
 
-    timestamp_part = int(time.time() * 1000000)
+    timestamp_part = int(time.time() * 1000)  # 13位毫秒时间戳
     if mt_order_id is None:
         mt_order_id = int("5301890" + str(timestamp_part)[-12:])
 
