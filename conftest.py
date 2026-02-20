@@ -8,7 +8,10 @@ import pytest
 from config import config
 from utils.db_helper import cleanup_test_order
 from utils.logger import logger
-from utils.notification import NotificationSender, create_test_report_message
+from utils.notification import (
+    NotificationSender,
+    create_test_report_message,
+)
 
 
 @pytest.fixture(scope="session")
@@ -16,8 +19,10 @@ def client():
     """创建用于测试的 HTTP 客户端"""
     base_url = config.get_base_url()
     with httpx.Client(base_url=base_url, timeout=config.DEFAULT_TIMEOUT) as c:
-        allure.attach(base_url, name="接口基础地址", attachment_type=allure.attachment_type.TEXT)
+        allure.attach(base_url, name="接口基础地址",
+                      attachment_type=allure.attachment_type.TEXT)
         yield c
+
 
 @pytest.fixture(scope="session")
 def access_token():
@@ -40,6 +45,8 @@ def access_token():
         return resp.json()["data"].get("tokenId")
 
 # @pytest.fixture(scope="session")
+
+
 def db_conn():
     """创建用于测试的数据库连接"""
     if os.getenv("ENV") == "uat":
@@ -65,6 +72,7 @@ def cleanup_order(db_conn):
     for order_id in created_orders:
         cleanup_test_order(db_conn, order_id)
 
+
 def pytest_runtest_logreport(report):
     """将失败的测试详情记录到文件日志"""
     if report.outcome != "failed" or getattr(report, "wasxfail", False):
@@ -78,42 +86,42 @@ def pytest_runtest_logreport(report):
         logger.error(str(getattr(report, "longrepr", report)))
 
 
-def pytest_terminal_summary(terminalreporter):
-    """发送测试汇总通知"""
-    passed = len(terminalreporter.stats.get("passed", []))
-    failed = len(terminalreporter.stats.get("failed", []))
-    skipped = len(terminalreporter.stats.get("skipped", []))
-    xfailed = len(terminalreporter.stats.get("xfailed", []))
-    xpassed = len(terminalreporter.stats.get("xpassed", []))
-    total = passed + failed + skipped + xfailed
+# def pytest_terminal_summary(terminalreporter):
+#     """发送测试汇总通知"""
+#     passed = len(terminalreporter.stats.get("passed", []))
+#     failed = len(terminalreporter.stats.get("failed", []))
+#     skipped = len(terminalreporter.stats.get("skipped", []))
+#     xfailed = len(terminalreporter.stats.get("xfailed", []))
+#     xpassed = len(terminalreporter.stats.get("xpassed", []))
+#     total = passed + failed + skipped + xfailed
 
-    logger.info(
-        f"测试汇总: 总数={total}, 通过={passed}, 失败={failed}, 跳过={skipped}, 预期失败={xfailed}, 预期通过={xpassed}"
-    )
+#     logger.info(
+#         f"测试汇总: 总数={total}, 通过={passed}, 失败={failed}, 跳过={skipped}, 预期失败={xfailed}, 预期通过={xpassed}"
+#     )
 
-    sender = NotificationSender(wechat_webhook=config.WECHAT_WEBHOOK)
-    content = create_test_report_message(
-        passed=passed,
-        failed=failed,
-        skipped=skipped,
-        xfailed=xfailed,
-        xpassed=xpassed,
-        total=total,
-    )
+#     sender = NotificationSender(wechat_webhook=config.WECHAT_WEBHOOK)
+#     content = create_test_report_message(
+#         passed=passed,
+#         failed=failed,
+#         skipped=skipped,
+#         xfailed=xfailed,
+#         xpassed=xpassed,
+#         total=total,
+#     )
 
-    logger.info("发送测试结果通知")
+#     logger.info("发送测试结果通知")
 
-    results = sender.send_notification(
-        content=content,
-        title="自动化测试报告",
-        notification_types=["wechat"],
-    )
+#     results = sender.send_notification(
+#         content=content,
+#         title="自动化测试报告",
+#         notification_types=["wechat"],
+#     )
 
-    for ntype, success in results.items():
-        if success:
-            logger.info(f"[成功] {ntype} 通知发送成功")
-        else:
-            logger.error(f"[失败] {ntype} 通知发送失败")
+#     for ntype, success in results.items():
+#         if success:
+#             logger.info(f"[成功] {ntype} 通知发送成功")
+#         else:
+#             logger.error(f"[失败] {ntype} 通知发送失败")
 
 
 @pytest.hookimpl(tryfirst=True)
@@ -133,6 +141,7 @@ def pytest_configure():
         f.write(f"DB_HOST={config.DB_CONFIG['host']}\n")
         f.write(f"DB_PORT={config.DB_CONFIG['port']}\n")
         f.write(f"PYTHON_VERSION={os.sys.version}\n")
+
 
 if __name__ == '__main__':
     print(access_token())

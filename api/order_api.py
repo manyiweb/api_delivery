@@ -5,12 +5,15 @@ import allure
 import httpx
 
 from api.base import safe_post
-from utils.file_loader import get_data_file_path, load_yaml_data
+from utils.file_loader import (
+    get_data_file_path,
+    load_yaml_data,
+)
 
 ORDER_LIST_ENDPOINT = "/retail-order-front/app/Business/Order/List"
 ORDER_DETAIL_ENDPOINT = "/retail-order-front/app/Business/Order/Dock/Detail"
 
-
+# 加载订单数据
 def _load_order_payload(section: str) -> Dict[str, Any]:
     raw_data = load_yaml_data(get_data_file_path("order_data.yaml")) or {}
     payload = raw_data.get(section)
@@ -18,7 +21,7 @@ def _load_order_payload(section: str) -> Dict[str, Any]:
         raise ValueError(f"data/order_data.yaml 缺少或无效的配置段: '{section}'")
     return payload.copy()
 
-
+# POS 订单列表接口
 def pos_order_list(
     client: httpx.Client,
     token_id: str,
@@ -61,7 +64,7 @@ def pos_order_list(
 
     return resp_json
 
-
+# POS 订单详情接口
 def pos_order_detail(
     client: httpx.Client,
     token_id: str,

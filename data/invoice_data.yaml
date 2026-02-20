@@ -1,21 +1,49 @@
-replaceType: "none"
-invoiceApplyOrderType: 0
-billingType: 0
-invoiceType: "SPECIAL"
-titleType: "PERSONAL"
-invoiceTitle: "wq"
-taxNo: ""
-openAccountBank: ""
-bankAccount: ""
-companyAddress: ""
-companyPhone: ""
-orderIds:
-  - ""
-remark: ""
-companyId: "5ad586a8721e49518998aedef9fd3b5c"
-orderAmountList:
-  - currentInvoiceAmount: 2
-    orderId: ""
-    replaceType: "none"
-noticeEmail: ""
-tokenId: ""
+# 基于订单开票参数
+orderInvoice:  
+  replaceType: "none"
+  invoiceApplyOrderType: 0
+  billingType: 0
+  invoiceType: "SPECIAL"
+  titleType: "PERSONAL"
+  invoiceTitle: "wq"
+  taxNo: ""
+  openAccountBank: ""
+  bankAccount: ""
+  companyAddress: ""
+  companyPhone: ""
+  orderIds:
+    - ""
+  remark: ""
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+  orderAmountList:
+    - currentInvoiceAmount: 2
+      orderId: ""
+      replaceType: "none"
+  noticeEmail: ""
+  tokenId: ""
+
+# 无订单开票参数
+noneorderInvoice:
+  replaceType: "none"
+  invoiceApplyOrderType: 1
+  billingType: 0
+  invoiceType: "SPECIAL"
+  titleType: "PERSONAL"
+  invoiceTitle: "23132"
+  taxNo: ""
+  openAccountBank: ""
+  bankAccount: ""
+  companyAddress: ""
+  companyPhone: ""
+  orderIds: []
+  remark: ""
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+  orderAmountList: []
+  noticeEmail: ""
+  invoiceApplyItems:
+    - amount: "2"
+      quantity: "1"
+      itemId: "c2fb5a6c41684b30b887fd21c235267d"
+      unit: "欧姆"
+  tokenId: ""
+  

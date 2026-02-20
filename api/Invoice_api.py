@@ -6,7 +6,10 @@ import httpx
 
 from api.base import safe_post
 from conftest import access_token
-from utils.file_loader import get_data_file_path, load_yaml_data
+from utils.file_loader import (
+    get_data_file_path,
+    load_yaml_data,
+)
 from utils.logger import logger
 
 APPLY_INVOICE_ENDPOINT = "/hr/retail/invoice/batchApply"
@@ -15,14 +18,30 @@ INVOICE_REFRESH_ENDPOINT = "/hr/retail/invoice/refreshInvoiceStatus"
 RED_PUNCH_ENDPOINT = "/hr/retail/invoice/redPunch"
 
 
+# 加载开票请求参数
 
-def _load_invoice_payload() -> Dict[str, Any]:
+
+def _load_invoice_payload(section: str = "orderInvoice") -> Dict[str, Any]:
+    """加载开票请求参数
+
+    Args:
+        section: YAML 中的配置段名称，默认为 "orderInvoice"（基于订单开票）
+               无订单开票时使用 "noneorderInvoice"
+    """
     raw_data = load_yaml_data(get_data_file_path("invoice_data.yaml")) or {}
     if not isinstance(raw_data, dict):
         raise ValueError("data/invoice_data.yaml 缺少或无效")
-    return copy.deepcopy(raw_data)
 
-# 构建开票请求payload
+    payload = raw_data.get(section)
+    if not isinstance(payload, dict):
+        raise ValueError(f"data/invoice_data.yaml 缺少 {section} 配置")
+
+    return copy.deepcopy(payload)
+
+
+# 构建单独开票请求参数
+
+
 def build_apply_invoice_payload(
         order_id: str,
         token_id: str,
@@ -42,6 +61,9 @@ def build_apply_invoice_payload(
         payload.update(extra)
 
     return payload
+
+
+# 构建合并开票请求参数
 
 
 def build_merge_invoice_payload(
@@ -79,11 +101,55 @@ def build_merge_invoice_payload(
         merged_amount_list.append(item)
 
     payload["orderAmountList"] = merged_amount_list
+    # 合并开票设置 billingType 为 1
+    payload["billingType"] = 1
 
     if extra:
         payload.update(extra)
 
     return payload
+
+
+# 构建订单号为空请求参数
+
+
+def build_empty_order_id_payload(token_id: str) -> Dict[str, Any]:
+    """构建 orderAmountList 中 orderId 为空的 payload，用于测试空指针异常"""
+    payload = _load_invoice_payload()
+    payload["tokenId"] = token_id
+    payload["orderIds"] = [""]
+
+    order_amount_list = payload.get("orderAmountList")
+    if not isinstance(order_amount_list, list) or not order_amount_list:
+        raise ValueError("invoice_data.yaml 缺少 orderAmountList 配置")
+
+    # 将 orderAmountList 中的 orderId 设为空字符串
+    for item in order_amount_list:
+        item["orderId"] = ""
+
+    payload["orderAmountList"] = order_amount_list
+    return payload
+
+
+# 构建无订单开票请求参数
+
+
+def build_none_order_invoice_payload(
+        token_id: str,
+        *,
+        extra: Optional[Dict[str, Any]] = None,
+) -> Dict[str, Any]:
+    """构建无订单开票请求参数，使用 invoice_data.yaml 中的 noneorderInvoice 配置"""
+    payload = _load_invoice_payload(section="noneorderInvoice")
+    payload["tokenId"] = token_id
+
+    if extra:
+        payload.update(extra)
+
+    return payload
+
+
+# 解析开票接口响应
 
 
 def _parse_apply_invoice_response(resp: httpx.Response) -> Tuple[str, Dict[str, Any]]:
@@ -101,27 +167,41 @@ def _parse_apply_invoice_response(resp: httpx.Response) -> Tuple[str, Dict[str, 
     return str(invoice_id), response_json
 
 
-def mgr_apply_invoice_payload(
+# 执行开票请求（传入已构建的 payload）
+
+
+def execute_apply_invoice(
         client: httpx.Client,
         payload: Dict[str, Any],
         *,
         token_id: Optional[str] = None,
         return_response: bool = False,
-) -> Union[str, Tuple[str, Dict[str, Any]]]:
+        parse_response: bool = True,
+) -> Union[str, Tuple[str, Dict[str, Any]], httpx.Response]:
+    """执行开票请求，传入已构建好的 payload
+
+    Args:
+        parse_response: 是否解析响应提取 invoice_id，默认为 True
+                       异常场景测试时设为 False，返回原始 Response
+    """
     resp = safe_post(
         client,
         APPLY_INVOICE_ENDPOINT,
         json=payload,
         headers={"Authorization": f"Bearer {token_id}"},
     )
+
+    if not parse_response:
+        return resp
+
     invoice_id, response_json = _parse_apply_invoice_response(resp)
     if return_response:
         return invoice_id, response_json
-    return invoice_id
+        return invoice_id
 
 
-# 品牌端开票
-def mgr_apply_invoice(
+# 申请开票（一站式：构建参数 + 执行请求）
+def apply_invoice_for_order(
         client: httpx.Client,
         order_id: str,
         *,
@@ -129,10 +209,10 @@ def mgr_apply_invoice(
         extra: Optional[Dict[str, Any]] = None,
         return_response: bool = False,
 ) -> Union[str, Tuple[str, Dict[str, Any]]]:
-    token_id = token_id
+    """为单个订单申请开票，自动构建请求参数并执行"""
     payload = build_apply_invoice_payload(order_id, token_id, extra=extra)
 
-    return mgr_apply_invoice_payload(
+    return execute_apply_invoice(
         client,
         payload,
         token_id=token_id,
@@ -140,7 +220,7 @@ def mgr_apply_invoice(
     )
 
 
-# 查询开票状态
+# 封装查询开票状态接口
 def query_invoice_status(
         client: httpx.Client,
         invoice_id: str,
@@ -166,7 +246,8 @@ def query_invoice_status(
         last_response = response_json
         logger.info("开票详情响应（%s/%s）: %s", attempt, max_attempts, response_json)
 
-        data = last_response.get("data") if isinstance(last_response, dict) else None
+        data = last_response.get("data") if isinstance(
+            last_response, dict) else None
         last_status = data.get("status") if isinstance(data, dict) else None
 
         logger.info("开票状态=%s", last_status)
@@ -182,6 +263,9 @@ def query_invoice_status(
         f"开票状态在{max_attempts}次轮询后仍未成功: "
         f"invoice_id={invoice_id}, status={last_status}, response={last_response}"
     )
+
+
+# 封装发票状态刷新接口
 
 
 def refresh_invoice_status(
@@ -201,7 +285,7 @@ def refresh_invoice_status(
     return resp.json()
 
 
-# 红冲
+# 封装红冲接口
 def red_punch_invoice(
         client: httpx.Client,
         invoice_id: str,
@@ -217,4 +301,3 @@ def red_punch_invoice(
     )
     logger.info("红冲接口响应: %s", resp.json())
     return resp.json()
-

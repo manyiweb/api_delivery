@@ -6,7 +6,11 @@ import allure
 
 from config import config
 from utils.logger import logger
-from utils.db_helper import query_order_count, query_order_exist, query_order_status
+from utils.db_helper import (
+    query_order_count,
+    query_order_exist,
+    query_order_status,
+)
 
 
 def assert_order_created(

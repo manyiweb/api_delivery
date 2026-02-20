@@ -5,7 +5,10 @@ from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 import allure
 import httpx
 
-from api.order_api import pos_order_detail, pos_order_list
+from api.order_api import (
+    pos_order_detail,
+    pos_order_list,
+)
 from config import config
 from utils.logger import logger
 
@@ -94,7 +97,8 @@ def assert_order_persisted_via_list_detail(
     返回：匹配到的内部 orderId
     """
 
-    effective_timeout = timeout if timeout is not None else max(config.DEFAULT_TIMEOUT, 30)
+    effective_timeout = timeout if timeout is not None else max(
+        config.DEFAULT_TIMEOUT, 30)
     start = time.time()
     seen_order_ids: Set[str] = set()
 
@@ -131,7 +135,8 @@ def assert_order_persisted_via_list_detail(
                 )
                 last_detail_resp = detail_resp
 
-                matched, matched_key = _detail_matches_source_no(detail_resp, str(expected_source_no))
+                matched, matched_key = _detail_matches_source_no(
+                    detail_resp, str(expected_source_no))
                 if matched:
                     allure.attach(
                         str(expected_source_no),
@@ -180,6 +185,7 @@ def assert_order_persisted_via_list_detail(
         f"在 {effective_timeout}s 内未通过 list/detail 找到订单；expected_source_no={expected_source_no}"
     )
 
+
 def _extract_order_status(detail_resp_json: Dict[str, Any]) -> Optional[str]:
     candidate_keys = {
         "orderStatus",
@@ -211,7 +217,8 @@ def assert_order_status_via_detail(
     返回：实际订单状态（匹配后返回）
     """
 
-    effective_timeout = timeout if timeout is not None else max(config.DEFAULT_TIMEOUT, 30)
+    effective_timeout = timeout if timeout is not None else max(
+        config.DEFAULT_TIMEOUT, 30)
     start = time.time()
     last_detail_resp: Optional[Dict[str, Any]] = None
     last_status: Optional[str] = None

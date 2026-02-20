@@ -5,13 +5,19 @@ from typing import Optional, Tuple
 import allure
 import httpx
 
-from api.base import handle_response, safe_post
+from api.base import (
+    handle_response,
+    safe_post,
+)
 from api.mt_order_payload_builder import (
     build_mt_apply_refund_payload,
     build_mt_cancel_payload,
     build_mt_push_payload,
 )
-from utils.file_loader import get_data_file_path, load_yaml_data
+from utils.file_loader import (
+    get_data_file_path,
+    load_yaml_data,
+)
 from utils.logger import logger
 
 
@@ -45,13 +51,16 @@ def mt_push_order(client: httpx.Client, mt_order_id: Optional[str] = None) -> Tu
     """推单回调"""
     if os.getenv("ENV") == "uat":
         with allure.step("加载推单数据"):
-            mt_push_data = load_yaml_data(get_data_file_path("mt_delivery_data_uat.yaml"))
+            mt_push_data = load_yaml_data(
+                get_data_file_path("mt_delivery_data_uat.yaml"))
     else:
         with allure.step("加载推单数据"):
-            mt_push_data = load_yaml_data(get_data_file_path("mt_delivery_data.yaml"))
+            mt_push_data = load_yaml_data(
+                get_data_file_path("mt_delivery_data.yaml"))
 
     with allure.step("构建推单请求体"):
-        final_payload, mt_order_id = build_mt_push_payload(mt_push_data, mt_order_id)
+        final_payload, mt_order_id = build_mt_push_payload(
+            mt_push_data, mt_order_id)
         allure.attach(
             str(mt_order_id),
             name="外卖单号",
@@ -79,7 +88,8 @@ def mt_cancel_order(client: httpx.Client, mt_order_id: str) -> Optional[str]:
     """取消订单回调"""
     with allure.step("加载取消订单数据"):
         logger.info(f"取消订单美团单号: {mt_order_id}")
-        mt_cancel_data = load_yaml_data(get_data_file_path("mt_cancel_order.yaml"))
+        mt_cancel_data = load_yaml_data(
+            get_data_file_path("mt_cancel_order.yaml"))
 
     with allure.step("构建取消订单请求体"):
         final_payload = build_mt_cancel_payload(mt_cancel_data, mt_order_id)
@@ -109,10 +119,12 @@ def mt_refund_order(client: httpx.Client, mt_order_id: str) -> Optional[str]:
     """全额退款回调"""
     with allure.step("加载退款数据"):
         logger.info(f"美团退款订单号: {mt_order_id}")
-        mt_refund_data = load_yaml_data(get_data_file_path("mt_refund_order.yaml"))
+        mt_refund_data = load_yaml_data(
+            get_data_file_path("mt_refund_order.yaml"))
 
     with allure.step("构建退款请求体"):
-        final_payload = build_mt_apply_refund_payload(mt_refund_data, mt_order_id)
+        final_payload = build_mt_apply_refund_payload(
+            mt_refund_data, mt_order_id)
         logger.info(f"退款请求体: {final_payload}")
 
     with allure.step("发送退款回调"):

@@ -1,3 +1,10 @@
+# 清除购物车入参
+clearShoppingCart:
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+
 # 查询最近的美团订单列表入参
 orderList:
   orderField: "newOrder"
@@ -28,13 +35,15 @@ orderDetail:
   userId: "f57342198c3147178e5b3ffa63f97a65"
   companyId: "5ad586a8721e49518998aedef9fd3b5c"
 
+# 添加服务导购入参
 addServiceGuide:
   staffId: "f57342198c3147178e5b3ffa63f97a65"
   tokenId: ""
   userId: "f57342198c3147178e5b3ffa63f97a65"
   companyId: "5ad586a8721e49518998aedef9fd3b5c"
 
-createOrder:
+# 添加商品到购物车入参（默认商品：开票商品）
+addShoppingCartItem:
   specId: "c2fb5a6c41684b30b887fd21c235267d"
   quantity: 1
   couponCode: ""
@@ -42,13 +51,25 @@ createOrder:
   userId: "f57342198c3147178e5b3ffa63f97a65"
   companyId: "5ad586a8721e49518998aedef9fd3b5c"
 
-addOrder:
-  payType: "CashPay"
-  amountActuallyPaid: 2
+# 添加商品到购物车入参（草莓蛋糕 times1）
+addShoppingCartItemForDiscount:
+  specId: "c73d4eccd9ed424bbd2eb731a869af50"
+  quantity: 1
+  couponCode: ""
   tokenId: ""
   userId: "f57342198c3147178e5b3ffa63f97a65"
   companyId: "5ad586a8721e49518998aedef9fd3b5c"
 
+
+# 添加订单入参
+addOrder:
+  payType: "CashPay"
+  amountActuallyPaid: 
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+# 现金支付入参
 cashPay:
   orderType: "order"
   orderId: ""
@@ -62,6 +83,201 @@ cashPay:
     customizePayUseQty: 1
   benefitsPayParameter: null
   payAmount: 2
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+# 新增整单优惠-优惠金额入参
+updateShoppingcartCustomDiscountForAmount:
+  customDiscountType: 3  # 优惠类型：金额
+  discountVal: 10  # 优惠金额
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+# 新增整单优惠-优惠折扣入参
+updateShoppingcartCustomDiscountForRate:
+  customDiscountType: 3  # 优惠类型：折扣
+  discountVal: 8.8  # 优惠折扣
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+
+# 获取支付金额入参
+getSystemPayType:
+  code: "CashPay"
+  orderId: ""
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+# 更新购物车优惠计划入参-满折
+updateShopCartPromotionPlanForFullDiscount:
+  planId: "65f56aa4b7cc4624a249b4c6ce8881f6"
+  projectId: "2cf33f24dd2d499995055ffc398bcf0f"
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+# 更新购物车优惠计划入参-满增
+updateShopCartPromotionPlanForFullSend:
+  planId: "8e81d919c69749e78b2ca9d354fd973d"
+  projectId: "2cf33f24dd2d499995055ffc398bcf0f"
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+# 更新购物车优惠计划入参-满减
+updateShopCartPromotionPlanForFullReduction:
+  planId: "691ab3e530eb4ae6bd6d24572627fdad"
+  projectId: "beb93c25be5e49a085da1ffab3ac4bc3"
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+# 获取赠品列表入参
+getShoppingcartGiftList:
+  page: 1
+  size: 4
+  sword: ""
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+# 选择赠品入参
+selectShoppingcartGift: 
+  productList:
+  - specId: ""
+    quantity: 2
+    uniqueCodeSet: []
+    batchList: []
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+
+# 获取购物卡充值列表入参
+getCardCardOptions:
+  cardType: "ShoppingCard"
+  memberId: "3c2f4f64d6c042cdb36c6e71083f0c3d"
+  tokenId: ""
+
+# 选择购物卡充值入参
+GiveItem:
+  coId: ""
+  pageIndex: 1
+  pageSize: 6
+  tokenId: ""
+
+# 生成卡充值记录入参
+cardTopUp:
+  coId: ""
+  cardType: "ShoppingCard"
+  salePrice: 10
+  memberId: "3c2f4f64d6c042cdb36c6e71083f0c3d"
+  giveItem: []
+  giveItemId: ""
+  rechargeRemark: ""
+  staffId: "f57342198c3147178e5b3ffa63f97a65"
+  tokenId: "3875b6b2312349f6a7544fb46b9cabcf"
+
+# 查询购物卡充值记录入参
+queryCardTopUpRecord:
+  id: "3c2f4f64d6c042cdb36c6e71083f0c3d"
+  pageIndex: 1
+  pageSize: 3
+  searchBeans: []
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+# 购物卡退款入参
+cardRefund:
+  cardOrderId: ""
+  withdrawGiftFlag: true
+  reason: "自动化回归 "
+  rechargeAmount: 10
+  refundAmount: 10
+  transGiftAmount: 1
+  tokenId: ""
+
+# 添加会员入参
+addMember:
+  memberId: "3c2f4f64d6c042cdb36c6e71083f0c3d"
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+#积分支付入参
+integralPay:
+  orderType: "order"
+  orderId: ""
+  payType: "IntegralPay"
+  merchantNo: ""
+  remark: ""
+  useStoredValueCardDiscount: false
+  offlinePayParameter:
+    guestPayment: 31.6
+    changePayment: 0
+    customizePayUseQty: 1
+  payAmount: 31.6
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+# 购物卡支付入参
+McardPay:
+  orderType: "order"
+  orderId: ""
+  payType: "MCardPay"
+  merchantNo: ""
+  remark: ""
+  useStoredValueCardDiscount: false
+  offlinePayParameter:
+    guestPayment: 63.2
+    changePayment: 0
+    customizePayUseQty: 1
+  payAmount: 63.2
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+# 获取卡包列表入参
+getCardBag:
+  memberId: "3c2f4f64d6c042cdb36c6e71083f0c3d"
+  orderId: ""
+  itemIds: []
+  pageIndex: 1
+  pageSize: 3
+  status: 1
+  filterAvailable: true
+  type: 1
+  tokenId: ""
+
+# 实体卡计算接口入参
+shopCartEntityCardPreCalculate:
+  entityCardNo: ""
+  tokenId: ""
+  userId: "f57342198c3147178e5b3ffa63f97a65"
+  companyId: "5ad586a8721e49518998aedef9fd3b5c"
+
+# 实体卡支付接口入参
+entityCardPay:
+  orderType: "order"
+  orderId: ""
+  payType: "EntityCard"
+  merchantNo: ""
+  remark: ""
+  useTimes: 1
+  useStoredValueCardDiscount: false
+  offlinePayParameter:
+    guestPayment: 0
+    changePayment: 0
+    cardNo: ""
+    entityQrCode: ""
+    customizePayUseQty: 1
+  payAmount: 0
   tokenId: ""
   userId: "f57342198c3147178e5b3ffa63f97a65"
   companyId: "5ad586a8721e49518998aedef9fd3b5c"

@@ -8,8 +8,15 @@ from api.mt_order_callback import (
     mt_full_refund_callback,
     mt_push_order_callback,
 )
-from assertions.order_db_assert import assert_order_count, assert_order_created, assert_order_status
-from assertions.order_api_assert import assert_order_persisted_via_list_detail, assert_order_status_via_detail
+from assertions.order_db_assert import (
+    assert_order_count,
+    assert_order_created,
+    assert_order_status,
+)
+from assertions.order_api_assert import (
+    assert_order_persisted_via_list_detail,
+    assert_order_status_via_detail,
+)
 from utils.logger import logger
 
 
@@ -83,7 +90,7 @@ class TestMtPushOrder:
                 internal_order_id = assert_order_persisted_via_list_detail(
                     client,
                     token_id,
-                    str(mt_order_id ),
+                    str(mt_order_id),
                     timeout=60,
                 )
 
@@ -100,7 +107,8 @@ class TestMtPushOrder:
 
         if os.getenv("ENV") == "fat":
             with allure.step("校验订单状态"):
-                assert_order_status(db_conn, str(mt_order_id), expected_status="R4")
+                assert_order_status(db_conn, str(
+                    mt_order_id), expected_status="R4")
                 cleanup_order.append(str(mt_order_id))
                 logger.info("取消订单成功")
         else:
@@ -159,7 +167,8 @@ class TestMtPushOrder:
 
         if os.getenv("ENV") == "fat":
             with allure.step("校验订单状态"):
-                assert_order_status(db_conn, str(mt_order_id), expected_status="R4")
+                assert_order_status(db_conn, str(
+                    mt_order_id), expected_status="R4")
                 cleanup_order.append(str(mt_order_id))
                 logger.info("整单退款成功")
         else:
@@ -192,7 +201,8 @@ class TestMtPushOrder:
             assert_order_created(db_conn, str(order_id), timeout=10)
 
         with allure.step("相同订单号的第二次推单"):
-            result2, duplicate_order_id = mt_push_order_callback(client, order_id)
+            result2, duplicate_order_id = mt_push_order_callback(
+                client, order_id)
             logger.info(
                 f"第二次推单结果: {result2}, 订单号: {duplicate_order_id}"
             )
@@ -254,7 +264,8 @@ class TestMtPushOrder:
 
         with allure.step("校验第一次取消后订单状态为 R4"):
             if os.getenv("ENV") == "fat":
-                assert_order_status(db_conn, str(mt_order_id), expected_status="R4")
+                assert_order_status(db_conn, str(
+                    mt_order_id), expected_status="R4")
             else:
                 assert internal_order_id is not None
                 assert token_id is not None
@@ -330,7 +341,8 @@ class TestMtPushOrder:
 
         with allure.step("校验第一次退款后订单状态为 R4"):
             if os.getenv("ENV") == "fat":
-                assert_order_status(db_conn, str(mt_order_id), expected_status="R4")
+                assert_order_status(db_conn, str(
+                    mt_order_id), expected_status="R4")
             else:
                 assert internal_order_id is not None
                 assert token_id is not None
@@ -348,7 +360,8 @@ class TestMtPushOrder:
 
         with allure.step("校验第二次退款后订单状态仍为 R4"):
             if os.getenv("ENV") == "fat":
-                assert_order_status(db_conn, str(mt_order_id), expected_status="R4")
+                assert_order_status(db_conn, str(
+                    mt_order_id), expected_status="R4")
             else:
                 assert internal_order_id is not None
                 assert token_id is not None
@@ -406,7 +419,8 @@ class TestMtPushOrder:
 
         with allure.step("校验取消后订单状态为 R4"):
             if os.getenv("ENV") == "fat":
-                assert_order_status(db_conn, str(mt_order_id), expected_status="R4")
+                assert_order_status(db_conn, str(
+                    mt_order_id), expected_status="R4")
             else:
                 assert internal_order_id is not None
                 assert token_id is not None
@@ -424,7 +438,8 @@ class TestMtPushOrder:
 
         with allure.step("校验退款后订单状态仍为 R4"):
             if os.getenv("ENV") == "fat":
-                assert_order_status(db_conn, str(mt_order_id), expected_status="R4")
+                assert_order_status(db_conn, str(
+                    mt_order_id), expected_status="R4")
             else:
                 assert internal_order_id is not None
                 assert token_id is not None
