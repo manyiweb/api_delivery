@@ -19,7 +19,8 @@ from api.Invoice_api import (
 from api.create_order_cash import (
     add_service_guide,
     add_item_shoppingcart,
-    add_order_cash,
+    add_order,
+    get_system_pay_type,
     cash_pay,
 )
 from assertions.order_invoice_assert import (
@@ -54,10 +55,12 @@ def _create_invoice_order(client: httpx.Client, token_id: str, index: int) -> st
             add_service_guide(client, token_id)
         with allure.step("添加购物车商品"):
             add_item_shoppingcart(client, token_id)
+        with allure.step("获取支付金额"):
+            actual_pay_amount = get_system_pay_type(client, token_id)[0]
         with allure.step("创建现金订单"):
-            order_id = add_order_cash(client, token_id)
+            resp, order_id = add_order(client, token_id, actual_pay_amount, section="cashPay")
         with allure.step("现金支付"):
-            cash_pay(client, token_id, order_id)
+            cash_pay(client, token_id, order_id, actual_pay_amount)
         logger.info("第%s笔订单创建成功，订单号=%s", index, order_id)
         _attach_text(f"第{index}笔订单号", order_id)
         return order_id

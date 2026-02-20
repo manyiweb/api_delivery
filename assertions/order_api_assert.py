@@ -76,6 +76,13 @@ def _detail_matches_source_no(detail_resp_json: Dict[str, Any], expected_source_
     return False, None
 
 
+def _check_token_expired(resp: Dict[str, Any]) -> bool:
+    """检查响应是否表示 token 过期"""
+    code = resp.get("code") or resp.get("ResultInt")
+    msg = resp.get("msg") or resp.get("ResultString") or ""
+    return str(code) == "9999" or "登录已失效" in msg or "重登录" in msg
+
+
 def assert_order_persisted_via_list_detail(
     client: httpx.Client,
     token_id: str,
@@ -104,6 +111,8 @@ def assert_order_persisted_via_list_detail(
 
     last_list_resp: Optional[Dict[str, Any]] = None
     last_detail_resp: Optional[Dict[str, Any]] = None
+    
+    logger.info(f"开始验证订单落库，期望外卖单号: {expected_source_no}，超时: {effective_timeout}s")
 
     while time.time() - start < effective_timeout:
         for page_index in range(1, max_pages + 1):
@@ -116,6 +125,13 @@ def assert_order_persisted_via_list_detail(
             )
             last_list_resp = list_resp
             logger.info(f"订单列表第{page_index}页，响应={list_resp}")
+            
+            # 检查 token 是否过期
+            if _check_token_expired(list_resp):
+                raise AssertionError(
+                    f"Token 已过期，请重新获取。响应: {list_resp}"
+                )
+            
             order_ids = _extract_order_ids(list_resp)
             logger.info(
                 f"订单列表第{page_index}页，候选={len(order_ids)}，已检查={len(seen_order_ids)}"

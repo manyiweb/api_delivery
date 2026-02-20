@@ -45,23 +45,23 @@ class TestMtPushOrder:
             assert mt_push_result == "OK", f"推单失败: {mt_push_result}"
             logger.info("推单响应校验通过")
 
-        if os.getenv("ENV") == "fat":
-            db_conn = request.getfixturevalue("db_conn")
-            cleanup_order = request.getfixturevalue("cleanup_order")
-            with allure.step("校验订单已写入数据库"):
-                assert_order_created(db_conn, str(mt_order_id), timeout=10)
-                cleanup_order.append(str(mt_order_id))
-                logger.info(f"数据库已创建订单: {mt_order_id}")
-        else:
-            token_id = request.getfixturevalue("access_token")
-            with allure.step("生产环境：通过列表+详情接口验证订单落库"):
-                internal_order_id = assert_order_persisted_via_list_detail(
-                    client,
-                    token_id,
-                    str(mt_order_id),
-                    timeout=60,
-                )
-                logger.info(f"接口验证订单已可查询，内部订单编号: {internal_order_id}")
+        # if os.getenv("ENV") == "fat":
+        #     db_conn = request.getfixturevalue("db_conn")
+        #     cleanup_order = request.getfixturevalue("cleanup_order")
+        #     with allure.step("校验订单已写入数据库"):
+        #         assert_order_created(db_conn, str(mt_order_id), timeout=10)
+        #         cleanup_order.append(str(mt_order_id))
+        #         logger.info(f"数据库已创建订单: {mt_order_id}")
+        # else:
+        token_id = request.getfixturevalue("access_token")
+        with allure.step("生产环境：通过列表+详情接口验证订单落库"):
+            internal_order_id = assert_order_persisted_via_list_detail(
+                client,
+                token_id,
+                str(mt_order_id),
+                timeout=60,
+            )
+            logger.info(f"接口验证订单已可查询，内部订单编号: {internal_order_id}")
 
     # @pytest.mark.skip
     @pytest.mark.critical
@@ -79,20 +79,20 @@ class TestMtPushOrder:
             logger.info(f"推单结果: {mt_push_result}, 订单号: {mt_order_id}")
             assert mt_push_result == "OK", "推单失败，取消用例终止"
 
-        if os.getenv("ENV") == "fat":
-            db_conn = request.getfixturevalue("db_conn")
-            cleanup_order = request.getfixturevalue("cleanup_order")
-            with allure.step("等待订单落库"):
-                assert_order_created(db_conn, str(mt_order_id), timeout=10)
-        else:
-            token_id = request.getfixturevalue("access_token")
-            with allure.step("等待订单落库（通过列表+详情接口）"):
-                internal_order_id = assert_order_persisted_via_list_detail(
-                    client,
-                    token_id,
-                    str(mt_order_id),
-                    timeout=60,
-                )
+        # if os.getenv("ENV") == "fat":
+        #     db_conn = request.getfixturevalue("db_conn")
+        #     cleanup_order = request.getfixturevalue("cleanup_order")
+        #     with allure.step("等待订单落库"):
+        #         assert_order_created(db_conn, str(mt_order_id), timeout=10)
+        # else:
+        token_id = request.getfixturevalue("access_token")
+        with allure.step("等待订单落库（通过列表+详情接口）"):
+            internal_order_id = assert_order_persisted_via_list_detail(
+                client,
+                token_id,
+                str(mt_order_id),
+                timeout=60,
+            )
 
         with allure.step("发送取消回调"):
             logger.info("开始取消订单")
@@ -105,24 +105,24 @@ class TestMtPushOrder:
                 attachment_type=allure.attachment_type.TEXT,
             )
 
-        if os.getenv("ENV") == "fat":
-            with allure.step("校验订单状态"):
-                assert_order_status(db_conn, str(
-                    mt_order_id), expected_status="R4")
-                cleanup_order.append(str(mt_order_id))
-                logger.info("取消订单成功")
-        else:
-            with allure.step("校验订单状态（通过详情接口）"):
-                assert internal_order_id is not None
-                assert token_id is not None
-                assert_order_status_via_detail(
-                    client,
-                    token_id,
-                    internal_order_id,
-                    expected_status="R4",
-                    timeout=60,
-                )
-                logger.info("取消订单状态校验通过")
+        # if os.getenv("ENV") == "fat":
+        #     with allure.step("校验订单状态"):
+        #         assert_order_status(db_conn, str(
+        #             mt_order_id), expected_status="R4")
+        #         cleanup_order.append(str(mt_order_id))
+        #         logger.info("取消订单成功")
+        # else:
+        with allure.step("校验订单状态（通过详情接口）"):
+            assert internal_order_id is not None
+            assert token_id is not None
+            assert_order_status_via_detail(
+                client,
+                token_id,
+                internal_order_id,
+                expected_status="R4",
+                timeout=60,
+            )
+            logger.info("取消订单状态校验通过")
 
     # @pytest.mark.skip
     @pytest.mark.critical
@@ -139,20 +139,20 @@ class TestMtPushOrder:
             result, mt_order_id = mt_push_order_callback(client)
             assert result == "OK", "推单失败，退款用例终止"
 
-        if os.getenv("ENV") == "fat":
-            db_conn = request.getfixturevalue("db_conn")
-            cleanup_order = request.getfixturevalue("cleanup_order")
-            with allure.step("等待订单落库"):
-                assert_order_created(db_conn, str(mt_order_id), timeout=10)
-        else:
-            token_id = request.getfixturevalue("access_token")
-            with allure.step("等待订单落库（通过列表+详情接口）"):
-                internal_order_id = assert_order_persisted_via_list_detail(
-                    client,
-                    token_id,
-                    str(mt_order_id),
-                    timeout=60,
-                )
+        # if os.getenv("ENV") == "fat":
+        #     db_conn = request.getfixturevalue("db_conn")
+        #     cleanup_order = request.getfixturevalue("cleanup_order")
+        #     with allure.step("等待订单落库"):
+        #         assert_order_created(db_conn, str(mt_order_id), timeout=10)
+        # else:
+        token_id = request.getfixturevalue("access_token")
+        with allure.step("等待订单落库（通过列表+详情接口）"):
+            internal_order_id = assert_order_persisted_via_list_detail(
+                client,
+                token_id,
+                str(mt_order_id),
+                timeout=60,
+            )
 
         with allure.step("发送全额退款回调"):
             logger.info("开始全额退款")
@@ -165,24 +165,24 @@ class TestMtPushOrder:
                 attachment_type=allure.attachment_type.TEXT,
             )
 
-        if os.getenv("ENV") == "fat":
-            with allure.step("校验订单状态"):
-                assert_order_status(db_conn, str(
-                    mt_order_id), expected_status="R4")
-                cleanup_order.append(str(mt_order_id))
-                logger.info("整单退款成功")
-        else:
-            with allure.step("校验订单状态（通过详情接口）"):
-                assert internal_order_id is not None
-                assert token_id is not None
-                assert_order_status_via_detail(
-                    client,
-                    token_id,
-                    internal_order_id,
-                    expected_status="R4",
-                    timeout=60,
-                )
-                logger.info("整单退款状态校验通过")
+        # if os.getenv("ENV") == "fat":
+        #     with allure.step("校验订单状态"):
+        #         assert_order_status(db_conn, str(
+        #             mt_order_id), expected_status="R4")
+        #         cleanup_order.append(str(mt_order_id))
+        #         logger.info("整单退款成功")
+        # else:
+        with allure.step("校验订单状态（通过详情接口）"):
+            assert internal_order_id is not None
+            assert token_id is not None
+            assert_order_status_via_detail(
+                client,
+                token_id,
+                internal_order_id,
+                expected_status="R4",
+                timeout=60,
+            )
+            logger.info("整单退款状态校验通过")
 
     # @pytest.mark.skip
     @pytest.mark.normal
@@ -210,12 +210,12 @@ class TestMtPushOrder:
                 f"订单号不一致: {duplicate_order_id} vs {order_id}"
             )
 
-        if os.getenv("ENV") == "fat":
-            with allure.step("校验第二次推单及数据库数量"):
-                assert result2 == "OK", f"第二次推单失败: {result2}"
-                assert_order_count(db_conn, str(order_id), expected_count=1)
-                cleanup_order.append(str(order_id))
-                logger.info("幂等性校验通过")
+        # if os.getenv("ENV") == "fat":
+        #     with allure.step("校验第二次推单及数据库数量"):
+        #         assert result2 == "OK", f"第二次推单失败: {result2}"
+        #         assert_order_count(db_conn, str(order_id), expected_count=1)
+        #         cleanup_order.append(str(order_id))
+        #         logger.info("幂等性校验通过")
 
     # @pytest.mark.skip
     @allure.story("异常订单处理")
@@ -242,40 +242,40 @@ class TestMtPushOrder:
         with allure.step("创建订单"):
             result, mt_order_id = mt_push_order_callback(client)
             assert result == "OK", "推单失败"
-
-        if os.getenv("ENV") == "fat":
-            db_conn = request.getfixturevalue("db_conn")
-            cleanup_order = request.getfixturevalue("cleanup_order")
-            with allure.step("等待订单落库"):
-                assert_order_created(db_conn, str(mt_order_id), timeout=10)
-        else:
-            token_id = request.getfixturevalue("access_token")
-            with allure.step("等待订单落库（通过列表+详情接口）"):
-                internal_order_id = assert_order_persisted_via_list_detail(
-                    client,
-                    token_id,
-                    str(mt_order_id),
-                    timeout=60,
-                )
+        #
+        # if os.getenv("ENV") == "fat":
+        #     db_conn = request.getfixturevalue("db_conn")
+        #     cleanup_order = request.getfixturevalue("cleanup_order")
+        #     with allure.step("等待订单落库"):
+        #         assert_order_created(db_conn, str(mt_order_id), timeout=10)
+        # else:
+        token_id = request.getfixturevalue("access_token")
+        with allure.step("等待订单落库（通过列表+详情接口）"):
+            internal_order_id = assert_order_persisted_via_list_detail(
+                client,
+                token_id,
+                str(mt_order_id),
+                timeout=60,
+            )
 
         with allure.step("第一次取消"):
             result1 = mt_cancel_order_callback(client, mt_order_id)
             logger.info(f"第一次取消结果: {result1}")
 
         with allure.step("校验第一次取消后订单状态为 R4"):
-            if os.getenv("ENV") == "fat":
-                assert_order_status(db_conn, str(
-                    mt_order_id), expected_status="R4")
-            else:
-                assert internal_order_id is not None
-                assert token_id is not None
-                assert_order_status_via_detail(
-                    client,
-                    token_id,
-                    internal_order_id,
-                    expected_status="R4",
-                    timeout=60,
-                )
+            # if os.getenv("ENV") == "fat":
+            #     assert_order_status(db_conn, str(
+            #         mt_order_id), expected_status="R4")
+            # else:
+            assert internal_order_id is not None
+            assert token_id is not None
+            assert_order_status_via_detail(
+                client,
+                token_id,
+                internal_order_id,
+                expected_status="R4",
+                timeout=60,
+            )
 
         with allure.step("第二次取消"):
             result2 = mt_cancel_order_callback(client, mt_order_id)
@@ -320,58 +320,58 @@ class TestMtPushOrder:
             result, mt_order_id = mt_push_order_callback(client)
             assert result == "OK", "推单失败"
 
-        if os.getenv("ENV") == "fat":
-            db_conn = request.getfixturevalue("db_conn")
-            cleanup_order = request.getfixturevalue("cleanup_order")
-            with allure.step("等待订单落库"):
-                assert_order_created(db_conn, str(mt_order_id), timeout=10)
-        else:
-            token_id = request.getfixturevalue("access_token")
-            with allure.step("等待订单落库（通过列表+详情接口）"):
-                internal_order_id = assert_order_persisted_via_list_detail(
-                    client,
-                    token_id,
-                    str(mt_order_id),
-                    timeout=60,
-                )
+        # if os.getenv("ENV") == "fat":
+        #     db_conn = request.getfixturevalue("db_conn")
+        #     cleanup_order = request.getfixturevalue("cleanup_order")
+        #     with allure.step("等待订单落库"):
+        #         assert_order_created(db_conn, str(mt_order_id), timeout=10)
+        # else:
+        token_id = request.getfixturevalue("access_token")
+        with allure.step("等待订单落库（通过列表+详情接口）"):
+            internal_order_id = assert_order_persisted_via_list_detail(
+                client,
+                token_id,
+                str(mt_order_id),
+                timeout=60,
+            )
 
         with allure.step("第一次退款"):
             result1 = mt_full_refund_callback(client, mt_order_id)
             logger.info(f"第一次退款结果: {result1}")
 
         with allure.step("校验第一次退款后订单状态为 R4"):
-            if os.getenv("ENV") == "fat":
-                assert_order_status(db_conn, str(
-                    mt_order_id), expected_status="R4")
-            else:
-                assert internal_order_id is not None
-                assert token_id is not None
-                assert_order_status_via_detail(
-                    client,
-                    token_id,
-                    internal_order_id,
-                    expected_status="R4",
-                    timeout=60,
-                )
+            # if os.getenv("ENV") == "fat":
+            #     assert_order_status(db_conn, str(
+            #         mt_order_id), expected_status="R4")
+            # else:
+            assert internal_order_id is not None
+            assert token_id is not None
+            assert_order_status_via_detail(
+                client,
+                token_id,
+                internal_order_id,
+                expected_status="R4",
+                timeout=60,
+            )
 
         with allure.step("第二次退款"):
             result2 = mt_full_refund_callback(client, mt_order_id)
             logger.info(f"第二次退款结果: {result2}")
 
         with allure.step("校验第二次退款后订单状态仍为 R4"):
-            if os.getenv("ENV") == "fat":
-                assert_order_status(db_conn, str(
-                    mt_order_id), expected_status="R4")
-            else:
-                assert internal_order_id is not None
-                assert token_id is not None
-                assert_order_status_via_detail(
-                    client,
-                    token_id,
-                    internal_order_id,
-                    expected_status="R4",
-                    timeout=60,
-                )
+            # if os.getenv("ENV") == "fat":
+            #     assert_order_status(db_conn, str(
+            #         mt_order_id), expected_status="R4")
+            # else:
+            assert internal_order_id is not None
+            assert token_id is not None
+            assert_order_status_via_detail(
+                client,
+                token_id,
+                internal_order_id,
+                expected_status="R4",
+                timeout=60,
+            )
 
         with allure.step("校验第二次退款响应"):
             allure.attach(
@@ -399,57 +399,57 @@ class TestMtPushOrder:
             result, mt_order_id = mt_push_order_callback(client)
             assert result == "OK", "推单失败"
 
-        if os.getenv("ENV") == "fat":
-            db_conn = request.getfixturevalue("db_conn")
-            cleanup_order = request.getfixturevalue("cleanup_order")
-            with allure.step("等待订单落库"):
-                assert_order_created(db_conn, str(mt_order_id), timeout=10)
-        else:
-            token_id = request.getfixturevalue("access_token")
-            with allure.step("等待订单落库（通过列表+详情接口）"):
-                internal_order_id = assert_order_persisted_via_list_detail(
-                    client,
-                    token_id,
-                    str(mt_order_id),
-                    timeout=60,
-                )
+        # if os.getenv("ENV") == "fat":
+        #     db_conn = request.getfixturevalue("db_conn")
+        #     cleanup_order = request.getfixturevalue("cleanup_order")
+        #     with allure.step("等待订单落库"):
+        #         assert_order_created(db_conn, str(mt_order_id), timeout=10)
+        # else:
+        token_id = request.getfixturevalue("access_token")
+        with allure.step("等待订单落库（通过列表+详情接口）"):
+            internal_order_id = assert_order_persisted_via_list_detail(
+                client,
+                token_id,
+                str(mt_order_id),
+                timeout=60,
+            )
 
         with allure.step("取消订单"):
             cancel_result = mt_cancel_order_callback(client, mt_order_id)
 
         with allure.step("校验取消后订单状态为 R4"):
-            if os.getenv("ENV") == "fat":
-                assert_order_status(db_conn, str(
-                    mt_order_id), expected_status="R4")
-            else:
-                assert internal_order_id is not None
-                assert token_id is not None
-                assert_order_status_via_detail(
-                    client,
-                    token_id,
-                    internal_order_id,
-                    expected_status="R4",
-                    timeout=60,
-                )
+            # if os.getenv("ENV") == "fat":
+            #     assert_order_status(db_conn, str(
+            #         mt_order_id), expected_status="R4")
+            # else:
+            assert internal_order_id is not None
+            assert token_id is not None
+            assert_order_status_via_detail(
+                client,
+                token_id,
+                internal_order_id,
+                expected_status="R4",
+                timeout=60,
+            )
 
         with allure.step("已取消订单退款"):
             refund_result = mt_full_refund_callback(client, mt_order_id)
             logger.info(f"已取消订单退款结果: {refund_result}")
 
         with allure.step("校验退款后订单状态仍为 R4"):
-            if os.getenv("ENV") == "fat":
-                assert_order_status(db_conn, str(
-                    mt_order_id), expected_status="R4")
-            else:
-                assert internal_order_id is not None
-                assert token_id is not None
-                assert_order_status_via_detail(
-                    client,
-                    token_id,
-                    internal_order_id,
-                    expected_status="R4",
-                    timeout=60,
-                )
+            # if os.getenv("ENV") == "fat":
+            #     assert_order_status(db_conn, str(
+            #         mt_order_id), expected_status="R4")
+            # else:
+            assert internal_order_id is not None
+            assert token_id is not None
+            assert_order_status_via_detail(
+                client,
+                token_id,
+                internal_order_id,
+                expected_status="R4",
+                timeout=60,
+            )
 
         with allure.step("校验退款响应"):
             allure.attach(

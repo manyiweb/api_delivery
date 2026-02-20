@@ -3,7 +3,6 @@ from typing import Any, Dict, Optional
 import httpx
 
 from api.base import safe_post
-from conftest import access_token
 from utils.file_loader import (
     load_yaml_data,
     get_data_file_path,

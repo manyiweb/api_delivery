@@ -28,7 +28,11 @@ def _post_and_extract(
     attach_name: str,
     order_id: Optional[str] = None,
 ) -> Optional[str]:
+    # 调试：打印请求将使用的格式
+    logger.info(f"发送表单请求到 {endpoint}, payload keys: {list(payload.keys())}")
     response = safe_post(client, endpoint, data=payload)
+    # 调试：打印实际请求头
+    logger.info(f"请求 Content-Type: {response.request.headers.get('content-type', 'N/A')}")
     success, response_json = handle_response(response, order_id)
 
     if response_json is not None:
@@ -69,6 +73,8 @@ def mt_push_order(client: httpx.Client, mt_order_id: Optional[str] = None) -> Tu
         logger.info(f"推单请求体: {final_payload}")
 
     with allure.step("发送推单回调"):
+        # 添加调试日志：打印实际发送的 payload
+        logger.info(f"推单 payload 关键参数: developerId={final_payload.get('developerId')}, ePoiId={final_payload.get('ePoiId')}, sign长度={len(final_payload.get('sign', ''))}")
         result = _post_and_extract(
             client,
             "/dock/mt/v2/order/callback",
@@ -76,6 +82,7 @@ def mt_push_order(client: httpx.Client, mt_order_id: Optional[str] = None) -> Tu
             attach_name="推单响应",
             order_id=str(mt_order_id),
         )
+        logger.info(f"推单接口返回: {result}")
         return result, mt_order_id
 
 
