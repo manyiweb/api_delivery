@@ -30,6 +30,7 @@ class TestMtPushOrder:
     @allure.title("美团推单回调成功后，系统生成订单并入库")
     @allure.severity(allure.severity_level.CRITICAL)
     def test_mt_push_order(self, client, request):
+        logger.info(f"当前请求 BASE_URL: {client.base_url}")
         """推单应返回 OK 并创建数据库记录"""
         with allure.step("发送推单回调"):
             logger.info("开始推单")

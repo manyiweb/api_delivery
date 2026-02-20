@@ -13,6 +13,8 @@ pipeline {
         // 当前环境
         ENV = "${params.ENV}"
 
+        BASE_URL = "http://fat-pos.reabam.com:60030/api"
+        UAT_URL = "https://pos.reabam.com/api"
         // =========================
         // FAT 环境变量
         // =========================
@@ -65,6 +67,7 @@ pipeline {
                 D:\\python\\python.exe -m pip install -r requirements.txt
                 pytest -v --junitxml=report.xml
                 '''
+                echo ENV=%ENV%
             }
         }
     }
