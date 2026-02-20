@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        DEFAULT_TIMEOUT = "10"
+        WECHAT_WEBHOOK = ""
+    }
+
     parameters {
         choice(name: 'ENV', choices: ['fat', 'uat'], description: '选择运行环境')
     }

@@ -28,7 +28,7 @@ class Config:
 
     # 通知设置
     WECHAT_WEBHOOK = os.getenv(
-        "WECHAT_WEBHOOK"
+        "WECHAT_WEBHOOK",""
     )
     print("WECHAT_WEBHOOK", WECHAT_WEBHOOK)
 
@@ -38,7 +38,7 @@ class Config:
     SIGN = os.getenv("SIGN")
 
     # 测试设置
-    DEFAULT_TIMEOUT = int(os.getenv("DEFAULT_TIMEOUT"))
+    DEFAULT_TIMEOUT = int(os.getenv("DEFAULT_TIMEOUT"),10)
     RETRY_TIMES = int(os.getenv("RETRY_TIMES"))
     RETRY_INTERVAL = int(os.getenv("RETRY_INTERVAL"))
 
