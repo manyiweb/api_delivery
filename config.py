@@ -13,38 +13,35 @@ class Config:
     """全局配置"""
 
     # 接口设置
-    BASE_URL = os.getenv("BASE_URL")
-    UAT_URL = os.getenv("UAT_URL")
+    BASE_URL = os.getenv("BASE_URL", "http://localhost:8080")
+    UAT_URL = os.getenv("UAT_URL", "http://localhost:8080")
 
     # 数据库设置
     DB_CONFIG: Dict[str, Any] = {
-        "host": os.getenv("DB_HOST"),
-        "port": int(os.getenv("DB_PORT", 3306)),
-        "user": os.getenv("DB_USER"),
-        "password": os.getenv("DB_PASSWORD"),
-        "database": os.getenv("DB_NAME"),
+        "host": os.getenv("DB_HOST", "localhost"),
+        "port": int(os.getenv("DB_PORT", "3306")),
+        "user": os.getenv("DB_USER", "root"),
+        "password": os.getenv("DB_PASSWORD", ""),
+        "database": os.getenv("DB_NAME", "test"),
         "charset": "utf8mb4",
     }
 
     # 通知设置
-    WECHAT_WEBHOOK = os.getenv(
-        "WECHAT_WEBHOOK",""
-    )
-    print("WECHAT_WEBHOOK", WECHAT_WEBHOOK)
+    WECHAT_WEBHOOK = os.getenv("WECHAT_WEBHOOK", "")
 
     # 业务设置
-    DEVELOPER_ID = os.getenv("DEVELOPER_ID")
-    E_POI_ID = os.getenv("E_POI_ID")
-    SIGN = os.getenv("SIGN")
+    DEVELOPER_ID = os.getenv("DEVELOPER_ID", "")
+    E_POI_ID = os.getenv("E_POI_ID", "")
+    SIGN = os.getenv("SIGN", "")
 
     # 测试设置
-    DEFAULT_TIMEOUT = int(os.getenv("DEFAULT_TIMEOUT"),10)
-    RETRY_TIMES = int(os.getenv("RETRY_TIMES"))
-    RETRY_INTERVAL = int(os.getenv("RETRY_INTERVAL"))
+    DEFAULT_TIMEOUT = int(os.getenv("DEFAULT_TIMEOUT", "10"))
+    RETRY_TIMES = int(os.getenv("RETRY_TIMES", "3"))
+    RETRY_INTERVAL = int(os.getenv("RETRY_INTERVAL", "1"))
 
     # 日志设置
-    LOG_LEVEL = os.getenv("LOG_LEVEL")
-    LOG_DIR = os.getenv("LOG_DIR")
+    LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+    LOG_DIR = os.getenv("LOG_DIR", "logs")
 
     # 测试报告设置
     ALLURE_RESULTS_DIR = "reports/allure-results"
