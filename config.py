@@ -12,6 +12,7 @@ except ImportError:
 class Config:
     """全局配置"""
 
+    ENV = os.getenv("ENV", "fat")
     # 接口设置
     BASE_URL = os.getenv("BASE_URL", "http://localhost:8080")
     UAT_URL = os.getenv("UAT_URL", "http://localhost:8080")
