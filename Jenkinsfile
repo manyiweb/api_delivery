@@ -63,7 +63,7 @@ pipeline {
                 bat '''
                 echo ===== ENV CHECK =====
                 echo ENV=%ENV%
-                echo BASE_URL=%BASE_URL%
+                echo BASE_URL=%BASE_URL_FAT%
                 echo UAT_URL=%UAT_URL%
 
                 set PYTHONUTF8=1
