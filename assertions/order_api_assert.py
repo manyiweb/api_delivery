@@ -10,6 +10,7 @@ from api.order_api import (
     pos_order_list,
 )
 from config import config
+from utils.async_helper import batch_order_details
 from utils.logger import logger
 
 
@@ -111,8 +112,9 @@ def assert_order_persisted_via_list_detail(
 
     last_list_resp: Optional[Dict[str, Any]] = None
     last_detail_resp: Optional[Dict[str, Any]] = None
-    
-    logger.info(f"开始验证订单落库，期望外卖单号: {expected_source_no}，超时: {effective_timeout}s")
+
+    logger.info(
+        f"开始验证订单落库，期望外卖单号: {expected_source_no}，超时: {effective_timeout}s")
 
     while time.time() - start < effective_timeout:
         for page_index in range(1, max_pages + 1):
@@ -125,31 +127,37 @@ def assert_order_persisted_via_list_detail(
             )
             last_list_resp = list_resp
             logger.info(f"订单列表第{page_index}页，响应={list_resp}")
-            
+
             # 检查 token 是否过期
             if _check_token_expired(list_resp):
                 raise AssertionError(
                     f"Token 已过期，请重新获取。响应: {list_resp}"
                 )
-            
+
             order_ids = _extract_order_ids(list_resp)
+            # 过滤已检查的订单
+            new_order_ids = [
+                oid for oid in order_ids if oid not in seen_order_ids]
             logger.info(
-                f"订单列表第{page_index}页，候选={len(order_ids)}，已检查={len(seen_order_ids)}"
+                f"订单列表第{page_index}页，候选={len(order_ids)}，新增={len(new_order_ids)}，已检查={len(seen_order_ids)}"
             )
 
-            for internal_order_id in order_ids:
-                if internal_order_id in seen_order_ids:
-                    continue
-                seen_order_ids.add(internal_order_id)
+            if not new_order_ids:
+                continue
 
-                detail_resp = pos_order_detail(
-                    client,
-                    token_id,
-                    internal_order_id,
-                    user_id=user_id,
-                    company_id=company_id,
-                )
+            # 【并发优化】批量获取订单详情
+            detail_results = batch_order_details(
+                token_id, new_order_ids, max_concurrency=10)
+
+            for internal_order_id, detail_resp in zip(new_order_ids, detail_results):
+                seen_order_ids.add(internal_order_id)
                 last_detail_resp = detail_resp
+
+                # 跳过异步请求失败的结果
+                if "error" in detail_resp:
+                    logger.warning(
+                        f"订单详情获取失败: {internal_order_id}, 错误: {detail_resp.get('error')}")
+                    continue
 
                 matched, matched_key = _detail_matches_source_no(
                     detail_resp, str(expected_source_no))

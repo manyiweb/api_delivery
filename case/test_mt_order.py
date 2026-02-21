@@ -305,8 +305,8 @@ class TestMtPushOrder:
 
         assert result1 == result2
 
-        if os.getenv("ENV") == "fat":
-            cleanup_order.append(str(mt_order_id))
+        # if os.getenv("ENV") == "fat":
+        #     cleanup_order.append(str(mt_order_id))
 
     # @pytest.mark.skip
     @allure.story("重复退款")
@@ -383,8 +383,8 @@ class TestMtPushOrder:
 
         assert result1 == result2
 
-        if os.getenv("ENV") == "fat":
-            cleanup_order.append(str(mt_order_id))
+        # if os.getenv("ENV") == "fat":
+        #     cleanup_order.append(str(mt_order_id))
 
     # @pytest.mark.skip
     @allure.story("订单状态验证")
@@ -460,5 +460,5 @@ class TestMtPushOrder:
 
         assert cancel_result == refund_result
 
-        if os.getenv("ENV") == "fat":
-            cleanup_order.append(str(mt_order_id))
+        # if os.getenv("ENV") == "fat":
+        #     cleanup_order.append(str(mt_order_id))

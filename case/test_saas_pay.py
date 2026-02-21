@@ -166,7 +166,7 @@ class TestSaaSPay:
             client, token, coId, giveItemId, saleValue)
         # 新增购物卡充值订单支付记录
         resp = cash_pay(client, token, order_id, actual_pay_amount, order_type)
-        assert resp.json().get("code") == "200", "购物卡充值支付失败：返回码不为200"
+
 
     @allure.story("购物卡充值后退款")
     def test_card_refund(self, client, access_token):

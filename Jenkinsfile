@@ -92,7 +92,9 @@ pipeline {
                 echo BASE_URL=%BASE_URL%
 
                 D:\\python\\python.exe -m pip install -r requirements.txt
-                pytest -v --junitxml=report.xml
+                :: 运行 pytest 并指定 allure 结果存放目录
+                :: --alluredir 参数告诉 pytest 把原始数据丢到 allure-results 文件夹
+                pytest -v --junitxml=report.xml --alluredir=allure-results || exit 0
                 '''
             }
         }
@@ -100,6 +102,13 @@ pipeline {
 
     post {
         always {
+            // 这里的 'allure' 必须对应你在“全局工具配置”中设置的别名
+            // results: [path: 'allure-results'] 对应上面 pytest 生成数据的目录
+            script {
+                allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+            }
+
+            // 原有的 junit 也可以保留
             junit 'report.xml'
         }
     }

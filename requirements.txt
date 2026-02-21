@@ -8,6 +8,9 @@ pytest-rerunfailures==13.0
 # 网络请求客户端
 httpx==0.27.0
 
+# 异步支持
+nest-asyncio==1.6.0
+
 # 数据库
 PyMySQL==1.1.0
 
