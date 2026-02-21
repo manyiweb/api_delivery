@@ -61,12 +61,15 @@ pipeline {
         stage('Run API Tests') {
             steps {
                 bat '''
+                echo ===== ENV CHECK =====
                 echo ENV=%ENV%
+                echo BASE_URL=%BASE_URL%
+                echo UAT_URL=%UAT_URL%
+
                 set PYTHONUTF8=1
                 D:\\python\\python.exe -m pip install -r requirements.txt
                 pytest -v --junitxml=report.xml
                 '''
-
             }
         }
     }

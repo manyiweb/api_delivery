@@ -13,7 +13,7 @@ from utils.notification import (
     create_test_report_message,
 )
 
-
+print("读取到的 BASE_URL:", os.getenv("BASE_URL"))
 @pytest.fixture(scope="session")
 def client():
     """创建用于测试的 HTTP 客户端"""
@@ -26,52 +26,23 @@ def client():
 
 @pytest.fixture(scope="session")
 def access_token():
-    """创建用于测试的访问令牌（带自动刷新机制）"""
-    class TokenManager:
-        def __init__(self):
-            self._token = None
-            self._client = httpx.Client(timeout=config.DEFAULT_TIMEOUT)
-        
-        def _fetch_token(self):
-            resp = self._client.post(
-                config.get_base_url() + "/reabam-manage-login/user/login",
-                json={
-                    "mobile": "19977958582",
-                    "loginType": "checkstand",
-                    "appType": "pc",
-                    "appVersion": "1.6.2.1",
-                    "loginWord": "e10adc3949ba59abbe56e057f20f883e",
-                    "clientVersion": "25091901",
-                    "systemVersion": "2512.29.34",
-                    "companyId": ""
-                },
-            )
-            if resp.status_code != 200:
-                raise RuntimeError(f"获取访问令牌失败: HTTP {resp.status_code}")
-            data = resp.json().get("data", {})
-            token = data.get("tokenId")
-            if not token:
-                raise RuntimeError(f"获取访问令牌失败: 响应中无 tokenId, resp={resp.json()}")
-            logger.info(f"获取新 token 成功: {token[:20]}...")
-            return token
-        
-        def get_token(self):
-            if self._token is None:
-                self._token = self._fetch_token()
-            return self._token
-        
-        def refresh_token(self):
-            """强制刷新 token"""
-            logger.info("强制刷新 token...")
-            self._token = self._fetch_token()
-            return self._token
-        
-        def close(self):
-            self._client.close()
-    
-    manager = TokenManager()
-    yield manager.get_token()
-    manager.close()
+    """创建用于测试的访问令牌"""
+    with httpx.Client(timeout=config.DEFAULT_TIMEOUT) as c:
+        resp = c.post(
+            config.get_base_url() + "/reabam-manage-login/user/login",
+            json={
+                "mobile": "19977958582",
+                "loginType": "checkstand",
+                "appType": "pc",
+                "appVersion": "1.6.2.1",
+                "loginWord": "e10adc3949ba59abbe56e057f20f883e",
+                "clientVersion": "25091901",
+                "systemVersion": "2512.29.34",
+                "companyId": ""
+            },
+        )
+        assert resp.status_code == 200, "获取访问令牌失败"
+        return resp.json()["data"].get("tokenId")
 
 # @pytest.fixture(scope="session")
 
