@@ -14,8 +14,8 @@ class Config:
 
     ENV = os.getenv("ENV", "fat")
     # 接口设置
-    BASE_URL_FAT = os.getenv("BASE_URL", "http://localhost:8080")
-    BASE_URL_UAT = os.getenv("UAT_URL", "http://localhost:8080")
+    BASE_URL_FAT = os.getenv("BASE_URL_FAT", "http://localhost:8080")
+    BASE_URL_UAT = os.getenv("BASE_URL_UAT", "http://localhost:8080")
 
     # 数据库设置
     DB_CONFIG: Dict[str, Any] = {
@@ -52,12 +52,11 @@ class Config:
     def get_base_url(cls) -> str:
         """根据 ENV 返回基础 URL"""
         env = os.getenv("ENV")
-        return cls.UAT_URL if env == "uat" else cls.BASE_URL
+        return cls.BASE_URL_UAT if env == "uat" else cls.BASE_URL_FAT
 
     @classmethod
     def get_final_payload_params(cls) -> Dict[str, str]:
         """返回请求通用的参数"""
-        print(os.getenv("ENV"))
         if os.getenv("ENV") == "uat":
             return {
                 'developerId': os.getenv('DEVELOPER_ID_UAT'),
@@ -66,9 +65,9 @@ class Config:
             }
 
         return {
-            'developerId': os.getenv('DEVELOPER_ID_UAT'),
-            'ePoiId': os.getenv('E_POI_ID_UAT'),
-            'sign': os.getenv('SIGN_UAT')
+            'developerId': cls.DEVELOPER_ID,
+            'ePoiId': cls.E_POI_ID,
+            'sign': cls.SIGN
         }
 
     @classmethod
