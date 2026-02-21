@@ -65,9 +65,9 @@ class Config:
             }
 
         return {
-            'developerId': cls.DEVELOPER_ID,
-            'ePoiId': cls.E_POI_ID,
-            'sign': cls.SIGN
+            'developerId': os.getenv("DEVELOPER_ID", ""),
+            'ePoiId': os.getenv("E_POI_ID", ""),
+            'sign': os.getenv("SIGN", "")
         }
 
     @classmethod
