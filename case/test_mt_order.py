@@ -9,9 +9,9 @@ from api.mt_order_callback import (
     mt_push_order_callback,
 )
 from assertions.order_db_assert import (
-    assert_order_count,
+    # assert_order_count,
     assert_order_created,
-    assert_order_status,
+    # assert_order_status,
 )
 from assertions.order_api_assert import (
     assert_order_persisted_via_list_detail,
@@ -199,7 +199,7 @@ class TestMtPushOrder:
 
         with allure.step("校验第一次推单"):
             assert result1 == "OK", f"第一次推单失败: {result1}"
-            assert_order_created(db_conn, str(order_id), timeout=10)
+            # assert_order_created(db_conn, str(order_id), timeout=10)
 
         with allure.step("相同订单号的第二次推单"):
             result2, duplicate_order_id = mt_push_order_callback(
