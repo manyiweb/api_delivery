@@ -61,12 +61,14 @@ pipeline {
         stage('Run API Tests') {
             steps {
                 bat '''
-                echo ===== ENV CHECK =====
-                echo ENV=%ENV%
-                echo BASE_URL=%BASE_URL_FAT%
-                echo UAT_URL=%UAT_URL%
-
                 set PYTHONUTF8=1
+
+                set ENV=fat
+                set BASE_URL=http://fat-pos.reabam.com:60030/api
+                set UAT_URL=https://pos.reabam.com/api
+
+                echo BASE_URL=%BASE_URL%
+
                 D:\\python\\python.exe -m pip install -r requirements.txt
                 pytest -v --junitxml=report.xml
                 '''
