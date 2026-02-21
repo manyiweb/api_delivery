@@ -41,6 +41,7 @@ pipeline {
         LOG_LEVEL = "INFO"
     }
 
+
     stages {
 
         stage('Checkout') {
@@ -55,6 +56,27 @@ pipeline {
                 set PYTHONUTF8=1
                 D:\\python\\python.exe -m pip install -r requirements.txt
                 '''
+            }
+        }
+
+
+        stage('Prepare Environment Variables') {
+            steps {
+                script {
+                    if (params.ENV == 'fat') {
+                        // 如果选了 fat，就把 fat 的值赋给通用变量
+                        env.DEVELOPER_ID = env.DEVELOPER_ID_FAT
+                        env.E_POI_ID = env.E_POI_ID_FAT
+                        env.SIGN = env.SIGN_FAT
+                        env.BASE_URL = env.BASE_URL_FAT
+                    } else if (params.ENV == 'uat') {
+                        // 如果选了 uat，就把 uat 的值赋给通用变量
+                        env.DEVELOPER_ID = env.DEVELOPER_ID_UAT
+                        env.E_POI_ID = env.E_POI_ID_UAT
+                        env.SIGN = env.SIGN_UAT
+                        env.BASE_URL = env.BASE_URL_UAT
+                    }
+                }
             }
         }
 
