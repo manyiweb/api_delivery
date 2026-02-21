@@ -14,8 +14,8 @@ class Config:
 
     ENV = os.getenv("ENV", "fat")
     # 接口设置
-    BASE_URL_FAT = os.getenv("BASE_URL_FAT", "http://localhost:8080")
-    BASE_URL_UAT = os.getenv("BASE_URL_UAT", "http://localhost:8080")
+    BASE_URL_FAT = os.getenv("BASE_URL", "http://localhost:8080")
+    BASE_URL_UAT = os.getenv("UAT_URL", "http://localhost:8080")
 
     # 数据库设置
     DB_CONFIG: Dict[str, Any] = {
