@@ -10,7 +10,6 @@ import httpx
 from config import config
 from utils.logger import logger
 
-BASE_URL = config.get_base_url()
 
 
 def generate_trace_id() -> str:
