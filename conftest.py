@@ -13,23 +13,23 @@ from utils.notification import NotificationSender, create_test_report_message
 
 @pytest.fixture(scope="session")
 def client():
-    """Create an HTTP client for tests."""
+    """创建 HTTP 客户端，测试结束自动关闭。"""
     base_url = config.get_base_url()
     with httpx.Client(base_url=base_url, timeout=config.DEFAULT_TIMEOUT) as c:
-        allure.attach(base_url, name="API Base URL", attachment_type=allure.attachment_type.TEXT)
+        allure.attach(base_url, name="API 基础地址", attachment_type=allure.attachment_type.TEXT)
         yield c
 
 
 @pytest.fixture(scope="session")
 def db_conn():
-    """Create a database connection for tests."""
+    """创建数据库连接，测试结束自动关闭。"""
     conn = pymysql.connect(
         **config.DB_CONFIG,
         cursorclass=pymysql.cursors.DictCursor,
     )
     allure.attach(
-        f"Database: {config.DB_CONFIG['host']}:{config.DB_CONFIG['port']}/{config.DB_CONFIG['database']}",
-        name="Database connection info",
+        f"数据库: {config.DB_CONFIG['host']}:{config.DB_CONFIG['port']}/{config.DB_CONFIG['database']}",
+        name="数据库连接信息",
         attachment_type=allure.attachment_type.TEXT,
     )
     yield conn
@@ -38,7 +38,7 @@ def db_conn():
 
 @pytest.fixture(scope="function")
 def cleanup_order(db_conn):
-    """Collect created orders for cleanup."""
+    """收集测试过程中创建的订单，测试结束后清理。"""
     created_orders = []
     yield created_orders
     for order_id in created_orders:
@@ -46,11 +46,11 @@ def cleanup_order(db_conn):
 
 
 def pytest_runtest_logreport(report):
-    """Log failed test details to the file logger."""
+    """记录失败用例的详细信息到日志。"""
     if report.outcome != "failed" or getattr(report, "wasxfail", False):
         return
     nodeid = getattr(report, "nodeid", "unknown")
-    logger.error(f"Test failed: {nodeid}")
+    logger.error(f"用例失败: {nodeid}")
     longrepr = getattr(report, "longreprtext", None)
     if longrepr:
         logger.error(longrepr)
@@ -59,14 +59,14 @@ def pytest_runtest_logreport(report):
 
 
 def pytest_terminal_summary(terminalreporter, exitstatus, pytest_config):
-    """Send a test summary notification."""
+    """发送测试结果汇总通知。"""
     passed = len(terminalreporter.stats.get("passed", []))
     failed = len(terminalreporter.stats.get("failed", []))
     skipped = len(terminalreporter.stats.get("skipped", []))
     total = passed + failed + skipped
 
     logger.info(
-        f"Test summary: total={total}, passed={passed}, failed={failed}, skipped={skipped}"
+        f"测试统计: 总数={total}, 通过={passed}, 失败={failed}, 跳过={skipped}"
     )
 
     sender = NotificationSender(wechat_webhook=config.WECHAT_WEBHOOK)
@@ -77,24 +77,24 @@ def pytest_terminal_summary(terminalreporter, exitstatus, pytest_config):
         total=total,
     )
 
-    logger.info("Sending test result notification...")
+    logger.info("正在发送测试结果通知...")
 
     results = sender.send_notification(
         content=content,
-        title="Automated test report",
+        title="自动化测试报告",
         notification_types=["wechat"],
     )
 
     for ntype, success in results.items():
         if success:
-            logger.info(f"[OK] {ntype} notification sent")
+            logger.info(f"{ntype} 通知发送成功")
         else:
-            logger.error(f"[FAIL] {ntype} notification failed")
+            logger.error(f"{ntype} 通知发送失败")
 
 
 @pytest.hookimpl(tryfirst=True)
 def pytest_configure(pytest_config):
-    """Write Allure environment properties."""
+    """在 pytest 配置阶段写入 Allure 环境信息。"""
     allure_dir = config.ALLURE_RESULTS_DIR
     if not os.path.exists(allure_dir):
         os.makedirs(allure_dir)
@@ -104,8 +104,7 @@ def pytest_configure(pytest_config):
         logger.warning(warning)
 
     with open(env_properties, "w", encoding="utf-8") as f:
-        f.write(f"ENV={os.getenv('ENV', 'test')}\n")
-        f.write(f"API_BASE_URL={config.get_base_url()}\n")
-        f.write(f"DB_HOST={config.DB_CONFIG['host']}\n")
-        f.write(f"DB_PORT={config.DB_CONFIG['port']}\n")
-        f.write(f"PYTHON_VERSION={os.sys.version}\n")
+        f.write(f"测试环境={os.getenv('ENV', 'test')}\n")
+        f.write(f"API地址={config.get_base_url()}\n")
+        f.write(f"数据库={config.DB_CONFIG['host']}:{config.DB_CONFIG['port']}\n")
+        f.write(f"Python版本={os.sys.version}\n")

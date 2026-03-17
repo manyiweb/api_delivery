@@ -6,53 +6,46 @@ import pymysql
 from utils.logger import logger
 
 
-def query_order_exist(conn, sql: str, params: Optional[Tuple] = None) -> Optional[Dict]:
-    """Return a single order record if it exists."""
+def execute_query(conn, sql: str, params: Optional[Tuple] = None, operation: str = "查询") -> Optional[Dict[str, Any]]:
+    """执行数据库查询操作。"""
     try:
         with conn.cursor() as cursor:
             cursor.execute(sql, params)
             result = cursor.fetchone()
-            logger.debug(
-                f"Query order exist: sql={sql}, params={params}, result={result}"
-            )
+            logger.debug(f"{operation}: SQL={sql}, params={params}, result={result}")
             return result
     except pymysql.Error as e:
-        logger.error(f"Query order exist failed: {e}")
+        logger.error(f"{operation}失败: {e}")
         raise
 
 
-def query_order_count(conn, sql: str, params: Optional[Tuple] = None) -> Optional[Dict]:
-    """Return order count."""
-    try:
-        with conn.cursor() as cursor:
-            cursor.execute(sql, params)
-            result = cursor.fetchone()
-            logger.debug(
-                f"Query order count: sql={sql}, params={params}, result={result}"
-            )
-            return result
-    except pymysql.Error as e:
-        logger.error(f"Query order count failed: {e}")
-        raise
+def query_order_exist(conn, sql: str, params: Optional[Tuple] = None) -> Optional[Dict[str, Any]]:
+    """查询订单是否存在。"""
+    return execute_query(conn, sql, params, "查询订单存在性")
+
+
+def query_order_count(conn, sql: str, params: Optional[Tuple] = None) -> Optional[Dict[str, Any]]:
+    """查询订单数量。"""
+    return execute_query(conn, sql, params, "查询订单数量")
 
 
 def cleanup_test_order(conn, order_id: str) -> bool:
-    """Delete a test order by ID."""
+    """清理测试订单。"""
     try:
         with conn.cursor() as cursor:
             delete_sql = "DELETE FROM dorder_dock WHERE dock_order_no = %s"
             cursor.execute(delete_sql, (order_id,))
             conn.commit()
-            logger.info(f"[OK] cleaned test order: {order_id}")
+            logger.info(f"已清理测试订单: {order_id}")
             return True
     except pymysql.Error as e:
-        logger.error(f"[FAIL] cleanup test order failed: {e}")
+        logger.error(f"清理测试订单失败: {e}")
         conn.rollback()
         return False
 
 
 def cleanup_test_data(conn, test_prefix: str) -> bool:
-    """Delete test data by order ID prefix."""
+    """清理指定前缀的测试数据。"""
     try:
         with conn.cursor() as cursor:
             delete_sql = "DELETE FROM dorder_dock WHERE dock_order_no LIKE %s"
@@ -60,17 +53,17 @@ def cleanup_test_data(conn, test_prefix: str) -> bool:
             deleted_count = cursor.rowcount
             conn.commit()
             logger.info(
-                f"[OK] cleaned test data prefix={test_prefix}, count={deleted_count}"
+                f"已清理前缀为 {test_prefix} 的测试数据，共 {deleted_count} 条"
             )
             return True
     except pymysql.Error as e:
-        logger.error(f"[FAIL] cleanup test data failed: {e}")
+        logger.error(f"清理测试数据失败: {e}")
         conn.rollback()
         return False
 
 
 def query_order_detail(conn, order_id: str) -> Optional[Dict[str, Any]]:
-    """Query order details by ID."""
+    """查询订单详情。"""
     sql = (
         "SELECT dock_order_no, order_status, total_amount, create_time, update_time "
         "FROM dorder_dock WHERE dock_order_no = %s"
@@ -79,25 +72,25 @@ def query_order_detail(conn, order_id: str) -> Optional[Dict[str, Any]]:
         with conn.cursor() as cursor:
             cursor.execute(sql, (order_id,))
             result = cursor.fetchone()
-            logger.debug(f"Query order detail: order_id={order_id}, result={result}")
+            logger.debug(f"查询订单详情: order_id={order_id}, result={result}")
             return result
     except pymysql.Error as e:
-        logger.error(f"Query order detail failed: {e}")
+        logger.error(f"查询订单详情失败: {e}")
         raise
 
 
 @contextmanager
-def get_db_connection(db_config: Dict):
-    """Context-managed DB connection."""
+def get_db_connection(db_config: Dict[str, Any]):
+    """数据库连接上下文管理器。"""
     conn = None
     try:
         conn = pymysql.connect(**db_config, cursorclass=pymysql.cursors.DictCursor)
-        logger.info("[OK] database connection established")
+        logger.info("数据库连接成功")
         yield conn
     except pymysql.Error as e:
-        logger.error(f"[FAIL] database connection failed: {e}")
+        logger.error(f"数据库连接失败: {e}")
         raise
     finally:
         if conn:
             conn.close()
-            logger.info("Database connection closed")
+            logger.info("数据库连接已关闭")

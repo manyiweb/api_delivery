@@ -1,8 +1,10 @@
-"""Payload builder for Meituan callbacks."""
+"""Payload 构建器模块。
+负责构建美团接口请求参数。
+"""
 import copy
 import json
 import time
-from typing import Dict, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 import allure
 
@@ -10,16 +12,22 @@ from config import config
 from utils.logger import logger
 
 
-def _require_keys(data: Dict, keys):
+def _require_keys(data: Dict[str, Any], keys: List[str]) -> None:
+    """验证必要字段是否存在。"""
     missing = [key for key in keys if key not in data]
     if missing:
-        raise KeyError(f"Missing required keys: {', '.join(missing)}")
+        raise KeyError(f"缺少必要字段: {', '.join(missing)}")
 
 
-def build_final_payload(raw_data: Dict, order_id: Optional[str] = None) -> Tuple[Dict[str, str], str]:
-    """Build payload for push order callback."""
+def _to_json_string(data: Any) -> str:
+    """将数据转换为紧凑的 JSON 字符串。"""
+    return json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+
+
+def build_final_payload(raw_data: Dict[str, Any], order_id: Optional[str] = None) -> Tuple[Dict[str, str], str]:
+    """构建推单回调请求参数。"""
     if not raw_data:
-        raise ValueError("raw_data is empty")
+        raise ValueError("原始数据为空")
 
     data = copy.deepcopy(raw_data)
     _require_keys(
@@ -37,94 +45,64 @@ def build_final_payload(raw_data: Dict, order_id: Optional[str] = None) -> Tuple
     if order_id is None:
         order_id = int("5301890196" + str(timestamp_part)[-9:])
 
-    reconciliation_extras_str = json.dumps(
-        data["reconciliation_extras"],
-        ensure_ascii=False,
-        separators=(",", ":"),
-    )
-
     poi_receive_detail = data["poi_receive_detail"].copy()
-    poi_receive_detail["reconciliationExtras"] = reconciliation_extras_str
+    poi_receive_detail["reconciliationExtras"] = _to_json_string(data["reconciliation_extras"])
 
     order_dict = data["order_core_params"].copy()
-    order_dict["ctime"] = timestamp_part
-    order_dict["utime"] = timestamp_part
-    order_dict["orderId"] = order_id
-    order_dict["orderIdView"] = order_id
-    order_dict["detail"] = json.dumps(
-        data["detail_list"],
-        ensure_ascii=False,
-        separators=(",", ":"),
-    )
-    order_dict["extras"] = json.dumps(
-        data["extras_list"],
-        ensure_ascii=False,
-        separators=(",", ":"),
-    )
-    order_dict["poiReceiveDetail"] = json.dumps(
-        poi_receive_detail,
-        ensure_ascii=False,
-        separators=(",", ":"),
-    )
+    order_dict.update({
+        "ctime": timestamp_part,
+        "utime": timestamp_part,
+        "orderId": order_id,
+        "orderIdView": order_id,
+        "detail": _to_json_string(data["detail_list"]),
+        "extras": _to_json_string(data["extras_list"]),
+        "poiReceiveDetail": _to_json_string(poi_receive_detail),
+    })
 
     final_payload = config.get_final_payload_params().copy()
-    final_payload["order"] = json.dumps(
-        order_dict,
-        ensure_ascii=False,
-        separators=(",", ":"),
-    )
+    final_payload["order"] = _to_json_string(order_dict)
 
-    logger.debug(f"Push order payload built for order_id={order_id}")
+    logger.debug(f"已构建推单 payload，订单ID={order_id}")
     return final_payload, order_id
 
 
-def build_cancel_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
-    """Build payload for cancel order callback."""
+def build_cancel_payload(raw_data: Dict[str, Any], order_id: str) -> Dict[str, str]:
+    """构建取消订单回调请求参数。"""
     if not raw_data:
-        raise ValueError("raw_data is empty")
+        raise ValueError("原始数据为空")
 
     data = copy.deepcopy(raw_data)
     _require_keys(data, ["orderCancel_list"])
 
     cancel_order_list = data["orderCancel_list"].copy()
     cancel_order_list["orderId"] = order_id
-    cancel_order_json = json.dumps(
-        cancel_order_list,
-        ensure_ascii=False,
-        separators=(",", ":"),
-    )
 
     cancel_payload = config.get_final_payload_params().copy()
-    cancel_payload["orderCancel"] = cancel_order_json
-    logger.debug(f"Cancel order payload built for order_id={order_id}")
+    cancel_payload["orderCancel"] = _to_json_string(cancel_order_list)
+    logger.debug(f"已构建取消订单 payload，订单ID={order_id}")
 
     return cancel_payload
 
 
-def build_apply_refund_payload(raw_data: Dict, order_id: str) -> Dict[str, str]:
-    """Build payload for full refund callback."""
+def build_apply_refund_payload(raw_data: Dict[str, Any], order_id: str) -> Dict[str, str]:
+    """构建整单退款回调请求参数。"""
     if not raw_data:
-        raise ValueError("raw_data is empty")
+        raise ValueError("原始数据为空")
 
     data = copy.deepcopy(raw_data)
     _require_keys(data, ["orderRefund_list"])
 
     order_refund_list = data["orderRefund_list"].copy()
     order_refund_list["orderId"] = order_id
-    order_refund_json = json.dumps(
-        order_refund_list,
-        ensure_ascii=False,
-        separators=(",", ":"),
-    )
 
     allure.attach(
         json.dumps(data, ensure_ascii=False, indent=2),
-        name="refund request raw data",
+        name="退款请求原始数据",
         attachment_type=allure.attachment_type.JSON,
     )
 
     final_payload = config.get_final_payload_params().copy()
-    final_payload["orderRefund"] = order_refund_json
-    logger.debug(f"Refund payload built for order_id={order_id}")
+    final_payload["orderRefund"] = _to_json_string(order_refund_list)
+    logger.debug(f"已构建退款 payload，订单ID={order_id}")
 
     return final_payload
