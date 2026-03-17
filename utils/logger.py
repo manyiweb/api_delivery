@@ -1,4 +1,4 @@
-"""日志模块。"""
+"""日志模块"""
 from datetime import datetime
 import logging
 import os

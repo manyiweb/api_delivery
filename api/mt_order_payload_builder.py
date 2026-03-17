@@ -1,0 +1,131 @@
+"""美团回调请求体的构建器"""
+import copy
+import json
+import time
+from typing import Dict, Optional, Tuple
+
+import allure
+
+from config import config
+from utils.logger import logger
+
+
+def _require_keys(data: Dict, keys):
+    missing = [key for key in keys if key not in data]
+    if missing:
+        raise KeyError(f"缺少必填字段: {', '.join(missing)}")
+
+
+def build_mt_push_payload(raw_data: Dict, mt_order_id: Optional[str] = None) -> Tuple[Dict[str, str], str]:
+    """构建推单回调的请求体"""
+    if not raw_data:
+        raise ValueError("原始数据为空")
+
+    data = copy.deepcopy(raw_data)
+    _require_keys(
+        data,
+        [
+            "reconciliation_extras",
+            "poi_receive_detail",
+            "order_core_params",
+            "detail_list",
+            "extras_list",
+        ],
+    )
+
+    timestamp_part = int(time.time() * 1000)  # 13位毫秒时间戳
+    if mt_order_id is None:
+        mt_order_id = int("5301890" + str(timestamp_part)[-12:])
+
+    reconciliation_extras_str = json.dumps(
+        data["reconciliation_extras"],
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
+
+    poi_receive_detail = copy.deepcopy(data["poi_receive_detail"])
+    poi_receive_detail["reconciliationExtras"] = reconciliation_extras_str
+
+    order_dict = copy.deepcopy(data["order_core_params"])
+    order_dict["ctime"] = timestamp_part
+    order_dict["utime"] = timestamp_part
+    order_dict["orderId"] = mt_order_id
+    order_dict["orderIdView"] = mt_order_id
+    order_dict["detail"] = json.dumps(
+        data["detail_list"],
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
+    order_dict["extras"] = json.dumps(
+        data["extras_list"],
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
+    order_dict["poiReceiveDetail"] = json.dumps(
+        poi_receive_detail,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
+
+    final_push_payload = config.get_final_payload_params().copy()
+    final_push_payload["order"] = json.dumps(
+        order_dict,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
+
+    logger.debug(f"推单回调请求体构建完成: 订单号={mt_order_id}")
+    return final_push_payload, mt_order_id
+
+
+def build_mt_cancel_payload(raw_data: Dict, mt_order_id: str) -> Dict[str, str]:
+    """构建取消订单回调的请求体"""
+    if not raw_data:
+        raise ValueError("原始数据为空")
+
+    data = copy.deepcopy(raw_data)
+    _require_keys(data, ["orderCancel_list"])
+
+    cancel_order_list = data["orderCancel_list"].copy()
+    cancel_order_list["orderId"] = mt_order_id
+    cancel_order_json = json.dumps(
+        cancel_order_list,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
+
+    final_cancel_payload = config.get_final_payload_params().copy()
+    final_cancel_payload["orderCancel"] = cancel_order_json
+    logger.debug(f"取消回调请求体构建完成: 订单号={mt_order_id}")
+
+    return final_cancel_payload
+
+
+def build_mt_apply_refund_payload(raw_data: Dict, mt_order_id: str) -> Dict[str, str]:
+    """构建全额退款回调的请求体"""
+    if not raw_data:
+        raise ValueError("原始数据为空")
+
+    data = copy.deepcopy(raw_data)
+    _require_keys(data, ["orderRefund_list"])
+
+    order_refund_list = data["orderRefund_list"].copy()
+    order_refund_list["orderId"] = mt_order_id
+    order_refund_json = json.dumps(
+        order_refund_list,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
+
+    allure.attach(
+        json.dumps(data, ensure_ascii=False, indent=2),
+        name="退款请求原始数据",
+        attachment_type=allure.attachment_type.JSON,
+    )
+
+    final_refund_payload = config.get_final_payload_params().copy()
+    final_refund_payload["orderRefund"] = order_refund_json
+    logger.debug(f"退款回调请求体构建完成: 订单号={mt_order_id}")
+
+    return final_refund_payload
+

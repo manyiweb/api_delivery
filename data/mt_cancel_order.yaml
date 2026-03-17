@@ -5,6 +5,5 @@ orderCancel_list:
   reason: 没有备注
   reasonCode: 1301
 
-# 注意：这些参数已移至 config.py 统一管理
 # 如需修改，请在 config.py 或环境变量中配置
 final_cancelOrder_params: {}
