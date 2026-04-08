@@ -12,7 +12,6 @@ from api.create_order_cash import (
     get_card_card_options,
     select_card_recharge_scheme,
     card_top_up,
-    query_card_top_up_record,
     card_refund,
     integral_pay,
     add_member,
@@ -180,10 +179,8 @@ class TestSaaSPay:
             client, token, coId, giveItemId, saleValue)
         # 新增购物卡充值订单支付记录
         cash_pay(client, token, order_id, actual_pay_amount, order_type)
-        # 查询购物卡充值记录
-        sourceId, _ = query_card_top_up_record(client, token, order_id)
-        # 购物卡退款
-        resp = card_refund(client, token, sourceId, actual_pay_amount)
+        # 购物卡退款（直接使用充值订单ID）
+        resp = card_refund(client, token, order_id, actual_pay_amount)
         assert resp.json().get("code") == "200", "购物卡退款失败：返回码不为200"
 
     @allure.story("会员积分支付")

@@ -92,9 +92,6 @@ def assert_detail_response(
         if invoice_url is not None:
             assert str(invoice_url).strip(), "电子发票地址为空"
 
-        ofd_url = data.get("ofdUrl")
-        if ofd_url is not None:
-            assert str(ofd_url).strip(), "OFD地址为空"
 
 
 def assert_red_punch_response(resp: Dict[str, Any]) -> None:

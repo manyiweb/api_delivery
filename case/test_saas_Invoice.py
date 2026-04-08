@@ -87,7 +87,7 @@ def create_merge_invoice_orders(client: httpx.Client, access_token) -> List[str]
         ]
         _attach_json("合并订单号列表", order_ids)
         yield order_ids
-        # # 测试结束后清理订单（需要内网数据库连接）
+        # 测试结束后清理订单（需要内网数据库连接）
         # with allure.step("清理测试订单"):
         #     for order_id in order_ids:
         #         cleanup_test_order(db_conn, order_id)
@@ -270,10 +270,6 @@ class TestSaasInvoice:
                 f"期望错误信息为'登录已失效，请重登录或认证'，实际: {result_string}"
             )
             logger.info("登录已失效错误校验通过")
-        # # 清理测试订单（需要内网数据库连接）
-        # finally:
-        #     with allure.step("清理测试订单"):
-        #         cleanup_test_order(db_conn, order_id)
 
     @pytest.mark.critical
     @allure.story("异常场景")

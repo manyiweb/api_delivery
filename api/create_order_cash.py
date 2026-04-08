@@ -338,23 +338,23 @@ def query_card_top_up_record(client: httpx.Client, token, order_id):
     logger.info("查询购物卡充值记录接口响应: %s", resp.json())
     # 遍历 pageData.content 查找匹配的充值记录
     content = resp.json().get("data", {}).get("pageData", {}).get("content", [])
-    sourceId = ""
+    source_id = ""
     for record in content:
         if record.get("sourceId") == order_id:
-            sourceId = record.get("sourceId", "")
+            source_id = record.get("sourceId", "")
             logger.info("找到匹配的充值记录, sourceId: %s, order_id: %s",
-                        sourceId, order_id)
+                        source_id, order_id)
             break
-    if not sourceId:
+    if not source_id:
         logger.warning("未找到匹配的充值记录, order_id: %s", order_id)
-    return sourceId, resp
+    return source_id, resp
 
 # 购物卡退款接口
 
 
-def card_refund(client: httpx.Client, token, souceId, refund_amount):
+def card_refund(client: httpx.Client, token, orderId, refund_amount):
     payload = build_request_params("cardRefund", token_id=token)
-    payload["cardOrderId"] = souceId
+    payload["cardOrderId"] = orderId
     payload["rechargeAmount"] = refund_amount
     payload["refundAmount"] = refund_amount
     logger.info("购物卡退款接口请求: %s", payload)

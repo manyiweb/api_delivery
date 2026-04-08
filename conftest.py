@@ -12,6 +12,7 @@ from utils.notification import (
     NotificationSender,
     create_test_report_message,
 )
+from api.handover_api import ensure_handover_open
 
 print("读取到的 BASE_URL:", os.getenv("BASE_URL"))
 @pytest.fixture(scope="session")
@@ -44,9 +45,44 @@ def access_token():
         assert resp.status_code == 200, "获取访问令牌失败"
         return resp.json()["data"].get("tokenId")
 
-# @pytest.fixture(scope="session")
 
+@pytest.fixture(scope="session", autouse=True)
+def ensure_handover(client, access_token):
+    """确保门店已开班（自动执行）
 
+    在测试会话开始时自动检查开交班状态：
+    - 如果门店状态为CLOSE（需要交班），自动执行交班和开班
+    - 如果门店状态为OPEN（已开班），跳过操作
+
+    使用 autouse=True 使其在所有测试前自动执行
+    """
+    with allure.step("检查并确保门店已开班"):
+        logger.info("=" * 50)
+        logger.info("开始检查门店开交班状态")
+        logger.info("=" * 50)
+
+        result = ensure_handover_open(client, access_token)
+
+        if result:
+            logger.info("门店开班状态检查完成")
+            allure.attach(
+                "门店已开班，可以正常执行测试",
+                name="开交班状态",
+                attachment_type=allure.attachment_type.TEXT
+            )
+        else:
+            logger.error("门店开班操作失败，测试可能受到影响")
+            allure.attach(
+                "门店开班操作失败，部分接口可能无法使用",
+                name="开交班状态警告",
+                attachment_type=allure.attachment_type.TEXT
+            )
+
+        logger.info("=" * 50)
+
+        yield result
+
+@pytest.fixture(scope="session")
 def db_conn():
     """创建用于测试的数据库连接"""
     if os.getenv("ENV") == "uat":
