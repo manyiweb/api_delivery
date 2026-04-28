@@ -1,8 +1,6 @@
-import json
 import time
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
-import allure
 import httpx
 
 from api.order_api import (
@@ -11,6 +9,7 @@ from api.order_api import (
 )
 from config import config
 from utils.async_helper import batch_order_details
+from utils.allure_helper import attach_json, attach_text
 from utils.logger import logger
 
 
@@ -162,48 +161,20 @@ def assert_order_persisted_via_list_detail(
                 matched, matched_key = _detail_matches_source_no(
                     detail_resp, str(expected_source_no))
                 if matched:
-                    allure.attach(
-                        str(expected_source_no),
-                        name="期望的外卖单号",
-                        attachment_type=allure.attachment_type.TEXT,
-                    )
-                    allure.attach(
-                        internal_order_id,
-                        name="匹配到的内部订单编号",
-                        attachment_type=allure.attachment_type.TEXT,
-                    )
+                    attach_text("期望的外卖单号", expected_source_no)
+                    attach_text("匹配到的内部订单编号", internal_order_id)
                     if matched_key:
-                        allure.attach(
-                            matched_key,
-                            name="匹配字段",
-                            attachment_type=allure.attachment_type.TEXT,
-                        )
-                    allure.attach(
-                        json.dumps(list_resp, ensure_ascii=False, indent=2),
-                        name="订单列表响应（匹配）",
-                        attachment_type=allure.attachment_type.JSON,
-                    )
-                    allure.attach(
-                        json.dumps(detail_resp, ensure_ascii=False, indent=2),
-                        name="订单详情响应（匹配）",
-                        attachment_type=allure.attachment_type.JSON,
-                    )
+                        attach_text("匹配字段", matched_key)
+                    attach_json("订单列表响应（匹配）", list_resp)
+                    attach_json("订单详情响应（匹配）", detail_resp)
                     return internal_order_id
 
         time.sleep(interval)
 
     if last_list_resp is not None:
-        allure.attach(
-            json.dumps(last_list_resp, ensure_ascii=False, indent=2),
-            name="订单列表响应（最后一次）",
-            attachment_type=allure.attachment_type.JSON,
-        )
+        attach_json("订单列表响应（最后一次）", last_list_resp)
     if last_detail_resp is not None:
-        allure.attach(
-            json.dumps(last_detail_resp, ensure_ascii=False, indent=2),
-            name="订单详情响应（最后一次）",
-            attachment_type=allure.attachment_type.JSON,
-        )
+        attach_json("订单详情响应（最后一次）", last_detail_resp)
 
     raise AssertionError(
         f"在 {effective_timeout}s 内未通过 list/detail 找到订单；expected_source_no={expected_source_no}"
@@ -262,31 +233,15 @@ def assert_order_status_via_detail(
         logger.info(f"订单状态轮询：内部订单编号={internal_order_id}，当前状态={status}")
 
         if status is not None and str(status) == str(expected_status):
-            allure.attach(
-                str(expected_status),
-                name="期望订单状态",
-                attachment_type=allure.attachment_type.TEXT,
-            )
-            allure.attach(
-                str(status),
-                name="实际订单状态",
-                attachment_type=allure.attachment_type.TEXT,
-            )
-            allure.attach(
-                json.dumps(detail_resp, ensure_ascii=False, indent=2),
-                name="订单详情响应（状态匹配）",
-                attachment_type=allure.attachment_type.JSON,
-            )
+            attach_text("期望订单状态", expected_status)
+            attach_text("实际订单状态", status)
+            attach_json("订单详情响应（状态匹配）", detail_resp)
             return str(status)
 
         time.sleep(interval)
 
     if last_detail_resp is not None:
-        allure.attach(
-            json.dumps(last_detail_resp, ensure_ascii=False, indent=2),
-            name="订单详情响应（状态校验，最后一次）",
-            attachment_type=allure.attachment_type.JSON,
-        )
+        attach_json("订单详情响应（状态校验，最后一次）", last_detail_resp)
 
     raise AssertionError(
         f"在 {effective_timeout}s 内订单状态未变为 {expected_status}，当前状态={last_status}"

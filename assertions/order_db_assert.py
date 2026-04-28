@@ -1,16 +1,14 @@
 """订单测试的数据库断言"""
 import time
-from typing import Any, Dict, Optional
-
-import allure
 
 from config import config
-from utils.logger import logger
+from utils.allure_helper import attach_text
 from utils.db_helper import (
     query_order_count,
     query_order_exist,
     query_order_status,
 )
+from utils.logger import logger
 
 
 def assert_order_created(
@@ -24,11 +22,7 @@ def assert_order_created(
     while time.time() - start < timeout:
         result = query_order_exist(conn, sql, (order_id,))
         if result:
-            allure.attach(
-                str(result),
-                name="订单已创建",
-                attachment_type=allure.attachment_type.TEXT,
-            )
+            attach_text("订单已创建", result)
             return
         time.sleep(interval)
 
@@ -54,11 +48,7 @@ def assert_order_count(
             actual_count = 0
 
         if actual_count == expected_count:
-            allure.attach(
-                f"订单 {order_id} 数量校验通过: {actual_count}",
-                name="订单数量校验通过",
-                attachment_type=allure.attachment_type.TEXT,
-            )
+            attach_text("订单数量校验通过", f"订单 {order_id} 数量校验通过: {actual_count}")
             return
 
         time.sleep(interval)
@@ -88,11 +78,7 @@ def assert_order_status(
             actual_status = None
 
         if str(actual_status) == str(expected_status):
-            allure.attach(
-                f"订单 {order_id} 状态为: {actual_status}",
-                name="订单状态验证成功",
-                attachment_type=allure.attachment_type.TEXT,
-            )
+            attach_text("订单状态验证成功", f"订单 {order_id} 状态为: {actual_status}")
             return
 
         time.sleep(interval)

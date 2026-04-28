@@ -1,8 +1,6 @@
-import json
 import os
 from typing import Optional, Tuple
 
-import allure
 import httpx
 
 from api.base import (
@@ -18,6 +16,7 @@ from utils.file_loader import (
     get_data_file_path,
     load_yaml_data,
 )
+from utils.allure_helper import attach_json, attach_text, step
 from utils.logger import logger
 
 
@@ -36,43 +35,31 @@ def _post_and_extract(
     success, response_json = handle_response(response, order_id)
 
     if response_json is not None:
-        allure.attach(
-            json.dumps(response_json, ensure_ascii=False, indent=2),
-            name=attach_name,
-            attachment_type=allure.attachment_type.JSON,
-        )
+        attach_json(attach_name, response_json)
         return response_json.get("data")
 
-    allure.attach(
-        response.text,
-        name=attach_name,
-        attachment_type=allure.attachment_type.TEXT,
-    )
+    attach_text(attach_name, response.text)
     return None
 
 
 def mt_push_order(client: httpx.Client, mt_order_id: Optional[str] = None) -> Tuple[str, str]:
     """推单回调"""
     if os.getenv("ENV") == "uat":
-        with allure.step("加载推单数据"):
+        with step("加载推单数据"):
             mt_push_data = load_yaml_data(
                 get_data_file_path("mt_delivery_data_uat.yaml"))
     else:
-        with allure.step("加载推单数据"):
+        with step("加载推单数据"):
             mt_push_data = load_yaml_data(
                 get_data_file_path("mt_delivery_data.yaml"))
 
-    with allure.step("构建推单请求体"):
+    with step("构建推单请求体"):
         final_payload, mt_order_id = build_mt_push_payload(
             mt_push_data, mt_order_id)
-        allure.attach(
-            str(mt_order_id),
-            name="外卖单号",
-            attachment_type=allure.attachment_type.TEXT,
-        )
+        attach_text("外卖单号", mt_order_id)
         logger.info(f"推单请求体: {final_payload}")
 
-    with allure.step("发送推单回调"):
+    with step("发送推单回调"):
         # 添加调试日志：打印实际发送的 payload
         logger.info(f"推单 payload 关键参数: developerId={final_payload.get('developerId')}, ePoiId={final_payload.get('ePoiId')}, sign长度={len(final_payload.get('sign', ''))}")
         result = _post_and_extract(
@@ -93,21 +80,17 @@ def mt_push_order_callback(client: httpx.Client, mt_order_id: Optional[str] = No
 
 def mt_cancel_order(client: httpx.Client, mt_order_id: str) -> Optional[str]:
     """取消订单回调"""
-    with allure.step("加载取消订单数据"):
+    with step("加载取消订单数据"):
         logger.info(f"取消订单美团单号: {mt_order_id}")
         mt_cancel_data = load_yaml_data(
             get_data_file_path("mt_cancel_order.yaml"))
 
-    with allure.step("构建取消订单请求体"):
+    with step("构建取消订单请求体"):
         final_payload = build_mt_cancel_payload(mt_cancel_data, mt_order_id)
-        allure.attach(
-            str(mt_order_id),
-            name="取消订单ID",
-            attachment_type=allure.attachment_type.TEXT,
-        )
+        attach_text("取消订单ID", mt_order_id)
         logger.info(f"取消订单请求体: {final_payload}")
 
-    with allure.step("发送取消订单回调"):
+    with step("发送取消订单回调"):
         return _post_and_extract(
             client,
             "/dock/mt/v2/order/cancel/callback",
@@ -124,17 +107,17 @@ def mt_cancel_order_callback(client: httpx.Client, order_id: str) -> Optional[st
 
 def mt_refund_order(client: httpx.Client, mt_order_id: str) -> Optional[str]:
     """全额退款回调"""
-    with allure.step("加载退款数据"):
+    with step("加载退款数据"):
         logger.info(f"美团退款订单号: {mt_order_id}")
         mt_refund_data = load_yaml_data(
             get_data_file_path("mt_refund_order.yaml"))
 
-    with allure.step("构建退款请求体"):
+    with step("构建退款请求体"):
         final_payload = build_mt_apply_refund_payload(
             mt_refund_data, mt_order_id)
         logger.info(f"退款请求体: {final_payload}")
 
-    with allure.step("发送退款回调"):
+    with step("发送退款回调"):
         return _post_and_extract(
             client,
             "/reabam-external-access/dock/mt/v2/order/refund/callback",

@@ -4,9 +4,8 @@ import json
 import time
 from typing import Dict, Optional, Tuple
 
-import allure
-
 from config import config
+from utils.allure_helper import attach_json
 from utils.logger import logger
 
 
@@ -117,15 +116,10 @@ def build_mt_apply_refund_payload(raw_data: Dict, mt_order_id: str) -> Dict[str,
         separators=(",", ":"),
     )
 
-    allure.attach(
-        json.dumps(data, ensure_ascii=False, indent=2),
-        name="退款请求原始数据",
-        attachment_type=allure.attachment_type.JSON,
-    )
+    attach_json("退款请求原始数据", data)
 
     final_refund_payload = config.get_final_payload_params().copy()
     final_refund_payload["orderRefund"] = order_refund_json
     logger.debug(f"退款回调请求体构建完成: 订单号={mt_order_id}")
 
     return final_refund_payload
-

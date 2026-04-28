@@ -1,11 +1,11 @@
 import os
 
-import allure
 import httpx
 import pymysql
 import pytest
 
 from config import config
+from utils.allure_helper import attach_text, step
 from utils.db_helper import cleanup_test_order
 from utils.logger import logger
 from utils.notification import (
@@ -20,8 +20,7 @@ def client():
     """创建用于测试的 HTTP 客户端"""
     base_url = config.get_base_url()
     with httpx.Client(base_url=base_url, timeout=config.DEFAULT_TIMEOUT) as c:
-        allure.attach(base_url, name="接口基础地址",
-                      attachment_type=allure.attachment_type.TEXT)
+        attach_text("接口基础地址", base_url)
         yield c
 
 
@@ -56,7 +55,7 @@ def ensure_handover(client, access_token):
 
     使用 autouse=True 使其在所有测试前自动执行
     """
-    with allure.step("检查并确保门店已开班"):
+    with step("检查并确保门店已开班"):
         logger.info("=" * 50)
         logger.info("开始检查门店开交班状态")
         logger.info("=" * 50)
@@ -65,18 +64,10 @@ def ensure_handover(client, access_token):
 
         if result:
             logger.info("门店开班状态检查完成")
-            allure.attach(
-                "门店已开班，可以正常执行测试",
-                name="开交班状态",
-                attachment_type=allure.attachment_type.TEXT
-            )
+            attach_text("开交班状态", "门店已开班，可以正常执行测试")
         else:
             logger.error("门店开班操作失败，测试可能受到影响")
-            allure.attach(
-                "门店开班操作失败，部分接口可能无法使用",
-                name="开交班状态警告",
-                attachment_type=allure.attachment_type.TEXT
-            )
+            attach_text("开交班状态警告", "门店开班操作失败，部分接口可能无法使用")
 
         logger.info("=" * 50)
 
@@ -91,10 +82,9 @@ def db_conn():
         **config.DB_CONFIG,
         cursorclass=pymysql.cursors.DictCursor,
     )
-    allure.attach(
+    attach_text(
+        "数据库连接信息",
         f"Database: {config.DB_CONFIG['host']}:{config.DB_CONFIG['port']}/{config.DB_CONFIG['database']}",
-        name="数据库连接信息",
-        attachment_type=allure.attachment_type.TEXT,
     )
     yield conn
     conn.close()

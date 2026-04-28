@@ -1,10 +1,9 @@
-import json
 from typing import Any, Dict, Optional
 
-import allure
 import httpx
 
 from api.base import safe_post
+from utils.allure_helper import attach_json
 from utils.file_loader import (
     get_data_file_path,
     load_yaml_data,
@@ -46,21 +45,13 @@ def pos_order_list(
         payload.update(extra)
 
     if attach:
-        allure.attach(
-            json.dumps(payload, ensure_ascii=False, indent=2),
-            name="收银端订单列表请求",
-            attachment_type=allure.attachment_type.JSON,
-        )
+        attach_json("收银端订单列表请求", payload)
 
     resp = safe_post(client, ORDER_LIST_ENDPOINT, json=payload)
     resp_json: Dict[str, Any] = resp.json()
 
     if attach:
-        allure.attach(
-            json.dumps(resp_json, ensure_ascii=False, indent=2),
-            name="收银端订单列表响应",
-            attachment_type=allure.attachment_type.JSON,
-        )
+        attach_json("收银端订单列表响应", resp_json)
 
     return resp_json
 
@@ -88,20 +79,12 @@ def pos_order_detail(
         payload.update(extra)
 
     if attach:
-        allure.attach(
-            json.dumps(payload, ensure_ascii=False, indent=2),
-            name="收银端订单详情请求",
-            attachment_type=allure.attachment_type.JSON,
-        )
+        attach_json("收银端订单详情请求", payload)
 
     resp = safe_post(client, ORDER_DETAIL_ENDPOINT, json=payload)
     resp_json: Dict[str, Any] = resp.json()
 
     if attach:
-        allure.attach(
-            json.dumps(resp_json, ensure_ascii=False, indent=2),
-            name="收银端订单详情响应",
-            attachment_type=allure.attachment_type.JSON,
-        )
+        attach_json("收银端订单详情响应", resp_json)
 
     return resp_json
