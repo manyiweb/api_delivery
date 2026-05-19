@@ -45,7 +45,7 @@ cp .env.example .env
 ```
 
 常用环境变量（见 `.env.example`）：
-- `ENV`：test/uat
+- `ENV`：fat/uat
 - `BASE_URL` / `UAT_URL`
 - `DB_HOST` / `DB_PORT` / `DB_USER` / `DB_PASSWORD` / `DB_NAME`
 - `WECHAT_WEBHOOK`
@@ -63,6 +63,26 @@ cp .env.example .env
 pytest
 ```
 
+仅运行本地单元测试：
+```bash
+pytest tests/unit
+```
+
+运行核心链路门禁：
+```bash
+pytest -m smoke
+```
+
+运行关键回归集：
+```bash
+pytest -m "smoke or critical"
+```
+
+联调用例说明：
+- `case/` 下用例会访问 `.env` 指定环境，依赖门店授权、登录账号、商品、会员、数据库等测试数据。
+- 若环境数据变更，可能出现店铺未授权、商品失效、会员类型不支持、开票状态未流转等业务失败；需要先校准环境数据再回归。
+- 失败排查优先查看 `logs/test_*.log` 和 `reports/allure-results`。
+
 Windows 一键脚本：
 ```bat
 run_tests.bat
@@ -73,6 +93,13 @@ run_tests.bat
 allure generate reports/allure-results -o reports/allure-report --clean
 allure open reports/allure-report
 ```
+
+Allure 附件默认使用摘要模式并自动脱敏，避免报告过大或泄露 token/sign/password。
+可通过环境变量调整：
+- `ALLURE_ATTACH_LEVEL=summary`：默认，仅保留摘要
+- `ALLURE_ATTACH_LEVEL=full`：调试时保留完整脱敏附件
+- `ALLURE_ATTACH_LEVEL=off`：关闭手工附件
+- `ALLURE_MAX_ATTACHMENT_CHARS=8000`：控制单个附件最大字符数
 
 ## 备注
 - 测试数据位于 `data/`，payload 构建在 `api/payload_builder.py`。
