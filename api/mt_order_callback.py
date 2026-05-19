@@ -35,7 +35,7 @@ def _post_and_extract(
     success, response_json = handle_response(response, order_id)
 
     if response_json is not None:
-        attach_json(attach_name, response_json)
+        attach_json(attach_name if success else f"{attach_name}（异常）", response_json, full=not success)
         return response_json.get("data")
 
     attach_text(attach_name, response.text)

@@ -142,6 +142,7 @@ class TestMtPushOrder:
     """订单回调场景"""
 
     @pytest.mark.critical
+    @pytest.mark.smoke
     @allure.story("推单")
     @allure.title("美团推单回调成功后，系统生成订单并入库")
     @allure.severity(allure.severity_level.CRITICAL)
@@ -169,6 +170,7 @@ class TestMtPushOrder:
 
     # @pytest.mark.skip
     @pytest.mark.critical
+    @pytest.mark.smoke
     @allure.story("订单取消")
     @allure.title("美团取消订单回调后，订单状态更新为已退货")
     @allure.severity(allure.severity_level.CRITICAL)
@@ -199,6 +201,7 @@ class TestMtPushOrder:
 
     # @pytest.mark.skip
     @pytest.mark.critical
+    @pytest.mark.smoke
     @allure.story("全额退款")
     @allure.title("美团全额退款回调后，订单状态更新为已退款")
     @allure.severity(allure.severity_level.CRITICAL)

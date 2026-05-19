@@ -172,7 +172,8 @@ def _execute_raw_invoice_request(
 @allure.epic("开票业务")
 @allure.feature("品牌端开票")
 class TestSaasInvoice:
-    # @pytest.mark.critical
+    @pytest.mark.smoke
+    @pytest.mark.critical
     @allure.story("申请开票")
     @allure.title("申请开票后刷新并查询状态")
     def test_apply_invoice(self, client, create_invoice_order, access_token):
@@ -183,6 +184,8 @@ class TestSaasInvoice:
         _verify_invoice_status(client, invoice_id, order_id, token_id)
 
     @allure.story("红冲开票")
+    @pytest.mark.smoke
+    @pytest.mark.critical
     @allure.title("申请开票后红冲")
     def test_red_punch(self, client, create_invoice_order, access_token):
         order_id = create_invoice_order
@@ -193,6 +196,8 @@ class TestSaasInvoice:
         _red_punch_and_assert(client, invoice_id, token_id)
 
     @allure.story("合并开票")
+    @pytest.mark.smoke
+    @pytest.mark.critical
     @allure.title("合并开票后红冲")
     def test_merge_invoice(self, client, create_merge_invoice_orders, access_token):
         order_ids = create_merge_invoice_orders

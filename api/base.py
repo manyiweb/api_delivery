@@ -10,8 +10,6 @@ import httpx
 from config import config
 from utils.logger import logger
 
-#测试提交
-
 def generate_trace_id() -> str:
     """生成请求跟踪 ID"""
     return str(uuid.uuid4())

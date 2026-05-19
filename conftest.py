@@ -1,10 +1,11 @@
 import os
+from pathlib import Path
 
 import httpx
 import pymysql
 import pytest
 
-from config import config
+from config import config as app_config
 from utils.allure_helper import attach_text, step
 from utils.db_helper import cleanup_test_order
 from utils.logger import logger
@@ -14,12 +15,32 @@ from utils.notification import (
 )
 from api.handover_api import ensure_handover_open
 
-print("读取到的 BASE_URL:", os.getenv("BASE_URL"))
+logger.debug("读取到的 BASE_URL: %s", os.getenv("BASE_URL"))
+
+
+def _is_unit_only_session(request) -> bool:
+    """Return True when pytest only collected tests under tests/unit."""
+    items = getattr(getattr(request, "session", None), "items", [])
+    if not items:
+        return False
+
+    root_path = Path(getattr(getattr(request, "config", None), "rootpath", Path.cwd()))
+    for item in items:
+        item_path = Path(str(item.path))
+        try:
+            relative_path = item_path.resolve().relative_to(root_path.resolve())
+        except ValueError:
+            relative_path = item_path
+        if relative_path.parts[:2] != ("tests", "unit"):
+            return False
+    return True
+
+
 @pytest.fixture(scope="session")
 def client():
     """创建用于测试的 HTTP 客户端"""
-    base_url = config.get_base_url()
-    with httpx.Client(base_url=base_url, timeout=config.DEFAULT_TIMEOUT) as c:
+    base_url = app_config.get_base_url()
+    with httpx.Client(base_url=base_url, timeout=app_config.DEFAULT_TIMEOUT) as c:
         attach_text("接口基础地址", base_url)
         yield c
 
@@ -27,9 +48,9 @@ def client():
 @pytest.fixture(scope="session")
 def access_token():
     """创建用于测试的访问令牌"""
-    with httpx.Client(timeout=config.DEFAULT_TIMEOUT) as c:
+    with httpx.Client(timeout=app_config.DEFAULT_TIMEOUT) as c:
         resp = c.post(
-            config.get_base_url() + "/reabam-manage-login/user/login",
+            app_config.get_base_url() + "/reabam-manage-login/user/login",
             json={
                 "mobile": "19977958582",
                 "loginType": "checkstand",
@@ -46,7 +67,7 @@ def access_token():
 
 
 @pytest.fixture(scope="session", autouse=True)
-def ensure_handover(client, access_token):
+def ensure_handover(request):
     """确保门店已开班（自动执行）
 
     在测试会话开始时自动检查开交班状态：
@@ -55,6 +76,13 @@ def ensure_handover(client, access_token):
 
     使用 autouse=True 使其在所有测试前自动执行
     """
+    if _is_unit_only_session(request) or os.getenv("SKIP_HANDOVER") == "1":
+        yield None
+        return
+
+    client = request.getfixturevalue("client")
+    access_token = request.getfixturevalue("access_token")
+
     with step("检查并确保门店已开班"):
         logger.info("=" * 50)
         logger.info("开始检查门店开交班状态")
@@ -79,12 +107,12 @@ def db_conn():
     if os.getenv("ENV") == "uat":
         pytest.skip("生产环境不进行数据库连接")
     conn = pymysql.connect(
-        **config.DB_CONFIG,
+        **app_config.DB_CONFIG,
         cursorclass=pymysql.cursors.DictCursor,
     )
     attach_text(
         "数据库连接信息",
-        f"Database: {config.DB_CONFIG['host']}:{config.DB_CONFIG['port']}/{config.DB_CONFIG['database']}",
+        f"Database: {app_config.DB_CONFIG['host']}:{app_config.DB_CONFIG['port']}/{app_config.DB_CONFIG['database']}",
     )
     yield conn
     conn.close()
@@ -127,7 +155,7 @@ def pytest_runtest_logreport(report):
 #         f"测试汇总: 总数={total}, 通过={passed}, 失败={failed}, 跳过={skipped}, 预期失败={xfailed}, 预期通过={xpassed}"
 #     )
 
-#     sender = NotificationSender(wechat_webhook=config.WECHAT_WEBHOOK)
+#     sender = NotificationSender(wechat_webhook=app_config.WECHAT_WEBHOOK)
 #     content = create_test_report_message(
 #         passed=passed,
 #         failed=failed,
@@ -153,23 +181,23 @@ def pytest_runtest_logreport(report):
 
 
 @pytest.hookimpl(tryfirst=True)
-def pytest_configure():
+def pytest_configure(config):
     """写入 Allure 环境属性"""
-    allure_dir = config.ALLURE_RESULTS_DIR
+    allure_dir = config.option.allure_report_dir or app_config.ALLURE_RESULTS_DIR
     if not os.path.exists(allure_dir):
         os.makedirs(allure_dir)
 
     env_properties = os.path.join(allure_dir, "environment.properties")
-    for warning in config.validate():
+    for warning in app_config.validate():
         logger.warning(warning)
 
     with open(env_properties, "w", encoding="utf-8") as f:
         f.write(f"ENV={os.getenv('ENV', 'test')}\n")
-        f.write(f"API_BASE_URL={config.get_base_url()}\n")
-        f.write(f"DB_HOST={config.DB_CONFIG['host']}\n")
-        f.write(f"DB_PORT={config.DB_CONFIG['port']}\n")
+        f.write(f"API_BASE_URL={app_config.get_base_url()}\n")
+        f.write(f"DB_HOST={app_config.DB_CONFIG['host']}\n")
+        f.write(f"DB_PORT={app_config.DB_CONFIG['port']}\n")
         f.write(f"PYTHON_VERSION={os.sys.version}\n")
 
 
 if __name__ == '__main__':
-    print(access_token())
+    logger.info("访问令牌: %s", access_token())

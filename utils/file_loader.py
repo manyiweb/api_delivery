@@ -46,7 +46,6 @@ if __name__ == '__main__':
     load_dotenv()
     if os.getenv("ENV") == "uat":
         raw_data = get_data_file_path("mt_delivery_data_uat.yaml")
-        print(raw_data)
     else:
         raw_data = get_data_file_path("mt_delivery_data.yaml")
-        print(raw_data)
+    logger.info("数据文件路径: %s", raw_data)

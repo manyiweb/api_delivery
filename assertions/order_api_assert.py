@@ -165,16 +165,16 @@ def assert_order_persisted_via_list_detail(
                     attach_text("匹配到的内部订单编号", internal_order_id)
                     if matched_key:
                         attach_text("匹配字段", matched_key)
-                    attach_json("订单列表响应（匹配）", list_resp)
-                    attach_json("订单详情响应（匹配）", detail_resp)
+                    attach_json("订单列表响应摘要（匹配）", list_resp)
+                    attach_json("订单详情响应摘要（匹配）", detail_resp)
                     return internal_order_id
 
         time.sleep(interval)
 
     if last_list_resp is not None:
-        attach_json("订单列表响应（最后一次）", last_list_resp)
+        attach_json("订单列表响应（最后一次）", last_list_resp, full=True)
     if last_detail_resp is not None:
-        attach_json("订单详情响应（最后一次）", last_detail_resp)
+        attach_json("订单详情响应（最后一次）", last_detail_resp, full=True)
 
     raise AssertionError(
         f"在 {effective_timeout}s 内未通过 list/detail 找到订单；expected_source_no={expected_source_no}"
@@ -235,13 +235,13 @@ def assert_order_status_via_detail(
         if status is not None and str(status) == str(expected_status):
             attach_text("期望订单状态", expected_status)
             attach_text("实际订单状态", status)
-            attach_json("订单详情响应（状态匹配）", detail_resp)
+            attach_json("订单详情响应摘要（状态匹配）", detail_resp)
             return str(status)
 
         time.sleep(interval)
 
     if last_detail_resp is not None:
-        attach_json("订单详情响应（状态校验，最后一次）", last_detail_resp)
+        attach_json("订单详情响应（状态校验，最后一次）", last_detail_resp, full=True)
 
     raise AssertionError(
         f"在 {effective_timeout}s 内订单状态未变为 {expected_status}，当前状态={last_status}"

@@ -77,12 +77,9 @@ pipeline {
             steps {
                 bat '''
                 set PYTHONUTF8=1
-                set ENV=fat
-                set BASE_URL=http://fat-pos.reabam.com:60030/api
-                set UAT_URL=https://pos.reabam.com/api
                 echo BASE_URL=%BASE_URL%
                 D:\\python\\python.exe -m pip install -r requirements.txt
-                pytest -v --junitxml=report.xml --alluredir=allure-results || exit 0
+                D:\\python\\python.exe -m pytest -v -m smoke --junitxml=report.xml --alluredir=allure-results
                 '''
             }
         }
@@ -90,11 +87,6 @@ pipeline {
 
     post {
         always {
-            script {
-                // 保证构建显示为成功
-                currentBuild.result = 'SUCCESS'
-            }
-
             // 执行 Allure 报告生成
             allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
 

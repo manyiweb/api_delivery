@@ -24,6 +24,8 @@ from api.create_order_cash import (
 import allure
 import pytest
 
+from assertions.pay_assert import assert_pay_success
+
 
 @pytest.fixture(scope="function")
 def empty_shopping_cart(client, access_token):
@@ -35,6 +37,9 @@ def empty_shopping_cart(client, access_token):
 @allure.severity(allure.severity_level.CRITICAL)
 class TestSaaSPay:
     @allure.story("现金购买支付")
+    @pytest.mark.smoke
+    @pytest.mark.critical
+    @allure.title("现金购买支付核心链路成功")
     def test_cash_pay(self, client, access_token):
         token = access_token
         # 添加服务导购
@@ -48,9 +53,10 @@ class TestSaaSPay:
             client, token, actual_pay_amount, section="cashPay")
         # 现金支付
         resp = cash_pay(client, token, order_id, actual_pay_amount)
-        assert resp.json().get("code") == "200", "现金支付失败：返回码不为200"
+        assert_pay_success(resp, "现金支付", order_id=order_id)
 
     @allure.story("订单优惠金额")
+    @pytest.mark.critical
     def test_order_discount_amount(self, client, access_token):
         token = access_token
         # 添加服务导购
@@ -67,9 +73,10 @@ class TestSaaSPay:
             client, token, actual_pay_amount, section="cashPay")
         # 现金支付
         resp = cash_pay(client, token, order_id, actual_pay_amount)
-        assert resp.json().get("code") == "200", "订单优惠金额支付失败：返回码不为200"
+        assert_pay_success(resp, "订单优惠金额支付", order_id=order_id)
 
     @allure.story("订单优惠折扣")
+    @pytest.mark.critical
     def test_order_discount_rate(self, client, access_token):
         token = access_token
         # 添加服务导购
@@ -87,9 +94,10 @@ class TestSaaSPay:
             client, token, actual_pay_amount, section="cashPay")
         # 现金支付
         resp = cash_pay(client, token, order_id, actual_pay_amount)
-        assert resp.json().get("code") == "200", "订单优惠折扣支付失败：返回码不为200"
+        assert_pay_success(resp, "订单优惠折扣支付", order_id=order_id)
 
     @allure.story("订单优惠-满折")
+    @pytest.mark.critical
     def test_order_discount_full_discount(self, client, access_token):
         token = access_token
         # 添加服务导购
@@ -107,9 +115,10 @@ class TestSaaSPay:
             client, token, actual_pay_amount, section="cashPay")
         # 现金支付
         resp = cash_pay(client, token, order_id, actual_pay_amount)
-        assert resp.json().get("code") == "200", "订单优惠满折支付失败：返回码不为200"
+        assert_pay_success(resp, "订单优惠满折支付", order_id=order_id)
 
     @allure.story("订单优惠-满增")
+    @pytest.mark.critical
     def test_order_discount_full_send(self, client, access_token):
         token = access_token
         # 添加服务导购
@@ -131,9 +140,10 @@ class TestSaaSPay:
             client, token, actual_pay_amount, section="cashPay")
         # 现金支付
         resp = cash_pay(client, token, order_id, actual_pay_amount)
-        assert resp.json().get("code") == "200", "订单优惠满增支付失败：返回码不为200"
+        assert_pay_success(resp, "订单优惠满增支付", order_id=order_id)
 
     @allure.story("订单优惠-满减")
+    @pytest.mark.critical
     def test_order_discount_full_reduction(self, client, access_token, empty_shopping_cart):
         token = access_token
         # 添加服务导购
@@ -151,9 +161,10 @@ class TestSaaSPay:
             client, token, actual_pay_amount, section="cashPay")
         # 现金支付
         resp = cash_pay(client, token, order_id, actual_pay_amount)
-        assert resp.json().get("code") == "200", "订单优惠满减支付失败：返回码不为200"
+        assert_pay_success(resp, "订单优惠满减支付", order_id=order_id)
 
     @allure.story("购物卡充值")
+    @pytest.mark.critical
     def test_card_recharge(self, client, access_token):
         token = access_token
         # 获取购物卡充值列表
@@ -165,9 +176,10 @@ class TestSaaSPay:
             client, token, coId, giveItemId, saleValue)
         # 新增购物卡充值订单支付记录
         resp = cash_pay(client, token, order_id, actual_pay_amount, order_type)
-
+        assert_pay_success(resp, "购物卡充值支付", order_id=order_id)
 
     @allure.story("购物卡充值后退款")
+    @pytest.mark.critical
     def test_card_refund(self, client, access_token):
         token = access_token
         # 获取购物卡充值列表
@@ -181,9 +193,10 @@ class TestSaaSPay:
         cash_pay(client, token, order_id, actual_pay_amount, order_type)
         # 购物卡退款（直接使用充值订单ID）
         resp = card_refund(client, token, order_id, actual_pay_amount)
-        assert resp.json().get("code") == "200", "购物卡退款失败：返回码不为200"
+        assert_pay_success(resp, "购物卡退款")
 
     @allure.story("会员积分支付")
+    @pytest.mark.critical
     def test_member_integral_pay(self, client, access_token):
         token = access_token
         # 添加服务导购
@@ -201,9 +214,10 @@ class TestSaaSPay:
             client, token, actual_pay_amount, section="IntegralPay")
         # 积分支付
         resp = integral_pay(client, token, order_id, actual_pay_amount)
-        assert resp.json().get("code") == "200", "会员积分支付失败：返回码不为200"
+        assert_pay_success(resp, "会员积分支付", order_id=order_id)
 
     @allure.story("购物卡支付")
+    @pytest.mark.critical
     def test_card_pay(self, client, access_token):
         token = access_token
         # 添加服务导购
@@ -221,9 +235,10 @@ class TestSaaSPay:
             client, token, actual_pay_amount, section="MCardPay")
         # 购物卡支付
         resp = Mcard_pay(client, token, order_id, actual_pay_amount)
-        assert resp.json().get("code") == "200", "购物卡支付失败：返回码不为200"
+        assert_pay_success(resp, "购物卡支付", order_id=order_id)
 
     @allure.story("实体卡支付")
+    @pytest.mark.critical
     def test_entity_card_pay(self, client, access_token):
         token = access_token
         # 添加服务导购
@@ -246,4 +261,4 @@ class TestSaaSPay:
             client, token, pay_amount, section="EntityCard")
         # 实体卡支付
         resp = entity_card_pay(client, token, order_id, pay_amount, card_no)
-        assert resp.json().get("code") == "200", "实体卡支付失败：返回码不为200"
+        assert_pay_success(resp, "实体卡支付", order_id=order_id)

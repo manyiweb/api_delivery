@@ -5,7 +5,6 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 import httpx
 
 from api.base import safe_post
-from conftest import access_token
 from utils.file_loader import (
     get_data_file_path,
     load_yaml_data,
@@ -197,7 +196,7 @@ def execute_apply_invoice(
     invoice_id, response_json = _parse_apply_invoice_response(resp)
     if return_response:
         return invoice_id, response_json
-        return invoice_id
+    return invoice_id
 
 
 # 申请开票（一站式：构建参数 + 执行请求）

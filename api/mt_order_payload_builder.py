@@ -5,7 +5,6 @@ import time
 from typing import Dict, Optional, Tuple
 
 from config import config
-from utils.allure_helper import attach_json
 from utils.logger import logger
 
 
@@ -115,8 +114,6 @@ def build_mt_apply_refund_payload(raw_data: Dict, mt_order_id: str) -> Dict[str,
         ensure_ascii=False,
         separators=(",", ":"),
     )
-
-    attach_json("退款请求原始数据", data)
 
     final_refund_payload = config.get_final_payload_params().copy()
     final_refund_payload["orderRefund"] = order_refund_json
