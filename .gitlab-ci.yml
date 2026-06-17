@@ -1,4 +1,5 @@
 # GitLab CI/CD for api-auto-test
+# 手动推送验证：确认本地 GitLab Runner 能接收并执行 pipeline。
 # 设计目标：
 #   1. 多阶段流水线（setup -> unit -> smoke/critical -> report -> pages -> notify）
 #   2. smoke 与 critical 并行执行（DAG + needs）
