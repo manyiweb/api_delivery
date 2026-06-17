@@ -1,0 +1,245 @@
+# GitLab CI/CD for api-auto-test
+# 设计目标：
+#   1. 多阶段流水线（setup -> unit -> smoke/critical -> report -> pages -> notify）
+#   2. smoke 与 critical 并行执行（DAG + needs）
+#   3. Allure 报告通过 GitLab Pages 自动发布
+#   4. 失败时通过企业微信 webhook 通知
+#   5. 所有敏感信息通过 GitLab CI/CD Variables 注入，代码中不留痕
+#
+# 本地 runner 要求：
+#   由于测试环境（FAT/UAT）位于公司内网，需使用本地可访问内网的 GitLab Runner。
+#   推荐 macOS Docker executor，如 Docker 无法走 VPN，则改用 shell executor。
+
+workflow:
+  rules:
+    # MR 时触发
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    # 默认分支推送时触发
+    - if: '$CI_COMMIT_BRANCH == "$CI_DEFAULT_BRANCH"'
+    # 定时触发
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    # 跨项目触发（由后端项目调用 trigger API）
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+    # 跨项目触发（由 agent 项目使用 GitLab downstream pipeline 触发）
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+
+variables:
+  # Python 输出使用 UTF-8，避免 Windows/Linux 混用编码问题
+  PYTHONUTF8: "1"
+  # pip 缓存目录
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip-cache"
+  # Allure 结果/报告目录
+  ALLURE_RESULTS_DIR: "reports/allure-results"
+  ALLURE_REPORT_DIR: "reports/allure-report"
+  # 默认环境，可在 GitLab CI/CD Variables 中覆盖
+  ENV: "fat"
+  # 日志级别
+  LOG_LEVEL: "INFO"
+
+# pip 依赖缓存，按分支维持续存，显著加速重复安装
+cache:
+  key: "${CI_COMMIT_REF_SLUG}-pip"
+  paths:
+    - .pip-cache/
+
+stages:
+  - setup
+  - unit
+  - smoke
+  - critical
+  - report
+  - pages
+  - notify
+
+# =========================================================
+# setup：安装依赖，验证环境可编译
+# =========================================================
+setup:
+  stage: setup
+  image: python:3.12-slim
+  tags:
+    - api-test
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config
+  script:
+    - python -m pip install --upgrade pip
+    - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
+    - python -c "import pytest, httpx, pymysql, yaml; print('deps ok')"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "$CI_DEFAULT_BRANCH"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+  interruptible: true
+
+# =========================================================
+# unit：纯单元测试，不访问外部接口，跳过 ensure_handover
+# =========================================================
+unit:
+  stage: unit
+  image: python:3.12-slim
+  tags:
+    - api-test
+  needs:
+    - job: setup
+      optional: true
+  variables:
+    SKIP_HANDOVER: "1"
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config
+    - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
+  script:
+    - pytest tests/unit -m unit -v --alluredir="$ALLURE_RESULTS_DIR/unit"
+  artifacts:
+    when: always
+    paths:
+      - "$ALLURE_RESULTS_DIR/unit"
+    expire_in: 1 week
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "$CI_DEFAULT_BRANCH"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+  interruptible: true
+
+# =========================================================
+# smoke：冒烟测试，真实调用 FAT/UAT 接口
+# =========================================================
+smoke:
+  stage: smoke
+  image: python:3.12-slim
+  tags:
+    - api-test
+  needs:
+    - job: unit
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config
+    - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
+  script:
+    - pytest case -m smoke -v --alluredir="$ALLURE_RESULTS_DIR/smoke" --reruns 2 --reruns-delay 1
+  artifacts:
+    when: always
+    paths:
+      - "$ALLURE_RESULTS_DIR/smoke"
+    expire_in: 1 week
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "$CI_DEFAULT_BRANCH"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+  interruptible: true
+
+# =========================================================
+# critical：关键业务测试，与 smoke 并行执行
+# =========================================================
+critical:
+  stage: critical
+  image: python:3.12-slim
+  tags:
+    - api-test
+  needs:
+    - job: unit
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config
+    - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
+  script:
+    - pytest case -m critical -v --alluredir="$ALLURE_RESULTS_DIR/critical" --reruns 2 --reruns-delay 1
+  artifacts:
+    when: always
+    paths:
+      - "$ALLURE_RESULTS_DIR/critical"
+    expire_in: 1 week
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "$CI_DEFAULT_BRANCH"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+  interruptible: true
+
+# =========================================================
+# allure_report：合并多 job 的 Allure 结果，生成 HTML 报告
+# =========================================================
+allure_report:
+  stage: report
+  image: frankescobar/allure-docker-service:latest
+  tags:
+    - api-test
+  needs:
+    - job: unit
+      optional: true
+    - job: smoke
+      optional: true
+    - job: critical
+      optional: true
+  variables:
+    # 该镜像默认用户非 root，确保目录可写
+    CHECK_RESULTS_EVERY_SECONDS: none
+    KEEP_HISTORY: "1"
+  before_script:
+    - mkdir -p "$ALLURE_REPORT_DIR"
+  script:
+    - allure generate "$ALLURE_RESULTS_DIR" -o "$ALLURE_REPORT_DIR" --clean
+  artifacts:
+    when: always
+    paths:
+      - "$ALLURE_REPORT_DIR"
+      - "$ALLURE_RESULTS_DIR"
+    expire_in: 1 week
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "$CI_DEFAULT_BRANCH"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+  interruptible: true
+
+# =========================================================
+# pages：将 Allure HTML 报告发布到 GitLab Pages
+# 访问地址：https://<username>.gitlab.io/<project-name>
+# =========================================================
+pages:
+  stage: pages
+  image: busybox:latest
+  tags:
+    - api-test
+  needs:
+    - job: allure_report
+  script:
+    - mkdir -p public
+    - cp -r "$ALLURE_REPORT_DIR"/* public/
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "$CI_DEFAULT_BRANCH"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+
+# =========================================================
+# notify：失败时发送企业微信通知（带报告链接）
+# =========================================================
+notify:
+  stage: notify
+  image: python:3.12-slim
+  tags:
+    - api-test
+  needs:
+    - job: allure_report
+      optional: true
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config
+    - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
+  script:
+    - python scripts/notify_ci_failure.py
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "$CI_DEFAULT_BRANCH"'
+      when: on_failure
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: on_failure
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+      when: on_failure
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+      when: on_failure
+  interruptible: true
