@@ -29,3 +29,8 @@ def test_mixed_or_case_session_is_not_unit_only():
     )
 
     assert conftest._is_unit_only_session(request) is False
+
+
+def test_extract_token_fails_clearly_when_login_data_is_empty():
+    with pytest.raises(AssertionError, match="登录接口未返回 tokenId"):
+        conftest._extract_token_id({"code": "200", "success": False, "data": None, "msg": "登录失败"})

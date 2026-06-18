@@ -117,6 +117,33 @@ smoke:
       "$PYTHON_BIN" -m venv .venv
       .venv/bin/python -m pip install --upgrade pip
       .venv/bin/python -m pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
+      missing=0
+      echo "CI variable check:"
+      for name in LOGIN_MOBILE LOGIN_WORD; do
+        eval "value=\"\${$name:-}\""
+        if [ -n "$value" ]; then
+          echo "$name=SET"
+        else
+          echo "$name=UNSET"
+          missing=1
+        fi
+      done
+      if [ "$ENV" = "uat" ]; then
+        URL_VAR=UAT_URL
+      else
+        URL_VAR=BASE_URL
+      fi
+      eval "url_value=\"\${$URL_VAR:-}\""
+      if [ -n "$url_value" ]; then
+        echo "$URL_VAR=SET"
+      else
+        echo "$URL_VAR=UNSET"
+        missing=1
+      fi
+      if [ "$missing" -ne 0 ]; then
+        echo "Missing required CI/CD variables for API login." >&2
+        exit 1
+      fi
   script:
     - .venv/bin/python -m pytest case -m smoke -v --alluredir="$ALLURE_RESULTS_DIR/smoke" --reruns 2 --reruns-delay 1
   artifacts:
@@ -147,6 +174,33 @@ critical:
       "$PYTHON_BIN" -m venv .venv
       .venv/bin/python -m pip install --upgrade pip
       .venv/bin/python -m pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
+      missing=0
+      echo "CI variable check:"
+      for name in LOGIN_MOBILE LOGIN_WORD; do
+        eval "value=\"\${$name:-}\""
+        if [ -n "$value" ]; then
+          echo "$name=SET"
+        else
+          echo "$name=UNSET"
+          missing=1
+        fi
+      done
+      if [ "$ENV" = "uat" ]; then
+        URL_VAR=UAT_URL
+      else
+        URL_VAR=BASE_URL
+      fi
+      eval "url_value=\"\${$URL_VAR:-}\""
+      if [ -n "$url_value" ]; then
+        echo "$URL_VAR=SET"
+      else
+        echo "$URL_VAR=UNSET"
+        missing=1
+      fi
+      if [ "$missing" -ne 0 ]; then
+        echo "Missing required CI/CD variables for API login." >&2
+        exit 1
+      fi
   script:
     - .venv/bin/python -m pytest case -m critical -v --alluredir="$ALLURE_RESULTS_DIR/critical" --reruns 2 --reruns-delay 1
   artifacts:
