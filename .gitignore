@@ -17,6 +17,7 @@ env/
 
 # 测试和报告
 .pytest_cache/
+.pip-cache/
 reports/
 logs/
 *.log

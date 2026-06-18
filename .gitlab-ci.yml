@@ -2,14 +2,14 @@
 # 手动推送验证：确认本地 GitLab Runner 能接收并执行 pipeline。
 # 设计目标：
 #   1. 多阶段流水线（setup -> unit -> smoke/critical -> report -> pages -> notify）
-#   2. smoke 与 critical 并行执行（DAG + needs）
+#   2. smoke 与 critical 分阶段执行，兼容旧版 GitLab
 #   3. Allure 报告通过 GitLab Pages 自动发布
 #   4. 失败时通过企业微信 webhook 通知
 #   5. 所有敏感信息通过 GitLab CI/CD Variables 注入，代码中不留痕
 #
 # 本地 runner 要求：
 #   由于测试环境（FAT/UAT）位于公司内网，需使用本地可访问内网的 GitLab Runner。
-#   推荐 macOS Docker executor，如 Docker 无法走 VPN，则改用 shell executor。
+#   当前使用 macOS shell executor，因此不要写 Docker/Linux 专属命令。
 #
 # 公司 GitLab 版本较老，不支持 workflow/rules/needs optional 等新语法。
 # 这里使用 stages + only/except 的兼容写法。
@@ -47,15 +47,21 @@ stages:
 # =========================================================
 setup:
   stage: setup
-  image: python:3.12-slim
   tags:
     - api-test
   before_script:
-    - apt-get update && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config
+    - |
+      set -e
+      if command -v python3.12 >/dev/null 2>&1; then
+        PYTHON_BIN=python3.12
+      else
+        PYTHON_BIN=python3
+      fi
+      "$PYTHON_BIN" -m venv .venv
+      .venv/bin/python -m pip install --upgrade pip
+      .venv/bin/python -m pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
   script:
-    - python -m pip install --upgrade pip
-    - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
-    - python -c "import pytest, httpx, pymysql, yaml; print('deps ok')"
+    - .venv/bin/python -c "import pytest, httpx, pymysql, yaml; print('deps ok')"
   only:
     - branches
     - triggers
@@ -66,16 +72,23 @@ setup:
 # =========================================================
 unit:
   stage: unit
-  image: python:3.12-slim
   tags:
     - api-test
   variables:
     SKIP_HANDOVER: "1"
   before_script:
-    - apt-get update && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config
-    - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
+    - |
+      set -e
+      if command -v python3.12 >/dev/null 2>&1; then
+        PYTHON_BIN=python3.12
+      else
+        PYTHON_BIN=python3
+      fi
+      "$PYTHON_BIN" -m venv .venv
+      .venv/bin/python -m pip install --upgrade pip
+      .venv/bin/python -m pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
   script:
-    - pytest tests/unit -m unit -v --alluredir="$ALLURE_RESULTS_DIR/unit"
+    - .venv/bin/python -m pytest tests/unit -m unit -v --alluredir="$ALLURE_RESULTS_DIR/unit"
   artifacts:
     when: always
     paths:
@@ -91,14 +104,21 @@ unit:
 # =========================================================
 smoke:
   stage: smoke
-  image: python:3.12-slim
   tags:
     - api-test
   before_script:
-    - apt-get update && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config
-    - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
+    - |
+      set -e
+      if command -v python3.12 >/dev/null 2>&1; then
+        PYTHON_BIN=python3.12
+      else
+        PYTHON_BIN=python3
+      fi
+      "$PYTHON_BIN" -m venv .venv
+      .venv/bin/python -m pip install --upgrade pip
+      .venv/bin/python -m pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
   script:
-    - pytest case -m smoke -v --alluredir="$ALLURE_RESULTS_DIR/smoke" --reruns 2 --reruns-delay 1
+    - .venv/bin/python -m pytest case -m smoke -v --alluredir="$ALLURE_RESULTS_DIR/smoke" --reruns 2 --reruns-delay 1
   artifacts:
     when: always
     paths:
@@ -114,14 +134,21 @@ smoke:
 # =========================================================
 critical:
   stage: critical
-  image: python:3.12-slim
   tags:
     - api-test
   before_script:
-    - apt-get update && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config
-    - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
+    - |
+      set -e
+      if command -v python3.12 >/dev/null 2>&1; then
+        PYTHON_BIN=python3.12
+      else
+        PYTHON_BIN=python3
+      fi
+      "$PYTHON_BIN" -m venv .venv
+      .venv/bin/python -m pip install --upgrade pip
+      .venv/bin/python -m pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
   script:
-    - pytest case -m critical -v --alluredir="$ALLURE_RESULTS_DIR/critical" --reruns 2 --reruns-delay 1
+    - .venv/bin/python -m pytest case -m critical -v --alluredir="$ALLURE_RESULTS_DIR/critical" --reruns 2 --reruns-delay 1
   artifacts:
     when: always
     paths:
@@ -137,7 +164,6 @@ critical:
 # =========================================================
 allure_report:
   stage: report
-  image: frankescobar/allure-docker-service:latest
   tags:
     - api-test
   variables:
@@ -147,7 +173,22 @@ allure_report:
   before_script:
     - mkdir -p "$ALLURE_REPORT_DIR"
   script:
-    - allure generate "$ALLURE_RESULTS_DIR" -o "$ALLURE_REPORT_DIR" --clean
+    - |
+      if command -v allure >/dev/null 2>&1; then
+        allure generate "$ALLURE_RESULTS_DIR" -o "$ALLURE_REPORT_DIR" --clean
+      else
+        cat > "$ALLURE_REPORT_DIR/index.html" <<'HTML'
+      <!doctype html>
+      <html lang="zh-CN">
+      <head><meta charset="utf-8"><title>Allure CLI 未安装</title></head>
+      <body>
+      <h1>Allure CLI 未安装</h1>
+      <p>测试结果已保存到 artifacts 的 reports/allure-results 目录。</p>
+      <p>如需生成 HTML 报告，请在本地 runner 机器安装 allure 命令行工具。</p>
+      </body>
+      </html>
+      HTML
+      fi
   artifacts:
     when: always
     paths:
@@ -165,12 +206,16 @@ allure_report:
 # =========================================================
 pages:
   stage: pages
-  image: busybox:latest
   tags:
     - api-test
   script:
     - mkdir -p public
-    - cp -r "$ALLURE_REPORT_DIR"/* public/
+    - |
+      if [ -d "$ALLURE_REPORT_DIR" ] && [ "$(ls -A "$ALLURE_REPORT_DIR" 2>/dev/null)" ]; then
+        cp -r "$ALLURE_REPORT_DIR"/* public/
+      else
+        printf '%s\n' '<!doctype html><html><body><h1>No report generated</h1></body></html>' > public/index.html
+      fi
   artifacts:
     paths:
       - public
@@ -184,14 +229,21 @@ pages:
 # =========================================================
 notify:
   stage: notify
-  image: python:3.12-slim
   tags:
     - api-test
   before_script:
-    - apt-get update && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config
-    - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
+    - |
+      set -e
+      if command -v python3.12 >/dev/null 2>&1; then
+        PYTHON_BIN=python3.12
+      else
+        PYTHON_BIN=python3
+      fi
+      "$PYTHON_BIN" -m venv .venv
+      .venv/bin/python -m pip install --upgrade pip
+      .venv/bin/python -m pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
   script:
-    - python scripts/notify_ci_failure.py
+    - .venv/bin/python scripts/notify_ci_failure.py
   only:
     - master
     - triggers
