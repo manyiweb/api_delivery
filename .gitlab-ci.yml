@@ -10,19 +10,9 @@
 # 本地 runner 要求：
 #   由于测试环境（FAT/UAT）位于公司内网，需使用本地可访问内网的 GitLab Runner。
 #   推荐 macOS Docker executor，如 Docker 无法走 VPN，则改用 shell executor。
-
-workflow:
-  rules:
-    # MR 时触发
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    # 默认分支推送时触发
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-    # 定时触发
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-    # 跨项目触发（由后端项目调用 trigger API）
-    - if: '$CI_PIPELINE_SOURCE == "trigger"'
-    # 跨项目触发（由 agent 项目使用 GitLab downstream pipeline 触发）
-    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+#
+# 公司 GitLab 版本较老，不支持 workflow/rules/needs optional 等新语法。
+# 这里使用 stages + only/except 的兼容写法。
 
 variables:
   # Python 输出使用 UTF-8，避免 Windows/Linux 混用编码问题
@@ -66,12 +56,10 @@ setup:
     - python -m pip install --upgrade pip
     - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
     - python -c "import pytest, httpx, pymysql, yaml; print('deps ok')"
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-    - if: '$CI_PIPELINE_SOURCE == "trigger"'
-    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+  only:
+    - branches
+    - triggers
+    - schedules
   interruptible: true
 
 # =========================================================
@@ -82,9 +70,6 @@ unit:
   image: python:3.12-slim
   tags:
     - api-test
-  needs:
-    - job: setup
-      optional: true
   variables:
     SKIP_HANDOVER: "1"
   before_script:
@@ -97,12 +82,10 @@ unit:
     paths:
       - "$ALLURE_RESULTS_DIR/unit"
     expire_in: 1 week
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-    - if: '$CI_PIPELINE_SOURCE == "trigger"'
-    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+  only:
+    - branches
+    - triggers
+    - schedules
   interruptible: true
 
 # =========================================================
@@ -113,8 +96,6 @@ smoke:
   image: python:3.12-slim
   tags:
     - api-test
-  needs:
-    - job: unit
   before_script:
     - apt-get update && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config
     - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
@@ -125,11 +106,10 @@ smoke:
     paths:
       - "$ALLURE_RESULTS_DIR/smoke"
     expire_in: 1 week
-  rules:
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-    - if: '$CI_PIPELINE_SOURCE == "trigger"'
-    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+  only:
+    - master
+    - triggers
+    - schedules
   interruptible: true
 
 # =========================================================
@@ -140,8 +120,6 @@ critical:
   image: python:3.12-slim
   tags:
     - api-test
-  needs:
-    - job: unit
   before_script:
     - apt-get update && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config
     - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
@@ -152,11 +130,10 @@ critical:
     paths:
       - "$ALLURE_RESULTS_DIR/critical"
     expire_in: 1 week
-  rules:
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-    - if: '$CI_PIPELINE_SOURCE == "trigger"'
-    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+  only:
+    - master
+    - triggers
+    - schedules
   interruptible: true
 
 # =========================================================
@@ -167,13 +144,6 @@ allure_report:
   image: frankescobar/allure-docker-service:latest
   tags:
     - api-test
-  needs:
-    - job: unit
-      optional: true
-    - job: smoke
-      optional: true
-    - job: critical
-      optional: true
   variables:
     # 该镜像默认用户非 root，确保目录可写
     CHECK_RESULTS_EVERY_SECONDS: none
@@ -188,11 +158,10 @@ allure_report:
       - "$ALLURE_REPORT_DIR"
       - "$ALLURE_RESULTS_DIR"
     expire_in: 1 week
-  rules:
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-    - if: '$CI_PIPELINE_SOURCE == "trigger"'
-    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+  only:
+    - master
+    - triggers
+    - schedules
   interruptible: true
 
 # =========================================================
@@ -204,19 +173,16 @@ pages:
   image: busybox:latest
   tags:
     - api-test
-  needs:
-    - job: allure_report
   script:
     - mkdir -p public
     - cp -r "$ALLURE_REPORT_DIR"/* public/
   artifacts:
     paths:
       - public
-  rules:
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-    - if: '$CI_PIPELINE_SOURCE == "trigger"'
-    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+  only:
+    - master
+    - triggers
+    - schedules
 
 # =========================================================
 # notify：失败时发送企业微信通知（带报告链接）
@@ -226,21 +192,14 @@ notify:
   image: python:3.12-slim
   tags:
     - api-test
-  needs:
-    - job: allure_report
-      optional: true
   before_script:
     - apt-get update && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config
     - pip install --cache-dir "$PIP_CACHE_DIR" -r requirements.txt
   script:
     - python scripts/notify_ci_failure.py
-  rules:
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-      when: on_failure
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-      when: on_failure
-    - if: '$CI_PIPELINE_SOURCE == "trigger"'
-      when: on_failure
-    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
-      when: on_failure
+  only:
+    - master
+    - triggers
+    - schedules
+  when: on_failure
   interruptible: true
