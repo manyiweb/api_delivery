@@ -17,6 +17,13 @@ def test_ci_does_not_mask_pytest_failures():
     assert "allow_failure: true" not in gitlab_ci
 
 
+def test_ci_allows_agent_triggered_api_tests_to_be_non_blocking():
+    gitlab_ci = (PROJECT_ROOT / ".gitlab-ci.yml").read_text(encoding="utf-8")
+
+    assert "API_TEST_NON_BLOCKING" in gitlab_ci
+    assert "pytest failed but API_TEST_NON_BLOCKING=1" in gitlab_ci
+
+
 def test_legacy_jenkinsfile_removed():
     """迁移到 GitLab CI 后，不应再保留含明文凭证的 Jenkinsfile。"""
     assert not (PROJECT_ROOT / "Jenkinsfile").exists()

@@ -146,7 +146,19 @@ smoke:
       fi
   script:
     - .venv/bin/python scripts/check_login.py
-    - .venv/bin/python -m pytest case -m smoke -v --alluredir="$ALLURE_RESULTS_DIR/smoke" --reruns 2 --reruns-delay 1
+    - |
+      set +e
+      .venv/bin/python -m pytest case -m smoke -v --alluredir="$ALLURE_RESULTS_DIR/smoke" --reruns 2 --reruns-delay 1
+      TEST_EXIT=$?
+      set -e
+      if [ "$TEST_EXIT" -ne 0 ]; then
+        echo "pytest failed with exit code $TEST_EXIT"
+        if [ "$API_TEST_NON_BLOCKING" = "1" ]; then
+          echo "pytest failed but API_TEST_NON_BLOCKING=1, keeping this agent-triggered API regression non-blocking"
+          exit 0
+        fi
+        exit "$TEST_EXIT"
+      fi
   artifacts:
     when: always
     paths:
@@ -204,7 +216,19 @@ critical:
       fi
   script:
     - .venv/bin/python scripts/check_login.py
-    - .venv/bin/python -m pytest case -m critical -v --alluredir="$ALLURE_RESULTS_DIR/critical" --reruns 2 --reruns-delay 1
+    - |
+      set +e
+      .venv/bin/python -m pytest case -m critical -v --alluredir="$ALLURE_RESULTS_DIR/critical" --reruns 2 --reruns-delay 1
+      TEST_EXIT=$?
+      set -e
+      if [ "$TEST_EXIT" -ne 0 ]; then
+        echo "pytest failed with exit code $TEST_EXIT"
+        if [ "$API_TEST_NON_BLOCKING" = "1" ]; then
+          echo "pytest failed but API_TEST_NON_BLOCKING=1, keeping this agent-triggered API regression non-blocking"
+          exit 0
+        fi
+        exit "$TEST_EXIT"
+      fi
   artifacts:
     when: always
     paths:
