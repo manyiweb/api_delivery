@@ -21,7 +21,8 @@ def test_ci_allows_agent_triggered_api_tests_to_be_non_blocking():
     gitlab_ci = (PROJECT_ROOT / ".gitlab-ci.yml").read_text(encoding="utf-8")
 
     assert "API_TEST_NON_BLOCKING" in gitlab_ci
-    assert "pytest failed but API_TEST_NON_BLOCKING=1" in gitlab_ci
+    assert "CI_PIPELINE_SOURCE" in gitlab_ci
+    assert "CI_PIPELINE_SOURCE=trigger" in gitlab_ci
 
 
 def test_legacy_jenkinsfile_removed():

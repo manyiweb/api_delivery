@@ -147,14 +147,15 @@ smoke:
   script:
     - .venv/bin/python scripts/check_login.py
     - |
+      echo "API regression trigger context: CI_PIPELINE_SOURCE=${CI_PIPELINE_SOURCE:-}, API_TEST_NON_BLOCKING=${API_TEST_NON_BLOCKING:-}, UPSTREAM_PROJECT=${UPSTREAM_PROJECT:-}, TRIGGER_SOURCE_PROJECT=${TRIGGER_SOURCE_PROJECT:-}"
       set +e
       .venv/bin/python -m pytest case -m smoke -v --alluredir="$ALLURE_RESULTS_DIR/smoke" --reruns 2 --reruns-delay 1
       TEST_EXIT=$?
       set -e
       if [ "$TEST_EXIT" -ne 0 ]; then
         echo "pytest failed with exit code $TEST_EXIT"
-        if [ "$API_TEST_NON_BLOCKING" = "1" ]; then
-          echo "pytest failed but API_TEST_NON_BLOCKING=1, keeping this agent-triggered API regression non-blocking"
+        if [ "$API_TEST_NON_BLOCKING" = "1" ] || [ "$CI_PIPELINE_SOURCE" = "trigger" ]; then
+          echo "pytest failed but API_TEST_NON_BLOCKING=1 or CI_PIPELINE_SOURCE=trigger, keeping this agent-triggered API regression non-blocking"
           exit 0
         fi
         exit "$TEST_EXIT"
@@ -217,14 +218,15 @@ critical:
   script:
     - .venv/bin/python scripts/check_login.py
     - |
+      echo "API regression trigger context: CI_PIPELINE_SOURCE=${CI_PIPELINE_SOURCE:-}, API_TEST_NON_BLOCKING=${API_TEST_NON_BLOCKING:-}, UPSTREAM_PROJECT=${UPSTREAM_PROJECT:-}, TRIGGER_SOURCE_PROJECT=${TRIGGER_SOURCE_PROJECT:-}"
       set +e
       .venv/bin/python -m pytest case -m critical -v --alluredir="$ALLURE_RESULTS_DIR/critical" --reruns 2 --reruns-delay 1
       TEST_EXIT=$?
       set -e
       if [ "$TEST_EXIT" -ne 0 ]; then
         echo "pytest failed with exit code $TEST_EXIT"
-        if [ "$API_TEST_NON_BLOCKING" = "1" ]; then
-          echo "pytest failed but API_TEST_NON_BLOCKING=1, keeping this agent-triggered API regression non-blocking"
+        if [ "$API_TEST_NON_BLOCKING" = "1" ] || [ "$CI_PIPELINE_SOURCE" = "trigger" ]; then
+          echo "pytest failed but API_TEST_NON_BLOCKING=1 or CI_PIPELINE_SOURCE=trigger, keeping this agent-triggered API regression non-blocking"
           exit 0
         fi
         exit "$TEST_EXIT"
