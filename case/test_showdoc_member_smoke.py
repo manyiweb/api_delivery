@@ -1,7 +1,7 @@
 from copy import deepcopy
 import os
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 import allure
 import pytest
@@ -96,7 +96,7 @@ def _assert_json_contract(response_json: dict[str, Any], case: dict[str, Any]) -
     )
 
 
-def _unavailable_reason(response, response_json: dict[str, Any]) -> str | None:
+def _unavailable_reason(response, response_json: dict[str, Any]) -> Optional[str]:
     """返回当前环境不可达的可跳过原因。"""
     error = str(response_json.get("error", ""))
     if response.status_code == 404 and "No static resource" in error:
