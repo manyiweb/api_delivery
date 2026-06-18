@@ -1,0 +1,2971 @@
+{
+  "item_id": "8",
+  "item_name": "店务助手 + 智慧收银台",
+  "default_page_id": "5635",
+  "excluded_catalogs": [
+    "送水",
+    "订货",
+    "订货退货"
+  ],
+  "menu": {
+    "pages": [],
+    "catalogs": [
+      {
+        "cat_id": "106",
+        "cat_name": "支付",
+        "item_id": "8",
+        "s_number": "1",
+        "addtime": "1566382495",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "1525",
+            "author_uid": "5",
+            "cat_id": "106",
+            "page_title": "支付接口",
+            "addtime": "1708999608"
+          },
+          {
+            "page_id": "4670",
+            "author_uid": "2",
+            "cat_id": "106",
+            "page_title": "美团团购券预支付(旧)",
+            "addtime": "1641363340"
+          },
+          {
+            "page_id": "4976",
+            "author_uid": "32",
+            "cat_id": "106",
+            "page_title": "美团团购券预支付(新)",
+            "addtime": "1677752271"
+          },
+          {
+            "page_id": "4980",
+            "author_uid": "32",
+            "cat_id": "106",
+            "page_title": "抖音券预支付",
+            "addtime": "1642731753"
+          },
+          {
+            "page_id": "6161",
+            "author_uid": "32",
+            "cat_id": "106",
+            "page_title": "计算线下支付收银可支付金额",
+            "addtime": "1670402412"
+          },
+          {
+            "page_id": "6396",
+            "author_uid": "2",
+            "cat_id": "106",
+            "page_title": "刷新接口",
+            "addtime": "1685330290"
+          },
+          {
+            "page_id": "6404",
+            "author_uid": "32",
+            "cat_id": "106",
+            "page_title": "离线订单-平台券支付",
+            "addtime": "1677726196"
+          },
+          {
+            "page_id": "6405",
+            "author_uid": "32",
+            "cat_id": "106",
+            "page_title": "离线订单-平台券退款",
+            "addtime": "1677836400"
+          },
+          {
+            "page_id": "6734",
+            "author_uid": "2",
+            "cat_id": "106",
+            "page_title": "收银-手工完成收款",
+            "addtime": "1686218811"
+          },
+          {
+            "page_id": "7113",
+            "author_uid": "54",
+            "cat_id": "106",
+            "page_title": "批量自定义收银支付接口（自定义收银组合并支付使用，不支持溢收 都是固定金额 应用所有商品才可以）",
+            "addtime": "1695189961"
+          },
+          {
+            "page_id": "8705",
+            "author_uid": "2",
+            "cat_id": "106",
+            "page_title": "下发支付宝会员卡、支付相关信息",
+            "addtime": "1726136395"
+          },
+          {
+            "page_id": "10662",
+            "author_uid": "54",
+            "cat_id": "106",
+            "page_title": "查看线下收银配置",
+            "addtime": "1773827570"
+          },
+          {
+            "page_id": "10686",
+            "author_uid": "54",
+            "cat_id": "106",
+            "page_title": "查看订单收银流水",
+            "addtime": "1762930343"
+          },
+          {
+            "page_id": "10775",
+            "author_uid": "2",
+            "cat_id": "106",
+            "page_title": "获取整单预设备注",
+            "addtime": "1766040890"
+          }
+        ],
+        "catalogs": [
+          {
+            "cat_id": "1054",
+            "cat_name": "支付异常",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1710474303",
+            "parent_cat_id": "106",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "7549",
+                "author_uid": "5",
+                "cat_id": "1054",
+                "page_title": "关闭订单支付异常记录接口",
+                "addtime": "1710474533"
+              }
+            ],
+            "catalogs": []
+          }
+        ]
+      },
+      {
+        "cat_id": "142",
+        "cat_name": "商品",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1574388395",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "1628",
+            "author_uid": "8",
+            "cat_id": "142",
+            "page_title": "商品促销",
+            "addtime": "1574388444"
+          },
+          {
+            "page_id": "1884",
+            "author_uid": "2",
+            "cat_id": "142",
+            "page_title": "商品搜索",
+            "addtime": "1591598951"
+          },
+          {
+            "page_id": "3098",
+            "author_uid": "10",
+            "cat_id": "142",
+            "page_title": "获取商品标签",
+            "addtime": "1641545595"
+          },
+          {
+            "page_id": "4400",
+            "author_uid": "10",
+            "cat_id": "142",
+            "page_title": "获取点餐标签",
+            "addtime": "1627538343"
+          },
+          {
+            "page_id": "6415",
+            "author_uid": "54",
+            "cat_id": "142",
+            "page_title": "搜索实体卡券对应商品并添加购物车",
+            "addtime": "1678241966"
+          },
+          {
+            "page_id": "6440",
+            "author_uid": "32",
+            "cat_id": "142",
+            "page_title": "根据商品id集合获取库存",
+            "addtime": "1678870804"
+          },
+          {
+            "page_id": "9958",
+            "author_uid": "2",
+            "cat_id": "142",
+            "page_title": "根据商品规格id集合获取库存",
+            "addtime": "1749517821"
+          }
+        ],
+        "catalogs": []
+      },
+      {
+        "cat_id": "234",
+        "cat_name": "橱窗",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1587970112",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "2013",
+            "author_uid": "2",
+            "cat_id": "234",
+            "page_title": "获取店务助手调用橱窗所需参数",
+            "addtime": "1587970158"
+          },
+          {
+            "page_id": "3391",
+            "author_uid": "7",
+            "cat_id": "234",
+            "page_title": "商品橱窗/推广 分享到微信",
+            "addtime": "1609213456"
+          },
+          {
+            "page_id": "3392",
+            "author_uid": "7",
+            "cat_id": "234",
+            "page_title": "商品橱窗/推广 获取分享信息",
+            "addtime": "1609213477"
+          },
+          {
+            "page_id": "5495",
+            "author_uid": "40",
+            "cat_id": "234",
+            "page_title": "店务助手-橱窗分享设置",
+            "addtime": "1655366960"
+          }
+        ],
+        "catalogs": [
+          {
+            "cat_id": "491",
+            "cat_name": "主题",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1619596097",
+            "parent_cat_id": "234",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3886",
+                "author_uid": "19",
+                "cat_id": "491",
+                "page_title": "主题版式4类型所有列表",
+                "addtime": "1619610958"
+              },
+              {
+                "page_id": "3887",
+                "author_uid": "19",
+                "cat_id": "491",
+                "page_title": "主题版式4快捷菜单修改",
+                "addtime": "1619611002"
+              },
+              {
+                "page_id": "3888",
+                "author_uid": "19",
+                "cat_id": "491",
+                "page_title": "主题版式4类型可用列表",
+                "addtime": "1619611013"
+              }
+            ],
+            "catalogs": []
+          }
+        ]
+      },
+      {
+        "cat_id": "243",
+        "cat_name": "地点管理",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1588923153",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "2755",
+            "author_uid": "2",
+            "cat_id": "243",
+            "page_title": " 地点管理 新增",
+            "addtime": "1588923238"
+          },
+          {
+            "page_id": "2756",
+            "author_uid": "2",
+            "cat_id": "243",
+            "page_title": "地点管理 详情",
+            "addtime": "1588923284"
+          },
+          {
+            "page_id": "2757",
+            "author_uid": "2",
+            "cat_id": "243",
+            "page_title": " 地点管理 列表",
+            "addtime": "1588923358"
+          },
+          {
+            "page_id": "2758",
+            "author_uid": "2",
+            "cat_id": "243",
+            "page_title": "地点详情 导入",
+            "addtime": "1590736115"
+          }
+        ],
+        "catalogs": []
+      },
+      {
+        "cat_id": "258",
+        "cat_name": "交接班",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1591956855",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "2832",
+            "author_uid": "2",
+            "cat_id": "258",
+            "page_title": "获取交班警告",
+            "addtime": "1743501824"
+          },
+          {
+            "page_id": "4997",
+            "author_uid": "35",
+            "cat_id": "258",
+            "page_title": "开交班数据源",
+            "addtime": "1642740659"
+          },
+          {
+            "page_id": "4998",
+            "author_uid": "54",
+            "cat_id": "258",
+            "page_title": "保存开交班设置",
+            "addtime": "1776648480"
+          },
+          {
+            "page_id": "4999",
+            "author_uid": "35",
+            "cat_id": "258",
+            "page_title": "查询开交班信息",
+            "addtime": "1642730175"
+          },
+          {
+            "page_id": "5000",
+            "author_uid": "35",
+            "cat_id": "258",
+            "page_title": "更改样式组排序",
+            "addtime": "1642558736"
+          },
+          {
+            "page_id": "5003",
+            "author_uid": "35",
+            "cat_id": "258",
+            "page_title": "开交班复制",
+            "addtime": "1642558755"
+          },
+          {
+            "page_id": "5005",
+            "author_uid": "32",
+            "cat_id": "258",
+            "page_title": "获取交接班状态(新)",
+            "addtime": "1642474638"
+          },
+          {
+            "page_id": "7218",
+            "author_uid": "40",
+            "cat_id": "258",
+            "page_title": "获取日结单报表",
+            "addtime": "1698981491"
+          },
+          {
+            "page_id": "9292",
+            "author_uid": "2",
+            "cat_id": "258",
+            "page_title": "获取商场营业报表",
+            "addtime": "1736754697"
+          },
+          {
+            "page_id": "10141",
+            "author_uid": "54",
+            "cat_id": "258",
+            "page_title": "获取日结单报表 样式2",
+            "addtime": "1753261588"
+          }
+        ],
+        "catalogs": [
+          {
+            "cat_id": "708",
+            "cat_name": "逻辑",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1642398881",
+            "parent_cat_id": "258",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "5012",
+                "author_uid": "12",
+                "cat_id": "708",
+                "page_title": "获取交接班使用默认还是自定义模板",
+                "addtime": "1642398892"
+              },
+              {
+                "page_id": "5013",
+                "author_uid": "12",
+                "cat_id": "708",
+                "page_title": "开班（自定义模板）",
+                "addtime": "1645425425"
+              },
+              {
+                "page_id": "5014",
+                "author_uid": "12",
+                "cat_id": "708",
+                "page_title": "去交班（自定义模板）",
+                "addtime": "1645004768"
+              },
+              {
+                "page_id": "5015",
+                "author_uid": "12",
+                "cat_id": "708",
+                "page_title": "确认交班（自定义模板）",
+                "addtime": "1642399016"
+              },
+              {
+                "page_id": "5016",
+                "author_uid": "12",
+                "cat_id": "708",
+                "page_title": "获取交接班状态（自定义模板）",
+                "addtime": "1642399040"
+              },
+              {
+                "page_id": "5022",
+                "author_uid": "12",
+                "cat_id": "708",
+                "page_title": "详情(自定义模板)",
+                "addtime": "1645004828"
+              },
+              {
+                "page_id": "5023",
+                "author_uid": "12",
+                "cat_id": "708",
+                "page_title": "交接班列表(自定义模板)",
+                "addtime": "1645602705"
+              },
+              {
+                "page_id": "5086",
+                "author_uid": "12",
+                "cat_id": "708",
+                "page_title": "根据班次获取当前开班组以及组员",
+                "addtime": "1645429586"
+              }
+            ],
+            "catalogs": []
+          }
+        ]
+      },
+      {
+        "cat_id": "259",
+        "cat_name": "会员",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1592226067",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "2941",
+            "author_uid": "10",
+            "cat_id": "259",
+            "page_title": "扫码入会",
+            "addtime": "1594899108"
+          },
+          {
+            "page_id": "5061",
+            "author_uid": "32",
+            "cat_id": "259",
+            "page_title": "判断会员是否已认证",
+            "addtime": "1644908030"
+          }
+        ],
+        "catalogs": [
+          {
+            "cat_id": "260",
+            "cat_name": "储值卡",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1592226078",
+            "parent_cat_id": "259",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "2837",
+                "author_uid": "2",
+                "cat_id": "260",
+                "page_title": "会员储值卡余额变更记录",
+                "addtime": "1718960391"
+              },
+              {
+                "page_id": "10879",
+                "author_uid": "32",
+                "cat_id": "260",
+                "page_title": "取消充值订单",
+                "addtime": "1768899158"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "298",
+            "cat_name": "权益",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1596182007",
+            "parent_cat_id": "259",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3017",
+                "author_uid": "7",
+                "cat_id": "298",
+                "page_title": "实体卡、储值卡充值选项，优惠券列表",
+                "addtime": "1596182062"
+              },
+              {
+                "page_id": "3018",
+                "author_uid": "7",
+                "cat_id": "298",
+                "page_title": "权益天数充值选项，优惠券列表",
+                "addtime": "1596182087"
+              },
+              {
+                "page_id": "3853",
+                "author_uid": "32",
+                "cat_id": "298",
+                "page_title": "已购买权益卡列表",
+                "addtime": "1652411923"
+              },
+              {
+                "page_id": "3882",
+                "author_uid": "12",
+                "cat_id": "298",
+                "page_title": "权益卡 权益说明 购买说明",
+                "addtime": "1619518289"
+              },
+              {
+                "page_id": "3884",
+                "author_uid": "12",
+                "cat_id": "298",
+                "page_title": "会员是否已经勾选权益说明",
+                "addtime": "1619520963"
+              },
+              {
+                "page_id": "3885",
+                "author_uid": "12",
+                "cat_id": "298",
+                "page_title": "记录是否勾选协议",
+                "addtime": "1619520981"
+              },
+              {
+                "page_id": "9955",
+                "author_uid": "54",
+                "cat_id": "298",
+                "page_title": "实体券一键核销",
+                "addtime": "1749460666"
+              },
+              {
+                "page_id": "9969",
+                "author_uid": "54",
+                "cat_id": "298",
+                "page_title": "实体券一键核销查询",
+                "addtime": "1749543141"
+              },
+              {
+                "page_id": "10134",
+                "author_uid": "2",
+                "cat_id": "298",
+                "page_title": "计算实体券充值到实体卡金额",
+                "addtime": "1751622023"
+              },
+              {
+                "page_id": "10724",
+                "author_uid": "54",
+                "cat_id": "298",
+                "page_title": "实体卡、储值卡充值选项，优惠券列表",
+                "addtime": "1764322333"
+              },
+              {
+                "page_id": "10757",
+                "author_uid": "54",
+                "cat_id": "298",
+                "page_title": "查看门店实体卡价格清单设置",
+                "addtime": "1765871314"
+              },
+              {
+                "page_id": "10758",
+                "author_uid": "54",
+                "cat_id": "298",
+                "page_title": "保存门店实体卡价格清单设置",
+                "addtime": "1765871327"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "318",
+            "cat_name": "优惠券",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1599203491",
+            "parent_cat_id": "259",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3092",
+                "author_uid": "10",
+                "cat_id": "318",
+                "page_title": "优惠券列表",
+                "addtime": "1599207301"
+              },
+              {
+                "page_id": "3093",
+                "author_uid": "10",
+                "cat_id": "318",
+                "page_title": "优惠券派发记录",
+                "addtime": "1599207213"
+              },
+              {
+                "page_id": "5616",
+                "author_uid": "32",
+                "cat_id": "318",
+                "page_title": "获取李宁优惠券列表",
+                "addtime": "1658472369"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "366",
+            "cat_name": "赊销记录",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1605864414",
+            "parent_cat_id": "259",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3296",
+                "author_uid": "10",
+                "cat_id": "366",
+                "page_title": "分页查询会员赊销记录",
+                "addtime": "1605864430"
+              },
+              {
+                "page_id": "3570",
+                "author_uid": "10",
+                "cat_id": "366",
+                "page_title": "查询-会员服务使用记录bom一级子商品",
+                "addtime": "1615276390"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "437",
+            "cat_name": "会员服务",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1615276370",
+            "parent_cat_id": "259",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3630",
+                "author_uid": "10",
+                "cat_id": "437",
+                "page_title": "分页查询-替换物料",
+                "addtime": "1616134957"
+              },
+              {
+                "page_id": "4419",
+                "author_uid": "19",
+                "cat_id": "437",
+                "page_title": "转增 - 会员服务转赠",
+                "addtime": "1628228733"
+              },
+              {
+                "page_id": "4463",
+                "author_uid": "19",
+                "cat_id": "437",
+                "page_title": "会员服务核销 - 撤销",
+                "addtime": "1629681616"
+              },
+              {
+                "page_id": "5585",
+                "author_uid": "19",
+                "cat_id": "437",
+                "page_title": "自定义添加会员服务",
+                "addtime": "1657874533"
+              },
+              {
+                "page_id": "6861",
+                "author_uid": "32",
+                "cat_id": "437",
+                "page_title": "会员服务作废",
+                "addtime": "1689151930"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "550",
+            "cat_name": "会员笔记",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1625456256",
+            "parent_cat_id": "259",
+            "level": "3",
+            "pages": [],
+            "catalogs": [
+              {
+                "cat_id": "553",
+                "cat_name": "中台",
+                "item_id": "8",
+                "s_number": "99",
+                "addtime": "1625624071",
+                "parent_cat_id": "550",
+                "level": "4",
+                "pages": [
+                  {
+                    "page_id": "4132",
+                    "author_uid": "24",
+                    "cat_id": "553",
+                    "page_title": "会员笔记审批",
+                    "addtime": "1626092786"
+                  },
+                  {
+                    "page_id": "4136",
+                    "author_uid": "24",
+                    "cat_id": "553",
+                    "page_title": "手动排序操作",
+                    "addtime": "1625624266"
+                  },
+                  {
+                    "page_id": "4138",
+                    "author_uid": "24",
+                    "cat_id": "553",
+                    "page_title": "获取会员笔记列表（中台）",
+                    "addtime": "1631781781"
+                  },
+                  {
+                    "page_id": "4139",
+                    "author_uid": "24",
+                    "cat_id": "553",
+                    "page_title": "获取会员笔记详细信息（中台）",
+                    "addtime": "1632658220"
+                  },
+                  {
+                    "page_id": "4156",
+                    "author_uid": "24",
+                    "cat_id": "553",
+                    "page_title": "获取评论数据",
+                    "addtime": "1626087310"
+                  },
+                  {
+                    "page_id": "4164",
+                    "author_uid": "24",
+                    "cat_id": "553",
+                    "page_title": "获取话题分类",
+                    "addtime": "1626012894"
+                  },
+                  {
+                    "page_id": "4328",
+                    "author_uid": "24",
+                    "cat_id": "553",
+                    "page_title": "高级筛选入口",
+                    "addtime": "1626074135"
+                  },
+                  {
+                    "page_id": "4552",
+                    "author_uid": "24",
+                    "cat_id": "553",
+                    "page_title": "中台会员笔记上下架",
+                    "addtime": "1631782455"
+                  }
+                ],
+                "catalogs": []
+              },
+              {
+                "cat_id": "554",
+                "cat_name": "会员商城",
+                "item_id": "8",
+                "s_number": "99",
+                "addtime": "1625624104",
+                "parent_cat_id": "550",
+                "level": "4",
+                "pages": [
+                  {
+                    "page_id": "4134",
+                    "author_uid": "24",
+                    "cat_id": "554",
+                    "page_title": "发布评论",
+                    "addtime": "1625722375"
+                  },
+                  {
+                    "page_id": "4135",
+                    "author_uid": "24",
+                    "cat_id": "554",
+                    "page_title": "回复评论",
+                    "addtime": "1626245572"
+                  },
+                  {
+                    "page_id": "4144",
+                    "author_uid": "24",
+                    "cat_id": "554",
+                    "page_title": "根据分类获取会员笔记",
+                    "addtime": "1631757338"
+                  }
+                ],
+                "catalogs": [
+                  {
+                    "cat_id": "569",
+                    "cat_name": "我的笔记",
+                    "item_id": "8",
+                    "s_number": "99",
+                    "addtime": "1626011138",
+                    "parent_cat_id": "554",
+                    "level": "5",
+                    "pages": [
+                      {
+                        "page_id": "4146",
+                        "author_uid": "24",
+                        "cat_id": "569",
+                        "page_title": "获取我的会员笔记相关统计信息",
+                        "addtime": "1626011817"
+                      },
+                      {
+                        "page_id": "4147",
+                        "author_uid": "24",
+                        "cat_id": "569",
+                        "page_title": "获取我的笔记列表",
+                        "addtime": "1632283134"
+                      },
+                      {
+                        "page_id": "4334",
+                        "author_uid": "24",
+                        "cat_id": "569",
+                        "page_title": "获取草稿笔记信息",
+                        "addtime": "1626171919"
+                      }
+                    ],
+                    "catalogs": []
+                  },
+                  {
+                    "cat_id": "570",
+                    "cat_name": "发布功能",
+                    "item_id": "8",
+                    "s_number": "99",
+                    "addtime": "1626011169",
+                    "parent_cat_id": "554",
+                    "level": "5",
+                    "pages": [
+                      {
+                        "page_id": "4131",
+                        "author_uid": "24",
+                        "cat_id": "570",
+                        "page_title": "发布会员笔记",
+                        "addtime": "1626011597"
+                      },
+                      {
+                        "page_id": "4162",
+                        "author_uid": "24",
+                        "cat_id": "570",
+                        "page_title": "获取话题分类",
+                        "addtime": "1626011715"
+                      },
+                      {
+                        "page_id": "4163",
+                        "author_uid": "24",
+                        "cat_id": "570",
+                        "page_title": "获取会员可关联的商品列表",
+                        "addtime": "1626011671"
+                      }
+                    ],
+                    "catalogs": []
+                  },
+                  {
+                    "cat_id": "571",
+                    "cat_name": "会员笔记详情页",
+                    "item_id": "8",
+                    "s_number": "99",
+                    "addtime": "1626011194",
+                    "parent_cat_id": "554",
+                    "level": "5",
+                    "pages": [
+                      {
+                        "page_id": "4153",
+                        "author_uid": "24",
+                        "cat_id": "571",
+                        "page_title": "会员商城获取笔记所有评论与一条回复（如果有）",
+                        "addtime": "1626852848"
+                      },
+                      {
+                        "page_id": "4154",
+                        "author_uid": "24",
+                        "cat_id": "571",
+                        "page_title": "获取评论下的所有回复",
+                        "addtime": "1626852896"
+                      },
+                      {
+                        "page_id": "4155",
+                        "author_uid": "24",
+                        "cat_id": "571",
+                        "page_title": "会员笔记详细信息",
+                        "addtime": "1632901544"
+                      },
+                      {
+                        "page_id": "4333",
+                        "author_uid": "24",
+                        "cat_id": "571",
+                        "page_title": "获取商品详情",
+                        "addtime": "1626244483"
+                      },
+                      {
+                        "page_id": "4562",
+                        "author_uid": "24",
+                        "cat_id": "571",
+                        "page_title": "会员商城会员笔记设置权限（自己发布的）",
+                        "addtime": "1632280616"
+                      },
+                      {
+                        "page_id": "4580",
+                        "author_uid": "24",
+                        "cat_id": "571",
+                        "page_title": "获取会员笔记分享二维码",
+                        "addtime": "1632622231"
+                      },
+                      {
+                        "page_id": "4581",
+                        "author_uid": "24",
+                        "cat_id": "571",
+                        "page_title": "获取会员笔记二维码记录",
+                        "addtime": "1632622382"
+                      }
+                    ],
+                    "catalogs": []
+                  },
+                  {
+                    "cat_id": "573",
+                    "cat_name": "点赞和收藏",
+                    "item_id": "8",
+                    "s_number": "99",
+                    "addtime": "1626011312",
+                    "parent_cat_id": "554",
+                    "level": "5",
+                    "pages": [
+                      {
+                        "page_id": "4160",
+                        "author_uid": "24",
+                        "cat_id": "573",
+                        "page_title": "点赞（会员笔记）",
+                        "addtime": "1627008980"
+                      },
+                      {
+                        "page_id": "4161",
+                        "author_uid": "24",
+                        "cat_id": "573",
+                        "page_title": "收藏（会员笔记）",
+                        "addtime": "1627009001"
+                      },
+                      {
+                        "page_id": "4167",
+                        "author_uid": "24",
+                        "cat_id": "573",
+                        "page_title": "评论或回复点赞",
+                        "addtime": "1627009088"
+                      }
+                    ],
+                    "catalogs": []
+                  }
+                ]
+              },
+              {
+                "cat_id": "574",
+                "cat_name": "通用操作",
+                "item_id": "8",
+                "s_number": "99",
+                "addtime": "1626012562",
+                "parent_cat_id": "550",
+                "level": "4",
+                "pages": [
+                  {
+                    "page_id": "4166",
+                    "author_uid": "24",
+                    "cat_id": "574",
+                    "page_title": "编辑会员笔记",
+                    "addtime": "1626263399"
+                  },
+                  {
+                    "page_id": "4325",
+                    "author_uid": "24",
+                    "cat_id": "574",
+                    "page_title": "中台会员笔记删除",
+                    "addtime": "1628737196"
+                  },
+                  {
+                    "page_id": "4437",
+                    "author_uid": "24",
+                    "cat_id": "574",
+                    "page_title": "会员商城删除会员笔记或评论（回复）",
+                    "addtime": "1628737057"
+                  }
+                ],
+                "catalogs": []
+              }
+            ]
+          },
+          {
+            "cat_id": "779",
+            "cat_name": "第三方会员相关接口",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1653890794",
+            "parent_cat_id": "259",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "5439",
+                "author_uid": "40",
+                "cat_id": "779",
+                "page_title": "查询第三方会员优惠券",
+                "addtime": "1653989436"
+              }
+            ],
+            "catalogs": []
+          }
+        ]
+      },
+      {
+        "cat_id": "342",
+        "cat_name": "零售订单",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1603285195",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [],
+        "catalogs": [
+          {
+            "cat_id": "343",
+            "cat_name": "商城退货申请",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1603285207",
+            "parent_cat_id": "342",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3189",
+                "author_uid": "7",
+                "cat_id": "343",
+                "page_title": "零售退货申请 - 受理",
+                "addtime": "1603285237"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "349",
+            "cat_name": "订单代发",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1603722151",
+            "parent_cat_id": "342",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3228",
+                "author_uid": "7",
+                "cat_id": "349",
+                "page_title": "商品代发",
+                "addtime": "1603722202"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "361",
+            "cat_name": "订单",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1605611301",
+            "parent_cat_id": "342",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3277",
+                "author_uid": "2",
+                "cat_id": "361",
+                "page_title": "修改收货地址",
+                "addtime": "1648811435"
+              },
+              {
+                "page_id": "4966",
+                "author_uid": "24",
+                "cat_id": "361",
+                "page_title": "是否展示订单取消按钮",
+                "addtime": "1641289792"
+              },
+              {
+                "page_id": "5707",
+                "author_uid": "32",
+                "cat_id": "361",
+                "page_title": "发送提货通知",
+                "addtime": "1660893236"
+              },
+              {
+                "page_id": "5708",
+                "author_uid": "32",
+                "cat_id": "361",
+                "page_title": "批量发送提货通知",
+                "addtime": "1660893302"
+              },
+              {
+                "page_id": "6013",
+                "author_uid": "32",
+                "cat_id": "361",
+                "page_title": "修改配送时间",
+                "addtime": "1667462077"
+              },
+              {
+                "page_id": "6123",
+                "author_uid": "54",
+                "cat_id": "361",
+                "page_title": "查询今日待配送单数",
+                "addtime": "1713782655"
+              },
+              {
+                "page_id": "6256",
+                "author_uid": "54",
+                "cat_id": "361",
+                "page_title": "修改未收银单实收金额",
+                "addtime": "1672819500"
+              },
+              {
+                "page_id": "6339",
+                "author_uid": "32",
+                "cat_id": "361",
+                "page_title": "统计订单相关数量",
+                "addtime": "1675737882"
+              },
+              {
+                "page_id": "6366",
+                "author_uid": "54",
+                "cat_id": "361",
+                "page_title": "更新购物车非统一售价实体卡小计",
+                "addtime": "1676540107"
+              },
+              {
+                "page_id": "6690",
+                "author_uid": "54",
+                "cat_id": "361",
+                "page_title": "零售改单--确认",
+                "addtime": "1685087058"
+              },
+              {
+                "page_id": "6708",
+                "author_uid": "32",
+                "cat_id": "361",
+                "page_title": "pos零售订单-撤销受理",
+                "addtime": "1685601231"
+              },
+              {
+                "page_id": "7347",
+                "author_uid": "40",
+                "cat_id": "361",
+                "page_title": "会员待提货订单行",
+                "addtime": "1702951048"
+              },
+              {
+                "page_id": "7348",
+                "author_uid": "40",
+                "cat_id": "361",
+                "page_title": "批量提货",
+                "addtime": "1706162994"
+              },
+              {
+                "page_id": "8194",
+                "author_uid": "2",
+                "cat_id": "361",
+                "page_title": "pos仅退运费接口",
+                "addtime": "1745547848"
+              },
+              {
+                "page_id": "8489",
+                "author_uid": "2",
+                "cat_id": "361",
+                "page_title": "获取订单操作记录",
+                "addtime": "1719301203"
+              },
+              {
+                "page_id": "8677",
+                "author_uid": "2",
+                "cat_id": "361",
+                "page_title": "/app/sales/order/dock/manual/send",
+                "addtime": "1724654847"
+              },
+              {
+                "page_id": "10227",
+                "author_uid": "32",
+                "cat_id": "361",
+                "page_title": "统计异常订单数",
+                "addtime": "1753064918"
+              },
+              {
+                "page_id": "10989",
+                "author_uid": "54",
+                "cat_id": "361",
+                "page_title": "检查提货权益是否需要验证",
+                "addtime": "1774333472"
+              },
+              {
+                "page_id": "11054",
+                "author_uid": "54",
+                "cat_id": "361",
+                "page_title": "修改未收银单套餐主商品实收金额",
+                "addtime": "1776248689"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "362",
+            "cat_name": "总部代发",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1605611311",
+            "parent_cat_id": "342",
+            "level": "3",
+            "pages": [],
+            "catalogs": []
+          },
+          {
+            "cat_id": "365",
+            "cat_name": "赊销单",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1605862819",
+            "parent_cat_id": "342",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3295",
+                "author_uid": "10",
+                "cat_id": "365",
+                "page_title": "查询赊销可选择账期列表",
+                "addtime": "1605862841"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "508",
+            "cat_name": "订金订单",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1620802918",
+            "parent_cat_id": "342",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3936",
+                "author_uid": "2",
+                "cat_id": "508",
+                "page_title": "新增-订金订单",
+                "addtime": "1764125381"
+              },
+              {
+                "page_id": "3937",
+                "author_uid": "2",
+                "cat_id": "508",
+                "page_title": "详情-订金订单",
+                "addtime": "1764125443"
+              },
+              {
+                "page_id": "3938",
+                "author_uid": "10",
+                "cat_id": "508",
+                "page_title": "分页-订金订单",
+                "addtime": "1621582318"
+              },
+              {
+                "page_id": "3941",
+                "author_uid": "10",
+                "cat_id": "508",
+                "page_title": "列表-订金类型",
+                "addtime": "1622426522"
+              },
+              {
+                "page_id": "3972",
+                "author_uid": "10",
+                "cat_id": "508",
+                "page_title": "分页-零售订单关联订金单",
+                "addtime": "1621434484"
+              },
+              {
+                "page_id": "8567",
+                "author_uid": "2",
+                "cat_id": "508",
+                "page_title": "极速版分页-订金订单",
+                "addtime": "1721627879"
+              },
+              {
+                "page_id": "8582",
+                "author_uid": "2",
+                "cat_id": "508",
+                "page_title": "订单补收银使用订金单",
+                "addtime": "1722410521"
+              },
+              {
+                "page_id": "10552",
+                "author_uid": "2",
+                "cat_id": "508",
+                "page_title": "定金订单商品明细",
+                "addtime": "1764125510"
+              },
+              {
+                "page_id": "10553",
+                "author_uid": "2",
+                "cat_id": "508",
+                "page_title": "订金订单转单",
+                "addtime": "1760510693"
+              },
+              {
+                "page_id": "10859",
+                "author_uid": "2",
+                "cat_id": "508",
+                "page_title": "修改-订金订单的过账日期和备注",
+                "addtime": "1767857215"
+              },
+              {
+                "page_id": "11072",
+                "author_uid": "2",
+                "cat_id": "508",
+                "page_title": " 获取会员积分抵扣信息(订金单)",
+                "addtime": "1776739042"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "510",
+            "cat_name": "订金退款单",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1621066859",
+            "parent_cat_id": "342",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3947",
+                "author_uid": "10",
+                "cat_id": "510",
+                "page_title": "新增-订金退款单",
+                "addtime": "1621408312"
+              },
+              {
+                "page_id": "3948",
+                "author_uid": "10",
+                "cat_id": "510",
+                "page_title": "列表-退款类型",
+                "addtime": "1621066882"
+              },
+              {
+                "page_id": "3971",
+                "author_uid": "10",
+                "cat_id": "510",
+                "page_title": "列表-退款支付类型",
+                "addtime": "1621408334"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "529",
+            "cat_name": "外卖管理",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1623292405",
+            "parent_cat_id": "342",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "8672",
+                "author_uid": "2",
+                "cat_id": "529",
+                "page_title": "外卖商家自送出",
+                "addtime": "1745390964"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "585",
+            "cat_name": "第三方配送",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1627010241",
+            "parent_cat_id": "342",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "4386",
+                "author_uid": "2",
+                "cat_id": "585",
+                "page_title": "配送进度",
+                "addtime": "1712920145"
+              },
+              {
+                "page_id": "4396",
+                "author_uid": "19",
+                "cat_id": "585",
+                "page_title": "第三方订单重新配送",
+                "addtime": "1662458456"
+              },
+              {
+                "page_id": "4821",
+                "author_uid": "2",
+                "cat_id": "585",
+                "page_title": "跑腿参数设置",
+                "addtime": "1745285469"
+              },
+              {
+                "page_id": "4822",
+                "author_uid": "2",
+                "cat_id": "585",
+                "page_title": "跑腿参数查询",
+                "addtime": "1745285707"
+              },
+              {
+                "page_id": "4828",
+                "author_uid": "35",
+                "cat_id": "585",
+                "page_title": " 跑腿参数复制",
+                "addtime": "1639551839"
+              },
+              {
+                "page_id": "4830",
+                "author_uid": "2",
+                "cat_id": "585",
+                "page_title": "跑腿配送",
+                "addtime": "1746784573"
+              },
+              {
+                "page_id": "4894",
+                "author_uid": "19",
+                "cat_id": "585",
+                "page_title": "配送服务 - 批量获取骑手位置",
+                "addtime": "1640138754"
+              },
+              {
+                "page_id": "5250",
+                "author_uid": "2",
+                "cat_id": "585",
+                "page_title": "第三方配送订单取消",
+                "addtime": "1649756323"
+              },
+              {
+                "page_id": "5392",
+                "author_uid": "19",
+                "cat_id": "585",
+                "page_title": "跑腿刷新完成状态",
+                "addtime": "1652429274"
+              },
+              {
+                "page_id": "5794",
+                "author_uid": "19",
+                "cat_id": "585",
+                "page_title": "第三方配送订单批量取消",
+                "addtime": "1662459149"
+              },
+              {
+                "page_id": "6977",
+                "author_uid": "40",
+                "cat_id": "585",
+                "page_title": "跑腿平台列表",
+                "addtime": "1691634261"
+              },
+              {
+                "page_id": "7015",
+                "author_uid": "40",
+                "cat_id": "585",
+                "page_title": "获取三方配跑腿失败记录",
+                "addtime": "1692261434"
+              },
+              {
+                "page_id": "7024",
+                "author_uid": "40",
+                "cat_id": "585",
+                "page_title": "获取三方配跑腿失败记录",
+                "addtime": "1692337134"
+              },
+              {
+                "page_id": "9187",
+                "author_uid": "2",
+                "cat_id": "585",
+                "page_title": "查询配送进度（点单）",
+                "addtime": "1735093460"
+              },
+              {
+                "page_id": "9301",
+                "author_uid": "2",
+                "cat_id": "585",
+                "page_title": "第三方配送订单取消",
+                "addtime": "1737442772"
+              },
+              {
+                "page_id": "9302",
+                "author_uid": "2",
+                "cat_id": "585",
+                "page_title": "订单关联代发单的所有跑腿信息",
+                "addtime": "1739351924"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "1571",
+            "cat_name": "充值订单",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1770260582",
+            "parent_cat_id": "342",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "10927",
+                "author_uid": "2",
+                "cat_id": "1571",
+                "page_title": "充值订单列表",
+                "addtime": "1770260604"
+              }
+            ],
+            "catalogs": []
+          }
+        ]
+      },
+      {
+        "cat_id": "444",
+        "cat_name": "导购助手",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1615962165",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [],
+        "catalogs": [
+          {
+            "cat_id": "445",
+            "cat_name": "中台维护",
+            "item_id": "8",
+            "s_number": "1",
+            "addtime": "1615962200",
+            "parent_cat_id": "444",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3622",
+                "author_uid": "12",
+                "cat_id": "445",
+                "page_title": "维护导购助手首页/微页面",
+                "addtime": "1615963785"
+              },
+              {
+                "page_id": "3621",
+                "author_uid": "12",
+                "cat_id": "445",
+                "page_title": "获取导购助手首页/微页面详情",
+                "addtime": "1615963803"
+              },
+              {
+                "page_id": "3623",
+                "author_uid": "12",
+                "cat_id": "445",
+                "page_title": "导购助手-微页面列表",
+                "addtime": "1615962998"
+              },
+              {
+                "page_id": "3624",
+                "author_uid": "12",
+                "cat_id": "445",
+                "page_title": "删除微页面",
+                "addtime": "1615963330"
+              },
+              {
+                "page_id": "3625",
+                "author_uid": "12",
+                "cat_id": "445",
+                "page_title": "获取导购助手 可以编辑的模块列表",
+                "addtime": "1615963827"
+              },
+              {
+                "page_id": "3626",
+                "author_uid": "12",
+                "cat_id": "445",
+                "page_title": "获取导购助手首页跳转url地址",
+                "addtime": "1615963848"
+              },
+              {
+                "page_id": "3633",
+                "author_uid": "12",
+                "cat_id": "445",
+                "page_title": " 查询导购助手主菜单设置",
+                "addtime": "1616140690"
+              },
+              {
+                "page_id": "3634",
+                "author_uid": "12",
+                "cat_id": "445",
+                "page_title": " 编辑 导购助手主菜单设置",
+                "addtime": "1616140734"
+              },
+              {
+                "page_id": "3635",
+                "author_uid": "12",
+                "cat_id": "445",
+                "page_title": "导购助手小程序 获取 主题颜色 菜单 商户中心",
+                "addtime": "1616151188"
+              },
+              {
+                "page_id": "3641",
+                "author_uid": "12",
+                "cat_id": "445",
+                "page_title": "导购助手个人中心 详情",
+                "addtime": "1616393908"
+              },
+              {
+                "page_id": "3642",
+                "author_uid": "12",
+                "cat_id": "445",
+                "page_title": "导购助手个人中心 编辑",
+                "addtime": "1616393935"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "446",
+            "cat_name": "其它api接口",
+            "item_id": "8",
+            "s_number": "2",
+            "addtime": "1615962266",
+            "parent_cat_id": "444",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3627",
+                "author_uid": "12",
+                "cat_id": "446",
+                "page_title": "获取导购助手 模块设置",
+                "addtime": "1616053877"
+              },
+              {
+                "page_id": "3629",
+                "author_uid": "12",
+                "cat_id": "446",
+                "page_title": "获取导购助手微页面装修",
+                "addtime": "1616125546"
+              },
+              {
+                "page_id": "3643",
+                "author_uid": "12",
+                "cat_id": "446",
+                "page_title": "导购助手个人中心 设置详情",
+                "addtime": "1616397094"
+              }
+            ],
+            "catalogs": []
+          }
+        ]
+      },
+      {
+        "cat_id": "496",
+        "cat_name": "零售退货",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1620371500",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "8921",
+            "author_uid": "2",
+            "cat_id": "496",
+            "page_title": "合并退款计算",
+            "addtime": "1729751326"
+          }
+        ],
+        "catalogs": [
+          {
+            "cat_id": "497",
+            "cat_name": "实体卡券退款",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1620371528",
+            "parent_cat_id": "496",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "3904",
+                "author_uid": "32",
+                "cat_id": "497",
+                "page_title": "列表 - 可退款的实体卡券",
+                "addtime": "1669098074"
+              },
+              {
+                "page_id": "7122",
+                "author_uid": "54",
+                "cat_id": "497",
+                "page_title": "pos实体卡修改余额",
+                "addtime": "1695455481"
+              },
+              {
+                "page_id": "7190",
+                "author_uid": "54",
+                "cat_id": "497",
+                "page_title": "储值卡修改余额",
+                "addtime": "1698203131"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "525",
+            "cat_name": "无来源退货",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1623120162",
+            "parent_cat_id": "496",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "4034",
+                "author_uid": "10",
+                "cat_id": "525",
+                "page_title": "列表-退货单据功能类型",
+                "addtime": "1623120172"
+              }
+            ],
+            "catalogs": []
+          }
+        ]
+      },
+      {
+        "cat_id": "530",
+        "cat_name": "外卖",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1623292776",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "5124",
+            "author_uid": "2",
+            "cat_id": "530",
+            "page_title": "批量自动同步映射商品导出",
+            "addtime": "1646633776"
+          },
+          {
+            "page_id": "11121",
+            "author_uid": "54",
+            "cat_id": "530",
+            "page_title": "统一补单入口",
+            "addtime": "1778223004"
+          }
+        ],
+        "catalogs": [
+          {
+            "cat_id": "532",
+            "cat_name": "门店",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1623400391",
+            "parent_cat_id": "530",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "4046",
+                "author_uid": "2",
+                "cat_id": "532",
+                "page_title": "获得美团绑定门店Url",
+                "addtime": "1633938611"
+              },
+              {
+                "page_id": "4047",
+                "author_uid": "2",
+                "cat_id": "532",
+                "page_title": "获得美团门店解绑url",
+                "addtime": "1633938622"
+              },
+              {
+                "page_id": "4050",
+                "author_uid": "2",
+                "cat_id": "532",
+                "page_title": "获取店铺列表（包括是否授权）",
+                "addtime": "1733366419"
+              },
+              {
+                "page_id": "4080",
+                "author_uid": "24",
+                "cat_id": "532",
+                "page_title": " 设置美团店铺营业 (营业才能接收订单)",
+                "addtime": "1624253757"
+              },
+              {
+                "page_id": "4105",
+                "author_uid": "24",
+                "cat_id": "532",
+                "page_title": "查询门店是否已授权",
+                "addtime": "1624501782"
+              },
+              {
+                "page_id": "10334",
+                "author_uid": "54",
+                "cat_id": "532",
+                "page_title": "获取美团第三方应用授权链接",
+                "addtime": "1755596073"
+              },
+              {
+                "page_id": "10379",
+                "author_uid": "54",
+                "cat_id": "532",
+                "page_title": "获取美团第三方应用解绑链接",
+                "addtime": "1756432096"
+              },
+              {
+                "page_id": "10734",
+                "author_uid": "54",
+                "cat_id": "532",
+                "page_title": "通用三方商户授权",
+                "addtime": "1764829131"
+              },
+              {
+                "page_id": "10735",
+                "author_uid": "54",
+                "cat_id": "532",
+                "page_title": "查询品牌三方是否已授权",
+                "addtime": "1764829207"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "533",
+            "cat_name": "菜品",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1623400400",
+            "parent_cat_id": "530",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "4054",
+                "author_uid": "24",
+                "cat_id": "533",
+                "page_title": "映射菜品(可批量)",
+                "addtime": "1623818073"
+              },
+              {
+                "page_id": "4055",
+                "author_uid": "24",
+                "cat_id": "533",
+                "page_title": "解除映射菜品",
+                "addtime": "1623742539"
+              },
+              {
+                "page_id": "4056",
+                "author_uid": "24",
+                "cat_id": "533",
+                "page_title": "获取店铺的菜品以及对应关联的美团菜品",
+                "addtime": "1623911065"
+              },
+              {
+                "page_id": "4057",
+                "author_uid": "24",
+                "cat_id": "533",
+                "page_title": "获取该店美团所有菜品",
+                "addtime": "1623818024"
+              },
+              {
+                "page_id": "4058",
+                "author_uid": "24",
+                "cat_id": "533",
+                "page_title": "获取所有该店未绑定的菜品",
+                "addtime": "1623401171"
+              },
+              {
+                "page_id": "5119",
+                "author_uid": "2",
+                "cat_id": "533",
+                "page_title": "批量菜品映射同步",
+                "addtime": "1646621005"
+              }
+            ],
+            "catalogs": [
+              {
+                "cat_id": "539",
+                "cat_name": "菜品v2",
+                "item_id": "8",
+                "s_number": "99",
+                "addtime": "1624102038",
+                "parent_cat_id": "533",
+                "level": "4",
+                "pages": [],
+                "catalogs": []
+              },
+              {
+                "cat_id": "1061",
+                "cat_name": "美团拼好饭",
+                "item_id": "8",
+                "s_number": "99",
+                "addtime": "1713433312",
+                "parent_cat_id": "533",
+                "level": "4",
+                "pages": [
+                  {
+                    "page_id": "6200",
+                    "author_uid": "54",
+                    "cat_id": "1061",
+                    "page_title": "计算积分兑换使用实体卡可支付的金额",
+                    "addtime": "1713433457"
+                  },
+                  {
+                    "page_id": "8180",
+                    "author_uid": "54",
+                    "cat_id": "1061",
+                    "page_title": "批量映射美团拼好饭外卖商品",
+                    "addtime": "1713936984"
+                  },
+                  {
+                    "page_id": "8181",
+                    "author_uid": "54",
+                    "cat_id": "1061",
+                    "page_title": "美团拼好饭商品解绑",
+                    "addtime": "1713433885"
+                  },
+                  {
+                    "page_id": "8182",
+                    "author_uid": "54",
+                    "cat_id": "1061",
+                    "page_title": "获取美团拼好饭外卖门店商品",
+                    "addtime": "1713936939"
+                  },
+                  {
+                    "page_id": "8189",
+                    "author_uid": "54",
+                    "cat_id": "1061",
+                    "page_title": "分页查询拼好饭菜品关联列表",
+                    "addtime": "1713749496"
+                  },
+                  {
+                    "page_id": "10732",
+                    "author_uid": "2",
+                    "cat_id": "1061",
+                    "page_title": "拼好饭菜品关联-批量复制",
+                    "addtime": "1764812907"
+                  }
+                ],
+                "catalogs": []
+              }
+            ]
+          },
+          {
+            "cat_id": "534",
+            "cat_name": "设置",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1623400414",
+            "parent_cat_id": "530",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "4048",
+                "author_uid": "2",
+                "cat_id": "534",
+                "page_title": "获得外卖设置",
+                "addtime": "1776390576"
+              },
+              {
+                "page_id": "4049",
+                "author_uid": "54",
+                "cat_id": "534",
+                "page_title": "更新外卖设置",
+                "addtime": "1765268389"
+              },
+              {
+                "page_id": "9698",
+                "author_uid": "2",
+                "cat_id": "534",
+                "page_title": "抖音来客授权应用列表",
+                "addtime": "1744596477"
+              },
+              {
+                "page_id": "9699",
+                "author_uid": "2",
+                "cat_id": "534",
+                "page_title": "获取抖音来客授权链接",
+                "addtime": "1744596510"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "535",
+            "cat_name": "订单",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1623819837",
+            "parent_cat_id": "530",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "4060",
+                "author_uid": "24",
+                "cat_id": "535",
+                "page_title": "美团订单回调",
+                "addtime": "1623819996"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "540",
+            "cat_name": "菜品2",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1624102127",
+            "parent_cat_id": "530",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "4076",
+                "author_uid": "2",
+                "cat_id": "540",
+                "page_title": "分页查询菜品列表",
+                "addtime": "1624102144"
+              },
+              {
+                "page_id": "4077",
+                "author_uid": "2",
+                "cat_id": "540",
+                "page_title": "美团外卖商品绑定",
+                "addtime": "1624107321"
+              },
+              {
+                "page_id": "4078",
+                "author_uid": "24",
+                "cat_id": "540",
+                "page_title": "美团外卖商品解绑",
+                "addtime": "1624333856"
+              },
+              {
+                "page_id": "4079",
+                "author_uid": "24",
+                "cat_id": "540",
+                "page_title": "获取美团外卖门店商品",
+                "addtime": "1624591766"
+              },
+              {
+                "page_id": "5827",
+                "author_uid": "2",
+                "cat_id": "540",
+                "page_title": "更新美团/饿了么菜品缓存",
+                "addtime": "1663400572"
+              },
+              {
+                "page_id": "8179",
+                "author_uid": "54",
+                "cat_id": "540",
+                "page_title": "分页查询拼好饭菜品列表",
+                "addtime": "1713433393"
+              }
+            ],
+            "catalogs": []
+          },
+          {
+            "cat_id": "599",
+            "cat_name": "饿了么",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1629337313",
+            "parent_cat_id": "530",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "4451",
+                "author_uid": "24",
+                "cat_id": "599",
+                "page_title": "获取授权url",
+                "addtime": "1629359163"
+              },
+              {
+                "page_id": "4462",
+                "author_uid": "24",
+                "cat_id": "599",
+                "page_title": "店铺商品与饿了么商品进行关联",
+                "addtime": "1629681244"
+              },
+              {
+                "page_id": "10573",
+                "author_uid": "2",
+                "cat_id": "599",
+                "page_title": " 饿了么-门店解除授权",
+                "addtime": "1761105114"
+              }
+            ],
+            "catalogs": [
+              {
+                "cat_id": "600",
+                "cat_name": "门店管理",
+                "item_id": "8",
+                "s_number": "99",
+                "addtime": "1629337505",
+                "parent_cat_id": "599",
+                "level": "4",
+                "pages": [
+                  {
+                    "page_id": "4452",
+                    "author_uid": "24",
+                    "cat_id": "600",
+                    "page_title": "获取门店和已授权的饿了么店铺列表",
+                    "addtime": "1629352237"
+                  },
+                  {
+                    "page_id": "4453",
+                    "author_uid": "24",
+                    "cat_id": "600",
+                    "page_title": "设置店铺开关店状态",
+                    "addtime": "1629337588"
+                  },
+                  {
+                    "page_id": "4466",
+                    "author_uid": "24",
+                    "cat_id": "600",
+                    "page_title": "查询该店铺是否已授权饿了么",
+                    "addtime": "1629706126"
+                  }
+                ],
+                "catalogs": []
+              },
+              {
+                "cat_id": "601",
+                "cat_name": "配置",
+                "item_id": "8",
+                "s_number": "99",
+                "addtime": "1629342763",
+                "parent_cat_id": "599",
+                "level": "4",
+                "pages": [
+                  {
+                    "page_id": "4455",
+                    "author_uid": "24",
+                    "cat_id": "601",
+                    "page_title": "获取配置参数",
+                    "addtime": "1629345384"
+                  },
+                  {
+                    "page_id": "4456",
+                    "author_uid": "24",
+                    "cat_id": "601",
+                    "page_title": "设置配置参数",
+                    "addtime": "1629351852"
+                  }
+                ],
+                "catalogs": []
+              },
+              {
+                "cat_id": "603",
+                "cat_name": "菜品管理",
+                "item_id": "8",
+                "s_number": "99",
+                "addtime": "1629430506",
+                "parent_cat_id": "599",
+                "level": "4",
+                "pages": [
+                  {
+                    "page_id": "4103",
+                    "author_uid": "24",
+                    "cat_id": "603",
+                    "page_title": "店铺商品与饿了么商品进行关联",
+                    "addtime": "1629685887"
+                  },
+                  {
+                    "page_id": "4459",
+                    "author_uid": "24",
+                    "cat_id": "603",
+                    "page_title": "获取该店铺饿了么菜品列表",
+                    "addtime": "1629430919"
+                  },
+                  {
+                    "page_id": "4464",
+                    "author_uid": "24",
+                    "cat_id": "603",
+                    "page_title": "菜品管理列表",
+                    "addtime": "1636963921"
+                  },
+                  {
+                    "page_id": "4465",
+                    "author_uid": "24",
+                    "cat_id": "603",
+                    "page_title": "菜品解绑",
+                    "addtime": "1629703509"
+                  },
+                  {
+                    "page_id": "5123",
+                    "author_uid": "2",
+                    "cat_id": "603",
+                    "page_title": "饿了么批量菜品映射同步",
+                    "addtime": "1646620967"
+                  }
+                ],
+                "catalogs": []
+              }
+            ]
+          },
+          {
+            "cat_id": "710",
+            "cat_name": "数据同步",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1642473681",
+            "parent_cat_id": "530",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "5021",
+                "author_uid": "24",
+                "cat_id": "710",
+                "page_title": "手动同步菜品库存",
+                "addtime": "1642562471"
+              },
+              {
+                "page_id": "5026",
+                "author_uid": "24",
+                "cat_id": "710",
+                "page_title": "获取已授权的门店",
+                "addtime": "1642562484"
+              }
+            ],
+            "catalogs": []
+          }
+        ]
+      },
+      {
+        "cat_id": "594",
+        "cat_name": "消息提醒",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1628575828",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "4433",
+            "author_uid": "24",
+            "cat_id": "594",
+            "page_title": "发送取餐通知",
+            "addtime": "1628651607"
+          }
+        ],
+        "catalogs": []
+      },
+      {
+        "cat_id": "618",
+        "cat_name": "生产计划",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1631098540",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "4537",
+            "author_uid": "19",
+            "cat_id": "618",
+            "page_title": "取消 - 生产计划",
+            "addtime": "1631588329"
+          },
+          {
+            "page_id": "4538",
+            "author_uid": "19",
+            "cat_id": "618",
+            "page_title": "下单 - 生产/调拨",
+            "addtime": "1631098623"
+          },
+          {
+            "page_id": "4539",
+            "author_uid": "19",
+            "cat_id": "618",
+            "page_title": "下单 - 生产/代发",
+            "addtime": "1631098652"
+          },
+          {
+            "page_id": "4540",
+            "author_uid": "19",
+            "cat_id": "618",
+            "page_title": "下单 - 仅生产计划",
+            "addtime": "1631098682"
+          },
+          {
+            "page_id": "4541",
+            "author_uid": "19",
+            "cat_id": "618",
+            "page_title": "列表 - 查询生产门店列表",
+            "addtime": "1631159465"
+          },
+          {
+            "page_id": "4548",
+            "author_uid": "19",
+            "cat_id": "618",
+            "page_title": "下单 - 生产/转单",
+            "addtime": "1631588376"
+          }
+        ],
+        "catalogs": []
+      },
+      {
+        "cat_id": "674",
+        "cat_name": "打印-设置",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1639040353",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "4836",
+            "author_uid": "54",
+            "cat_id": "674",
+            "page_title": "打印设置保存",
+            "addtime": "1778221132"
+          },
+          {
+            "page_id": "4837",
+            "author_uid": "54",
+            "cat_id": "674",
+            "page_title": "打印设置获取",
+            "addtime": "1778221217"
+          },
+          {
+            "page_id": "4838",
+            "author_uid": "35",
+            "cat_id": "674",
+            "page_title": "打印设置删除",
+            "addtime": "1639123962"
+          },
+          {
+            "page_id": "9899",
+            "author_uid": "54",
+            "cat_id": "674",
+            "page_title": "保存打印规则设置",
+            "addtime": "1750328300"
+          },
+          {
+            "page_id": "9900",
+            "author_uid": "54",
+            "cat_id": "674",
+            "page_title": "打印规则设置详情",
+            "addtime": "1750328318"
+          },
+          {
+            "page_id": "9997",
+            "author_uid": "2",
+            "cat_id": "674",
+            "page_title": "打印规则设置列表",
+            "addtime": "1749795330"
+          },
+          {
+            "page_id": "10178",
+            "author_uid": "2",
+            "cat_id": "674",
+            "page_title": "打印规则删除",
+            "addtime": "1752057024"
+          },
+          {
+            "page_id": "10179",
+            "author_uid": "2",
+            "cat_id": "674",
+            "page_title": "获取打印规则票据类型",
+            "addtime": "1752057040"
+          }
+        ],
+        "catalogs": []
+      },
+      {
+        "cat_id": "801",
+        "cat_name": "配置",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1658737225",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "5635",
+            "author_uid": "32",
+            "cat_id": "801",
+            "page_title": "获取零售相关设置",
+            "addtime": "1711525551"
+          },
+          {
+            "page_id": "6014",
+            "author_uid": "32",
+            "cat_id": "801",
+            "page_title": "获取会员商城商城订单设置",
+            "addtime": "1667463411"
+          },
+          {
+            "page_id": "6386",
+            "author_uid": "40",
+            "cat_id": "801",
+            "page_title": "极速订单功能配置前置认证",
+            "addtime": "1677033124"
+          }
+        ],
+        "catalogs": []
+      },
+      {
+        "cat_id": "861",
+        "cat_name": "寄存商品",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1668411548",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "6031",
+            "author_uid": "19",
+            "cat_id": "861",
+            "page_title": "增删改",
+            "addtime": "1668411722"
+          },
+          {
+            "page_id": "6032",
+            "author_uid": "19",
+            "cat_id": "861",
+            "page_title": "查询主配置(不含商品明细)",
+            "addtime": "1668411750"
+          },
+          {
+            "page_id": "6033",
+            "author_uid": "19",
+            "cat_id": "861",
+            "page_title": "明细分页查询",
+            "addtime": "1668411813"
+          },
+          {
+            "page_id": "6034",
+            "author_uid": "19",
+            "cat_id": "861",
+            "page_title": "寄存商品搜索",
+            "addtime": "1668411913"
+          },
+          {
+            "page_id": "6035",
+            "author_uid": "19",
+            "cat_id": "861",
+            "page_title": "复制",
+            "addtime": "1668411922"
+          },
+          {
+            "page_id": "6036",
+            "author_uid": "19",
+            "cat_id": "861",
+            "page_title": "寄存商品导入",
+            "addtime": "1668411955"
+          },
+          {
+            "page_id": "6037",
+            "author_uid": "19",
+            "cat_id": "861",
+            "page_title": "寄存商品导出",
+            "addtime": "1668412038"
+          }
+        ],
+        "catalogs": []
+      },
+      {
+        "cat_id": "1032",
+        "cat_name": "机器码",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1704437789",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "7394",
+            "author_uid": "40",
+            "cat_id": "1032",
+            "page_title": "新增/编辑机器码信息",
+            "addtime": "1704439754"
+          },
+          {
+            "page_id": "7395",
+            "author_uid": "40",
+            "cat_id": "1032",
+            "page_title": "查询机器码信息",
+            "addtime": "1704439833"
+          },
+          {
+            "page_id": "7396",
+            "author_uid": "40",
+            "cat_id": "1032",
+            "page_title": "新增打印记录",
+            "addtime": "1704437943"
+          },
+          {
+            "page_id": "7397",
+            "author_uid": "40",
+            "cat_id": "1032",
+            "page_title": "分页查询打印记录",
+            "addtime": "1704437962"
+          },
+          {
+            "page_id": "7433",
+            "author_uid": "46",
+            "cat_id": "1032",
+            "page_title": "查询机器码列表",
+            "addtime": "1710224791"
+          },
+          {
+            "page_id": "7450",
+            "author_uid": "40",
+            "cat_id": "1032",
+            "page_title": " 编辑机器码信息(品牌端编辑+下发)",
+            "addtime": "1705653019"
+          },
+          {
+            "page_id": "7451",
+            "author_uid": "40",
+            "cat_id": "1032",
+            "page_title": "获取零售设置下发信息",
+            "addtime": "1705653470"
+          }
+        ],
+        "catalogs": []
+      },
+      {
+        "cat_id": "1096",
+        "cat_name": "已满时间段",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1717550458",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "8355",
+            "author_uid": "2",
+            "cat_id": "1096",
+            "page_title": "获取自选提配模式设置",
+            "addtime": "1717550474"
+          },
+          {
+            "page_id": "8356",
+            "author_uid": "2",
+            "cat_id": "1096",
+            "page_title": "根据日期查询时间范围",
+            "addtime": "1718268110"
+          },
+          {
+            "page_id": "8357",
+            "author_uid": "2",
+            "cat_id": "1096",
+            "page_title": "打已满或者未满标识",
+            "addtime": "1717550742"
+          },
+          {
+            "page_id": "8360",
+            "author_uid": "2",
+            "cat_id": "1096",
+            "page_title": "获取某个时间段是否已满",
+            "addtime": "1717551946"
+          }
+        ],
+        "catalogs": []
+      },
+      {
+        "cat_id": "1132",
+        "cat_name": "其他",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1721197327",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "8551",
+            "author_uid": "2",
+            "cat_id": "1132",
+            "page_title": "批量触发订单生效事件",
+            "addtime": "1721197392"
+          }
+        ],
+        "catalogs": []
+      },
+      {
+        "cat_id": "1235",
+        "cat_name": "美团授权",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1733219477",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "9143",
+            "author_uid": "2",
+            "cat_id": "1235",
+            "page_title": "获取美团第三方应用授权链接",
+            "addtime": "1733219554"
+          },
+          {
+            "page_id": "9144",
+            "author_uid": "2",
+            "cat_id": "1235",
+            "page_title": "获取美团第三方应用解绑链接",
+            "addtime": "1733219592"
+          }
+        ],
+        "catalogs": [
+          {
+            "cat_id": "1236",
+            "cat_name": "在线点-秒提",
+            "item_id": "8",
+            "s_number": "99",
+            "addtime": "1733219495",
+            "parent_cat_id": "1235",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "9145",
+                "author_uid": "2",
+                "cat_id": "1236",
+                "page_title": "在线点(秒提)-绑定门店",
+                "addtime": "1733219694"
+              },
+              {
+                "page_id": "9146",
+                "author_uid": "2",
+                "cat_id": "1236",
+                "page_title": "在线点(秒提)-解绑门店",
+                "addtime": "1733219700"
+              },
+              {
+                "page_id": "10311",
+                "author_uid": "2",
+                "cat_id": "1236",
+                "page_title": "在线点(秒提)- 营业",
+                "addtime": "1755073824"
+              },
+              {
+                "page_id": "10312",
+                "author_uid": "2",
+                "cat_id": "1236",
+                "page_title": "在线点(秒提)- 歇业",
+                "addtime": "1755073876"
+              },
+              {
+                "page_id": "10631",
+                "author_uid": "2",
+                "cat_id": "1236",
+                "page_title": "在线点(秒提)-门店设置详情",
+                "addtime": "1762337554"
+              },
+              {
+                "page_id": "10632",
+                "author_uid": "2",
+                "cat_id": "1236",
+                "page_title": "在线点(秒提)-门店设置保存",
+                "addtime": "1762337304"
+              }
+            ],
+            "catalogs": [
+              {
+                "cat_id": "1460",
+                "cat_name": "菜品管理",
+                "item_id": "8",
+                "s_number": "99",
+                "addtime": "1755225934",
+                "parent_cat_id": "1236",
+                "level": "4",
+                "pages": [
+                  {
+                    "page_id": "10319",
+                    "author_uid": "2",
+                    "cat_id": "1460",
+                    "page_title": "秒提-在线点-售卖属性 新增/更新售卖属性",
+                    "addtime": "1755568910"
+                  },
+                  {
+                    "page_id": "10323",
+                    "author_uid": "2",
+                    "cat_id": "1460",
+                    "page_title": "秒提-在线点-售卖属性列表",
+                    "addtime": "1756439036"
+                  },
+                  {
+                    "page_id": "10324",
+                    "author_uid": "2",
+                    "cat_id": "1460",
+                    "page_title": "秒提-在线点-售卖属性详情",
+                    "addtime": "1755655204"
+                  },
+                  {
+                    "page_id": "10320",
+                    "author_uid": "2",
+                    "cat_id": "1460",
+                    "page_title": "秒提-在线点-小料属性更新/新增",
+                    "addtime": "1755658711"
+                  },
+                  {
+                    "page_id": "10325",
+                    "author_uid": "2",
+                    "cat_id": "1460",
+                    "page_title": "秒提-在线点-小料属性列表",
+                    "addtime": "1756439083"
+                  },
+                  {
+                    "page_id": "10326",
+                    "author_uid": "2",
+                    "cat_id": "1460",
+                    "page_title": "秒提-在线点-小料属性详情",
+                    "addtime": "1755655546"
+                  },
+                  {
+                    "page_id": "10328",
+                    "author_uid": "2",
+                    "cat_id": "1460",
+                    "page_title": "秒提-在线点-新增/修改类目",
+                    "addtime": "1755569294"
+                  },
+                  {
+                    "page_id": "10329",
+                    "author_uid": "2",
+                    "cat_id": "1460",
+                    "page_title": "秒提-在线点-类目 类目列表",
+                    "addtime": "1755569029"
+                  },
+                  {
+                    "page_id": "10330",
+                    "author_uid": "2",
+                    "cat_id": "1460",
+                    "page_title": " 秒提/在线点商品管理 商品详情",
+                    "addtime": "1756523996"
+                  },
+                  {
+                    "page_id": "10331",
+                    "author_uid": "2",
+                    "cat_id": "1460",
+                    "page_title": "秒提/在线点商品管理 商品新增编辑",
+                    "addtime": "1761546747"
+                  },
+                  {
+                    "page_id": "10332",
+                    "author_uid": "2",
+                    "cat_id": "1460",
+                    "page_title": "秒提/在线点商品管理 商品列表",
+                    "addtime": "1756524116"
+                  },
+                  {
+                    "page_id": "10333",
+                    "author_uid": "2",
+                    "cat_id": "1460",
+                    "page_title": "秒提/在线点 图片上传",
+                    "addtime": "1755749055"
+                  },
+                  {
+                    "page_id": "10564",
+                    "author_uid": "2",
+                    "cat_id": "1460",
+                    "page_title": "秒提-在线点-批量更新门店库存",
+                    "addtime": "1760954467"
+                  }
+                ],
+                "catalogs": [
+                  {
+                    "cat_id": "1462",
+                    "cat_name": "菜谱",
+                    "item_id": "8",
+                    "s_number": "99",
+                    "addtime": "1756088533",
+                    "parent_cat_id": "1460",
+                    "level": "5",
+                    "pages": [
+                      {
+                        "page_id": "10343",
+                        "author_uid": "2",
+                        "cat_id": "1462",
+                        "page_title": "秒提/在线点 - 菜谱模板详情 新增/编辑",
+                        "addtime": "1756090443"
+                      },
+                      {
+                        "page_id": "10344",
+                        "author_uid": "2",
+                        "cat_id": "1462",
+                        "page_title": "秒提/在线点 - 菜谱模板详情",
+                        "addtime": "1756104465"
+                      },
+                      {
+                        "page_id": "10351",
+                        "author_uid": "2",
+                        "cat_id": "1462",
+                        "page_title": "秒提-在线点 - 菜谱列表",
+                        "addtime": "1756104634"
+                      },
+                      {
+                        "page_id": "10352",
+                        "author_uid": "2",
+                        "cat_id": "1462",
+                        "page_title": "秒提-在线点 - 下发历史列表",
+                        "addtime": "1756104647"
+                      },
+                      {
+                        "page_id": "10353",
+                        "author_uid": "2",
+                        "cat_id": "1462",
+                        "page_title": "秒提-在线点 - 下发历史详情",
+                        "addtime": "1756435604"
+                      },
+                      {
+                        "page_id": "10354",
+                        "author_uid": "2",
+                        "cat_id": "1462",
+                        "page_title": "秒提-在线点 - 菜谱应用门店列表",
+                        "addtime": "1756202136"
+                      },
+                      {
+                        "page_id": "10355",
+                        "author_uid": "2",
+                        "cat_id": "1462",
+                        "page_title": "秒提-在线点 - 商品组商品表列表",
+                        "addtime": "1759219689"
+                      },
+                      {
+                        "page_id": "10362",
+                        "author_uid": "2",
+                        "cat_id": "1462",
+                        "page_title": "秒提-在线点 - 商品sku价格列表",
+                        "addtime": "1756202063"
+                      },
+                      {
+                        "page_id": "10365",
+                        "author_uid": "2",
+                        "cat_id": "1462",
+                        "page_title": " 秒提/在线点 -下发模板到关联的门店",
+                        "addtime": "1756202191"
+                      },
+                      {
+                        "page_id": "10504",
+                        "author_uid": "2",
+                        "cat_id": "1462",
+                        "page_title": "秒提-在线点-商品sku价格列表V2",
+                        "addtime": "1761015692"
+                      },
+                      {
+                        "page_id": "10565",
+                        "author_uid": "2",
+                        "cat_id": "1462",
+                        "page_title": "秒提-在线点-商品sku价格列表V2-所有分组商品",
+                        "addtime": "1761013011"
+                      },
+                      {
+                        "page_id": "10566",
+                        "author_uid": "2",
+                        "cat_id": "1462",
+                        "page_title": "获取门店最新的菜谱模板ID",
+                        "addtime": "1761012238"
+                      },
+                      {
+                        "page_id": "10567",
+                        "author_uid": "2",
+                        "cat_id": "1462",
+                        "page_title": "秒提-在线点-更新门店商品库存",
+                        "addtime": "1761016033"
+                      }
+                    ],
+                    "catalogs": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "cat_id": "1482",
+        "cat_name": "公共配置相关",
+        "item_id": "8",
+        "s_number": "99",
+        "addtime": "1757904658",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "10456",
+            "author_uid": "2",
+            "cat_id": "1482",
+            "page_title": "获取品牌国际化配置",
+            "addtime": "1757904675"
+          }
+        ],
+        "catalogs": []
+      },
+      {
+        "cat_id": "103",
+        "cat_name": "产品装修",
+        "item_id": "8",
+        "s_number": "1000",
+        "addtime": "1565943395",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "5238",
+            "author_uid": "40",
+            "cat_id": "103",
+            "page_title": "防伪码设置-新增/更新",
+            "addtime": "1648890975"
+          },
+          {
+            "page_id": "5239",
+            "author_uid": "40",
+            "cat_id": "103",
+            "page_title": "防伪码设置-查询",
+            "addtime": "1649227626"
+          },
+          {
+            "page_id": "1517",
+            "author_uid": "2",
+            "cat_id": "103",
+            "page_title": "查询产品装修详情",
+            "addtime": "1566179809"
+          },
+          {
+            "page_id": "3040",
+            "author_uid": "8",
+            "cat_id": "103",
+            "page_title": "获取导购助手是否显示库存",
+            "addtime": "1597046620"
+          }
+        ],
+        "catalogs": []
+      }
+    ]
+  }
+}

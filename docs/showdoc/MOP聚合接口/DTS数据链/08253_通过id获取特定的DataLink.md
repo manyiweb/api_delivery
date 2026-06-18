@@ -1,0 +1,278 @@
+---
+page_id: "8253"
+page_title: "通过id获取特定的DataLink"
+item_id: "6"
+cat_id: "1047"
+catalog_path:
+  - "DTS数据链"
+author_username: "tonyyan"
+addtime: "2025-08-11 11:32:25"
+source_url: "https://showdoc.reabam.com/web/#/6?page_id=8253"
+---
+# 通过id获取特定的DataLink
+
+
+**请求URL：** 
+- `/data-link/get/{id}`
+
+**请求方式：**
+- Get
+- FormData
+
+
+### 请求参数<业务参数>
+ 
+|参数名|必选|类型|说明|
+|:---- |:---|:----- |----- |
+|id|否|String| |
+
+### 请求参数Json格式
+ 
+```
+{
+ "id" : "String"
+}
+```
+
+### 返回参数
+ 
+|参数名|必选|类型|说明|
+|:---- |:---|:----- |----- |
+|data|否|Object| 主数据|
+|--id|否|String| 数据链id|
+|--name|否|String| 数据链名称|
+|--status|否|String| 数据链状态 0-STARTED, 1-STOPPED, 2-ERROR, 3-CLOSED|
+|--statusName|否|String| 数据链状态名称 0-STARTED, 1-STOPPED, 2-ERROR, 3-CLOSED|
+|--engineType|否|Enum| 数据链类型 OCEAN_BASE_OMS, ALIYUN_DTS|
+|--engineTypeName|否|String| 数据链类型名称 OCEAN_BASE_OMS, ALIYUN_DTS|
+|--autoStart|否|Boolean| 是否自动启动|
+|--definition|否|Object| 数据链详细定义|
+|----id|否|String||
+|----name|是|String| 数据链名称|
+|----engineDefinition|是|Object| 数据链引擎定义|
+|------engineType|否|Enum| 数据链类型 OCEAN_BASE_OMS, ALIYUN_DTS, YUEXIU_DTS |
+|----filterDefinitions|否|List| 数据链过滤器|
+|------filterType|否|Enum| 过滤类型 DATABASE_FILTER, TABLE_FILTER, OPERATION_FILTER|
+|----dispatcherDefinitions|是|List| 数据链分发器|
+|------dispatcherType|否|Enum| 分发类型 KAFKA_DISPATCHER|
+|----openStreamingAudit|是|Boolean| 是否开启流式审计|
+|----persistenceIntervalMin|是|Integer| 持久化间隔 默认 30分钟|
+|----autoStart|是|Boolean| 是否自动启动|
+|----ignoreError|是|Boolean| 是否忽略错误|
+|msg|否|String| 消息|
+|code|否|String| 业务代码|
+
+
+### 返回参数Json格式
+ 
+```
+{
+ "data" : {
+ "id" : "String",
+ "name" : "String",
+ "status" : "String",
+ "statusName" : "String",
+ "engineType" : 0,
+ "engineTypeName" : "String",
+ "autoStart" : true,
+ "definition" : {
+ "id" : "String",
+ "name" : "String",
+ "engineDefinition" : {
+ "engineType" : 0
+ },
+ "filterDefinitions" : [{
+ "filterType" : 0
+ }],
+ "dispatcherDefinitions" : [{
+ "dispatcherType" : 0
+ }],
+ "openStreamingAudit" : true,
+ "persistenceIntervalMin" : 0,
+ "autoStart" : true,
+ "ignoreError" : true
+ }
+ },
+ "msg" : "String",
+ "code" : "String"
+}
+```
+### OMS 引擎定义
+
+|参数名|必选|类型|说明|
+|:---- |:---|:----- |----- |
+|messageFormat|否|Enum| 消息格式 OMS_DEFAULT, DEBEZIUM, CANAL, DTS|
+|topic|否|String| kafka 消费者主题|
+|group|否|String| kafka 消费者组|
+|kafkaServers|否|String| kafka 服务器地址|
+|concurrency|否|Integer| 并发数 默认 8|
+|fetchMaxBytes|否|Integer| 最大拉取字节数 默认 50 * 1024 * 1024|
+|maxPartitionFetchBytes|否|Integer| 最大分区拉取字节数 默认 11 * 1024 * 1024|
+|maxPollRecords|否|Integer| 最大拉取记录数 默认 500|
+|maxPollIntervalMsConfig|否|Integer| 最大拉取间隔 默认 30000|
+|sessionTimeoutMsConfig|否|Integer| session超时时间 默认 10000|
+|engineType|否|Enum| 数据链类型 OCEAN_BASE_OMS, ALIYUN_DTS|
+
+
+```
+{
+ "messageFormat" : 0,
+ "topic" : "String",
+ "group" : "String",
+ "kafkaServers" : "String",
+ "concurrency" : 0,
+ "fetchMaxBytes" : 0,
+ "maxPartitionFetchBytes" : 0,
+ "maxPollRecords" : 0,
+ "maxPollIntervalMsConfig" : 0,
+ "sessionTimeoutMsConfig" : 0,
+ "engineType" : 0
+}
+```
+
+
+### 越秀云DTS（皇上皇版本）
+
+|参数名|必选|类型|说明|
+|:---- |:---|:----- |----- |
+|topic|否|String| kafka 消费者主题|
+|group|否|String| kafka 消费者组|
+|kafkaServers|否|String| kafka 服务器地址|
+|user|否|String| kafka 订阅认证用户|
+|password|否|String| kafka 订阅认证密码|
+|concurrency|否|Integer| 并发数 默认 8|
+|fetchMaxBytes|否|Integer| 最大拉取字节数 默认 50 * 1024 * 1024|
+|maxPartitionFetchBytes|否|Integer| 最大分区拉取字节数 默认 11 * 1024 * 1024|
+|maxPollRecords|否|Integer| 最大拉取记录数 默认 500|
+|maxPollIntervalMsConfig|否|Integer| 最大拉取间隔 默认 30000|
+|sessionTimeoutMsConfig|否|Integer| session超时时间 默认 10000|
+
+```
+{
+ "topic":"String",
+ "group":"String",
+ "kafkaServers":"String",
+ "user":"String",
+ "password":"String",
+ "concurrency":0,
+ "fetchMaxBytes":0,
+ "maxPartitionFetchBytes":0,
+ "maxPollRecords":0,
+ "maxPollIntervalMsConfig":0,
+ "sessionTimeoutMsConfig":0
+}
+```
+
+
+### DTS 引擎定义
+
+|参数名|必选|类型|说明|
+|:---- |:---|:----- |----- |
+|brokerUrl|是|String| 服务Broker地址|
+|topic|是|String| 主题|
+|sid|是|String| 实例ID|
+|username|是|String| 用户名|
+|password|是|String| 密码|
+|initCheckpoint|是|String| 初始化位点|
+|isForceInitCheckpoint|是|Boolean| 是否强制初始化位点|
+|subscribeMode|是|Enum| 订阅模式 默认 ASSIGN|
+|engineType|否|Enum| 数据链类型 OCEAN_BASE_OMS, ALIYUN_DTS|
+
+
+```
+{
+ "brokerUrl" : "String",
+ "topic" : "String",
+ "sid" : "String",
+ "username" : "String",
+ "password" : "String",
+ "initCheckpoint" : "String",
+ "isForceInitCheckpoint" : true,
+ "subscribeMode" : 0,
+ "engineType" : 0
+}
+```
+
+
+### 数据库过滤器定义
+
+|参数名|必选|类型|说明|
+|:---- |:---|:----- |----- |
+|databaseNames|否|List| 数据库名称列表|
+|filterType|否|Enum| 过滤类型 DATABASE_FILTER, TABLE_FILTER, OPERATION_FILTER|
+
+
+```
+{
+ "databaseNames" : null,
+ "filterType" : 0
+}
+```
+
+### 操作过滤器定义
+
+|参数名|必选|类型|说明|
+|:---- |:---|:----- |----- |
+|operations|否|List| 操作类型列表 INSERT, UPDATE, DELETE|
+|filterType|否|Enum| 过滤类型 DATABASE_FILTER, TABLE_FILTER, OPERATION_FILTER|
+
+
+```
+{
+ "operations" : null,
+ "filterType" : 0
+}
+```
+
+### 表过滤器定义
+
+|参数名|必选|类型|说明|
+|:---- |:---|:----- |----- |
+|tableNames|否|List| 表名称列表|
+|filterType|否|Enum| 过滤类型 DATABASE_FILTER, TABLE_FILTER, OPERATION_FILTER|
+
+
+```
+{
+ "tableNames" : null,
+ "filterType" : 0
+}
+```
+
+### Kafka业务数据订阅分发器定义
+
+|参数名|必选|类型|说明|
+|:---- |:---|:----- |----- |
+|servers|是|String| kafka 服务器地址|
+|producerSize|否|Integer| kafka 生产者数量，默认3|
+|maxRequestSize|否|Integer| kafka 生产者配置 最大请求大小 默认20M|
+|batchSize|否|Integer| kafka 生产者配置 批量大小 默认2M|
+|maxBlockMs|否|Integer| kafka 生产者配置 最大延迟 默认60000ms|
+|bufferMemory|否|Integer| kafka 生产者配置 缓冲区大小 默认32M|
+|targets|是|List| kafka 分发配置|
+|--topic|是|String| 主题|
+|--partitionNum|否|Integer| 分区数|
+|--replicationFactor|否|Integer| 副本数|
+|--tables|否|List| 表名|
+|--isAllTables|是|Boolean| 是否所有表|
+|dispatcherType|否|Enum| 分发类型 KAFKA_DISPATCHER|
+
+
+```
+{
+ "servers" : "String",
+ "producerSize" : 0,
+ "maxRequestSize" : 0,
+ "batchSize" : 0,
+ "maxBlockMs" : 0,
+ "bufferMemory" : 0,
+ "targets" : [{
+ "topic" : "String",
+ "partitionNum" : 0,
+ "replicationFactor" : 0,
+ "tables" : null,
+ "isAllTables" : true
+ }],
+ "dispatcherType" : 0
+}
+```

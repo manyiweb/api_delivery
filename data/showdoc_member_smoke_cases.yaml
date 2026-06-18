@@ -1,0 +1,2200 @@
+showdoc_2941:
+  tokenId: ''
+  _meta:
+    page_id: '2941'
+    title: 扫码入会
+    catalog_path:
+    - 会员
+    method: POST
+    raw_method: POST
+    url: /app/Company/GetReadMemberQrCode
+    response_fields:
+    - qrCodeBase64
+    - qrCodeUrl
+    - qrCodeType
+    - ErrorCode
+    - ResultString
+    - ResultInt
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/02941_扫码入会.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=2941
+showdoc_5061:
+  memberId: ''
+  action: ''
+  _meta:
+    page_id: '5061'
+    title: 判断会员是否已认证
+    catalog_path:
+    - 会员
+    method: POST
+    raw_method: POST
+    url: /mem/member/info/isCertified
+    response_fields:
+    - data
+    - isCertified
+    - describe
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/05061_判断会员是否已认证.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=5061
+showdoc_3092:
+  searchBeans:
+  - typeCode: ''
+    typeName: ''
+    dataType: ''
+    isSingle: ''
+    isLikeSearch: ''
+    items:
+    - itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    current:
+      itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    sword: ''
+    pageIndex: 0
+    pageSize: 0
+    curPageNum: 0
+    totalPage: 0
+    totalCount: 0
+  tokenId: ''
+  pageIndex: 0
+  pageSize: 0
+  sword: ''
+  _meta:
+    page_id: '3092'
+    title: 优惠券列表
+    catalog_path:
+    - 会员
+    - 优惠券
+    method: POST
+    raw_method: POST
+    url: /app/Business/member/coupon/list
+    response_fields:
+    - TotalCount
+    - PageSize
+    - PageCount
+    - DataLine
+    - couponId
+    - coupnsCode
+    - title
+    - couponType
+    - couponTypeName
+    - dateTypeCode
+    - dateTypeName
+    - isActive
+    - days
+    - beginDate
+    - endDate
+    - discount
+    - qty
+    - issueQty
+    - surplusQty
+    - useLimitAmt
+    - createName
+    - createDate
+    - msg
+    - code
+    - exceptionStackInfo
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/优惠券/03092_优惠券列表.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=3092
+showdoc_3093:
+  searchBeans:
+  - typeCode: ''
+    typeName: ''
+    dataType: ''
+    isSingle: ''
+    isLikeSearch: ''
+    items:
+    - itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    current:
+      itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    sword: ''
+    pageIndex: 0
+    pageSize: 0
+    curPageNum: 0
+    totalPage: 0
+    totalCount: 0
+  tokenId: ''
+  pageIndex: 0
+  pageSize: 0
+  couponId: ''
+  sword: ''
+  swordGive: ''
+  _meta:
+    page_id: '3093'
+    title: 优惠券派发记录
+    catalog_path:
+    - 会员
+    - 优惠券
+    method: POST
+    raw_method: POST
+    url: /app/Business/member/couponGet/list
+    response_fields:
+    - TotalCount
+    - PageSize
+    - PageCount
+    - DataLine
+    - sn
+    - getTime
+    - useTime
+    - id
+    - cardNo
+    - userName
+    - phone
+    - staffName
+    - staffPhone
+    - msg
+    - code
+    - exceptionStackInfo
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/优惠券/03093_优惠券派发记录.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=3093
+showdoc_5616:
+  companyId: ''
+  phone: ''
+  type: ''
+  pageIndex: 0
+  pageSize: 0
+  _meta:
+    page_id: '5616'
+    title: 获取李宁优惠券列表
+    catalog_path:
+    - 会员
+    - 优惠券
+    method: POST
+    raw_method: POST
+    url: /thirdParty/coupon/getMemberCouponList
+    response_fields:
+    - data
+    - couponId
+    - couponSku
+    - couponName
+    - couponType
+    - couponTypeName
+    - detail
+    - beginDate
+    - endDate
+    - couponReducedPrice
+    - discount
+    - openDma
+    - discountMaxAmount
+    - isAllItem
+    - applySpecIds
+    - useLimit
+    - useLimitType
+    - superimposedRule
+    - amount
+    - canUserQuantity
+    - need
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/优惠券/05616_获取李宁优惠券列表.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=5616
+showdoc_3630:
+  returnCurrentItem: true
+  billmaterialsItemId: ''
+  sword: ''
+  tokenId: ''
+  id: ''
+  orderField: ''
+  orderSort: ''
+  searchBeans:
+  - typeCode: ''
+    typeName: ''
+    dataType: ''
+    isSingle: ''
+    isLikeSearch: ''
+    items:
+    - itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    current:
+      itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    sword: ''
+    pageIndex: 0
+    pageSize: 0
+    curPageNum: 0
+    totalPage: 0
+    totalCount: 0
+  status: 0
+  pageIndex: 0
+  pageSize: 0
+  _meta:
+    page_id: '3630'
+    title: 分页查询-替换物料
+    catalog_path:
+    - 会员
+    - 会员服务
+    method: POST
+    raw_method: POST
+    url: /b2b/billmaterials/item/replace/list
+    response_fields:
+    - data
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - dealPrice
+    - invQty
+    - id
+    - itemCode
+    - skuBarcode
+    - specId
+    - itemId
+    - itemName
+    - specName
+    - num
+    - costPrice
+    - totalCostPrice
+    - unit
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员服务/03630_分页查询-替换物料.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=3630
+showdoc_4419:
+  sourceMemberId: ''
+  targetMemberId: ''
+  transformGiveIds: null
+  payPwd: ''
+  payPwdType: ''
+  _meta:
+    page_id: '4419'
+    title: 转增 - 会员服务转赠
+    catalog_path:
+    - 会员
+    - 会员服务
+    method: POST
+    raw_method: POST
+    url: /mem/servicecard/transformGive
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员服务/04419_转增 - 会员服务转赠.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4419
+showdoc_4463:
+  id: 0
+  _meta:
+    page_id: '4463'
+    title: 会员服务核销 - 撤销
+    catalog_path:
+    - 会员
+    - 会员服务
+    method: POST
+    raw_method: POST
+    url: /app/Business/member/memberServiceUseCancel
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员服务/04463_会员服务核销 - 撤销.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4463
+showdoc_5585:
+  serviceCardId: 0
+  serviceCount: 0
+  specId: ''
+  itemQty: 0
+  _meta:
+    page_id: '5585'
+    title: 自定义添加会员服务
+    catalog_path:
+    - 会员
+    - 会员服务
+    method: POST
+    raw_method: POST
+    url: /core/app/Business/member/addMemberService
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    - traceId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员服务/05585_自定义添加会员服务.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=5585
+showdoc_6861:
+  ids: null
+  _meta:
+    page_id: '6861'
+    title: 会员服务作废
+    catalog_path:
+    - 会员
+    - 会员服务
+    method: POST
+    raw_method: POST
+    url: /mem/member/service/buy/cancel
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - traceId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员服务/06861_会员服务作废.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=6861
+showdoc_4132:
+  memberNoteId: 0
+  reviewStatus: 0
+  remark: ''
+  _meta:
+    page_id: '4132'
+    title: 会员笔记审批
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 中台
+    method: POST
+    raw_method: POST
+    url: /community/member/note/manage/review
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04132_会员笔记审批.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4132
+showdoc_4136:
+  id: 0
+  orderType: 0
+  _meta:
+    page_id: '4136'
+    title: 手动排序操作
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 中台
+    method: POST
+    raw_method: POST
+    url: /community/member/note/manage/reorder
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04136_手动排序操作.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4136
+showdoc_4138:
+  categoryId: 0
+  sword: ''
+  tokenId: ''
+  id: ''
+  orderField: ''
+  orderSort: ''
+  searchBeans:
+  - typeCode: ''
+    typeName: ''
+    dataType: ''
+    isSingle: ''
+    isLikeSearch: ''
+    items:
+    - itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    current:
+      itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    sword: ''
+    pageIndex: 0
+    pageSize: 0
+    curPageNum: 0
+    totalPage: 0
+    totalCount: 0
+  status: 0
+  pageIndex: 0
+  pageSize: 0
+  _meta:
+    page_id: '4138'
+    title: 获取会员笔记列表（中台）
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 中台
+    method: POST
+    raw_method: POST
+    url: /community/member/note/manage/getList
+    response_fields:
+    - data
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - id
+    - memberNoteNo
+    - title
+    - category
+    - userName
+    - companyName
+    - reviewStatus
+    - reviewStatusString
+    - createDate
+    - createDateString
+    - isActive
+    - isActiveString
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04138_获取会员笔记列表（中台）.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4138
+showdoc_4139:
+  memberNoteId: 0
+  _meta:
+    page_id: '4139'
+    title: 获取会员笔记详细信息（中台）
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 中台
+    method: POST
+    raw_method: POST
+    url: /community/member/note/manage/getNoteDetail
+    response_fields:
+    - data
+    - title
+    - memberName
+    - reviewStatus
+    - companyName
+    - creationDate
+    - detailDto
+    - memberNoteNo
+    - category
+    - isActive
+    - reviewDtos
+    - reviewManName
+    - reviewTime
+    - remark
+    - contentDto
+    - content
+    - mideaUrls
+    - noteType
+    - bindItemDtos
+    - id
+    - itemId
+    - itemName
+    - itemCode
+    - specId
+    - specName
+    - skuBarcode
+    - sum
+    - likeCount
+    - favourCount
+    - commentCount
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04139_获取会员笔记详细信息（中台）.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4139
+showdoc_4156:
+  memberNoteId: 0
+  tokenId: ''
+  pageIndex: 0
+  pageSize: 0
+  sword: ''
+  _meta:
+    page_id: '4156'
+    title: 获取评论数据
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 中台
+    method: POST
+    raw_method: POST
+    url: /community/member/note/manage/getComments
+    response_fields:
+    - data
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - commentUsername
+    - commentContent
+    - commentTime
+    - replyUsername
+    - replyContent
+    - replyTime
+    - commentLikeCount
+    - flag
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04156_获取评论数据.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4156
+showdoc_4164:
+  sword: ''
+  _meta:
+    page_id: '4164'
+    title: 获取话题分类
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 中台
+    method: POST
+    raw_method: POST
+    url: /community/member/note/manage/getCategory
+    response_fields:
+    - data
+    - categoryList
+    - id
+    - title
+    - companyId
+    - moduleType
+    - createId
+    - createName
+    - createDate
+    - modifyId
+    - modifyName
+    - modifyDate
+    - dbKey
+    - groupId
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04164_获取话题分类.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4164
+showdoc_4328:
+  _meta:
+    page_id: '4328'
+    title: 高级筛选入口
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 中台
+    method: POST
+    raw_method: POST
+    url: /adv/filters
+    response_fields: []
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04328_高级筛选入口.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4328
+showdoc_4552:
+  memberNoteId: 0
+  isActive: true
+  _meta:
+    page_id: '4552'
+    title: 中台会员笔记上下架
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 中台
+    method: POST
+    raw_method: POST
+    url: /community/member/note/manage/active
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04552_中台会员笔记上下架.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4552
+showdoc_4134:
+  memberNoteNo: ''
+  commentContent: ''
+  _meta:
+    page_id: '4134'
+    title: 发布评论
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    method: POST
+    raw_method: POST
+    url: /community/member/note/comment
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/04134_发布评论.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4134
+showdoc_4135:
+  memberNoteNo: ''
+  commentId: 0
+  replyContent: ''
+  replyToMemberId: ''
+  replyToUsername: ''
+  replyToContent: ''
+  replyToTime: ''
+  flag: 0
+  _meta:
+    page_id: '4135'
+    title: 回复评论
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    method: POST
+    raw_method: POST
+    url: /community/member/note/reply
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/04135_回复评论.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4135
+showdoc_4144:
+  categoryId: 0
+  sword: ''
+  tokenId: ''
+  id: ''
+  orderField: ''
+  orderSort: ''
+  searchBeans:
+  - typeCode: ''
+    typeName: ''
+    dataType: ''
+    isSingle: ''
+    isLikeSearch: ''
+    items:
+    - itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    current:
+      itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    sword: ''
+    pageIndex: 0
+    pageSize: 0
+    curPageNum: 0
+    totalPage: 0
+    totalCount: 0
+  status: 0
+  pageIndex: 0
+  pageSize: 0
+  _meta:
+    page_id: '4144'
+    title: 根据分类获取会员笔记
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    method: POST
+    raw_method: POST
+    url: /community/member/note/getNoteByCategory
+    response_fields:
+    - data
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - memberNoteId
+    - memberNoteNo
+    - headImage
+    - title
+    - photo
+    - noteVideo
+    - noteType
+    - userName
+    - likeCount
+    - ifLike
+    - reviewStatus
+    - reviewStatusString
+    - createDate
+    - createDateString
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/04144_根据分类获取会员笔记.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4144
+showdoc_4153:
+  memberNoteId: 0
+  currentTime: ''
+  sword: ''
+  tokenId: ''
+  id: ''
+  orderField: ''
+  orderSort: ''
+  searchBeans:
+  - typeCode: ''
+    typeName: ''
+    dataType: ''
+    isSingle: ''
+    isLikeSearch: ''
+    items:
+    - itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    current:
+      itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    sword: ''
+    pageIndex: 0
+    pageSize: 0
+    curPageNum: 0
+    totalPage: 0
+    totalCount: 0
+  status: 0
+  pageIndex: 0
+  pageSize: 0
+  _meta:
+    page_id: '4153'
+    title: 会员商城获取笔记所有评论与一条回复（如果有）
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 会员笔记详情页
+    method: POST
+    raw_method: POST
+    url: /community/member/note/getComments
+    response_fields:
+    - data
+    - commentSum
+    - commentPage
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - commentId
+    - commentMemberId
+    - headImg
+    - commentContent
+    - commemtUsername
+    - likeCount
+    - createDate
+    - ifAuthor
+    - reply
+    - headImage
+    - replyId
+    - replyUsername
+    - replyMemberId
+    - replyTime
+    - replyToUsername
+    - replyContent
+    - replyType
+    - flag
+    - ifLike
+    - restReplies
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04153_会员商城获取笔记所有评论与一条回复（如果有）.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4153
+showdoc_4154:
+  commentId: 0
+  memberNoteId: 0
+  currentTime: ''
+  sword: ''
+  tokenId: ''
+  id: ''
+  orderField: ''
+  orderSort: ''
+  searchBeans:
+  - typeCode: ''
+    typeName: ''
+    dataType: ''
+    isSingle: ''
+    isLikeSearch: ''
+    items:
+    - itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    current:
+      itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    sword: ''
+    pageIndex: 0
+    pageSize: 0
+    curPageNum: 0
+    totalPage: 0
+    totalCount: 0
+  status: 0
+  pageIndex: 0
+  pageSize: 0
+  _meta:
+    page_id: '4154'
+    title: 获取评论下的所有回复
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 会员笔记详情页
+    method: POST
+    raw_method: POST
+    url: /community/member/note/getReplies
+    response_fields:
+    - data
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - headImage
+    - replyId
+    - replyUsername
+    - replyMemberId
+    - replyTime
+    - replyToUsername
+    - replyContent
+    - replyType
+    - likeCount
+    - ifAuthor
+    - flag
+    - createDate
+    - ifLike
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04154_获取评论下的所有回复.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4154
+showdoc_4155:
+  memberNoteId: 0
+  from: 0
+  _meta:
+    page_id: '4155'
+    title: 会员笔记详细信息
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 会员笔记详情页
+    method: POST
+    raw_method: POST
+    url: /community/member/note/myNotesDetail
+    response_fields:
+    - data
+    - memberNoteId
+    - memberId
+    - userName
+    - headImage
+    - videoUrl
+    - category
+    - title
+    - content
+    - creationDate
+    - photos
+    - reviewStatus
+    - remark
+    - ifLike
+    - ifFavour
+    - ifAuthor
+    - likeCount
+    - favourCount
+    - commentCount
+    - authorization
+    - ifShare
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04155_会员笔记详细信息.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4155
+showdoc_4333:
+  memberNoteId: 0
+  _meta:
+    page_id: '4333'
+    title: 获取商品详情
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 会员笔记详情页
+    method: POST
+    raw_method: POST
+    url: /community/member/note/productDetail
+    response_fields:
+    - data
+    - itemId
+    - itemName
+    - headImage
+    - specId
+    - specName
+    - salePrice
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04333_获取商品详情.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4333
+showdoc_4562:
+  memberNoteId: 0
+  authStatus: 0
+  _meta:
+    page_id: '4562'
+    title: 会员商城会员笔记设置权限（自己发布的）
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 会员笔记详情页
+    method: POST
+    raw_method: POST
+    url: /community/member/note/manage/authorize
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    - traceId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04562_会员商城会员笔记设置权限（自己发布的）.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4562
+showdoc_4580:
+  memberNoteId: 0
+  _meta:
+    page_id: '4580'
+    title: 获取会员笔记分享二维码
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 会员笔记详情页
+    method: POST
+    raw_method: POST
+    url: /community/member/note/share
+    response_fields:
+    - data
+    - qrCodeUrl
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04580_获取会员笔记分享二维码.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4580
+showdoc_4581:
+  id: 0
+  _meta:
+    page_id: '4581'
+    title: 获取会员笔记二维码记录
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 会员笔记详情页
+    method: POST
+    raw_method: POST
+    url: /community/member/note/qrCodeRecord
+    response_fields:
+    - data
+    - id
+    - memberNoteId
+    - cardNo
+    - companyId
+    - qrCodeUrl
+    - dbKey
+    - groupId
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04581_获取会员笔记二维码记录.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4581
+showdoc_4131:
+  title: ''
+  content: ''
+  categoryId: 0
+  category: ''
+  companyId: ''
+  companyName: ''
+  isDraft: 0
+  noteType: 0
+  longitude: 0
+  latitude: 0
+  location: ''
+  photos: null
+  noteVideo: ''
+  mitems:
+  - itemId: ''
+    specId: ''
+    specName: ''
+    itemName: ''
+  _meta:
+    page_id: '4131'
+    title: 发布会员笔记
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 发布功能
+    method: POST
+    raw_method: POST
+    url: /community/member/note/publish
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/发布功能/04131_发布会员笔记.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4131
+showdoc_4162:
+  companyId: ''
+  sword: ''
+  _meta:
+    page_id: '4162'
+    title: 获取话题分类
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 发布功能
+    method: POST
+    raw_method: POST
+    url: /community/member/note/getCategory
+    response_fields:
+    - data
+    - categoryList
+    - id
+    - title
+    - companyId
+    - moduleType
+    - createId
+    - createName
+    - createDate
+    - modifyId
+    - modifyName
+    - modifyDate
+    - dbKey
+    - groupId
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/发布功能/04162_获取话题分类.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4162
+showdoc_4163:
+  tokenId: ''
+  pageIndex: 0
+  pageSize: 0
+  sword: ''
+  _meta:
+    page_id: '4163'
+    title: 获取会员可关联的商品列表
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 发布功能
+    method: POST
+    raw_method: POST
+    url: /community/member/note/getBindItems
+    response_fields:
+    - data
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - itemId
+    - itemName
+    - headImage
+    - specId
+    - specName
+    - salePrice
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/发布功能/04163_获取会员可关联的商品列表.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4163
+showdoc_4146:
+  _meta:
+    page_id: '4146'
+    title: 获取我的会员笔记相关统计信息
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 我的笔记
+    method: POST
+    raw_method: POST
+    url: /community/member/note/getNotesStatistic
+    response_fields:
+    - data
+    - notesCount
+    - favourCount
+    - likeCount
+    - unhandleCount
+    - draftCount
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/我的笔记/04146_获取我的会员笔记相关统计信息.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4146
+showdoc_4147:
+  searchType: 0
+  sword: ''
+  tokenId: ''
+  id: ''
+  orderField: ''
+  orderSort: ''
+  searchBeans:
+  - typeCode: ''
+    typeName: ''
+    dataType: ''
+    isSingle: ''
+    isLikeSearch: ''
+    items:
+    - itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    current:
+      itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    sword: ''
+    pageIndex: 0
+    pageSize: 0
+    curPageNum: 0
+    totalPage: 0
+    totalCount: 0
+  status: 0
+  pageIndex: 0
+  pageSize: 0
+  _meta:
+    page_id: '4147'
+    title: 获取我的笔记列表
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 我的笔记
+    method: POST
+    raw_method: POST
+    url: /community/member/note/myNotes
+    response_fields:
+    - data
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - memberNoteId
+    - memberNoteNo
+    - headImage
+    - title
+    - photo
+    - noteVideo
+    - noteType
+    - userName
+    - likeCount
+    - reviewStatus
+    - reviewStatusString
+    - createDate
+    - createDateString
+    - ifLike
+    - authorization
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/我的笔记/04147_获取我的笔记列表.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4147
+showdoc_4334:
+  memberNoteId: 0
+  _meta:
+    page_id: '4334'
+    title: 获取草稿笔记信息
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 我的笔记
+    method: POST
+    raw_method: POST
+    url: /community/member/note/getDraft
+    response_fields:
+    - data
+    - title
+    - content
+    - categoryId
+    - category
+    - companyId
+    - companyName
+    - isDraft
+    - noteType
+    - longitude
+    - latitude
+    - location
+    - photos
+    - noteVideo
+    - mitems
+    - itemId
+    - specId
+    - specName
+    - itemName
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/我的笔记/04334_获取草稿笔记信息.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4334
+showdoc_4160:
+  ifLike: 0
+  likeCount: 0
+  memberNoteId: 0
+  _meta:
+    page_id: '4160'
+    title: 点赞（会员笔记）
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 点赞和收藏
+    method: POST
+    raw_method: POST
+    url: /community/member/note/like
+    response_fields:
+    - data
+    - ifLike
+    - likeCount
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/点赞和收藏/04160_点赞（会员笔记）.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4160
+showdoc_4161:
+  ifFavour: 0
+  favourCount: 0
+  memberNoteId: 0
+  _meta:
+    page_id: '4161'
+    title: 收藏（会员笔记）
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 点赞和收藏
+    method: POST
+    raw_method: POST
+    url: /community/member/note/favour
+    response_fields:
+    - data
+    - favourCount
+    - ifFavour
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/点赞和收藏/04161_收藏（会员笔记）.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4161
+showdoc_4167:
+  id: 0
+  flag: 0
+  ifLike: 0
+  likeCount: 0
+  _meta:
+    page_id: '4167'
+    title: 评论或回复点赞
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 会员商城
+    - 点赞和收藏
+    method: POST
+    raw_method: POST
+    url: /community/member/note/commentLike
+    response_fields:
+    - data
+    - ifLike
+    - likeCount
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/点赞和收藏/04167_评论或回复点赞.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4167
+showdoc_4166:
+  memberNoteId: 0
+  updateType: 0
+  operateType: 0
+  title: ''
+  content: ''
+  categoryId: 0
+  category: ''
+  companyId: ''
+  companyName: ''
+  isDraft: 0
+  noteType: 0
+  longitude: 0
+  latitude: 0
+  location: ''
+  photos: null
+  noteVideo: ''
+  mitems:
+  - itemId: ''
+    specId: ''
+    specName: ''
+    itemName: ''
+  _meta:
+    page_id: '4166'
+    title: 编辑会员笔记
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 通用操作
+    method: POST
+    raw_method: POST
+    url: /community/member/note/manage/update
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/通用操作/04166_编辑会员笔记.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4166
+showdoc_4325:
+  id: 0
+  flag: 0
+  _meta:
+    page_id: '4325'
+    title: 中台会员笔记删除
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 通用操作
+    method: POST
+    raw_method: POST
+    url: /community/member/note/manage/system/delete
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/通用操作/04325_中台会员笔记删除.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4325
+showdoc_4437:
+  delType: 0
+  memberId: ''
+  id: 0
+  flag: 0
+  _meta:
+    page_id: '4437'
+    title: 会员商城删除会员笔记或评论（回复）
+    catalog_path:
+    - 会员
+    - 会员笔记
+    - 通用操作
+    method: POST
+    raw_method: POST
+    url: /community/member/note/manage/delete
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/会员笔记/通用操作/04437_会员商城删除会员笔记或评论（回复）.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=4437
+showdoc_2837:
+  id: ''
+  isActivity: 0
+  cardType: ''
+  transType: 0
+  sword: ''
+  tokenId: ''
+  orderField: ''
+  orderSort: ''
+  searchBeans:
+  - typeCode: ''
+    typeName: ''
+    dataType: ''
+    isSingle: ''
+    isLikeSearch: ''
+    items:
+    - itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    current:
+      itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    sword: ''
+    pageIndex: 0
+    pageSize: 0
+    curPageNum: 0
+    totalPage: 0
+    totalCount: 0
+  status: 0
+  pageIndex: 0
+  pageSize: 0
+  _meta:
+    page_id: '2837'
+    title: 会员储值卡余额变更记录
+    catalog_path:
+    - 会员
+    - 储值卡
+    method: POST
+    raw_method: POST
+    url: /mem/card/amount/records
+    response_fields:
+    - data
+    - expendAmountTotal
+    - incomeAmountTotal
+    - pageData
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - recordId
+    - sourceId
+    - transAmount
+    - remark
+    - cardType
+    - cardTypeName
+    - staffName
+    - transType
+    - createDate
+    - transGiftAmount
+    - reason
+    - refundStatus
+    - typeCode
+    - typeName
+    - payTypeName
+    - companyName
+    - manualRemark
+    - balance
+    - beforeBalance
+    - msg
+    - code
+    - exceptionStackInfo
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/储值卡/02837_会员储值卡余额变更记录.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=2837
+showdoc_10879:
+  cardOrderId: ''
+  _meta:
+    page_id: '10879'
+    title: 取消充值订单
+    catalog_path:
+    - 会员
+    - 储值卡
+    method: POST
+    raw_method: POST
+    url: /reabam-retail/app/Business/Member/CardTop/cancel
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - traceId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/储值卡/10879_取消充值订单.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=10879
+showdoc_3017:
+  id: ''
+  tokenId: ''
+  pageIndex: 0
+  pageSize: 0
+  sword: ''
+  _meta:
+    page_id: '3017'
+    title: 实体卡、储值卡充值选项，优惠券列表
+    catalog_path:
+    - 会员
+    - 权益
+    method: POST
+    raw_method: POST
+    url: /mem/benefit/card/coupon
+    response_fields:
+    - data
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - couponId
+    - couponName
+    - qty
+    - msg
+    - code
+    - exceptionStackInfo
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/权益/03017_实体卡、储值卡充值选项，优惠券列表.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=3017
+showdoc_3018:
+  id: ''
+  tokenId: ''
+  pageIndex: 0
+  pageSize: 0
+  sword: ''
+  _meta:
+    page_id: '3018'
+    title: 权益天数充值选项，优惠券列表
+    catalog_path:
+    - 会员
+    - 权益
+    method: POST
+    raw_method: POST
+    url: /mem/benefit/day/coupon
+    response_fields:
+    - data
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - couponId
+    - couponName
+    - qty
+    - msg
+    - code
+    - exceptionStackInfo
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/权益/03018_权益天数充值选项，优惠券列表.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=3018
+showdoc_3853:
+  memberId: ''
+  type: 0
+  _meta:
+    page_id: '3853'
+    title: 已购买权益卡列表
+    catalog_path:
+    - 会员
+    - 权益
+    method: POST
+    raw_method: ALL
+    url: /app/memberEntitleCard/buyCardList
+    response_fields:
+    - data
+    - specId
+    - cardName
+    - cardNo
+    - cardPicUrl
+    - day
+    - accountId
+    - cardId
+    - expireDate
+    - effectiveDate
+    - active
+    - enableConsumeLimit
+    - consumeLimit
+    - consumeLimitType
+    - residueAmount
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/权益/03853_已购买权益卡列表.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=3853
+showdoc_3882:
+  cardId: 0
+  _meta:
+    page_id: '3882'
+    title: 权益卡 权益说明 购买说明
+    catalog_path:
+    - 会员
+    - 权益
+    method: POST
+    raw_method: ALL
+    url: /app/memberEntitleCard/cardIntroduction
+    response_fields:
+    - data
+    - cardId
+    - cardPicUrl
+    - cardDescription
+    - buyDescription
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/权益/03882_权益卡 权益说明 购买说明.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=3882
+showdoc_3884:
+  memberId: ''
+  _meta:
+    page_id: '3884'
+    title: 会员是否已经勾选权益说明
+    catalog_path:
+    - 会员
+    - 权益
+    method: POST
+    raw_method: ALL
+    url: /app/memberEntitleCard/memberReadIntroduction
+    response_fields:
+    - data
+    - check
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/权益/03884_会员是否已经勾选权益说明.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=3884
+showdoc_3885:
+  memberId: ''
+  check: true
+  _meta:
+    page_id: '3885'
+    title: 记录是否勾选协议
+    catalog_path:
+    - 会员
+    - 权益
+    method: POST
+    raw_method: ALL
+    url: /app/memberEntitleCard/memberReadIntroductionSave
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/权益/03885_记录是否勾选协议.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=3885
+showdoc_9955:
+  cardNo: ''
+  _meta:
+    page_id: '9955'
+    title: 实体券一键核销
+    catalog_path:
+    - 会员
+    - 权益
+    method: POST
+    raw_method: POST
+    url: /app/entityCardPay/entityCoupon/consume
+    response_fields:
+    - data
+    - cardId
+    - cardNo
+    - denomination
+    - enableDiscount
+    - enableDiscountExpressFee
+    - isAllItem
+    - isAllComp
+    - discountAmount
+    - payAmount
+    - cardType
+    - isMinUse
+    - minUse
+    - balance
+    - remark
+    - isFreeze
+    - cardActuallyPaid
+    - msg
+    - code
+    - exceptionStackInfo
+    - traceId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/权益/09955_实体券一键核销.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=9955
+showdoc_9969:
+  cardNo: ''
+  _meta:
+    page_id: '9969'
+    title: 实体券一键核销查询
+    catalog_path:
+    - 会员
+    - 权益
+    method: POST
+    raw_method: POST
+    url: /app/entityCardPay/entityCoupon/scan
+    response_fields:
+    - data
+    - fid
+    - cardName
+    - cardType
+    - cardCode
+    - version
+    - cardNo
+    - denomination
+    - balance
+    - status
+    - modifyData
+    - mid
+    - flagId
+    - remark
+    - stateCode
+    - stateName
+    - modifiedId
+    - modifiedName
+    - isConversion
+    - isSales
+    - password
+    - memberId
+    - bindCompanyId
+    - bindCompanyName
+    - orderId
+    - orderNo
+    - orderCreateDate
+    - orderCompanyId
+    - orderCompanyCode
+    - orderCompanyName
+    - orderStaffId
+    - orderStaffCode
+    - orderStaffName
+    - rechargeBalance
+    - giftBalance
+    - isMerge
+    - isFreeze
+    - minUse
+    - salesAdvice
+    - startData
+    - endData
+    - validationPasswordSet
+    - batchId
+    - useType
+    - totalLimit
+    - useTimes
+    - timesValue
+    - imgUrl
+    - themeName
+    - outerCode
+    - writeStatus
+    - clearStatus
+    - msg
+    - code
+    - exceptionStackInfo
+    - traceId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/权益/09969_实体券一键核销查询.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=9969
+showdoc_10134:
+  cardId: ''
+  cardNo: ''
+  rechargeCardId: ''
+  _meta:
+    page_id: '10134'
+    title: 计算实体券充值到实体卡金额
+    catalog_path:
+    - 会员
+    - 权益
+    method: POST
+    raw_method: POST
+    url: /mem/calculate/recharge/admount
+    response_fields:
+    - data
+    - cardId
+    - cardNo
+    - cardName
+    - denomination
+    - startDate
+    - endDate
+    - totalAmount
+    - rechargeAmount
+    - giftAmount
+    - msg
+    - code
+    - exceptionStackInfo
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/权益/10134_计算实体券充值到实体卡金额.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=10134
+showdoc_10724:
+  id: ''
+  orderField: ''
+  orderSort: ''
+  tokenId: ''
+  pageIndex: 0
+  pageSize: 0
+  sword: ''
+  _meta:
+    page_id: '10724'
+    title: 实体卡、储值卡充值选项，优惠券列表
+    catalog_path:
+    - 会员
+    - 权益
+    method: POST
+    raw_method: POST
+    url: /mem/benefit/card/entityCoupon
+    response_fields:
+    - data
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - entityCouponId
+    - entityCouponName
+    - qty
+    - useLimitAmt
+    - beginDate
+    - endDate
+    - validType
+    - msg
+    - code
+    - exceptionStackInfo
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/权益/10724_实体卡、储值卡充值选项，优惠券列表.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=10724
+showdoc_10757:
+  companyId: ''
+  _meta:
+    page_id: '10757'
+    title: 查看门店实体卡价格清单设置
+    catalog_path:
+    - 会员
+    - 权益
+    method: POST
+    raw_method: POST
+    url: /mem/entitycard/comp/price/get
+    response_fields:
+    - data
+    - id
+    - open
+    - companyId
+    - priceListList
+    - cardId
+    - cardName
+    - priceListId
+    - priceListName
+    - usePriceDisableDiscount
+    - createId
+    - createName
+    - createDate
+    - modifyId
+    - modifyName
+    - modifyDate
+    - dbKey
+    - groupId
+    - msg
+    - code
+    - exceptionStackInfo
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/权益/10757_查看门店实体卡价格清单设置.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=10757
+showdoc_10758:
+  companyId: ''
+  open: true
+  saveReqList:
+  - id: 0
+    priceListId: ''
+    cardId: ''
+    cardName: ''
+    priceListName: ''
+    companyId: ''
+    usePriceDisableDiscount: true
+  _meta:
+    page_id: '10758'
+    title: 保存门店实体卡价格清单设置
+    catalog_path:
+    - 会员
+    - 权益
+    method: POST
+    raw_method: POST
+    url: /mem/entitycard/comp/price/save
+    response_fields:
+    - data
+    - msg
+    - code
+    - exceptionStackInfo
+    - traceId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/权益/10758_保存门店实体卡价格清单设置.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=10758
+showdoc_5439:
+  id: ''
+  searchBeans:
+  - typeCode: ''
+    typeName: ''
+    dataType: ''
+    isSingle: ''
+    isLikeSearch: ''
+    items: null
+    current:
+      itemName: ''
+      itemValue: ''
+      minValue: ''
+      maxValue: ''
+      isCustom: ''
+      isRange: ''
+      isSelect: ''
+    sword: ''
+    pageIndex: 0
+    pageSize: 0
+    curPageNum: 0
+    totalPage: 0
+    totalCount: 0
+  tokenId: ''
+  pageIndex: 0
+  pageSize: 0
+  sword: ''
+  _meta:
+    page_id: '5439'
+    title: 查询第三方会员优惠券
+    catalog_path:
+    - 会员
+    - 第三方会员相关接口
+    method: POST
+    raw_method: POST
+    url: /mem/dock/member/coupons
+    response_fields:
+    - data
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - couponId
+    - title
+    - beginDate
+    - endDate
+    - couponType
+    - discount
+    - price
+    - useLimitAmt
+    - qty
+    - detail
+    - sn
+    - useLimitType
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    - traceId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/第三方会员相关接口/05439_查询第三方会员优惠券.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=5439
+showdoc_3296:
+  id: ''
+  tokenId: ''
+  pageIndex: 0
+  pageSize: 0
+  sword: ''
+  _meta:
+    page_id: '3296'
+    title: 分页查询会员赊销记录
+    catalog_path:
+    - 会员
+    - 赊销记录
+    method: POST
+    raw_method: POST
+    url: /app/Business/Member/credit
+    response_fields:
+    - data
+    - debtAmount
+    - creditAmount
+    - AccumulatedCreditAmount
+    - creditRecords
+    - pageIndex
+    - pageSize
+    - pageCount
+    - totalCount
+    - first
+    - last
+    - content
+    - companyId
+    - companyName
+    - paidAmount
+    - repaymentDate
+    - status
+    - sourceId
+    - createDate
+    - remarks
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: mutation
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/赊销记录/03296_分页查询会员赊销记录.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=3296
+showdoc_3570:
+  recordId: 0
+  specId: ''
+  usedTimes: 0
+  _meta:
+    page_id: '3570'
+    title: 查询-会员服务使用记录bom一级子商品
+    catalog_path:
+    - 会员
+    - 赊销记录
+    method: POST
+    raw_method: POST
+    url: /app/Business/member/findMemberServiceUseRecord/bomItem
+    response_fields:
+    - data
+    - itemId
+    - itemName
+    - specId
+    - specName
+    - quantity
+    - headImageFull
+    - msg
+    - code
+    - exceptionStackInfo
+    - monitorRequestId
+    risk_level: read
+    source_file: docs/showdoc/店务助手_智慧收银台/会员/赊销记录/03570_查询-会员服务使用记录bom一级子商品.md
+    source_url: https://showdoc.reabam.com/web/#/8?page_id=3570

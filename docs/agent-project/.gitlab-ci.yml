@@ -1,0 +1,203 @@
+# =========================================================
+# agent 项目 GitLab CI/CD 配置（无单元测试版本）
+# 用途：
+#   1. 完成 agent 项目自身的构建/编译
+#   2. 将服务部署到 FAT/UAT 环境
+#   3. 等待服务健康检查通过
+#   4. 服务就绪后，跨项目触发 api-auto-test 接口自动化测试
+#
+# 适用场景：
+#   很多老项目或业务驱动项目没有单元测试，或单元测试覆盖率很低。
+#   这个版本去掉了 test 阶段，重点展示 build → deploy → health-check → trigger 的完整链路。
+#
+# 使用方法：
+#   1. 将本文件复制到 agent 项目的根目录，重命名为 .gitlab-ci.yml
+#   2. 在 agent 项目的 GitLab CI/CD Variables 中配置：
+#      - API_AUTO_TEST_TRIGGER_TOKEN（api-auto-test 项目的 trigger token，需 Mask）
+#      - API_AUTO_TEST_PROJECT_ID（api-auto-test 项目的数字 ID）
+#      - FAT_HEALTH_URL 和 UAT_HEALTH_URL（你后端服务的健康检查地址）
+#   3. 把 deploy 阶段的 echo 替换成你的真实部署命令
+# =========================================================
+
+# ---------------------------------------------------------
+# workflow: 控制整个流水线什么时候执行
+# ---------------------------------------------------------
+# 这里只让 main（生产）、develop（测试）、release/* 分支触发
+# 避免 feature 分支每次 push 都触发部署和接口测试，浪费资源
+# ---------------------------------------------------------
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+    - if: '$CI_COMMIT_BRANCH =~ /^release\//'
+
+# ---------------------------------------------------------
+# variables: 全局变量
+# ---------------------------------------------------------
+# 这些变量可以被下面每个 job 引用，也可以在 CI/CD Variables 中覆盖
+# ---------------------------------------------------------
+variables:
+  # 默认健康检查地址，请改成你真实的接口
+  FAT_HEALTH_URL: "http://fat-pos.example.com:60030/api/health"
+  UAT_HEALTH_URL: "https://pos.example.com/api/health"
+
+  # Docker 镜像标签，方便部署时引用
+  IMAGE_TAG: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+
+# ---------------------------------------------------------
+# stages: 定义流水线的阶段，按顺序执行
+# ---------------------------------------------------------
+# 1. build: 编译/打包
+# 2. deploy: 部署到测试环境
+# 3. health-check: 检查服务是否真的可用了
+# 4. trigger-api-tests: 触发 api-auto-test 项目跑接口自动化
+# ---------------------------------------------------------
+stages:
+  - build
+  - deploy
+  - health-check
+  - trigger-api-tests
+
+# =========================================================
+# 1. build 阶段：编译 agent 项目
+# =========================================================
+# 这里用 node 举例，如果你的后端是 Java/Go/Python，请换对应镜像和命令
+# =========================================================
+build:
+  stage: build
+  image: node:20-alpine
+  script:
+    - echo "开始构建 agent 项目..."
+    - npm ci          # 安装依赖
+    - npm run build   # 编译打包
+    - echo "构建完成，镜像标签: $IMAGE_TAG"
+  artifacts:
+    # 把构建产物传给后面阶段，避免重复 build
+    paths:
+      - dist/
+      - node_modules/
+    expire_in: 1 hour
+
+# =========================================================
+# 2. deploy 阶段：部署到测试环境
+# =========================================================
+# 这个 job 根据分支决定部署到 FAT 还是 UAT
+#
+# 注意：
+#   下面的 script 只是示例（echo），你需要换成真实部署命令
+#   比如：
+#     - docker build -t $IMAGE_TAG .
+#     - docker push $IMAGE_TAG
+#     - kubectl set image deployment/agent agent=$IMAGE_TAG -n $DEPLOY_ENV
+#     - helm upgrade --install agent ./helm -n $DEPLOY_ENV
+# =========================================================
+deploy:
+  stage: deploy
+  image: alpine/k8s:latest
+  needs:
+    - job: build
+  variables:
+    DEPLOY_ENV: "fat"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+      variables:
+        DEPLOY_ENV: "fat"
+    - if: '$CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH =~ /^release\//'
+      variables:
+        DEPLOY_ENV: "uat"
+  script:
+    - echo "部署到 $DEPLOY_ENV 环境..."
+    - echo "镜像: $IMAGE_TAG"
+    # =====================
+    # 替换为你的真实部署命令
+    # =====================
+    - echo "TODO: docker build / kubectl rollout / helm upgrade 等"
+
+# =========================================================
+# 3. health-check 阶段：等待服务真正可用
+# =========================================================
+# 这是最关键的一步。
+#
+# 问题背景：
+#   部署命令执行完，不代表服务已经能正常响应请求了。
+#   容器启动、数据库连接、缓存预热、注册中心上报都需要时间。
+#   如果这时立刻跑接口自动化，会有一堆 500/502/连接超时。
+#
+# 解决方案：
+#   轮询调用服务的健康检查接口，最多等 5 分钟（30 次 × 10 秒）。
+#   服务返回 200 才继续下一步；否则 pipeline 失败，不会触发接口测试。
+# =========================================================
+health_check:
+  stage: health-check
+  image: curlimages/curl:latest
+  needs:
+    - job: deploy
+  variables:
+    # 默认使用 FAT 健康地址，main/release 分支会覆盖为 UAT
+    HEALTH_URL: "$FAT_HEALTH_URL"
+    TEST_ENV: "fat"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+      variables:
+        HEALTH_URL: "$FAT_HEALTH_URL"
+        TEST_ENV: "fat"
+    - if: '$CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH =~ /^release\//'
+      variables:
+        HEALTH_URL: "$UAT_HEALTH_URL"
+        TEST_ENV: "uat"
+  script:
+    - |
+      echo "[$TEST_ENV] 等待服务就绪: $HEALTH_URL"
+      for i in $(seq 1 30); do
+        # -s 静默输出，-f 遇到非 2xx 返回非 0 退出码
+        if curl -sf "$HEALTH_URL" > /dev/null; then
+          echo "✅ 服务已就绪，耗时 ${i}0 秒"
+          exit 0
+        fi
+        echo "⏳ 第 $i 次检查未通过，10秒后重试..."
+        sleep 10
+      done
+      echo "❌ 服务在 300 秒内未就绪，停止触发接口测试"
+      exit 1
+
+# =========================================================
+# 4. trigger-api-tests 阶段：触发 api-auto-test 项目
+# =========================================================
+# 只有 health_check 通过后才会执行到这里。
+#
+# 实现方式：
+#   调用 GitLab Pipeline Trigger API，向 api-auto-test 项目发起触发请求。
+#   同时通过 variables 把环境参数（ENV）和触发来源传过去。
+#
+# 需要前置配置：
+#   1. 在 api-auto-test 项目生成 Pipeline Trigger Token
+#   2. 在 agent 项目配置 CI/CD Variables：
+#      - API_AUTO_TEST_TRIGGER_TOKEN（Mask）
+#      - API_AUTO_TEST_PROJECT_ID
+# =========================================================
+trigger_api_auto_tests:
+  stage: trigger-api-tests
+  image: curlimages/curl:latest
+  needs:
+    - job: health_check
+  variables:
+    TEST_ENV: "fat"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+      variables:
+        TEST_ENV: "fat"
+    - if: '$CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH =~ /^release\//'
+      variables:
+        TEST_ENV: "uat"
+  script:
+    - |
+      echo "[$TEST_ENV] 服务已就绪，触发 api-auto-test 接口自动化测试..."
+      curl -X POST \
+        -F token="$API_AUTO_TEST_TRIGGER_TOKEN" \
+        -F ref=master \
+        -F "variables[ENV]=$TEST_ENV" \
+        -F "variables[TRIGGER_SOURCE_PROJECT]=$CI_PROJECT_PATH" \
+        -F "variables[TRIGGER_SOURCE_COMMIT]=$CI_COMMIT_SHORT_SHA" \
+        -F "variables[TRIGGER_SOURCE_BRANCH]=$CI_COMMIT_REF_NAME" \
+        "https://gitlab.com/api/v4/projects/$API_AUTO_TEST_PROJECT_ID/trigger/pipeline"
+      echo "触发请求已发送"

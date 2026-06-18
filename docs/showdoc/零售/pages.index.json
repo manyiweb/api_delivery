@@ -1,0 +1,135 @@
+[
+  {
+    "page_id": "6953",
+    "page_title": "零售代发设置 - 维护",
+    "catalog_path": [
+      "设置",
+      "零售代发设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/零售/设置/零售代发设置/06953_零售代发设置 - 维护.md",
+    "contentLength": 3299,
+    "source_url": "https://showdoc.reabam.com/web/#/49?page_id=6953"
+  },
+  {
+    "page_id": "6954",
+    "page_title": "零售代发设置 - 获取",
+    "catalog_path": [
+      "设置",
+      "零售代发设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/零售/设置/零售代发设置/06954_零售代发设置 - 获取.md",
+    "contentLength": 3298,
+    "source_url": "https://showdoc.reabam.com/web/#/49?page_id=6954"
+  },
+  {
+    "page_id": "6955",
+    "page_title": "零售代发设置 - 复制",
+    "catalog_path": [
+      "设置",
+      "零售代发设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/零售/设置/零售代发设置/06955_零售代发设置 - 复制.md",
+    "contentLength": 962,
+    "source_url": "https://showdoc.reabam.com/web/#/49?page_id=6955"
+  },
+  {
+    "page_id": "6972",
+    "page_title": "门店代发订单-转单",
+    "catalog_path": [
+      "代发"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/零售/代发/06972_门店代发订单-转单.md",
+    "contentLength": 911,
+    "source_url": "https://showdoc.reabam.com/web/#/49?page_id=6972"
+  },
+  {
+    "page_id": "6973",
+    "page_title": "门店代发订单-取消生产",
+    "catalog_path": [
+      "代发"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/零售/代发/06973_门店代发订单-取消生产.md",
+    "contentLength": 804,
+    "source_url": "https://showdoc.reabam.com/web/#/49?page_id=6973"
+  },
+  {
+    "page_id": "7009",
+    "page_title": "生产收货",
+    "catalog_path": [
+      "代发"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/零售/代发/07009_生产收货.md",
+    "contentLength": 724,
+    "source_url": "https://showdoc.reabam.com/web/#/49?page_id=7009"
+  },
+  {
+    "page_id": "7227",
+    "page_title": "订单详情主表信息",
+    "catalog_path": [
+      "订单详情"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/零售/订单详情/07227_订单详情主表信息.md",
+    "contentLength": 98569,
+    "source_url": "https://showdoc.reabam.com/web/#/49?page_id=7227"
+  },
+  {
+    "page_id": "7228",
+    "page_title": "订单详情商品明细",
+    "catalog_path": [
+      "订单详情"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/零售/订单详情/07228_订单详情商品明细.md",
+    "contentLength": 53846,
+    "source_url": "https://showdoc.reabam.com/web/#/49?page_id=7228"
+  },
+  {
+    "page_id": "7229",
+    "page_title": "订单详情-关联单据",
+    "catalog_path": [
+      "订单详情"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/零售/订单详情/07229_订单详情-关联单据.md",
+    "contentLength": 1938,
+    "source_url": "https://showdoc.reabam.com/web/#/49?page_id=7229"
+  },
+  {
+    "page_id": "7230",
+    "page_title": "订单详情状态按钮",
+    "catalog_path": [
+      "订单详情"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/零售/订单详情/07230_订单详情状态按钮.md",
+    "contentLength": 4024,
+    "source_url": "https://showdoc.reabam.com/web/#/49?page_id=7230"
+  },
+  {
+    "page_id": "7231",
+    "page_title": "订单详情打印信息",
+    "catalog_path": [
+      "订单详情"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/零售/订单详情/07231_订单详情打印信息.md",
+    "contentLength": 2464,
+    "source_url": "https://showdoc.reabam.com/web/#/49?page_id=7231"
+  },
+  {
+    "page_id": "8307",
+    "page_title": "订单-外卖订单详情信息",
+    "catalog_path": [
+      "订单详情"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/零售/订单详情/08307_订单-外卖订单详情信息.md",
+    "contentLength": 99700,
+    "source_url": "https://showdoc.reabam.com/web/#/49?page_id=8307"
+  },
+  {
+    "page_id": "11141",
+    "page_title": "外卖拼单打印详情",
+    "catalog_path": [
+      "订单详情"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/零售/订单详情/11141_外卖拼单打印详情.md",
+    "contentLength": 162533,
+    "source_url": "https://showdoc.reabam.com/web/#/49?page_id=11141"
+  }
+]

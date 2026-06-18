@@ -1,0 +1,149 @@
+{
+  "item_id": "49",
+  "item_name": "零售",
+  "default_page_id": "8307",
+  "menu": {
+    "pages": [],
+    "catalogs": [
+      {
+        "cat_id": "965",
+        "cat_name": "设置",
+        "item_id": "49",
+        "s_number": "99",
+        "addtime": "1691128495",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [],
+        "catalogs": [
+          {
+            "cat_id": "966",
+            "cat_name": "零售代发设置",
+            "item_id": "49",
+            "s_number": "99",
+            "addtime": "1691128508",
+            "parent_cat_id": "965",
+            "level": "3",
+            "pages": [
+              {
+                "page_id": "6953",
+                "author_uid": "2",
+                "cat_id": "966",
+                "page_title": "零售代发设置 - 维护",
+                "addtime": "1758277137"
+              },
+              {
+                "page_id": "6954",
+                "author_uid": "2",
+                "cat_id": "966",
+                "page_title": "零售代发设置 - 获取",
+                "addtime": "1758277219"
+              },
+              {
+                "page_id": "6955",
+                "author_uid": "2",
+                "cat_id": "966",
+                "page_title": "零售代发设置 - 复制",
+                "addtime": "1691128580"
+              }
+            ],
+            "catalogs": []
+          }
+        ]
+      },
+      {
+        "cat_id": "971",
+        "cat_name": "代发",
+        "item_id": "49",
+        "s_number": "99",
+        "addtime": "1691565887",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "6972",
+            "author_uid": "2",
+            "cat_id": "971",
+            "page_title": "门店代发订单-转单",
+            "addtime": "1692157854"
+          },
+          {
+            "page_id": "6973",
+            "author_uid": "2",
+            "cat_id": "971",
+            "page_title": "门店代发订单-取消生产",
+            "addtime": "1691565937"
+          },
+          {
+            "page_id": "7009",
+            "author_uid": "2",
+            "cat_id": "971",
+            "page_title": "生产收货",
+            "addtime": "1692180031"
+          }
+        ],
+        "catalogs": []
+      },
+      {
+        "cat_id": "1012",
+        "cat_name": "订单详情",
+        "item_id": "49",
+        "s_number": "99",
+        "addtime": "1699345809",
+        "parent_cat_id": "0",
+        "level": "2",
+        "pages": [
+          {
+            "page_id": "7227",
+            "author_uid": "2",
+            "cat_id": "1012",
+            "page_title": "订单详情主表信息",
+            "addtime": "1742886523"
+          },
+          {
+            "page_id": "7228",
+            "author_uid": "2",
+            "cat_id": "1012",
+            "page_title": "订单详情商品明细",
+            "addtime": "1744167262"
+          },
+          {
+            "page_id": "7229",
+            "author_uid": "2",
+            "cat_id": "1012",
+            "page_title": "订单详情-关联单据",
+            "addtime": "1699345988"
+          },
+          {
+            "page_id": "7230",
+            "author_uid": "2",
+            "cat_id": "1012",
+            "page_title": "订单详情状态按钮",
+            "addtime": "1746692248"
+          },
+          {
+            "page_id": "7231",
+            "author_uid": "2",
+            "cat_id": "1012",
+            "page_title": "订单详情打印信息",
+            "addtime": "1699346008"
+          },
+          {
+            "page_id": "8307",
+            "author_uid": "54",
+            "cat_id": "1012",
+            "page_title": "订单-外卖订单详情信息",
+            "addtime": "1778748347"
+          },
+          {
+            "page_id": "11141",
+            "author_uid": "54",
+            "cat_id": "1012",
+            "page_title": "外卖拼单打印详情",
+            "addtime": "1778748388"
+          }
+        ],
+        "catalogs": []
+      }
+    ]
+  }
+}

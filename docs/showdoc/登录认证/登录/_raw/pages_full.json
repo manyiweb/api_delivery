@@ -1,0 +1,209 @@
+[
+  {
+    "page_id": "8289",
+    "page_title": "登录",
+    "path": [
+      "登录"
+    ],
+    "rawLength": 16305,
+    "detail": {
+      "page_id": "8289",
+      "author_uid": "2",
+      "author_username": "admin",
+      "item_id": "41",
+      "cat_id": "1086",
+      "page_title": "登录",
+      "page_content": "# 登录\n\n**请求URL：** \n- `/api/manage-login/user/login`\n\n**请求方式：**\n- POST\n- RequestBody\n\n\n### 请求参数<业务参数>\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|mobile|否|String| 登录账号|\n|staffCode|否|String| 登录工号|\n|groupCode|否|String| 登录品牌|\n|loginWord|否|String| 登录密码|\n|loginType|否|String| 登录类型|\n|appType|否|String| 登录app类型|\n|appVersion|否|String| 登录app版本|\n|groupId|否|String| groupId|\n|regAgreement|否|Integer| 如果为移动导购 判断用户是否签署过注册协议 0未勾选 1勾选|\n|jpushRegId|否|String| 极光推送id|\n|systemVersion|否|String| 系统版本号|\n|clientVersion|否|String| 客户端版本号|\n|tokenId|否|String| tokenId|\n|authorization|否|String| 授权信息|\n|clientType|否|String| 客户端类型|\n|memberAuthorization|否|Object| 会员授权信息|\n|--openId|否|String| openId|\n|--sessionKey|否|String| sessionKey|\n|externalAuthorization|否|Object| 外部授权信息|\n|--principal|否|String| 主体 一般是账号|\n|--credential|否|String| 凭证 一般是密码|\n|smsVerification|否|Object| 短信验证码信息|\n|--code|否|String| 验证码|\n|internationalizationType|否|String| 版本类型 0 - 国内版 , 1 - 国际版|\n|acceptLanguage|否|String| 语言|\n\n### 请求参数Json格式\n \n```\n{\n \"mobile\" : \"String\",\n \"staffCode\" : \"String\",\n \"groupCode\" : \"String\",\n \"loginWord\" : \"String\",\n \"loginType\" : \"String\",\n \"appType\" : \"String\",\n \"appVersion\" : \"String\",\n \"groupId\" : \"String\",\n \"regAgreement\" : 0,\n \"jpushRegId\" : \"String\",\n \"systemVersion\" : \"String\",\n \"clientVersion\" : \"String\",\n \"tokenId\" : \"String\",\n \"authorization\" : \"String\",\n \"clientType\" : \"String\",\n \"memberAuthorization\" : {\n \"openId\" : \"String\",\n \"sessionKey\" : \"String\"\n },\n \"externalAuthorization\" : {\n \"principal\" : \"String\",\n \"credential\" : \"String\"\n },\n \"smsVerification\" : {\n \"code\" : \"String\"\n },\n \"internationalizationType\" : \"String\",\n \"acceptLanguage\" : \"String\"\n}\n```\n\n### 返回参数\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|data|否|Object||\n|--regAgreement|否|Integer| 如果为移动导购 判断用户是否签署过注册协议 0未勾选 1勾选|\n|--fid|否|String| 用户id|\n|--userName|否|String| 用户名称|\n|--userCode|否|String| 用户编码|\n|--userAudit|否|String| 用户审核状态|\n|--companyId|否|String| 商户id|\n|--companyName|否|String| 商户名称|\n|--companyCode|否|String| 商户编码|\n|--companyStatus|否|String| 商户状态|\n|--groupId|否|String| 品牌id|\n|--groupCode|否|String| 品牌Code|\n|--groupName|否|String| 品牌名称|\n|--staffCode|否|String| 导购编码|\n|--headImageUrl|否|String| 用户头像|\n|--sysNo|否|String| 平台号|\n|--sysName|否|String| 平台名称|\n|--roleId|否|String| 角色id|\n|--roleName|否|String| 角色名称|\n|--roleCode|否|String| 角色编码|\n|--userTypeName|否|String| 角色名称|\n|--userType|否|String| 角色编码|\n|--retailConfig|否|Object| 零售配置|\n|----retailStockLockEnable|否|Integer||\n|----cancelReasonsEnable|否|Integer||\n|----refundReasonsEnable|否|Integer||\n|----notPayPendOrder|否|Integer||\n|----notPayOrder|否|Integer||\n|----partPayPendOrder|否|Integer||\n|----notAllotOrder|否|Integer||\n|----notMealOrder|否|Integer||\n|----notSubmitDailyStatment|否|Integer||\n|----configRetailOrder|否|Object||\n|------id|否|Long||\n|------autoReceive|否|Boolean||\n|------autoReceivedDays|否|Integer||\n|------autoCancelTime|否|Integer||\n|------orderPostingDateModifiable|否|Boolean||\n|------refundPostingDateModifiable|否|Boolean||\n|------openAuthentication|否|Boolean||\n|------createId|否|String||\n|------createName|否|String||\n|------createDate|否|DateTime||\n|------modifyId|否|String||\n|------modifyName|否|String||\n|------modifyDate|否|DateTime||\n|------dbKey|否|Integer||\n|------groupId|否|String||\n|----enableThirdCouponVerification|否|Boolean||\n|----enableExternalCoupon|否|Boolean||\n|----takeDays|否|Integer||\n|--companyIds|否|List| 运营商户列表|\n|--pos1GuideSet|否|Object| pos1 设置|\n|----cashDefault|否|Integer| 收银 是否默认服务导购|\n|----cancelDefault|否|Integer| 服务核销 是否默认服务导购|\n|----rechargeDefault|否|Integer| 充值 是否默认服务导购|\n|----deliveryDefault|否|Integer| 提货 是否默认服务导购|\n|----type|否|Integer| 0 pos1 1 pos2 2 店务助手 3 pos3|\n|----isMultipleGuides|否|Integer||\n|--pos2GuideSet|否|Object| pos2 设置|\n|----cashDefault|否|Integer| 收银 是否默认服务导购|\n|----cancelDefault|否|Integer| 服务核销 是否默认服务导购|\n|----rechargeDefault|否|Integer| 充值 是否默认服务导购|\n|----deliveryDefault|否|Integer| 提货 是否默认服务导购|\n|----type|否|Integer| 0 pos1 1 pos2 2 店务助手 3 pos3|\n|----isMultipleGuides|否|Integer||\n|--pos3GuideSet|否|Object| pos3 设置|\n|----cashDefault|否|Integer| 收银 是否默认服务导购|\n|----cancelDefault|否|Integer| 服务核销 是否默认服务导购|\n|----rechargeDefault|否|Integer| 充值 是否默认服务导购|\n|----deliveryDefault|否|Integer| 提货 是否默认服务导购|\n|----type|否|Integer| 0 pos1 1 pos2 2 店务助手 3 pos3|\n|----isMultipleGuides|否|Integer||\n|--guideSet|否|Object| 默认pos 设置|\n|----cashDefault|否|Integer| 收银 是否默认服务导购|\n|----cancelDefault|否|Integer| 服务核销 是否默认服务导购|\n|----rechargeDefault|否|Integer| 充值 是否默认服务导购|\n|----deliveryDefault|否|Integer| 提货 是否默认服务导购|\n|----type|否|Integer| 0 pos1 1 pos2 2 店务助手 3 pos3|\n|----isMultipleGuides|否|Integer||\n|--compDatas|否|List| 运营商户信息|\n|----companyId|否|String| 商户id|\n|----companyName|否|String| 商户名称|\n|----companyCode|否|String| 商户编码|\n|----auditStatus|否|String| 审核状态|\n|----companyAlias|否|String| 商户别名|\n|--menus|否|List| 菜单列表|\n|----funId|否|String||\n|----funCode|否|String||\n|----funName|否|String||\n|----status|否|String||\n|----isDisplay|否|Integer||\n|----lineId|否|Integer||\n|----aliasName|否|String||\n|----parentId|否|String||\n|----ftype|否|String||\n|----childrens|否|List||\n|----dbKey|否|Integer||\n|----groupId|否|String||\n|--brandLogo|否|String| 品牌logo|\n|--isB2bMall|否|Integer| 是否启用商品订货标识|\n|--systemSet|否|Object| 系统设置菜单权限|\n|----funId|否|String||\n|----funCode|否|String||\n|----funName|否|String||\n|----status|否|String||\n|----isDisplay|否|Integer||\n|----lineId|否|Integer||\n|----aliasName|否|String||\n|----parentId|否|String||\n|----ftype|否|String||\n|----childrens|否|List||\n|----dbKey|否|Integer||\n|----groupId|否|String||\n|--funs|否|List| 系统 功能权限|\n|----funCode|否|String| 权限编码|\n|----funName|否|String| 权限名称|\n|----lineId|否|Integer| 排序|\n|----status|否|String| 状态 Y 启用 N停用|\n|----isDisplay|否|Integer| 是否隐藏 1是 0不是|\n|--serverAddress|否|String| 服务调用地址|\n|--zuulServerAddress|否|String| 服务调用地址|\n|--channelOperatorList|否|List| 渠道信息|\n|----id|否|Long| 主键|\n|----channelOperatorCode|否|String| 渠道运营商编码|\n|----channelOperatorName|否|String| 渠道运营商名称|\n|----status|否|Integer| 活跃状态|\n|----statusName|否|String| 活跃状态中文名|\n|----remark|否|String| 备注|\n|----contactWxWorkQrcodeUrl|否|String| 联系企微二维码|\n|--tokenId|否|String| tokenId|\n|--logiWhsStorId|否|Long| 仓库id|\n|--logiWhsName|否|String| 仓库名称|\n|--logiWhsStorIdList|否|List| 仓库id集合|\n|--themeColors|否|Map| 主题色|\n|--themeSet|否|Map| 主题板式|\n|--isMultipleGuides|否|Integer| 是否多导购|\n|--companyAlias|否|String| 商户别名|\n|--sex|否|String| 性别|\n|--funConfigs|否|List| 行业功能|\n|----funCode|否|String| 功能编码|\n|----funName|否|String| 功能名称|\n|----display|否|Integer| 是否显示 1是 0否|\n|--externalCertificate|否|Object| 外部凭证信息|\n|----principal|否|String| 主体 通常是账号|\n|----certificate|否|String| 凭证|\n|--userLoginRecordDTO|否|Object| 用户登录记录信息|\n|----firstLogin|否|Boolean| 是否第一次登录|\n|----needModifyPassword|否|Boolean| 是否需要修改密码|\n|--internationalizationConfiguration|否|Object| 国际化配置|\n|----internationalizationType|否|String| 国际化类型|\n|----monetarySymbol|否|String| 货币符号|\n|----telephoneAreaCode|否|String| 区号|\n|msg|否|String||\n|code|否|String||\n|exceptionStackInfo|否|String||\n|traceId|否|String||\n\n\n### 返回参数Json格式\n \n```\n{\n \"data\" : {\n \"regAgreement\" : 0,\n \"fid\" : \"String\",\n \"userName\" : \"String\",\n \"userCode\" : \"String\",\n \"userAudit\" : \"String\",\n \"companyId\" : \"String\",\n \"companyName\" : \"String\",\n \"companyCode\" : \"String\",\n \"companyStatus\" : \"String\",\n \"groupId\" : \"String\",\n \"groupCode\" : \"String\",\n \"groupName\" : \"String\",\n \"staffCode\" : \"String\",\n \"headImageUrl\" : \"String\",\n \"sysNo\" : \"String\",\n \"sysName\" : \"String\",\n \"roleId\" : \"String\",\n \"roleName\" : \"String\",\n \"roleCode\" : \"String\",\n \"userTypeName\" : \"String\",\n \"userType\" : \"String\",\n \"retailConfig\" : {\n \"retailStockLockEnable\" : 0,\n \"cancelReasonsEnable\" : 0,\n \"refundReasonsEnable\" : 0,\n \"notPayPendOrder\" : 0,\n \"notPayOrder\" : 0,\n \"partPayPendOrder\" : 0,\n \"notAllotOrder\" : 0,\n \"notMealOrder\" : 0,\n \"notSubmitDailyStatment\" : 0,\n \"configRetailOrder\" : {\n \"id\" : 0,\n \"autoReceive\" : true,\n \"autoReceivedDays\" : 0,\n \"autoCancelTime\" : 0,\n \"orderPostingDateModifiable\" : true,\n \"refundPostingDateModifiable\" : true,\n \"openAuthentication\" : true,\n \"createId\" : \"String\",\n \"createName\" : \"String\",\n \"createDate\" : \"DateTime\",\n \"modifyId\" : \"String\",\n \"modifyName\" : \"String\",\n \"modifyDate\" : \"DateTime\",\n \"dbKey\" : 0,\n \"groupId\" : \"String\"\n },\n \"enableThirdCouponVerification\" : true,\n \"enableExternalCoupon\" : true,\n \"takeDays\" : 0\n },\n \"companyIds\" : null,\n \"pos1GuideSet\" : {\n \"cashDefault\" : 0,\n \"cancelDefault\" : 0,\n \"rechargeDefault\" : 0,\n \"deliveryDefault\" : 0,\n \"type\" : 0,\n \"isMultipleGuides\" : 0\n },\n \"pos2GuideSet\" : {\n \"cashDefault\" : 0,\n \"cancelDefault\" : 0,\n \"rechargeDefault\" : 0,\n \"deliveryDefault\" : 0,\n \"type\" : 0,\n \"isMultipleGuides\" : 0\n },\n \"pos3GuideSet\" : {\n \"cashDefault\" : 0,\n \"cancelDefault\" : 0,\n \"rechargeDefault\" : 0,\n \"deliveryDefault\" : 0,\n \"type\" : 0,\n \"isMultipleGuides\" : 0\n },\n \"guideSet\" : {\n \"cashDefault\" : 0,\n \"cancelDefault\" : 0,\n \"rechargeDefault\" : 0,\n \"deliveryDefault\" : 0,\n \"type\" : 0,\n \"isMultipleGuides\" : 0\n },\n \"compDatas\" : [{\n \"companyId\" : \"String\",\n \"companyName\" : \"String\",\n \"companyCode\" : \"String\",\n \"auditStatus\" : \"String\",\n \"companyAlias\" : \"String\"\n }],\n \"menus\" : [{\n \"funId\" : \"String\",\n \"funCode\" : \"String\",\n \"funName\" : \"String\",\n \"status\" : \"String\",\n \"isDisplay\" : 0,\n \"lineId\" : 0,\n \"aliasName\" : \"String\",\n \"parentId\" : \"String\",\n \"ftype\" : \"String\",\n \"childrens\" : null,\n \"dbKey\" : 0,\n \"groupId\" : \"String\"\n }],\n \"brandLogo\" : \"String\",\n \"isB2bMall\" : 0,\n \"systemSet\" : {\n \"funId\" : \"String\",\n \"funCode\" : \"String\",\n \"funName\" : \"String\",\n \"status\" : \"String\",\n \"isDisplay\" : 0,\n \"lineId\" : 0,\n \"aliasName\" : \"String\",\n \"parentId\" : \"String\",\n \"ftype\" : \"String\",\n \"childrens\" : null,\n \"dbKey\" : 0,\n \"groupId\" : \"String\"\n },\n \"funs\" : [{\n \"funCode\" : \"String\",\n \"funName\" : \"String\",\n \"lineId\" : 0,\n \"status\" : \"String\",\n \"isDisplay\" : 0\n }],\n \"serverAddress\" : \"String\",\n \"zuulServerAddress\" : \"String\",\n \"channelOperatorList\" : [{\n \"id\" : 0,\n \"channelOperatorCode\" : \"String\",\n \"channelOperatorName\" : \"String\",\n \"status\" : 0,\n \"statusName\" : \"String\",\n \"remark\" : \"String\",\n \"contactWxWorkQrcodeUrl\" : \"String\"\n }],\n \"tokenId\" : \"String\",\n \"logiWhsStorId\" : 0,\n \"logiWhsName\" : \"String\",\n \"logiWhsStorIdList\" : null,\n \"themeColors\" : null,\n \"themeSet\" : null,\n \"isMultipleGuides\" : 0,\n \"companyAlias\" : \"String\",\n \"sex\" : \"String\",\n \"funConfigs\" : [{\n \"funCode\" : \"String\",\n \"funName\" : \"String\",\n \"display\" : 0\n }],\n \"externalCertificate\" : {\n \"principal\" : \"String\",\n \"certificate\" : \"String\"\n },\n \"userLoginRecordDTO\" : {\n \"firstLogin\" : true,\n \"needModifyPassword\" : true\n },\n \"internationalizationConfiguration\" : {\n \"internationalizationType\" : \"String\",\n \"monetarySymbol\" : \"String\",\n \"telephoneAreaCode\" : \"String\"\n }\n },\n \"msg\" : \"String\",\n \"code\" : \"String\",\n \"exceptionStackInfo\" : \"String\",\n \"traceId\" : \"String\"\n}\n```\n",
+      "s_number": "99",
+      "addtime": "2025-09-17 10:20:27",
+      "page_comments": "",
+      "is_del": "0",
+      "attachment_count": "0",
+      "unique_key": ""
+    }
+  },
+  {
+    "page_id": "8290",
+    "page_title": "退出登录",
+    "path": [
+      "登录"
+    ],
+    "rawLength": 1005,
+    "detail": {
+      "page_id": "8290",
+      "author_uid": "2",
+      "author_username": "admin",
+      "item_id": "41",
+      "cat_id": "1086",
+      "page_title": "退出登录",
+      "page_content": "# 退出登录\n\n**请求URL：** \n- `api/reabam-manage-login/user/login/out`\n\n**请求方式：**\n- POST\n- RequestBody\n\n\n### 请求参数<业务参数>\n \n无参数\n\n\n### 返回参数\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|data|否|Object||\n|msg|否|String||\n|code|否|String||\n|exceptionStackInfo|否|String||\n|traceId|否|String||\n\n\n### 返回参数Json格式\n \n```\n{\n \"data\" : null,\n \"msg\" : \"String\",\n \"code\" : \"String\",\n \"exceptionStackInfo\" : \"String\",\n \"traceId\" : \"String\"\n}\n```\n",
+      "s_number": "99",
+      "addtime": "2024-05-20 09:36:17",
+      "page_comments": "",
+      "is_del": "0",
+      "attachment_count": "0",
+      "unique_key": ""
+    }
+  },
+  {
+    "page_id": "8292",
+    "page_title": "切换登录",
+    "path": [
+      "登录"
+    ],
+    "rawLength": 10901,
+    "detail": {
+      "page_id": "8292",
+      "author_uid": "2",
+      "author_username": "admin",
+      "item_id": "41",
+      "cat_id": "1086",
+      "page_title": "切换登录",
+      "page_content": "# 切换登录\n\n**请求URL：** \n- `api/reabam-manage-login/user/change/login`\n\n**请求方式：**\n- POST\n- RequestBody\n\n\n### 请求参数<业务参数>\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|companyId|否|String| 商户 id|\n|groupId|否|String| 品牌 id|\n|staffLogiWhsStorId|否|Long| 物流仓id|\n|sgId|否|String| sysstaffgroup id 兼容传参|\n|scId|否|String| sysstaffcomp id 兼容传参|\n\n### 请求参数Json格式\n \n```\n{\n \"companyId\" : \"String\",\n \"groupId\" : \"String\",\n \"staffLogiWhsStorId\" : 0,\n \"sgId\" : \"String\",\n \"scId\" : \"String\"\n}\n```\n\n### 返回参数\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|data|否|Object||\n|--regAgreement|否|Integer| 如果为移动导购 判断用户是否签署过注册协议 0未勾选 1勾选|\n|--fid|否|String| 用户id|\n|--companyId|否|String| 商户id|\n|--groupId|否|String| 品牌id|\n|--groupCode|否|String| 品牌Code|\n|--groupName|否|String| 品牌名称|\n|--staffCode|否|String| 导购编码|\n|--headImageUrl|否|String| 用户头像|\n|--sysNo|否|String| 平台号|\n|--sysName|否|String| 平台名称|\n|--roleId|否|String| 角色id|\n|--roleName|否|String| 角色名称|\n|--roleCode|否|String| 角色编码|\n|--retailConfig|否|Object| 零售配置|\n|----retailStockLockEnable|否|Integer||\n|----cancelReasonsEnable|否|Integer||\n|----refundReasonsEnable|否|Integer||\n|----notPayPendOrder|否|Integer||\n|----notPayOrder|否|Integer||\n|----partPayPendOrder|否|Integer||\n|----notAllotOrder|否|Integer||\n|----notMealOrder|否|Integer||\n|----notSubmitDailyStatment|否|Integer||\n|----configRetailOrder|否|Object||\n|------id|否|Long||\n|------autoReceive|否|Boolean||\n|------autoReceivedDays|否|Integer||\n|------autoCancelTime|否|Integer||\n|------orderPostingDateModifiable|否|Boolean||\n|------refundPostingDateModifiable|否|Boolean||\n|------openAuthentication|否|Boolean||\n|------createId|否|String||\n|------createName|否|String||\n|------createDate|否|DateTime||\n|------modifyId|否|String||\n|------modifyName|否|String||\n|------modifyDate|否|DateTime||\n|------dbKey|否|Integer||\n|------groupId|否|String||\n|----enableThirdCouponVerification|否|Boolean||\n|----enableExternalCoupon|否|Boolean||\n|----takeDays|否|Integer||\n|--companyIds|否|List| 运营商户列表|\n|--pos1GuideSet|否|Object| pos1 设置|\n|----cashDefault|否|Integer| 收银 是否默认服务导购|\n|----cancelDefault|否|Integer| 服务核销 是否默认服务导购|\n|----rechargeDefault|否|Integer| 充值 是否默认服务导购|\n|----type|否|Integer| 0 pos1 1 pos2 2 店务助手 3 pos3|\n|----isMultipleGuides|否|Integer||\n|--pos2GuideSet|否|Object| pos2 设置|\n|----cashDefault|否|Integer| 收银 是否默认服务导购|\n|----cancelDefault|否|Integer| 服务核销 是否默认服务导购|\n|----rechargeDefault|否|Integer| 充值 是否默认服务导购|\n|----type|否|Integer| 0 pos1 1 pos2 2 店务助手 3 pos3|\n|----isMultipleGuides|否|Integer||\n|--pos3GuideSet|否|Object| pos3 设置|\n|----cashDefault|否|Integer| 收银 是否默认服务导购|\n|----cancelDefault|否|Integer| 服务核销 是否默认服务导购|\n|----rechargeDefault|否|Integer| 充值 是否默认服务导购|\n|----type|否|Integer| 0 pos1 1 pos2 2 店务助手 3 pos3|\n|----isMultipleGuides|否|Integer||\n|--guideSet|否|Object| 默认pos 设置|\n|----cashDefault|否|Integer| 收银 是否默认服务导购|\n|----cancelDefault|否|Integer| 服务核销 是否默认服务导购|\n|----rechargeDefault|否|Integer| 充值 是否默认服务导购|\n|----type|否|Integer| 0 pos1 1 pos2 2 店务助手 3 pos3|\n|----isMultipleGuides|否|Integer||\n|--compDatas|否|List| 运营商户信息|\n|----companyId|否|String| 商户id|\n|----companyName|否|String| 商户名称|\n|----companyCode|否|String| 商户编码|\n|--menus|否|List| 菜单列表|\n|----funId|否|String||\n|----funCode|否|String||\n|----funName|否|String||\n|----status|否|String||\n|----isDisplay|否|Integer||\n|----lineId|否|Integer||\n|----aliasName|否|String||\n|----parentId|否|String||\n|----ftype|否|String||\n|----childrens|否|List||\n|----dbKey|否|Integer||\n|----groupId|否|String||\n|--brandLogo|否|String| 品牌logo|\n|--isB2bMall|否|Integer| 是否启用商品订货标识|\n|--systemSet|否|Object| 系统设置菜单权限|\n|----funId|否|String||\n|----funCode|否|String||\n|----funName|否|String||\n|----status|否|String||\n|----isDisplay|否|Integer||\n|----lineId|否|Integer||\n|----aliasName|否|String||\n|----parentId|否|String||\n|----ftype|否|String||\n|----childrens|否|List||\n|----dbKey|否|Integer||\n|----groupId|否|String||\n|--funs|否|List| 系统 功能权限|\n|----funCode|否|String| 权限编码|\n|----funName|否|String| 权限名称|\n|----lineId|否|Integer| 排序|\n|----status|否|String| 状态 Y 启用 N停用|\n|----isDisplay|否|Integer| 是否隐藏 1是 0不是|\n|--serverAddress|否|String| 服务调用地址|\n|--zuulServerAddress|否|String| 服务调用地址|\n|--channelOperatorList|否|List| 渠道信息|\n|----id|否|Long| 主键|\n|----channelOperatorCode|否|String| 渠道运营商编码|\n|----channelOperatorName|否|String| 渠道运营商名称|\n|----status|否|Integer| 活跃状态|\n|----statusName|否|String| 活跃状态中文名|\n|----remark|否|String| 备注|\n|----contactWxWorkQrcodeUrl|否|String| 联系企微二维码|\n|--tokenId|否|String| tokenId|\n|msg|否|String||\n|code|否|String||\n|exceptionStackInfo|否|String||\n|traceId|否|String||\n\n\n### 返回参数Json格式\n \n```\n{\n \"data\" : {\n \"regAgreement\" : 0,\n \"fid\" : \"String\",\n \"companyId\" : \"String\",\n \"groupId\" : \"String\",\n \"groupCode\" : \"String\",\n \"groupName\" : \"String\",\n \"staffCode\" : \"String\",\n \"headImageUrl\" : \"String\",\n \"sysNo\" : \"String\",\n \"sysName\" : \"String\",\n \"roleId\" : \"String\",\n \"roleName\" : \"String\",\n \"roleCode\" : \"String\",\n \"retailConfig\" : {\n \"retailStockLockEnable\" : 0,\n \"cancelReasonsEnable\" : 0,\n \"refundReasonsEnable\" : 0,\n \"notPayPendOrder\" : 0,\n \"notPayOrder\" : 0,\n \"partPayPendOrder\" : 0,\n \"notAllotOrder\" : 0,\n \"notMealOrder\" : 0,\n \"notSubmitDailyStatment\" : 0,\n \"configRetailOrder\" : {\n \"id\" : 0,\n \"autoReceive\" : true,\n \"autoReceivedDays\" : 0,\n \"autoCancelTime\" : 0,\n \"orderPostingDateModifiable\" : true,\n \"refundPostingDateModifiable\" : true,\n \"openAuthentication\" : true,\n \"createId\" : \"String\",\n \"createName\" : \"String\",\n \"createDate\" : \"DateTime\",\n \"modifyId\" : \"String\",\n \"modifyName\" : \"String\",\n \"modifyDate\" : \"DateTime\",\n \"dbKey\" : 0,\n \"groupId\" : \"String\"\n },\n \"enableThirdCouponVerification\" : true,\n \"enableExternalCoupon\" : true,\n \"takeDays\" : 0\n },\n \"companyIds\" : null,\n \"pos1GuideSet\" : {\n \"cashDefault\" : 0,\n \"cancelDefault\" : 0,\n \"rechargeDefault\" : 0,\n \"type\" : 0,\n \"isMultipleGuides\" : 0\n },\n \"pos2GuideSet\" : {\n \"cashDefault\" : 0,\n \"cancelDefault\" : 0,\n \"rechargeDefault\" : 0,\n \"type\" : 0,\n \"isMultipleGuides\" : 0\n },\n \"pos3GuideSet\" : {\n \"cashDefault\" : 0,\n \"cancelDefault\" : 0,\n \"rechargeDefault\" : 0,\n \"type\" : 0,\n \"isMultipleGuides\" : 0\n },\n \"guideSet\" : {\n \"cashDefault\" : 0,\n \"cancelDefault\" : 0,\n \"rechargeDefault\" : 0,\n \"type\" : 0,\n \"isMultipleGuides\" : 0\n },\n \"compDatas\" : [{\n \"companyId\" : \"String\",\n \"companyName\" : \"String\",\n \"companyCode\" : \"String\"\n }],\n \"menus\" : [{\n \"funId\" : \"String\",\n \"funCode\" : \"String\",\n \"funName\" : \"String\",\n \"status\" : \"String\",\n \"isDisplay\" : 0,\n \"lineId\" : 0,\n \"aliasName\" : \"String\",\n \"parentId\" : \"String\",\n \"ftype\" : \"String\",\n \"childrens\" : null,\n \"dbKey\" : 0,\n \"groupId\" : \"String\"\n }],\n \"brandLogo\" : \"String\",\n \"isB2bMall\" : 0,\n \"systemSet\" : {\n \"funId\" : \"String\",\n \"funCode\" : \"String\",\n \"funName\" : \"String\",\n \"status\" : \"String\",\n \"isDisplay\" : 0,\n \"lineId\" : 0,\n \"aliasName\" : \"String\",\n \"parentId\" : \"String\",\n \"ftype\" : \"String\",\n \"childrens\" : null,\n \"dbKey\" : 0,\n \"groupId\" : \"String\"\n },\n \"funs\" : [{\n \"funCode\" : \"String\",\n \"funName\" : \"String\",\n \"lineId\" : 0,\n \"status\" : \"String\",\n \"isDisplay\" : 0\n }],\n \"serverAddress\" : \"String\",\n \"zuulServerAddress\" : \"String\",\n \"channelOperatorList\" : [{\n \"id\" : 0,\n \"channelOperatorCode\" : \"String\",\n \"channelOperatorName\" : \"String\",\n \"status\" : 0,\n \"statusName\" : \"String\",\n \"remark\" : \"String\",\n \"contactWxWorkQrcodeUrl\" : \"String\"\n }],\n \"tokenId\" : \"String\"\n },\n \"msg\" : \"String\",\n \"code\" : \"String\",\n \"exceptionStackInfo\" : \"String\",\n \"traceId\" : \"String\"\n}\n```\n",
+      "s_number": "99",
+      "addtime": "2024-05-20 09:47:51",
+      "page_comments": "",
+      "is_del": "0",
+      "attachment_count": "0",
+      "unique_key": ""
+    }
+  },
+  {
+    "page_id": "8293",
+    "page_title": "认证说明",
+    "path": [
+      "登录"
+    ],
+    "rawLength": 448,
+    "detail": {
+      "page_id": "8293",
+      "author_uid": "2",
+      "author_username": "admin",
+      "item_id": "41",
+      "cat_id": "1086",
+      "page_title": "认证说明",
+      "page_content": "token 是登录接口返回的，参数和原来一致\n\nheader \n\tAuthorization Bearer {{token}}\n\t\n\t",
+      "s_number": "99",
+      "addtime": "2024-05-20 09:52:02",
+      "page_comments": "",
+      "is_del": "0",
+      "attachment_count": "0",
+      "unique_key": ""
+    }
+  },
+  {
+    "page_id": "8418",
+    "page_title": "获取可登录商户列表",
+    "path": [
+      "登录"
+    ],
+    "rawLength": 2382,
+    "detail": {
+      "page_id": "8418",
+      "author_uid": "2",
+      "author_username": "admin",
+      "item_id": "41",
+      "cat_id": "1086",
+      "page_title": "获取可登录商户列表",
+      "page_content": "# \n\n**请求URL：** \n- `api/reabam-manage/staff/comp/login/list`\n\n**请求方式：**\n- POST\n- RequestBody\n\n\n### 请求参数<业务参数>\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|sword|否|String| 搜索关键字|\n\n### 请求参数Json格式\n \n```\n{\n \"sword\" : \"String\"\n}\n```\n\n### 返回参数\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|data|否|List||\n|--groupId|否|String| 品牌id|\n|--groupCode|否|String| 品牌编码|\n|--groupName|否|String| 商户名称|\n|--companyId|否|String| 商户id|\n|--companyCode|否|String| 商户编码|\n|--companyName|否|String| 品牌名称|\n|--isActive|否|Integer| 当前商户|\n|--city|否|String| 省市区 城市|\n|--province|否|String| 省市区 区|\n|--userTypeName|否|String| 角色名称|\n|--userType|否|String| 角色|\n|--statusName|否|String| 活跃状态 名称|\n|--status|否|String| 活跃状态|\n|--brandLogo|否|String| 商户logo|\n|msg|否|String||\n|code|否|String||\n|exceptionStackInfo|否|String||\n|traceId|否|String||\n\n\n### 返回参数Json格式\n \n```\n{\n \"data\" : [{\n \"groupId\" : \"String\",\n \"groupCode\" : \"String\",\n \"groupName\" : \"String\",\n \"companyId\" : \"String\",\n \"companyCode\" : \"String\",\n \"companyName\" : \"String\",\n \"isActive\" : 0,\n \"city\" : \"String\",\n \"province\" : \"String\",\n \"userTypeName\" : \"String\",\n \"userType\" : \"String\",\n \"statusName\" : \"String\",\n \"status\" : \"String\",\n \"brandLogo\" : \"String\"\n }],\n \"msg\" : \"String\",\n \"code\" : \"String\",\n \"exceptionStackInfo\" : \"String\",\n \"traceId\" : \"String\"\n}\n```\n",
+      "s_number": "99",
+      "addtime": "2024-06-25 15:48:26",
+      "page_comments": "",
+      "is_del": "0",
+      "attachment_count": "0",
+      "unique_key": ""
+    }
+  },
+  {
+    "page_id": "8421",
+    "page_title": "获取可登录品牌列表",
+    "path": [
+      "登录"
+    ],
+    "rawLength": 1722,
+    "detail": {
+      "page_id": "8421",
+      "author_uid": "2",
+      "author_username": "admin",
+      "item_id": "41",
+      "cat_id": "1086",
+      "page_title": "获取可登录品牌列表",
+      "page_content": "# 获取可登录品牌列表\n\n**请求URL：** \n- `api/reabam-manage/staff/group/login/list`\n\n**请求方式：**\n- POST\n- RequestBody\n\n\n### 请求参数<业务参数>\n \n无参数\n\n\n### 返回参数\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|data|否|List||\n|--sgId|否|String| id|\n|--groupId|否|String| 品牌id|\n|--status|否|Integer| 品牌的用户状态|\n|--statusName|否|String| 品牌的用户状态|\n|--isActive|否|Integer| 品牌的用户状态|\n|--roleCode|否|String| 角色编码|\n|--roleName|否|String| 角色名称|\n|--brandLogo|否|String| 品牌logo|\n|msg|否|String||\n|code|否|String||\n|exceptionStackInfo|否|String||\n|traceId|否|String||\n\n\n### 返回参数Json格式\n \n```\n{\n \"data\" : [{\n \"sgId\" : \"String\",\n \"groupId\" : \"String\",\n \"status\" : 0,\n \"statusName\" : \"String\",\n \"isActive\" : 0,\n \"roleCode\" : \"String\",\n \"roleName\" : \"String\",\n \"brandLogo\" : \"String\"\n }],\n \"msg\" : \"String\",\n \"code\" : \"String\",\n \"exceptionStackInfo\" : \"String\",\n \"traceId\" : \"String\"\n}\n```\n",
+      "s_number": "99",
+      "addtime": "2024-06-25 15:49:29",
+      "page_comments": "",
+      "is_del": "0",
+      "attachment_count": "0",
+      "unique_key": ""
+    }
+  },
+  {
+    "page_id": "8490",
+    "page_title": "切换端口",
+    "path": [
+      "登录"
+    ],
+    "rawLength": 10824,
+    "detail": {
+      "page_id": "8490",
+      "author_uid": "2",
+      "author_username": "admin",
+      "item_id": "41",
+      "cat_id": "1086",
+      "page_title": "切换端口",
+      "page_content": "# 切换端口\n\n**请求URL：** \n- `api/reabam-manage-login/user/change/platform`\n\n**请求方式：**\n- POST\n- RequestBody\n\n\n### 请求参数<业务参数>\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|platform|是|String||平台号\n\n### 请求参数Json格式\n \n```\n{\n \"platform\" : \"String\"\n}\n```\n\n### 返回参数\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|data|否|Object||\n|--regAgreement|否|Integer| 如果为移动导购 判断用户是否签署过注册协议 0未勾选 1勾选|\n|--fid|否|String| 用户id|\n|--userName|否|String| 用户名称|\n|--userCode|否|String| 用户编码|\n|--companyId|否|String| 商户id|\n|--companyName|否|String| 商户名称|\n|--groupId|否|String| 品牌id|\n|--groupCode|否|String| 品牌Code|\n|--groupName|否|String| 品牌名称|\n|--staffCode|否|String| 导购编码|\n|--headImageUrl|否|String| 用户头像|\n|--sysNo|否|String| 平台号|\n|--sysName|否|String| 平台名称|\n|--roleId|否|String| 角色id|\n|--roleName|否|String| 角色名称|\n|--roleCode|否|String| 角色编码|\n|--retailConfig|否|Object| 零售配置|\n|----retailStockLockEnable|否|Integer||\n|----cancelReasonsEnable|否|Integer||\n|----refundReasonsEnable|否|Integer||\n|----notPayPendOrder|否|Integer||\n|----notPayOrder|否|Integer||\n|----partPayPendOrder|否|Integer||\n|----notAllotOrder|否|Integer||\n|----notMealOrder|否|Integer||\n|----notSubmitDailyStatment|否|Integer||\n|----configRetailOrder|否|Object||\n|------id|否|Long||\n|------autoReceive|否|Boolean||\n|------autoReceivedDays|否|Integer||\n|------autoCancelTime|否|Integer||\n|------orderPostingDateModifiable|否|Boolean||\n|------refundPostingDateModifiable|否|Boolean||\n|------openAuthentication|否|Boolean||\n|------createId|否|String||\n|------createName|否|String||\n|------createDate|否|DateTime||\n|------modifyId|否|String||\n|------modifyName|否|String||\n|------modifyDate|否|DateTime||\n|------dbKey|否|Integer||\n|------groupId|否|String||\n|----enableThirdCouponVerification|否|Boolean||\n|----enableExternalCoupon|否|Boolean||\n|----takeDays|否|Integer||\n|--companyIds|否|List| 运营商户列表|\n|--pos1GuideSet|否|Object| pos1 设置|\n|----cashDefault|否|Integer| 收银 是否默认服务导购|\n|----cancelDefault|否|Integer| 服务核销 是否默认服务导购|\n|----rechargeDefault|否|Integer| 充值 是否默认服务导购|\n|----type|否|Integer| 0 pos1 1 pos2 2 店务助手 3 pos3|\n|----isMultipleGuides|否|Integer||\n|--pos2GuideSet|否|Object| pos2 设置|\n|----cashDefault|否|Integer| 收银 是否默认服务导购|\n|----cancelDefault|否|Integer| 服务核销 是否默认服务导购|\n|----rechargeDefault|否|Integer| 充值 是否默认服务导购|\n|----type|否|Integer| 0 pos1 1 pos2 2 店务助手 3 pos3|\n|----isMultipleGuides|否|Integer||\n|--pos3GuideSet|否|Object| pos3 设置|\n|----cashDefault|否|Integer| 收银 是否默认服务导购|\n|----cancelDefault|否|Integer| 服务核销 是否默认服务导购|\n|----rechargeDefault|否|Integer| 充值 是否默认服务导购|\n|----type|否|Integer| 0 pos1 1 pos2 2 店务助手 3 pos3|\n|----isMultipleGuides|否|Integer||\n|--guideSet|否|Object| 默认pos 设置|\n|----cashDefault|否|Integer| 收银 是否默认服务导购|\n|----cancelDefault|否|Integer| 服务核销 是否默认服务导购|\n|----rechargeDefault|否|Integer| 充值 是否默认服务导购|\n|----type|否|Integer| 0 pos1 1 pos2 2 店务助手 3 pos3|\n|----isMultipleGuides|否|Integer||\n|--compDatas|否|List| 运营商户信息|\n|----companyId|否|String| 商户id|\n|----companyName|否|String| 商户名称|\n|----companyCode|否|String| 商户编码|\n|--menus|否|List| 菜单列表|\n|----funId|否|String||\n|----funCode|否|String||\n|----funName|否|String||\n|----status|否|String||\n|----isDisplay|否|Integer||\n|----lineId|否|Integer||\n|----aliasName|否|String||\n|----parentId|否|String||\n|----ftype|否|String||\n|----childrens|否|List||\n|----dbKey|否|Integer||\n|----groupId|否|String||\n|--brandLogo|否|String| 品牌logo|\n|--isB2bMall|否|Integer| 是否启用商品订货标识|\n|--systemSet|否|Object| 系统设置菜单权限|\n|----funId|否|String||\n|----funCode|否|String||\n|----funName|否|String||\n|----status|否|String||\n|----isDisplay|否|Integer||\n|----lineId|否|Integer||\n|----aliasName|否|String||\n|----parentId|否|String||\n|----ftype|否|String||\n|----childrens|否|List||\n|----dbKey|否|Integer||\n|----groupId|否|String||\n|--funs|否|List| 系统 功能权限|\n|----funCode|否|String| 权限编码|\n|----funName|否|String| 权限名称|\n|----lineId|否|Integer| 排序|\n|----status|否|String| 状态 Y 启用 N停用|\n|----isDisplay|否|Integer| 是否隐藏 1是 0不是|\n|--serverAddress|否|String| 服务调用地址|\n|--zuulServerAddress|否|String| 服务调用地址|\n|--channelOperatorList|否|List| 渠道信息|\n|----id|否|Long| 主键|\n|----channelOperatorCode|否|String| 渠道运营商编码|\n|----channelOperatorName|否|String| 渠道运营商名称|\n|----status|否|Integer| 活跃状态|\n|----statusName|否|String| 活跃状态中文名|\n|----remark|否|String| 备注|\n|----contactWxWorkQrcodeUrl|否|String| 联系企微二维码|\n|--tokenId|否|String| tokenId|\n|msg|否|String||\n|code|否|String||\n|exceptionStackInfo|否|String||\n|traceId|否|String||\n\n\n### 返回参数Json格式\n \n```\n{\n \"data\" : {\n \"regAgreement\" : 0,\n \"fid\" : \"String\",\n \"userName\" : \"String\",\n \"userCode\" : \"String\",\n \"companyId\" : \"String\",\n \"companyName\" : \"String\",\n \"groupId\" : \"String\",\n \"groupCode\" : \"String\",\n \"groupName\" : \"String\",\n \"staffCode\" : \"String\",\n \"headImageUrl\" : \"String\",\n \"sysNo\" : \"String\",\n \"sysName\" : \"String\",\n \"roleId\" : \"String\",\n \"roleName\" : \"String\",\n \"roleCode\" : \"String\",\n \"retailConfig\" : {\n \"retailStockLockEnable\" : 0,\n \"cancelReasonsEnable\" : 0,\n \"refundReasonsEnable\" : 0,\n \"notPayPendOrder\" : 0,\n \"notPayOrder\" : 0,\n \"partPayPendOrder\" : 0,\n \"notAllotOrder\" : 0,\n \"notMealOrder\" : 0,\n \"notSubmitDailyStatment\" : 0,\n \"configRetailOrder\" : {\n \"id\" : 0,\n \"autoReceive\" : true,\n \"autoReceivedDays\" : 0,\n \"autoCancelTime\" : 0,\n \"orderPostingDateModifiable\" : true,\n \"refundPostingDateModifiable\" : true,\n \"openAuthentication\" : true,\n \"createId\" : \"String\",\n \"createName\" : \"String\",\n \"createDate\" : \"DateTime\",\n \"modifyId\" : \"String\",\n \"modifyName\" : \"String\",\n \"modifyDate\" : \"DateTime\",\n \"dbKey\" : 0,\n \"groupId\" : \"String\"\n },\n \"enableThirdCouponVerification\" : true,\n \"enableExternalCoupon\" : true,\n \"takeDays\" : 0\n },\n \"companyIds\" : null,\n \"pos1GuideSet\" : {\n \"cashDefault\" : 0,\n \"cancelDefault\" : 0,\n \"rechargeDefault\" : 0,\n \"type\" : 0,\n \"isMultipleGuides\" : 0\n },\n \"pos2GuideSet\" : {\n \"cashDefault\" : 0,\n \"cancelDefault\" : 0,\n \"rechargeDefault\" : 0,\n \"type\" : 0,\n \"isMultipleGuides\" : 0\n },\n \"pos3GuideSet\" : {\n \"cashDefault\" : 0,\n \"cancelDefault\" : 0,\n \"rechargeDefault\" : 0,\n \"type\" : 0,\n \"isMultipleGuides\" : 0\n },\n \"guideSet\" : {\n \"cashDefault\" : 0,\n \"cancelDefault\" : 0,\n \"rechargeDefault\" : 0,\n \"type\" : 0,\n \"isMultipleGuides\" : 0\n },\n \"compDatas\" : [{\n \"companyId\" : \"String\",\n \"companyName\" : \"String\",\n \"companyCode\" : \"String\"\n }],\n \"menus\" : [{\n \"funId\" : \"String\",\n \"funCode\" : \"String\",\n \"funName\" : \"String\",\n \"status\" : \"String\",\n \"isDisplay\" : 0,\n \"lineId\" : 0,\n \"aliasName\" : \"String\",\n \"parentId\" : \"String\",\n \"ftype\" : \"String\",\n \"childrens\" : null,\n \"dbKey\" : 0,\n \"groupId\" : \"String\"\n }],\n \"brandLogo\" : \"String\",\n \"isB2bMall\" : 0,\n \"systemSet\" : {\n \"funId\" : \"String\",\n \"funCode\" : \"String\",\n \"funName\" : \"String\",\n \"status\" : \"String\",\n \"isDisplay\" : 0,\n \"lineId\" : 0,\n \"aliasName\" : \"String\",\n \"parentId\" : \"String\",\n \"ftype\" : \"String\",\n \"childrens\" : null,\n \"dbKey\" : 0,\n \"groupId\" : \"String\"\n },\n \"funs\" : [{\n \"funCode\" : \"String\",\n \"funName\" : \"String\",\n \"lineId\" : 0,\n \"status\" : \"String\",\n \"isDisplay\" : 0\n }],\n \"serverAddress\" : \"String\",\n \"zuulServerAddress\" : \"String\",\n \"channelOperatorList\" : [{\n \"id\" : 0,\n \"channelOperatorCode\" : \"String\",\n \"channelOperatorName\" : \"String\",\n \"status\" : 0,\n \"statusName\" : \"String\",\n \"remark\" : \"String\",\n \"contactWxWorkQrcodeUrl\" : \"String\"\n }],\n \"tokenId\" : \"String\"\n },\n \"msg\" : \"String\",\n \"code\" : \"String\",\n \"exceptionStackInfo\" : \"String\",\n \"traceId\" : \"String\"\n}\n```\n",
+      "s_number": "99",
+      "addtime": "2024-06-25 15:54:49",
+      "page_comments": "",
+      "is_del": "0",
+      "attachment_count": "0",
+      "unique_key": ""
+    }
+  },
+  {
+    "page_id": "10059",
+    "page_title": "获取可登录商户列表 分页",
+    "path": [
+      "登录"
+    ],
+    "rawLength": 3342,
+    "detail": {
+      "page_id": "10059",
+      "author_uid": "26",
+      "author_username": "wayne",
+      "item_id": "41",
+      "cat_id": "1086",
+      "page_title": "获取可登录商户列表 分页",
+      "page_content": "# 获取可登录商户列表 分页\n 这个接口用于获取app 或者小程序 上用户可以登录的认证商户\n\n**请求URL：** \n- `/api/reabam-manage/staff/comp/login/page`\n\n**请求方式：**\n- POST\n- RequestBody\n\n\n### 请求参数<业务参数>\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|loginName|是|String| 登录账号|\n|groupId|否|String| 品牌id|\n|platform|是|String| 平台|\n|sword|否|String||\n|tokenId|否|String||\n|pageIndex|否|Integer||\n|pageSize|否|Integer||\n\n### 请求参数Json格式\n \n```\n{\n \"loginName\" : \"String\",\n \"groupId\" : \"String\",\n \"platform\" : \"String\",\n \"sword\" : \"String\",\n \"tokenId\" : \"String\",\n \"pageIndex\" : 0,\n \"pageSize\" : 0,\n}\n```\n\n### 返回参数\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|data|否|Object||\n|--pageIndex|否|Integer||\n|--pageSize|否|Integer||\n|--pageCount|否|Integer||\n|--totalCount|否|Long||\n|--first|否|Boolean||\n|--last|否|Boolean||\n|--content|否|List||\n|----groupId|否|String| 品牌id|\n|----groupCode|否|String| 品牌编码|\n|----groupName|否|String| 商户名称|\n|----companyId|否|String| 商户id|\n|----companyCode|否|String| 商户编码|\n|----companyName|否|String| 品牌名称|\n|----isActive|否|Integer| 当前商户|\n|----city|否|String| 省市区 城市|\n|----province|否|String| 省市区 区|\n|----userTypeName|否|String| 角色名称|\n|----userType|否|String| 角色|\n|----statusName|否|String| 活跃状态 名称|\n|----status|否|String| 活跃状态|\n|----brandLogo|否|String| 商户logo|\n|msg|否|String||\n|code|否|String||\n|exceptionStackInfo|否|String||\n|traceId|否|String||\n\n\n### 返回参数Json格式\n \n```\n{\n \"data\" : {\n \"pageIndex\" : 0,\n \"pageSize\" : 0,\n \"pageCount\" : 0,\n \"totalCount\" : 0,\n \"first\" : true,\n \"last\" : true,\n \"content\" : [{\n \"groupId\" : \"String\",\n \"groupCode\" : \"String\",\n \"groupName\" : \"String\",\n \"companyId\" : \"String\",\n \"companyCode\" : \"String\",\n \"companyName\" : \"String\",\n \"isActive\" : 0,\n \"city\" : \"String\",\n \"province\" : \"String\",\n \"userTypeName\" : \"String\",\n \"userType\" : \"String\",\n \"statusName\" : \"String\",\n \"status\" : \"String\",\n \"brandLogo\" : \"String\"\n }]\n },\n \"msg\" : \"String\",\n \"code\" : \"String\",\n \"exceptionStackInfo\" : \"String\",\n \"traceId\" : \"String\"\n}\n```\n",
+      "s_number": "99",
+      "addtime": "2025-06-23 15:51:53",
+      "page_comments": "",
+      "is_del": "0",
+      "attachment_count": "0",
+      "unique_key": ""
+    }
+  },
+  {
+    "page_id": "10301",
+    "page_title": "图形认证发送短信验证码",
+    "path": [
+      "登录"
+    ],
+    "rawLength": 2072,
+    "detail": {
+      "page_id": "10301",
+      "author_uid": "2",
+      "author_username": "admin",
+      "item_id": "41",
+      "cat_id": "1086",
+      "page_title": "图形认证发送短信验证码",
+      "page_content": "# 图形认证发送短信验证码\n\n**请求URL：** \n- `/sms/together/send`\n\n**请求方式：**\n- ALL\n- RequestBody\n\n\n### 请求参数<业务参数>\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|mobile|是|String| 接收短信的手机号|\n|groupId|否|String| 品牌id|\n|platform|否|Enum| 平台 0 - h5, 1 - ios , 2 - 安卓|\n|aliGraphicVerificationReq|否|Object| 阿里云图形验证信息|\n|--lotNumber|是|String| 验证流水号|\n|--captchaOutput|是|String| 验证输出信息|\n|--passToken|是|String| 验证通过标识|\n|--genTime|是|String| 验证通过时间戳|\n|--captchaId|是|String| 验证ID|\n\n### 请求参数Json格式\n \n```\n{\n \"mobile\" : \"String\",\n \"groupId\" : \"String\",\n \"platform\" : 0,\n \"aliGraphicVerificationReq\" : {\n \"lotNumber\" : \"String\",\n \"captchaOutput\" : \"String\",\n \"passToken\" : \"String\",\n \"genTime\" : \"String\",\n \"captchaId\" : \"String\"\n }\n}\n```\n\n### 返回参数\n \n|参数名|必选|类型|说明|\n|:---- |:---|:----- |----- |\n|data|否|Object||\n|msg|否|String||\n|code|否|String||\n|exceptionStackInfo|否|String||\n|traceId|否|String||\n\n\n### 返回参数Json格式\n \n```\n{\n \"data\" : null,\n \"msg\" : \"String\",\n \"code\" : \"String\",\n \"exceptionStackInfo\" : \"String\",\n \"traceId\" : \"String\"\n}\n```\n",
+      "s_number": "99",
+      "addtime": "2025-08-11 11:36:44",
+      "page_comments": "",
+      "is_del": "0",
+      "attachment_count": "0",
+      "unique_key": ""
+    }
+  }
+]

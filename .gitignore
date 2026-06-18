@@ -31,8 +31,14 @@ htmlcov/
 *.swo
 *~
 
+# 本地 Codex/Agent 项目规则
+AGENTS.md
+
 # 环境变量
 .env
+
+# 旧 Jenkinsfile 含明文凭证，已从 git 移除；后续使用 .gitlab-ci.yml
+Jenkinsfile
 
 # 操作系统
 .DS_Store

@@ -52,11 +52,11 @@ def access_token():
         resp = c.post(
             app_config.get_base_url() + "/reabam-manage-login/user/login",
             json={
-                "mobile": "19977958582",
+                "mobile": os.getenv("LOGIN_MOBILE", ""),
                 "loginType": "checkstand",
                 "appType": "pc",
                 "appVersion": "1.6.2.1",
-                "loginWord": "e10adc3949ba59abbe56e057f20f883e",
+                "loginWord": os.getenv("LOGIN_WORD", ""),
                 "clientVersion": "25091901",
                 "systemVersion": "2512.29.34",
                 "companyId": ""
@@ -197,6 +197,8 @@ def pytest_configure(config):
         f.write(f"DB_HOST={app_config.DB_CONFIG['host']}\n")
         f.write(f"DB_PORT={app_config.DB_CONFIG['port']}\n")
         f.write(f"PYTHON_VERSION={os.sys.version}\n")
+        f.write(f"TRIGGER_SOURCE_PROJECT={os.getenv('TRIGGER_SOURCE_PROJECT', 'manual')}\n")
+        f.write(f"TRIGGER_SOURCE_COMMIT={os.getenv('TRIGGER_SOURCE_COMMIT', 'n/a')}\n")
 
 
 if __name__ == '__main__':

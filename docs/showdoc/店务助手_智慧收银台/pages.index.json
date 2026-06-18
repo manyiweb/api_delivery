@@ -1,0 +1,3381 @@
+[
+  {
+    "page_id": "1525",
+    "page_title": "支付接口",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/01525_支付接口.md",
+    "contentLength": 5116,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=1525"
+  },
+  {
+    "page_id": "4670",
+    "page_title": "美团团购券预支付(旧)",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/04670_美团团购券预支付(旧).md",
+    "contentLength": 1653,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4670"
+  },
+  {
+    "page_id": "4976",
+    "page_title": "美团团购券预支付(新)",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/04976_美团团购券预支付(新).md",
+    "contentLength": 5293,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4976"
+  },
+  {
+    "page_id": "4980",
+    "page_title": "抖音券预支付",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/04980_抖音券预支付.md",
+    "contentLength": 4557,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4980"
+  },
+  {
+    "page_id": "6161",
+    "page_title": "计算线下支付收银可支付金额",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/06161_计算线下支付收银可支付金额.md",
+    "contentLength": 3527,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6161"
+  },
+  {
+    "page_id": "6396",
+    "page_title": "刷新接口",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/06396_刷新接口.md",
+    "contentLength": 1243,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6396"
+  },
+  {
+    "page_id": "6404",
+    "page_title": "离线订单-平台券支付",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/06404_离线订单-平台券支付.md",
+    "contentLength": 1786,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6404"
+  },
+  {
+    "page_id": "6405",
+    "page_title": "离线订单-平台券退款",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/06405_离线订单-平台券退款.md",
+    "contentLength": 1014,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6405"
+  },
+  {
+    "page_id": "6734",
+    "page_title": "收银-手工完成收款",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/06734_收银-手工完成收款.md",
+    "contentLength": 832,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6734"
+  },
+  {
+    "page_id": "7113",
+    "page_title": "批量自定义收银支付接口（自定义收银组合并支付使用，不支持溢收 都是固定金额 应用所有商品才可以）",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/07113_批量自定义收银支付接口（自定义收银组合并支付使用，不支持溢收 都是固定金额 应用所有商品才可以）.md",
+    "contentLength": 11276,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7113"
+  },
+  {
+    "page_id": "8705",
+    "page_title": "下发支付宝会员卡、支付相关信息",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/08705_下发支付宝会员卡、支付相关信息.md",
+    "contentLength": 819,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8705"
+  },
+  {
+    "page_id": "10662",
+    "page_title": "查看线下收银配置",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/10662_查看线下收银配置.md",
+    "contentLength": 3225,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10662"
+  },
+  {
+    "page_id": "10686",
+    "page_title": "查看订单收银流水",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/10686_查看订单收银流水.md",
+    "contentLength": 1723,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10686"
+  },
+  {
+    "page_id": "10775",
+    "page_title": "获取整单预设备注",
+    "catalog_path": [
+      "支付"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/10775_获取整单预设备注.md",
+    "contentLength": 624,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10775"
+  },
+  {
+    "page_id": "7549",
+    "page_title": "关闭订单支付异常记录接口",
+    "catalog_path": [
+      "支付",
+      "支付异常"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/支付/支付异常/07549_关闭订单支付异常记录接口.md",
+    "contentLength": 988,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7549"
+  },
+  {
+    "page_id": "1628",
+    "page_title": "商品促销",
+    "catalog_path": [
+      "商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/商品/01628_商品促销.md",
+    "contentLength": 1357,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=1628"
+  },
+  {
+    "page_id": "1884",
+    "page_title": "商品搜索",
+    "catalog_path": [
+      "商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/商品/01884_商品搜索.md",
+    "contentLength": 4419,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=1884"
+  },
+  {
+    "page_id": "3098",
+    "page_title": "获取商品标签",
+    "catalog_path": [
+      "商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/商品/03098_获取商品标签.md",
+    "contentLength": 1817,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3098"
+  },
+  {
+    "page_id": "4400",
+    "page_title": "获取点餐标签",
+    "catalog_path": [
+      "商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/商品/04400_获取点餐标签.md",
+    "contentLength": 1616,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4400"
+  },
+  {
+    "page_id": "6415",
+    "page_title": "搜索实体卡券对应商品并添加购物车",
+    "catalog_path": [
+      "商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/商品/06415_搜索实体卡券对应商品并添加购物车.md",
+    "contentLength": 5835,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6415"
+  },
+  {
+    "page_id": "6440",
+    "page_title": "根据商品id集合获取库存",
+    "catalog_path": [
+      "商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/商品/06440_根据商品id集合获取库存.md",
+    "contentLength": 823,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6440"
+  },
+  {
+    "page_id": "9958",
+    "page_title": "根据商品规格id集合获取库存",
+    "catalog_path": [
+      "商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/商品/09958_根据商品规格id集合获取库存.md",
+    "contentLength": 736,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9958"
+  },
+  {
+    "page_id": "2013",
+    "page_title": "获取店务助手调用橱窗所需参数",
+    "catalog_path": [
+      "橱窗"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/橱窗/02013_获取店务助手调用橱窗所需参数.md",
+    "contentLength": 708,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=2013"
+  },
+  {
+    "page_id": "3391",
+    "page_title": "商品橱窗/推广 分享到微信",
+    "catalog_path": [
+      "橱窗"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/橱窗/03391_商品橱窗_推广 分享到微信.md",
+    "contentLength": 1003,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3391"
+  },
+  {
+    "page_id": "3392",
+    "page_title": "商品橱窗/推广 获取分享信息",
+    "catalog_path": [
+      "橱窗"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/橱窗/03392_商品橱窗_推广 获取分享信息.md",
+    "contentLength": 1480,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3392"
+  },
+  {
+    "page_id": "5495",
+    "page_title": "店务助手-橱窗分享设置",
+    "catalog_path": [
+      "橱窗"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/橱窗/05495_店务助手-橱窗分享设置.md",
+    "contentLength": 966,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5495"
+  },
+  {
+    "page_id": "3886",
+    "page_title": "主题版式4类型所有列表",
+    "catalog_path": [
+      "橱窗",
+      "主题"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/橱窗/主题/03886_主题版式4类型所有列表.md",
+    "contentLength": 689,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3886"
+  },
+  {
+    "page_id": "3887",
+    "page_title": "主题版式4快捷菜单修改",
+    "catalog_path": [
+      "橱窗",
+      "主题"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/橱窗/主题/03887_主题版式4快捷菜单修改.md",
+    "contentLength": 904,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3887"
+  },
+  {
+    "page_id": "3888",
+    "page_title": "主题版式4类型可用列表",
+    "catalog_path": [
+      "橱窗",
+      "主题"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/橱窗/主题/03888_主题版式4类型可用列表.md",
+    "contentLength": 889,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3888"
+  },
+  {
+    "page_id": "2755",
+    "page_title": " 地点管理 新增",
+    "catalog_path": [
+      "地点管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/地点管理/02755_地点管理 新增.md",
+    "contentLength": 1365,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=2755"
+  },
+  {
+    "page_id": "2756",
+    "page_title": "地点管理 详情",
+    "catalog_path": [
+      "地点管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/地点管理/02756_地点管理 详情.md",
+    "contentLength": 1903,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=2756"
+  },
+  {
+    "page_id": "2757",
+    "page_title": " 地点管理 列表",
+    "catalog_path": [
+      "地点管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/地点管理/02757_地点管理 列表.md",
+    "contentLength": 4092,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=2757"
+  },
+  {
+    "page_id": "2758",
+    "page_title": "地点详情 导入",
+    "catalog_path": [
+      "地点管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/地点管理/02758_地点详情 导入.md",
+    "contentLength": 882,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=2758"
+  },
+  {
+    "page_id": "2832",
+    "page_title": "获取交班警告",
+    "catalog_path": [
+      "交接班"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/02832_获取交班警告.md",
+    "contentLength": 4760,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=2832"
+  },
+  {
+    "page_id": "4997",
+    "page_title": "开交班数据源",
+    "catalog_path": [
+      "交接班"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/04997_开交班数据源.md",
+    "contentLength": 1630,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4997"
+  },
+  {
+    "page_id": "4998",
+    "page_title": "保存开交班设置",
+    "catalog_path": [
+      "交接班"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/04998_保存开交班设置.md",
+    "contentLength": 1615,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4998"
+  },
+  {
+    "page_id": "4999",
+    "page_title": "查询开交班信息",
+    "catalog_path": [
+      "交接班"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/04999_查询开交班信息.md",
+    "contentLength": 1538,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4999"
+  },
+  {
+    "page_id": "5000",
+    "page_title": "更改样式组排序",
+    "catalog_path": [
+      "交接班"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/05000_更改样式组排序.md",
+    "contentLength": 909,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5000"
+  },
+  {
+    "page_id": "5003",
+    "page_title": "开交班复制",
+    "catalog_path": [
+      "交接班"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/05003_开交班复制.md",
+    "contentLength": 879,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5003"
+  },
+  {
+    "page_id": "5005",
+    "page_title": "获取交接班状态(新)",
+    "catalog_path": [
+      "交接班"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/05005_获取交接班状态(新).md",
+    "contentLength": 861,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5005"
+  },
+  {
+    "page_id": "7218",
+    "page_title": "获取日结单报表",
+    "catalog_path": [
+      "交接班"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/07218_获取日结单报表.md",
+    "contentLength": 884,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7218"
+  },
+  {
+    "page_id": "9292",
+    "page_title": "获取商场营业报表",
+    "catalog_path": [
+      "交接班"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/09292_获取商场营业报表.md",
+    "contentLength": 1178,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9292"
+  },
+  {
+    "page_id": "10141",
+    "page_title": "获取日结单报表 样式2",
+    "catalog_path": [
+      "交接班"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/10141_获取日结单报表 样式2.md",
+    "contentLength": 1345,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10141"
+  },
+  {
+    "page_id": "5012",
+    "page_title": "获取交接班使用默认还是自定义模板",
+    "catalog_path": [
+      "交接班",
+      "逻辑"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/逻辑/05012_获取交接班使用默认还是自定义模板.md",
+    "contentLength": 808,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5012"
+  },
+  {
+    "page_id": "5013",
+    "page_title": "开班（自定义模板）",
+    "catalog_path": [
+      "交接班",
+      "逻辑"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/逻辑/05013_开班（自定义模板）.md",
+    "contentLength": 1819,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5013"
+  },
+  {
+    "page_id": "5014",
+    "page_title": "去交班（自定义模板）",
+    "catalog_path": [
+      "交接班",
+      "逻辑"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/逻辑/05014_去交班（自定义模板）.md",
+    "contentLength": 2114,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5014"
+  },
+  {
+    "page_id": "5015",
+    "page_title": "确认交班（自定义模板）",
+    "catalog_path": [
+      "交接班",
+      "逻辑"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/逻辑/05015_确认交班（自定义模板）.md",
+    "contentLength": 1680,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5015"
+  },
+  {
+    "page_id": "5016",
+    "page_title": "获取交接班状态（自定义模板）",
+    "catalog_path": [
+      "交接班",
+      "逻辑"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/逻辑/05016_获取交接班状态（自定义模板）.md",
+    "contentLength": 858,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5016"
+  },
+  {
+    "page_id": "5022",
+    "page_title": "详情(自定义模板)",
+    "catalog_path": [
+      "交接班",
+      "逻辑"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/逻辑/05022_详情(自定义模板).md",
+    "contentLength": 2207,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5022"
+  },
+  {
+    "page_id": "5023",
+    "page_title": "交接班列表(自定义模板)",
+    "catalog_path": [
+      "交接班",
+      "逻辑"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/逻辑/05023_交接班列表(自定义模板).md",
+    "contentLength": 3786,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5023"
+  },
+  {
+    "page_id": "5086",
+    "page_title": "根据班次获取当前开班组以及组员",
+    "catalog_path": [
+      "交接班",
+      "逻辑"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/交接班/逻辑/05086_根据班次获取当前开班组以及组员.md",
+    "contentLength": 1210,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5086"
+  },
+  {
+    "page_id": "2941",
+    "page_title": "扫码入会",
+    "catalog_path": [
+      "会员"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/02941_扫码入会.md",
+    "contentLength": 876,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=2941"
+  },
+  {
+    "page_id": "5061",
+    "page_title": "判断会员是否已认证",
+    "catalog_path": [
+      "会员"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/05061_判断会员是否已认证.md",
+    "contentLength": 1087,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5061"
+  },
+  {
+    "page_id": "2837",
+    "page_title": "会员储值卡余额变更记录",
+    "catalog_path": [
+      "会员",
+      "储值卡"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/储值卡/02837_会员储值卡余额变更记录.md",
+    "contentLength": 4069,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=2837"
+  },
+  {
+    "page_id": "10879",
+    "page_title": "取消充值订单",
+    "catalog_path": [
+      "会员",
+      "储值卡"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/储值卡/10879_取消充值订单.md",
+    "contentLength": 800,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10879"
+  },
+  {
+    "page_id": "3017",
+    "page_title": "实体卡、储值卡充值选项，优惠券列表",
+    "catalog_path": [
+      "会员",
+      "权益"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/权益/03017_实体卡、储值卡充值选项，优惠券列表.md",
+    "contentLength": 1388,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3017"
+  },
+  {
+    "page_id": "3018",
+    "page_title": "权益天数充值选项，优惠券列表",
+    "catalog_path": [
+      "会员",
+      "权益"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/权益/03018_权益天数充值选项，优惠券列表.md",
+    "contentLength": 1381,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3018"
+  },
+  {
+    "page_id": "3853",
+    "page_title": "已购买权益卡列表",
+    "catalog_path": [
+      "会员",
+      "权益"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/权益/03853_已购买权益卡列表.md",
+    "contentLength": 1668,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3853"
+  },
+  {
+    "page_id": "3882",
+    "page_title": "权益卡 权益说明 购买说明",
+    "catalog_path": [
+      "会员",
+      "权益"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/权益/03882_权益卡 权益说明 购买说明.md",
+    "contentLength": 1049,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3882"
+  },
+  {
+    "page_id": "3884",
+    "page_title": "会员是否已经勾选权益说明",
+    "catalog_path": [
+      "会员",
+      "权益"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/权益/03884_会员是否已经勾选权益说明.md",
+    "contentLength": 877,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3884"
+  },
+  {
+    "page_id": "3885",
+    "page_title": "记录是否勾选协议",
+    "catalog_path": [
+      "会员",
+      "权益"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/权益/03885_记录是否勾选协议.md",
+    "contentLength": 870,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3885"
+  },
+  {
+    "page_id": "9955",
+    "page_title": "实体券一键核销",
+    "catalog_path": [
+      "会员",
+      "权益"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/权益/09955_实体券一键核销.md",
+    "contentLength": 1632,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9955"
+  },
+  {
+    "page_id": "9969",
+    "page_title": "实体券一键核销查询",
+    "catalog_path": [
+      "会员",
+      "权益"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/权益/09969_实体券一键核销查询.md",
+    "contentLength": 3590,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9969"
+  },
+  {
+    "page_id": "10134",
+    "page_title": "计算实体券充值到实体卡金额",
+    "catalog_path": [
+      "会员",
+      "权益"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/权益/10134_计算实体券充值到实体卡金额.md",
+    "contentLength": 1352,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10134"
+  },
+  {
+    "page_id": "10724",
+    "page_title": "实体卡、储值卡充值选项，优惠券列表",
+    "catalog_path": [
+      "会员",
+      "权益"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/权益/10724_实体卡、储值卡充值选项，优惠券列表.md",
+    "contentLength": 1746,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10724"
+  },
+  {
+    "page_id": "10757",
+    "page_title": "查看门店实体卡价格清单设置",
+    "catalog_path": [
+      "会员",
+      "权益"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/权益/10757_查看门店实体卡价格清单设置.md",
+    "contentLength": 1793,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10757"
+  },
+  {
+    "page_id": "10758",
+    "page_title": "保存门店实体卡价格清单设置",
+    "catalog_path": [
+      "会员",
+      "权益"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/权益/10758_保存门店实体卡价格清单设置.md",
+    "contentLength": 1291,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10758"
+  },
+  {
+    "page_id": "3092",
+    "page_title": "优惠券列表",
+    "catalog_path": [
+      "会员",
+      "优惠券"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/优惠券/03092_优惠券列表.md",
+    "contentLength": 3316,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3092"
+  },
+  {
+    "page_id": "3093",
+    "page_title": "优惠券派发记录",
+    "catalog_path": [
+      "会员",
+      "优惠券"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/优惠券/03093_优惠券派发记录.md",
+    "contentLength": 2937,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3093"
+  },
+  {
+    "page_id": "5616",
+    "page_title": "获取李宁优惠券列表",
+    "catalog_path": [
+      "会员",
+      "优惠券"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/优惠券/05616_获取李宁优惠券列表.md",
+    "contentLength": 2249,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5616"
+  },
+  {
+    "page_id": "3296",
+    "page_title": "分页查询会员赊销记录",
+    "catalog_path": [
+      "会员",
+      "赊销记录"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/赊销记录/03296_分页查询会员赊销记录.md",
+    "contentLength": 2192,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3296"
+  },
+  {
+    "page_id": "3570",
+    "page_title": "查询-会员服务使用记录bom一级子商品",
+    "catalog_path": [
+      "会员",
+      "赊销记录"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/赊销记录/03570_查询-会员服务使用记录bom一级子商品.md",
+    "contentLength": 1256,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3570"
+  },
+  {
+    "page_id": "3630",
+    "page_title": "分页查询-替换物料",
+    "catalog_path": [
+      "会员",
+      "会员服务"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员服务/03630_分页查询-替换物料.md",
+    "contentLength": 3647,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3630"
+  },
+  {
+    "page_id": "4419",
+    "page_title": "转增 - 会员服务转赠",
+    "catalog_path": [
+      "会员",
+      "会员服务"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员服务/04419_转增 - 会员服务转赠.md",
+    "contentLength": 1045,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4419"
+  },
+  {
+    "page_id": "4463",
+    "page_title": "会员服务核销 - 撤销",
+    "catalog_path": [
+      "会员",
+      "会员服务"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员服务/04463_会员服务核销 - 撤销.md",
+    "contentLength": 810,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4463"
+  },
+  {
+    "page_id": "5585",
+    "page_title": "自定义添加会员服务",
+    "catalog_path": [
+      "会员",
+      "会员服务"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员服务/05585_自定义添加会员服务.md",
+    "contentLength": 1018,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5585"
+  },
+  {
+    "page_id": "6861",
+    "page_title": "会员服务作废",
+    "catalog_path": [
+      "会员",
+      "会员服务"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员服务/06861_会员服务作废.md",
+    "contentLength": 749,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6861"
+  },
+  {
+    "page_id": "4132",
+    "page_title": "会员笔记审批",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "中台"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04132_会员笔记审批.md",
+    "contentLength": 941,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4132"
+  },
+  {
+    "page_id": "4136",
+    "page_title": "手动排序操作",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "中台"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04136_手动排序操作.md",
+    "contentLength": 860,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4136"
+  },
+  {
+    "page_id": "4138",
+    "page_title": "获取会员笔记列表（中台）",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "中台"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04138_获取会员笔记列表（中台）.md",
+    "contentLength": 3684,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4138"
+  },
+  {
+    "page_id": "4139",
+    "page_title": "获取会员笔记详细信息（中台）",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "中台"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04139_获取会员笔记详细信息（中台）.md",
+    "contentLength": 2760,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4139"
+  },
+  {
+    "page_id": "4156",
+    "page_title": "获取评论数据",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "中台"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04156_获取评论数据.md",
+    "contentLength": 1821,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4156"
+  },
+  {
+    "page_id": "4164",
+    "page_title": "获取话题分类",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "中台"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04164_获取话题分类.md",
+    "contentLength": 1522,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4164"
+  },
+  {
+    "page_id": "4328",
+    "page_title": "高级筛选入口",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "中台"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04328_高级筛选入口.md",
+    "contentLength": 382,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4328"
+  },
+  {
+    "page_id": "4552",
+    "page_title": "中台会员笔记上下架",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "中台"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/中台/04552_中台会员笔记上下架.md",
+    "contentLength": 950,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4552"
+  },
+  {
+    "page_id": "4134",
+    "page_title": "发布评论",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/04134_发布评论.md",
+    "contentLength": 889,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4134"
+  },
+  {
+    "page_id": "4135",
+    "page_title": "回复评论",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/04135_回复评论.md",
+    "contentLength": 1234,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4135"
+  },
+  {
+    "page_id": "4144",
+    "page_title": "根据分类获取会员笔记",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/04144_根据分类获取会员笔记.md",
+    "contentLength": 3776,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4144"
+  },
+  {
+    "page_id": "4146",
+    "page_title": "获取我的会员笔记相关统计信息",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "我的笔记"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/我的笔记/04146_获取我的会员笔记相关统计信息.md",
+    "contentLength": 1016,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4146"
+  },
+  {
+    "page_id": "4147",
+    "page_title": "获取我的笔记列表",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "我的笔记"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/我的笔记/04147_获取我的笔记列表.md",
+    "contentLength": 3882,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4147"
+  },
+  {
+    "page_id": "4334",
+    "page_title": "获取草稿笔记信息",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "我的笔记"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/我的笔记/04334_获取草稿笔记信息.md",
+    "contentLength": 1747,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4334"
+  },
+  {
+    "page_id": "4131",
+    "page_title": "发布会员笔记",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "发布功能"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/发布功能/04131_发布会员笔记.md",
+    "contentLength": 1660,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4131"
+  },
+  {
+    "page_id": "4162",
+    "page_title": "获取话题分类",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "发布功能"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/发布功能/04162_获取话题分类.md",
+    "contentLength": 1584,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4162"
+  },
+  {
+    "page_id": "4163",
+    "page_title": "获取会员可关联的商品列表",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "发布功能"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/发布功能/04163_获取会员可关联的商品列表.md",
+    "contentLength": 1609,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4163"
+  },
+  {
+    "page_id": "4153",
+    "page_title": "会员商城获取笔记所有评论与一条回复（如果有）",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "会员笔记详情页"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04153_会员商城获取笔记所有评论与一条回复（如果有）.md",
+    "contentLength": 4630,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4153"
+  },
+  {
+    "page_id": "4154",
+    "page_title": "获取评论下的所有回复",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "会员笔记详情页"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04154_获取评论下的所有回复.md",
+    "contentLength": 3784,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4154"
+  },
+  {
+    "page_id": "4155",
+    "page_title": "会员笔记详细信息",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "会员笔记详情页"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04155_会员笔记详细信息.md",
+    "contentLength": 1938,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4155"
+  },
+  {
+    "page_id": "4333",
+    "page_title": "获取商品详情",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "会员笔记详情页"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04333_获取商品详情.md",
+    "contentLength": 1145,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4333"
+  },
+  {
+    "page_id": "4562",
+    "page_title": "会员商城会员笔记设置权限（自己发布的）",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "会员笔记详情页"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04562_会员商城会员笔记设置权限（自己发布的）.md",
+    "contentLength": 987,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4562"
+  },
+  {
+    "page_id": "4580",
+    "page_title": "获取会员笔记分享二维码",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "会员笔记详情页"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04580_获取会员笔记分享二维码.md",
+    "contentLength": 952,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4580"
+  },
+  {
+    "page_id": "4581",
+    "page_title": "获取会员笔记二维码记录",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "会员笔记详情页"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/会员笔记详情页/04581_获取会员笔记二维码记录.md",
+    "contentLength": 1214,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4581"
+  },
+  {
+    "page_id": "4160",
+    "page_title": "点赞（会员笔记）",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "点赞和收藏"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/点赞和收藏/04160_点赞（会员笔记）.md",
+    "contentLength": 1002,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4160"
+  },
+  {
+    "page_id": "4161",
+    "page_title": "收藏（会员笔记）",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "点赞和收藏"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/点赞和收藏/04161_收藏（会员笔记）.md",
+    "contentLength": 1020,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4161"
+  },
+  {
+    "page_id": "4167",
+    "page_title": "评论或回复点赞",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "会员商城",
+      "点赞和收藏"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/会员商城/点赞和收藏/04167_评论或回复点赞.md",
+    "contentLength": 1052,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4167"
+  },
+  {
+    "page_id": "4166",
+    "page_title": "编辑会员笔记",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "通用操作"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/通用操作/04166_编辑会员笔记.md",
+    "contentLength": 1785,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4166"
+  },
+  {
+    "page_id": "4325",
+    "page_title": "中台会员笔记删除",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "通用操作"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/通用操作/04325_中台会员笔记删除.md",
+    "contentLength": 863,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4325"
+  },
+  {
+    "page_id": "4437",
+    "page_title": "会员商城删除会员笔记或评论（回复）",
+    "catalog_path": [
+      "会员",
+      "会员笔记",
+      "通用操作"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/会员笔记/通用操作/04437_会员商城删除会员笔记或评论（回复）.md",
+    "contentLength": 983,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4437"
+  },
+  {
+    "page_id": "5439",
+    "page_title": "查询第三方会员优惠券",
+    "catalog_path": [
+      "会员",
+      "第三方会员相关接口"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/会员/第三方会员相关接口/05439_查询第三方会员优惠券.md",
+    "contentLength": 2954,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5439"
+  },
+  {
+    "page_id": "3189",
+    "page_title": "零售退货申请 - 受理",
+    "catalog_path": [
+      "零售订单",
+      "商城退货申请"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/商城退货申请/03189_零售退货申请 - 受理.md",
+    "contentLength": 927,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3189"
+  },
+  {
+    "page_id": "3228",
+    "page_title": "商品代发",
+    "catalog_path": [
+      "零售订单",
+      "订单代发"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单代发/03228_商品代发.md",
+    "contentLength": 1011,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3228"
+  },
+  {
+    "page_id": "3277",
+    "page_title": "修改收货地址",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/03277_修改收货地址.md",
+    "contentLength": 1307,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3277"
+  },
+  {
+    "page_id": "4966",
+    "page_title": "是否展示订单取消按钮",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/04966_是否展示订单取消按钮.md",
+    "contentLength": 955,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4966"
+  },
+  {
+    "page_id": "5707",
+    "page_title": "发送提货通知",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/05707_发送提货通知.md",
+    "contentLength": 869,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5707"
+  },
+  {
+    "page_id": "5708",
+    "page_title": "批量发送提货通知",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/05708_批量发送提货通知.md",
+    "contentLength": 875,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5708"
+  },
+  {
+    "page_id": "6013",
+    "page_title": "修改配送时间",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/06013_修改配送时间.md",
+    "contentLength": 993,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6013"
+  },
+  {
+    "page_id": "6123",
+    "page_title": "查询今日待配送单数",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/06123_查询今日待配送单数.md",
+    "contentLength": 3347,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6123"
+  },
+  {
+    "page_id": "6256",
+    "page_title": "修改未收银单实收金额",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/06256_修改未收银单实收金额.md",
+    "contentLength": 908,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6256"
+  },
+  {
+    "page_id": "6339",
+    "page_title": "统计订单相关数量",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/06339_统计订单相关数量.md",
+    "contentLength": 900,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6339"
+  },
+  {
+    "page_id": "6366",
+    "page_title": "更新购物车非统一售价实体卡小计",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/06366_更新购物车非统一售价实体卡小计.md",
+    "contentLength": 1039,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6366"
+  },
+  {
+    "page_id": "6690",
+    "page_title": "零售改单--确认",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/06690_零售改单--确认.md",
+    "contentLength": 174488,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6690"
+  },
+  {
+    "page_id": "6708",
+    "page_title": "pos零售订单-撤销受理",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/06708_pos零售订单-撤销受理.md",
+    "contentLength": 795,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6708"
+  },
+  {
+    "page_id": "7347",
+    "page_title": "会员待提货订单行",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/07347_会员待提货订单行.md",
+    "contentLength": 2556,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7347"
+  },
+  {
+    "page_id": "7348",
+    "page_title": "批量提货",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/07348_批量提货.md",
+    "contentLength": 1471,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7348"
+  },
+  {
+    "page_id": "8194",
+    "page_title": "pos仅退运费接口",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/08194_pos仅退运费接口.md",
+    "contentLength": 878,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8194"
+  },
+  {
+    "page_id": "8489",
+    "page_title": "获取订单操作记录",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/08489_获取订单操作记录.md",
+    "contentLength": 924,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8489"
+  },
+  {
+    "page_id": "8677",
+    "page_title": "/app/sales/order/dock/manual/send",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/08677__app_sales_order_dock_manual_send.md",
+    "contentLength": 780,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8677"
+  },
+  {
+    "page_id": "10227",
+    "page_title": "统计异常订单数",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/10227_统计异常订单数.md",
+    "contentLength": 3046,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10227"
+  },
+  {
+    "page_id": "10989",
+    "page_title": "检查提货权益是否需要验证",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/10989_检查提货权益是否需要验证.md",
+    "contentLength": 834,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10989"
+  },
+  {
+    "page_id": "11054",
+    "page_title": "修改未收银单套餐主商品实收金额",
+    "catalog_path": [
+      "零售订单",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订单/11054_修改未收银单套餐主商品实收金额.md",
+    "contentLength": 883,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=11054"
+  },
+  {
+    "page_id": "3295",
+    "page_title": "查询赊销可选择账期列表",
+    "catalog_path": [
+      "零售订单",
+      "赊销单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/赊销单/03295_查询赊销可选择账期列表.md",
+    "contentLength": 964,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3295"
+  },
+  {
+    "page_id": "3936",
+    "page_title": "新增-订金订单",
+    "catalog_path": [
+      "零售订单",
+      "订金订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金订单/03936_新增-订金订单.md",
+    "contentLength": 2704,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3936"
+  },
+  {
+    "page_id": "3937",
+    "page_title": "详情-订金订单",
+    "catalog_path": [
+      "零售订单",
+      "订金订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金订单/03937_详情-订金订单.md",
+    "contentLength": 8808,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3937"
+  },
+  {
+    "page_id": "3938",
+    "page_title": "分页-订金订单",
+    "catalog_path": [
+      "零售订单",
+      "订金订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金订单/03938_分页-订金订单.md",
+    "contentLength": 5458,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3938"
+  },
+  {
+    "page_id": "3941",
+    "page_title": "列表-订金类型",
+    "catalog_path": [
+      "零售订单",
+      "订金订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金订单/03941_列表-订金类型.md",
+    "contentLength": 5541,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3941"
+  },
+  {
+    "page_id": "3972",
+    "page_title": "分页-零售订单关联订金单",
+    "catalog_path": [
+      "零售订单",
+      "订金订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金订单/03972_分页-零售订单关联订金单.md",
+    "contentLength": 3692,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3972"
+  },
+  {
+    "page_id": "8567",
+    "page_title": "极速版分页-订金订单",
+    "catalog_path": [
+      "零售订单",
+      "订金订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金订单/08567_极速版分页-订金订单.md",
+    "contentLength": 5473,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8567"
+  },
+  {
+    "page_id": "8582",
+    "page_title": "订单补收银使用订金单",
+    "catalog_path": [
+      "零售订单",
+      "订金订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金订单/08582_订单补收银使用订金单.md",
+    "contentLength": 1131,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8582"
+  },
+  {
+    "page_id": "10552",
+    "page_title": "定金订单商品明细",
+    "catalog_path": [
+      "零售订单",
+      "订金订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金订单/10552_定金订单商品明细.md",
+    "contentLength": 2016,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10552"
+  },
+  {
+    "page_id": "10553",
+    "page_title": "订金订单转单",
+    "catalog_path": [
+      "零售订单",
+      "订金订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金订单/10553_订金订单转单.md",
+    "contentLength": 800,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10553"
+  },
+  {
+    "page_id": "10859",
+    "page_title": "修改-订金订单的过账日期和备注",
+    "catalog_path": [
+      "零售订单",
+      "订金订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金订单/10859_修改-订金订单的过账日期和备注.md",
+    "contentLength": 859,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10859"
+  },
+  {
+    "page_id": "11072",
+    "page_title": " 获取会员积分抵扣信息(订金单)",
+    "catalog_path": [
+      "零售订单",
+      "订金订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金订单/11072_获取会员积分抵扣信息(订金单).md",
+    "contentLength": 1382,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=11072"
+  },
+  {
+    "page_id": "3947",
+    "page_title": "新增-订金退款单",
+    "catalog_path": [
+      "零售订单",
+      "订金退款单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金退款单/03947_新增-订金退款单.md",
+    "contentLength": 1424,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3947"
+  },
+  {
+    "page_id": "3948",
+    "page_title": "列表-退款类型",
+    "catalog_path": [
+      "零售订单",
+      "订金退款单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金退款单/03948_列表-退款类型.md",
+    "contentLength": 949,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3948"
+  },
+  {
+    "page_id": "3971",
+    "page_title": "列表-退款支付类型",
+    "catalog_path": [
+      "零售订单",
+      "订金退款单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/订金退款单/03971_列表-退款支付类型.md",
+    "contentLength": 976,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3971"
+  },
+  {
+    "page_id": "8672",
+    "page_title": "外卖商家自送出",
+    "catalog_path": [
+      "零售订单",
+      "外卖管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/外卖管理/08672_外卖商家自送出.md",
+    "contentLength": 1470,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8672"
+  },
+  {
+    "page_id": "4386",
+    "page_title": "配送进度",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/04386_配送进度.md",
+    "contentLength": 2240,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4386"
+  },
+  {
+    "page_id": "4396",
+    "page_title": "第三方订单重新配送",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/04396_第三方订单重新配送.md",
+    "contentLength": 1290,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4396"
+  },
+  {
+    "page_id": "4821",
+    "page_title": "跑腿参数设置",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/04821_跑腿参数设置.md",
+    "contentLength": 4887,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4821"
+  },
+  {
+    "page_id": "4822",
+    "page_title": "跑腿参数查询",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/04822_跑腿参数查询.md",
+    "contentLength": 2895,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4822"
+  },
+  {
+    "page_id": "4828",
+    "page_title": " 跑腿参数复制",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/04828_跑腿参数复制.md",
+    "contentLength": 940,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4828"
+  },
+  {
+    "page_id": "4830",
+    "page_title": "跑腿配送",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/04830_跑腿配送.md",
+    "contentLength": 1662,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4830"
+  },
+  {
+    "page_id": "4894",
+    "page_title": "配送服务 - 批量获取骑手位置",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/04894_配送服务 - 批量获取骑手位置.md",
+    "contentLength": 1891,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4894"
+  },
+  {
+    "page_id": "5250",
+    "page_title": "第三方配送订单取消",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/05250_第三方配送订单取消.md",
+    "contentLength": 889,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5250"
+  },
+  {
+    "page_id": "5392",
+    "page_title": "跑腿刷新完成状态",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/05392_跑腿刷新完成状态.md",
+    "contentLength": 916,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5392"
+  },
+  {
+    "page_id": "5794",
+    "page_title": "第三方配送订单批量取消",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/05794_第三方配送订单批量取消.md",
+    "contentLength": 896,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5794"
+  },
+  {
+    "page_id": "6977",
+    "page_title": "跑腿平台列表",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/06977_跑腿平台列表.md",
+    "contentLength": 889,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6977"
+  },
+  {
+    "page_id": "7015",
+    "page_title": "获取三方配跑腿失败记录",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/07015_获取三方配跑腿失败记录.md",
+    "contentLength": 1027,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7015"
+  },
+  {
+    "page_id": "7024",
+    "page_title": "获取三方配跑腿失败记录",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/07024_获取三方配跑腿失败记录.md",
+    "contentLength": 1464,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7024"
+  },
+  {
+    "page_id": "9187",
+    "page_title": "查询配送进度（点单）",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/09187_查询配送进度（点单）.md",
+    "contentLength": 2166,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9187"
+  },
+  {
+    "page_id": "9301",
+    "page_title": "第三方配送订单取消",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/09301_第三方配送订单取消.md",
+    "contentLength": 844,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9301"
+  },
+  {
+    "page_id": "9302",
+    "page_title": "订单关联代发单的所有跑腿信息",
+    "catalog_path": [
+      "零售订单",
+      "第三方配送"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/第三方配送/09302_订单关联代发单的所有跑腿信息.md",
+    "contentLength": 1796,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9302"
+  },
+  {
+    "page_id": "10927",
+    "page_title": "充值订单列表",
+    "catalog_path": [
+      "零售订单",
+      "充值订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售订单/充值订单/10927_充值订单列表.md",
+    "contentLength": 3977,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10927"
+  },
+  {
+    "page_id": "3622",
+    "page_title": "维护导购助手首页/微页面",
+    "catalog_path": [
+      "导购助手",
+      "中台维护"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/中台维护/03622_维护导购助手首页_微页面.md",
+    "contentLength": 2711,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3622"
+  },
+  {
+    "page_id": "3621",
+    "page_title": "获取导购助手首页/微页面详情",
+    "catalog_path": [
+      "导购助手",
+      "中台维护"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/中台维护/03621_获取导购助手首页_微页面详情.md",
+    "contentLength": 4419,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3621"
+  },
+  {
+    "page_id": "3623",
+    "page_title": "导购助手-微页面列表",
+    "catalog_path": [
+      "导购助手",
+      "中台维护"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/中台维护/03623_导购助手-微页面列表.md",
+    "contentLength": 3743,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3623"
+  },
+  {
+    "page_id": "3624",
+    "page_title": "删除微页面",
+    "catalog_path": [
+      "导购助手",
+      "中台维护"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/中台维护/03624_删除微页面.md",
+    "contentLength": 850,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3624"
+  },
+  {
+    "page_id": "3625",
+    "page_title": "获取导购助手 可以编辑的模块列表",
+    "catalog_path": [
+      "导购助手",
+      "中台维护"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/中台维护/03625_获取导购助手 可以编辑的模块列表.md",
+    "contentLength": 843,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3625"
+  },
+  {
+    "page_id": "3626",
+    "page_title": "获取导购助手首页跳转url地址",
+    "catalog_path": [
+      "导购助手",
+      "中台维护"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/中台维护/03626_获取导购助手首页跳转url地址.md",
+    "contentLength": 863,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3626"
+  },
+  {
+    "page_id": "3633",
+    "page_title": " 查询导购助手主菜单设置",
+    "catalog_path": [
+      "导购助手",
+      "中台维护"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/中台维护/03633_查询导购助手主菜单设置.md",
+    "contentLength": 1590,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3633"
+  },
+  {
+    "page_id": "3634",
+    "page_title": " 编辑 导购助手主菜单设置",
+    "catalog_path": [
+      "导购助手",
+      "中台维护"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/中台维护/03634_编辑 导购助手主菜单设置.md",
+    "contentLength": 1634,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3634"
+  },
+  {
+    "page_id": "3635",
+    "page_title": "导购助手小程序 获取 主题颜色 菜单 商户中心",
+    "catalog_path": [
+      "导购助手",
+      "中台维护"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/中台维护/03635_导购助手小程序 获取 主题颜色 菜单 商户中心.md",
+    "contentLength": 1915,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3635"
+  },
+  {
+    "page_id": "3641",
+    "page_title": "导购助手个人中心 详情",
+    "catalog_path": [
+      "导购助手",
+      "中台维护"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/中台维护/03641_导购助手个人中心 详情.md",
+    "contentLength": 901,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3641"
+  },
+  {
+    "page_id": "3642",
+    "page_title": "导购助手个人中心 编辑",
+    "catalog_path": [
+      "导购助手",
+      "中台维护"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/中台维护/03642_导购助手个人中心 编辑.md",
+    "contentLength": 898,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3642"
+  },
+  {
+    "page_id": "3627",
+    "page_title": "获取导购助手 模块设置",
+    "catalog_path": [
+      "导购助手",
+      "其它api接口"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/其它api接口/03627_获取导购助手 模块设置.md",
+    "contentLength": 4404,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3627"
+  },
+  {
+    "page_id": "3629",
+    "page_title": "获取导购助手微页面装修",
+    "catalog_path": [
+      "导购助手",
+      "其它api接口"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/其它api接口/03629_获取导购助手微页面装修.md",
+    "contentLength": 4303,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3629"
+  },
+  {
+    "page_id": "3643",
+    "page_title": "导购助手个人中心 设置详情",
+    "catalog_path": [
+      "导购助手",
+      "其它api接口"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/导购助手/其它api接口/03643_导购助手个人中心 设置详情.md",
+    "contentLength": 1019,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3643"
+  },
+  {
+    "page_id": "8921",
+    "page_title": "合并退款计算",
+    "catalog_path": [
+      "零售退货"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售退货/08921_合并退款计算.md",
+    "contentLength": 1826,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8921"
+  },
+  {
+    "page_id": "3904",
+    "page_title": "列表 - 可退款的实体卡券",
+    "catalog_path": [
+      "零售退货",
+      "实体卡券退款"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售退货/实体卡券退款/03904_列表 - 可退款的实体卡券.md",
+    "contentLength": 1141,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3904"
+  },
+  {
+    "page_id": "7122",
+    "page_title": "pos实体卡修改余额",
+    "catalog_path": [
+      "零售退货",
+      "实体卡券退款"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售退货/实体卡券退款/07122_pos实体卡修改余额.md",
+    "contentLength": 801,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7122"
+  },
+  {
+    "page_id": "7190",
+    "page_title": "储值卡修改余额",
+    "catalog_path": [
+      "零售退货",
+      "实体卡券退款"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售退货/实体卡券退款/07190_储值卡修改余额.md",
+    "contentLength": 936,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7190"
+  },
+  {
+    "page_id": "4034",
+    "page_title": "列表-退货单据功能类型",
+    "catalog_path": [
+      "零售退货",
+      "无来源退货"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/零售退货/无来源退货/04034_列表-退货单据功能类型.md",
+    "contentLength": 818,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4034"
+  },
+  {
+    "page_id": "5124",
+    "page_title": "批量自动同步映射商品导出",
+    "catalog_path": [
+      "外卖"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/05124_批量自动同步映射商品导出.md",
+    "contentLength": 1382,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5124"
+  },
+  {
+    "page_id": "11121",
+    "page_title": "统一补单入口",
+    "catalog_path": [
+      "外卖"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/11121_统一补单入口.md",
+    "contentLength": 1142,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=11121"
+  },
+  {
+    "page_id": "4046",
+    "page_title": "获得美团绑定门店Url",
+    "catalog_path": [
+      "外卖",
+      "门店"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/门店/04046_获得美团绑定门店Url.md",
+    "contentLength": 958,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4046"
+  },
+  {
+    "page_id": "4047",
+    "page_title": "获得美团门店解绑url",
+    "catalog_path": [
+      "外卖",
+      "门店"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/门店/04047_获得美团门店解绑url.md",
+    "contentLength": 911,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4047"
+  },
+  {
+    "page_id": "4050",
+    "page_title": "获取店铺列表（包括是否授权）",
+    "catalog_path": [
+      "外卖",
+      "门店"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/门店/04050_获取店铺列表（包括是否授权）.md",
+    "contentLength": 3330,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4050"
+  },
+  {
+    "page_id": "4080",
+    "page_title": " 设置美团店铺营业 (营业才能接收订单)",
+    "catalog_path": [
+      "外卖",
+      "门店"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/门店/04080_设置美团店铺营业 (营业才能接收订单).md",
+    "contentLength": 890,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4080"
+  },
+  {
+    "page_id": "4105",
+    "page_title": "查询门店是否已授权",
+    "catalog_path": [
+      "外卖",
+      "门店"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/门店/04105_查询门店是否已授权.md",
+    "contentLength": 812,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4105"
+  },
+  {
+    "page_id": "10334",
+    "page_title": "获取美团第三方应用授权链接",
+    "catalog_path": [
+      "外卖",
+      "门店"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/门店/10334_获取美团第三方应用授权链接.md",
+    "contentLength": 2579,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10334"
+  },
+  {
+    "page_id": "10379",
+    "page_title": "获取美团第三方应用解绑链接",
+    "catalog_path": [
+      "外卖",
+      "门店"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/门店/10379_获取美团第三方应用解绑链接.md",
+    "contentLength": 2581,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10379"
+  },
+  {
+    "page_id": "10734",
+    "page_title": "通用三方商户授权",
+    "catalog_path": [
+      "外卖",
+      "门店"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/门店/10734_通用三方商户授权.md",
+    "contentLength": 1056,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10734"
+  },
+  {
+    "page_id": "10735",
+    "page_title": "查询品牌三方是否已授权",
+    "catalog_path": [
+      "外卖",
+      "门店"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/门店/10735_查询品牌三方是否已授权.md",
+    "contentLength": 1824,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10735"
+  },
+  {
+    "page_id": "4054",
+    "page_title": "映射菜品(可批量)",
+    "catalog_path": [
+      "外卖",
+      "菜品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品/04054_映射菜品(可批量).md",
+    "contentLength": 1091,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4054"
+  },
+  {
+    "page_id": "4055",
+    "page_title": "解除映射菜品",
+    "catalog_path": [
+      "外卖",
+      "菜品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品/04055_解除映射菜品.md",
+    "contentLength": 816,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4055"
+  },
+  {
+    "page_id": "4056",
+    "page_title": "获取店铺的菜品以及对应关联的美团菜品",
+    "catalog_path": [
+      "外卖",
+      "菜品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品/04056_获取店铺的菜品以及对应关联的美团菜品.md",
+    "contentLength": 2597,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4056"
+  },
+  {
+    "page_id": "4057",
+    "page_title": "获取该店美团所有菜品",
+    "catalog_path": [
+      "外卖",
+      "菜品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品/04057_获取该店美团所有菜品.md",
+    "contentLength": 813,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4057"
+  },
+  {
+    "page_id": "4058",
+    "page_title": "获取所有该店未绑定的菜品",
+    "catalog_path": [
+      "外卖",
+      "菜品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品/04058_获取所有该店未绑定的菜品.md",
+    "contentLength": 2544,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4058"
+  },
+  {
+    "page_id": "5119",
+    "page_title": "批量菜品映射同步",
+    "catalog_path": [
+      "外卖",
+      "菜品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品/05119_批量菜品映射同步.md",
+    "contentLength": 1765,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5119"
+  },
+  {
+    "page_id": "6200",
+    "page_title": "计算积分兑换使用实体卡可支付的金额",
+    "catalog_path": [
+      "外卖",
+      "菜品",
+      "美团拼好饭"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品/美团拼好饭/06200_计算积分兑换使用实体卡可支付的金额.md",
+    "contentLength": 1695,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6200"
+  },
+  {
+    "page_id": "8180",
+    "page_title": "批量映射美团拼好饭外卖商品",
+    "catalog_path": [
+      "外卖",
+      "菜品",
+      "美团拼好饭"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品/美团拼好饭/08180_批量映射美团拼好饭外卖商品.md",
+    "contentLength": 1552,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8180"
+  },
+  {
+    "page_id": "8181",
+    "page_title": "美团拼好饭商品解绑",
+    "catalog_path": [
+      "外卖",
+      "菜品",
+      "美团拼好饭"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品/美团拼好饭/08181_美团拼好饭商品解绑.md",
+    "contentLength": 891,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8181"
+  },
+  {
+    "page_id": "8182",
+    "page_title": "获取美团拼好饭外卖门店商品",
+    "catalog_path": [
+      "外卖",
+      "菜品",
+      "美团拼好饭"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品/美团拼好饭/08182_获取美团拼好饭外卖门店商品.md",
+    "contentLength": 2998,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8182"
+  },
+  {
+    "page_id": "8189",
+    "page_title": "分页查询拼好饭菜品关联列表",
+    "catalog_path": [
+      "外卖",
+      "菜品",
+      "美团拼好饭"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品/美团拼好饭/08189_分页查询拼好饭菜品关联列表.md",
+    "contentLength": 2540,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8189"
+  },
+  {
+    "page_id": "10732",
+    "page_title": "拼好饭菜品关联-批量复制",
+    "catalog_path": [
+      "外卖",
+      "菜品",
+      "美团拼好饭"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品/美团拼好饭/10732_拼好饭菜品关联-批量复制.md",
+    "contentLength": 817,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10732"
+  },
+  {
+    "page_id": "4048",
+    "page_title": "获得外卖设置",
+    "catalog_path": [
+      "外卖",
+      "设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/设置/04048_获得外卖设置.md",
+    "contentLength": 4610,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4048"
+  },
+  {
+    "page_id": "4049",
+    "page_title": "更新外卖设置",
+    "catalog_path": [
+      "外卖",
+      "设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/设置/04049_更新外卖设置.md",
+    "contentLength": 7157,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4049"
+  },
+  {
+    "page_id": "9698",
+    "page_title": "抖音来客授权应用列表",
+    "catalog_path": [
+      "外卖",
+      "设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/设置/09698_抖音来客授权应用列表.md",
+    "contentLength": 713,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9698"
+  },
+  {
+    "page_id": "9699",
+    "page_title": "获取抖音来客授权链接",
+    "catalog_path": [
+      "外卖",
+      "设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/设置/09699_获取抖音来客授权链接.md",
+    "contentLength": 771,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9699"
+  },
+  {
+    "page_id": "4060",
+    "page_title": "美团订单回调",
+    "catalog_path": [
+      "外卖",
+      "订单"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/订单/04060_美团订单回调.md",
+    "contentLength": 3122,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4060"
+  },
+  {
+    "page_id": "4076",
+    "page_title": "分页查询菜品列表",
+    "catalog_path": [
+      "外卖",
+      "菜品2"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品2/04076_分页查询菜品列表.md",
+    "contentLength": 3585,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4076"
+  },
+  {
+    "page_id": "4077",
+    "page_title": "美团外卖商品绑定",
+    "catalog_path": [
+      "外卖",
+      "菜品2"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品2/04077_美团外卖商品绑定.md",
+    "contentLength": 1568,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4077"
+  },
+  {
+    "page_id": "4078",
+    "page_title": "美团外卖商品解绑",
+    "catalog_path": [
+      "外卖",
+      "菜品2"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品2/04078_美团外卖商品解绑.md",
+    "contentLength": 929,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4078"
+  },
+  {
+    "page_id": "4079",
+    "page_title": "获取美团外卖门店商品",
+    "catalog_path": [
+      "外卖",
+      "菜品2"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品2/04079_获取美团外卖门店商品.md",
+    "contentLength": 1407,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4079"
+  },
+  {
+    "page_id": "5827",
+    "page_title": "更新美团/饿了么菜品缓存",
+    "catalog_path": [
+      "外卖",
+      "菜品2"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品2/05827_更新美团_饿了么菜品缓存.md",
+    "contentLength": 920,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5827"
+  },
+  {
+    "page_id": "8179",
+    "page_title": "分页查询拼好饭菜品列表",
+    "catalog_path": [
+      "外卖",
+      "菜品2"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/菜品2/08179_分页查询拼好饭菜品列表.md",
+    "contentLength": 2957,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8179"
+  },
+  {
+    "page_id": "4451",
+    "page_title": "获取授权url",
+    "catalog_path": [
+      "外卖",
+      "饿了么"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/饿了么/04451_获取授权url.md",
+    "contentLength": 867,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4451"
+  },
+  {
+    "page_id": "4462",
+    "page_title": "店铺商品与饿了么商品进行关联",
+    "catalog_path": [
+      "外卖",
+      "饿了么"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/饿了么/04462_店铺商品与饿了么商品进行关联.md",
+    "contentLength": 1523,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4462"
+  },
+  {
+    "page_id": "10573",
+    "page_title": " 饿了么-门店解除授权",
+    "catalog_path": [
+      "外卖",
+      "饿了么"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/饿了么/10573_饿了么-门店解除授权.md",
+    "contentLength": 757,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10573"
+  },
+  {
+    "page_id": "4452",
+    "page_title": "获取门店和已授权的饿了么店铺列表",
+    "catalog_path": [
+      "外卖",
+      "饿了么",
+      "门店管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/饿了么/门店管理/04452_获取门店和已授权的饿了么店铺列表.md",
+    "contentLength": 3318,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4452"
+  },
+  {
+    "page_id": "4453",
+    "page_title": "设置店铺开关店状态",
+    "catalog_path": [
+      "外卖",
+      "饿了么",
+      "门店管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/饿了么/门店管理/04453_设置店铺开关店状态.md",
+    "contentLength": 877,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4453"
+  },
+  {
+    "page_id": "4466",
+    "page_title": "查询该店铺是否已授权饿了么",
+    "catalog_path": [
+      "外卖",
+      "饿了么",
+      "门店管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/饿了么/门店管理/04466_查询该店铺是否已授权饿了么.md",
+    "contentLength": 885,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4466"
+  },
+  {
+    "page_id": "4455",
+    "page_title": "获取配置参数",
+    "catalog_path": [
+      "外卖",
+      "饿了么",
+      "配置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/饿了么/配置/04455_获取配置参数.md",
+    "contentLength": 743,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4455"
+  },
+  {
+    "page_id": "4456",
+    "page_title": "设置配置参数",
+    "catalog_path": [
+      "外卖",
+      "饿了么",
+      "配置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/饿了么/配置/04456_设置配置参数.md",
+    "contentLength": 868,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4456"
+  },
+  {
+    "page_id": "4103",
+    "page_title": "店铺商品与饿了么商品进行关联",
+    "catalog_path": [
+      "外卖",
+      "饿了么",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/饿了么/菜品管理/04103_店铺商品与饿了么商品进行关联.md",
+    "contentLength": 1532,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4103"
+  },
+  {
+    "page_id": "4459",
+    "page_title": "获取该店铺饿了么菜品列表",
+    "catalog_path": [
+      "外卖",
+      "饿了么",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/饿了么/菜品管理/04459_获取该店铺饿了么菜品列表.md",
+    "contentLength": 1556,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4459"
+  },
+  {
+    "page_id": "4464",
+    "page_title": "菜品管理列表",
+    "catalog_path": [
+      "外卖",
+      "饿了么",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/饿了么/菜品管理/04464_菜品管理列表.md",
+    "contentLength": 3924,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4464"
+  },
+  {
+    "page_id": "4465",
+    "page_title": "菜品解绑",
+    "catalog_path": [
+      "外卖",
+      "饿了么",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/饿了么/菜品管理/04465_菜品解绑.md",
+    "contentLength": 850,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4465"
+  },
+  {
+    "page_id": "5123",
+    "page_title": "饿了么批量菜品映射同步",
+    "catalog_path": [
+      "外卖",
+      "饿了么",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/饿了么/菜品管理/05123_饿了么批量菜品映射同步.md",
+    "contentLength": 1784,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5123"
+  },
+  {
+    "page_id": "5021",
+    "page_title": "手动同步菜品库存",
+    "catalog_path": [
+      "外卖",
+      "数据同步"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/数据同步/05021_手动同步菜品库存.md",
+    "contentLength": 907,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5021"
+  },
+  {
+    "page_id": "5026",
+    "page_title": "获取已授权的门店",
+    "catalog_path": [
+      "外卖",
+      "数据同步"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/外卖/数据同步/05026_获取已授权的门店.md",
+    "contentLength": 3170,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5026"
+  },
+  {
+    "page_id": "4433",
+    "page_title": "发送取餐通知",
+    "catalog_path": [
+      "消息提醒"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/消息提醒/04433_发送取餐通知.md",
+    "contentLength": 987,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4433"
+  },
+  {
+    "page_id": "4537",
+    "page_title": "取消 - 生产计划",
+    "catalog_path": [
+      "生产计划"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/生产计划/04537_取消 - 生产计划.md",
+    "contentLength": 834,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4537"
+  },
+  {
+    "page_id": "4538",
+    "page_title": "下单 - 生产/调拨",
+    "catalog_path": [
+      "生产计划"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/生产计划/04538_下单 - 生产_调拨.md",
+    "contentLength": 1054,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4538"
+  },
+  {
+    "page_id": "4539",
+    "page_title": "下单 - 生产/代发",
+    "catalog_path": [
+      "生产计划"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/生产计划/04539_下单 - 生产_代发.md",
+    "contentLength": 1059,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4539"
+  },
+  {
+    "page_id": "4540",
+    "page_title": "下单 - 仅生产计划",
+    "catalog_path": [
+      "生产计划"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/生产计划/04540_下单 - 仅生产计划.md",
+    "contentLength": 1047,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4540"
+  },
+  {
+    "page_id": "4541",
+    "page_title": "列表 - 查询生产门店列表",
+    "catalog_path": [
+      "生产计划"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/生产计划/04541_列表 - 查询生产门店列表.md",
+    "contentLength": 923,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4541"
+  },
+  {
+    "page_id": "4548",
+    "page_title": "下单 - 生产/转单",
+    "catalog_path": [
+      "生产计划"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/生产计划/04548_下单 - 生产_转单.md",
+    "contentLength": 1046,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4548"
+  },
+  {
+    "page_id": "4836",
+    "page_title": "打印设置保存",
+    "catalog_path": [
+      "打印-设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/打印-设置/04836_打印设置保存.md",
+    "contentLength": 5783,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4836"
+  },
+  {
+    "page_id": "4837",
+    "page_title": "打印设置获取",
+    "catalog_path": [
+      "打印-设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/打印-设置/04837_打印设置获取.md",
+    "contentLength": 3472,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4837"
+  },
+  {
+    "page_id": "4838",
+    "page_title": "打印设置删除",
+    "catalog_path": [
+      "打印-设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/打印-设置/04838_打印设置删除.md",
+    "contentLength": 963,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=4838"
+  },
+  {
+    "page_id": "9899",
+    "page_title": "保存打印规则设置",
+    "catalog_path": [
+      "打印-设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/打印-设置/09899_保存打印规则设置.md",
+    "contentLength": 3241,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9899"
+  },
+  {
+    "page_id": "9900",
+    "page_title": "打印规则设置详情",
+    "catalog_path": [
+      "打印-设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/打印-设置/09900_打印规则设置详情.md",
+    "contentLength": 2186,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9900"
+  },
+  {
+    "page_id": "9997",
+    "page_title": "打印规则设置列表",
+    "catalog_path": [
+      "打印-设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/打印-设置/09997_打印规则设置列表.md",
+    "contentLength": 1715,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9997"
+  },
+  {
+    "page_id": "10178",
+    "page_title": "打印规则删除",
+    "catalog_path": [
+      "打印-设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/打印-设置/10178_打印规则删除.md",
+    "contentLength": 731,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10178"
+  },
+  {
+    "page_id": "10179",
+    "page_title": "获取打印规则票据类型",
+    "catalog_path": [
+      "打印-设置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/打印-设置/10179_获取打印规则票据类型.md",
+    "contentLength": 753,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10179"
+  },
+  {
+    "page_id": "5635",
+    "page_title": "获取零售相关设置",
+    "catalog_path": [
+      "配置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/配置/05635_获取零售相关设置.md",
+    "contentLength": 4477,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5635"
+  },
+  {
+    "page_id": "6014",
+    "page_title": "获取会员商城商城订单设置",
+    "catalog_path": [
+      "配置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/配置/06014_获取会员商城商城订单设置.md",
+    "contentLength": 2080,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6014"
+  },
+  {
+    "page_id": "6386",
+    "page_title": "极速订单功能配置前置认证",
+    "catalog_path": [
+      "配置"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/配置/06386_极速订单功能配置前置认证.md",
+    "contentLength": 1672,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6386"
+  },
+  {
+    "page_id": "6031",
+    "page_title": "增删改",
+    "catalog_path": [
+      "寄存商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/寄存商品/06031_增删改.md",
+    "contentLength": 1669,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6031"
+  },
+  {
+    "page_id": "6032",
+    "page_title": "查询主配置(不含商品明细)",
+    "catalog_path": [
+      "寄存商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/寄存商品/06032_查询主配置(不含商品明细).md",
+    "contentLength": 1509,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6032"
+  },
+  {
+    "page_id": "6033",
+    "page_title": "明细分页查询",
+    "catalog_path": [
+      "寄存商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/寄存商品/06033_明细分页查询.md",
+    "contentLength": 2937,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6033"
+  },
+  {
+    "page_id": "6034",
+    "page_title": "寄存商品搜索",
+    "catalog_path": [
+      "寄存商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/寄存商品/06034_寄存商品搜索.md",
+    "contentLength": 2913,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6034"
+  },
+  {
+    "page_id": "6035",
+    "page_title": "复制",
+    "catalog_path": [
+      "寄存商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/寄存商品/06035_复制.md",
+    "contentLength": 910,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6035"
+  },
+  {
+    "page_id": "6036",
+    "page_title": "寄存商品导入",
+    "catalog_path": [
+      "寄存商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/寄存商品/06036_寄存商品导入.md",
+    "contentLength": 1468,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6036"
+  },
+  {
+    "page_id": "6037",
+    "page_title": "寄存商品导出",
+    "catalog_path": [
+      "寄存商品"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/寄存商品/06037_寄存商品导出.md",
+    "contentLength": 862,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=6037"
+  },
+  {
+    "page_id": "7394",
+    "page_title": "新增/编辑机器码信息",
+    "catalog_path": [
+      "机器码"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/机器码/07394_新增_编辑机器码信息.md",
+    "contentLength": 2608,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7394"
+  },
+  {
+    "page_id": "7395",
+    "page_title": "查询机器码信息",
+    "catalog_path": [
+      "机器码"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/机器码/07395_查询机器码信息.md",
+    "contentLength": 2704,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7395"
+  },
+  {
+    "page_id": "7396",
+    "page_title": "新增打印记录",
+    "catalog_path": [
+      "机器码"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/机器码/07396_新增打印记录.md",
+    "contentLength": 823,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7396"
+  },
+  {
+    "page_id": "7397",
+    "page_title": "分页查询打印记录",
+    "catalog_path": [
+      "机器码"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/机器码/07397_分页查询打印记录.md",
+    "contentLength": 2509,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7397"
+  },
+  {
+    "page_id": "7433",
+    "page_title": "查询机器码列表",
+    "catalog_path": [
+      "机器码"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/机器码/07433_查询机器码列表.md",
+    "contentLength": 4816,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7433"
+  },
+  {
+    "page_id": "7450",
+    "page_title": " 编辑机器码信息(品牌端编辑+下发)",
+    "catalog_path": [
+      "机器码"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/机器码/07450_编辑机器码信息(品牌端编辑+下发).md",
+    "contentLength": 1100,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7450"
+  },
+  {
+    "page_id": "7451",
+    "page_title": "获取零售设置下发信息",
+    "catalog_path": [
+      "机器码"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/机器码/07451_获取零售设置下发信息.md",
+    "contentLength": 1418,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=7451"
+  },
+  {
+    "page_id": "8355",
+    "page_title": "获取自选提配模式设置",
+    "catalog_path": [
+      "已满时间段"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/已满时间段/08355_获取自选提配模式设置.md",
+    "contentLength": 869,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8355"
+  },
+  {
+    "page_id": "8356",
+    "page_title": "根据日期查询时间范围",
+    "catalog_path": [
+      "已满时间段"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/已满时间段/08356_根据日期查询时间范围.md",
+    "contentLength": 1106,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8356"
+  },
+  {
+    "page_id": "8357",
+    "page_title": "打已满或者未满标识",
+    "catalog_path": [
+      "已满时间段"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/已满时间段/08357_打已满或者未满标识.md",
+    "contentLength": 914,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8357"
+  },
+  {
+    "page_id": "8360",
+    "page_title": "获取某个时间段是否已满",
+    "catalog_path": [
+      "已满时间段"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/已满时间段/08360_获取某个时间段是否已满.md",
+    "contentLength": 927,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8360"
+  },
+  {
+    "page_id": "8551",
+    "page_title": "批量触发订单生效事件",
+    "catalog_path": [
+      "其他"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/其他/08551_批量触发订单生效事件.md",
+    "contentLength": 763,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=8551"
+  },
+  {
+    "page_id": "9143",
+    "page_title": "获取美团第三方应用授权链接",
+    "catalog_path": [
+      "美团授权"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/09143_获取美团第三方应用授权链接.md",
+    "contentLength": 643,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9143"
+  },
+  {
+    "page_id": "9144",
+    "page_title": "获取美团第三方应用解绑链接",
+    "catalog_path": [
+      "美团授权"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/09144_获取美团第三方应用解绑链接.md",
+    "contentLength": 640,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9144"
+  },
+  {
+    "page_id": "9145",
+    "page_title": "在线点(秒提)-绑定门店",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/09145_在线点(秒提)-绑定门店.md",
+    "contentLength": 860,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9145"
+  },
+  {
+    "page_id": "9146",
+    "page_title": "在线点(秒提)-解绑门店",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/09146_在线点(秒提)-解绑门店.md",
+    "contentLength": 762,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=9146"
+  },
+  {
+    "page_id": "10311",
+    "page_title": "在线点(秒提)- 营业",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/10311_在线点(秒提)- 营业.md",
+    "contentLength": 765,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10311"
+  },
+  {
+    "page_id": "10312",
+    "page_title": "在线点(秒提)- 歇业",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/10312_在线点(秒提)- 歇业.md",
+    "contentLength": 766,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10312"
+  },
+  {
+    "page_id": "10631",
+    "page_title": "在线点(秒提)-门店设置详情",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/10631_在线点(秒提)-门店设置详情.md",
+    "contentLength": 1639,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10631"
+  },
+  {
+    "page_id": "10632",
+    "page_title": "在线点(秒提)-门店设置保存",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/10632_在线点(秒提)-门店设置保存.md",
+    "contentLength": 1446,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10632"
+  },
+  {
+    "page_id": "10319",
+    "page_title": "秒提-在线点-售卖属性 新增/更新售卖属性",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/10319_秒提-在线点-售卖属性 新增_更新售卖属性.md",
+    "contentLength": 1518,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10319"
+  },
+  {
+    "page_id": "10323",
+    "page_title": "秒提-在线点-售卖属性列表",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/10323_秒提-在线点-售卖属性列表.md",
+    "contentLength": 1868,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10323"
+  },
+  {
+    "page_id": "10324",
+    "page_title": "秒提-在线点-售卖属性详情",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/10324_秒提-在线点-售卖属性详情.md",
+    "contentLength": 1676,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10324"
+  },
+  {
+    "page_id": "10320",
+    "page_title": "秒提-在线点-小料属性更新/新增",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/10320_秒提-在线点-小料属性更新_新增.md",
+    "contentLength": 1450,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10320"
+  },
+  {
+    "page_id": "10325",
+    "page_title": "秒提-在线点-小料属性列表",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/10325_秒提-在线点-小料属性列表.md",
+    "contentLength": 2547,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10325"
+  },
+  {
+    "page_id": "10326",
+    "page_title": "秒提-在线点-小料属性详情",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/10326_秒提-在线点-小料属性详情.md",
+    "contentLength": 1717,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10326"
+  },
+  {
+    "page_id": "10328",
+    "page_title": "秒提-在线点-新增/修改类目",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/10328_秒提-在线点-新增_修改类目.md",
+    "contentLength": 1187,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10328"
+  },
+  {
+    "page_id": "10329",
+    "page_title": "秒提-在线点-类目 类目列表",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/10329_秒提-在线点-类目 类目列表.md",
+    "contentLength": 1568,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10329"
+  },
+  {
+    "page_id": "10330",
+    "page_title": " 秒提/在线点商品管理 商品详情",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/10330_秒提_在线点商品管理 商品详情.md",
+    "contentLength": 5168,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10330"
+  },
+  {
+    "page_id": "10331",
+    "page_title": "秒提/在线点商品管理 商品新增编辑",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/10331_秒提_在线点商品管理 商品新增编辑.md",
+    "contentLength": 8381,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10331"
+  },
+  {
+    "page_id": "10332",
+    "page_title": "秒提/在线点商品管理 商品列表",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/10332_秒提_在线点商品管理 商品列表.md",
+    "contentLength": 2105,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10332"
+  },
+  {
+    "page_id": "10333",
+    "page_title": "秒提/在线点 图片上传",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/10333_秒提_在线点 图片上传.md",
+    "contentLength": 1065,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10333"
+  },
+  {
+    "page_id": "10564",
+    "page_title": "秒提-在线点-批量更新门店库存",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/10564_秒提-在线点-批量更新门店库存.md",
+    "contentLength": 1136,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10564"
+  },
+  {
+    "page_id": "10343",
+    "page_title": "秒提/在线点 - 菜谱模板详情 新增/编辑",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理",
+      "菜谱"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/菜谱/10343_秒提_在线点 - 菜谱模板详情 新增_编辑.md",
+    "contentLength": 3057,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10343"
+  },
+  {
+    "page_id": "10344",
+    "page_title": "秒提/在线点 - 菜谱模板详情",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理",
+      "菜谱"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/菜谱/10344_秒提_在线点 - 菜谱模板详情.md",
+    "contentLength": 1815,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10344"
+  },
+  {
+    "page_id": "10351",
+    "page_title": "秒提-在线点 - 菜谱列表",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理",
+      "菜谱"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/菜谱/10351_秒提-在线点 - 菜谱列表.md",
+    "contentLength": 1583,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10351"
+  },
+  {
+    "page_id": "10352",
+    "page_title": "秒提-在线点 - 下发历史列表",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理",
+      "菜谱"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/菜谱/10352_秒提-在线点 - 下发历史列表.md",
+    "contentLength": 1535,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10352"
+  },
+  {
+    "page_id": "10353",
+    "page_title": "秒提-在线点 - 下发历史详情",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理",
+      "菜谱"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/菜谱/10353_秒提-在线点 - 下发历史详情.md",
+    "contentLength": 2149,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10353"
+  },
+  {
+    "page_id": "10354",
+    "page_title": "秒提-在线点 - 菜谱应用门店列表",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理",
+      "菜谱"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/菜谱/10354_秒提-在线点 - 菜谱应用门店列表.md",
+    "contentLength": 1591,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10354"
+  },
+  {
+    "page_id": "10355",
+    "page_title": "秒提-在线点 - 商品组商品表列表",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理",
+      "菜谱"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/菜谱/10355_秒提-在线点 - 商品组商品表列表.md",
+    "contentLength": 2227,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10355"
+  },
+  {
+    "page_id": "10362",
+    "page_title": "秒提-在线点 - 商品sku价格列表",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理",
+      "菜谱"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/菜谱/10362_秒提-在线点 - 商品sku价格列表.md",
+    "contentLength": 1157,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10362"
+  },
+  {
+    "page_id": "10365",
+    "page_title": " 秒提/在线点 -下发模板到关联的门店",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理",
+      "菜谱"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/菜谱/10365_秒提_在线点 -下发模板到关联的门店.md",
+    "contentLength": 815,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10365"
+  },
+  {
+    "page_id": "10504",
+    "page_title": "秒提-在线点-商品sku价格列表V2",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理",
+      "菜谱"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/菜谱/10504_秒提-在线点-商品sku价格列表V2.md",
+    "contentLength": 1908,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10504"
+  },
+  {
+    "page_id": "10565",
+    "page_title": "秒提-在线点-商品sku价格列表V2-所有分组商品",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理",
+      "菜谱"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/菜谱/10565_秒提-在线点-商品sku价格列表V2-所有分组商品.md",
+    "contentLength": 1852,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10565"
+  },
+  {
+    "page_id": "10566",
+    "page_title": "获取门店最新的菜谱模板ID",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理",
+      "菜谱"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/菜谱/10566_获取门店最新的菜谱模板ID.md",
+    "contentLength": 816,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10566"
+  },
+  {
+    "page_id": "10567",
+    "page_title": "秒提-在线点-更新门店商品库存",
+    "catalog_path": [
+      "美团授权",
+      "在线点-秒提",
+      "菜品管理",
+      "菜谱"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/美团授权/在线点-秒提/菜品管理/菜谱/10567_秒提-在线点-更新门店商品库存.md",
+    "contentLength": 1053,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10567"
+  },
+  {
+    "page_id": "10456",
+    "page_title": "获取品牌国际化配置",
+    "catalog_path": [
+      "公共配置相关"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/公共配置相关/10456_获取品牌国际化配置.md",
+    "contentLength": 1288,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=10456"
+  },
+  {
+    "page_id": "5238",
+    "page_title": "防伪码设置-新增/更新",
+    "catalog_path": [
+      "产品装修"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/产品装修/05238_防伪码设置-新增_更新.md",
+    "contentLength": 2108,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5238"
+  },
+  {
+    "page_id": "5239",
+    "page_title": "防伪码设置-查询",
+    "catalog_path": [
+      "产品装修"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/产品装修/05239_防伪码设置-查询.md",
+    "contentLength": 2604,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=5239"
+  },
+  {
+    "page_id": "1517",
+    "page_title": "查询产品装修详情",
+    "catalog_path": [
+      "产品装修"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/产品装修/01517_查询产品装修详情.md",
+    "contentLength": 945,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=1517"
+  },
+  {
+    "page_id": "3040",
+    "page_title": "获取导购助手是否显示库存",
+    "catalog_path": [
+      "产品装修"
+    ],
+    "file": "/Users/reabam/Projects/api_auto_test/docs/showdoc/店务助手_智慧收银台/产品装修/03040_获取导购助手是否显示库存.md",
+    "contentLength": 639,
+    "source_url": "https://showdoc.reabam.com/web/#/8?page_id=3040"
+  }
+]

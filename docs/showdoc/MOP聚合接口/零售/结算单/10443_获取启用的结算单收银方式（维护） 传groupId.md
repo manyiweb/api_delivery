@@ -1,0 +1,143 @@
+---
+page_id: "10443"
+page_title: "获取启用的结算单收银方式（维护） 传groupId"
+item_id: "6"
+cat_id: "1478"
+catalog_path:
+  - "零售"
+  - "结算单"
+author_username: "675355567@qq.com"
+addtime: "2025-09-10 15:24:45"
+source_url: "https://showdoc.reabam.com/web/#/6?page_id=10443"
+---
+# 获取启用的结算单收银方式（维护） 传groupId
+ 
+
+**请求URL：** 
+- `retail-pay-manager/superStatement/payTypes`
+
+**请求方式：**
+- POST
+- RequestBody
+
+
+### 请求参数<业务参数>
+ 
+|参数名|必选|类型|说明|
+|:---- |:---|:----- |----- |
+|companyId|是|String||
+|sword|否|String||
+|tokenId|否|String||
+|id|否|String||
+|orderField|否|String||
+|orderSort|否|String||
+|searchBeans|否|List||
+|--typeCode|否|String||
+|--typeName|否|String||
+|--dataType|否|String||
+|--isSingle|否|String||
+|--isLikeSearch|否|String||
+|--items|否|List||
+|----itemName|否|String||
+|----itemValue|否|String||
+|----minValue|否|String||
+|----maxValue|否|String||
+|----isCustom|否|String||
+|----isRange|否|String||
+|----isSelect|否|String||
+|--current|否|Object||
+|----itemName|否|String||
+|----itemValue|否|String||
+|----minValue|否|String||
+|----maxValue|否|String||
+|----isCustom|否|String||
+|----isRange|否|String||
+|----isSelect|否|String||
+|--sword|否|String||
+|--pageIndex|否|Integer||
+|--pageSize|否|Integer||
+|--curPageNum|否|Integer||
+|--totalPage|否|Integer||
+|--totalCount|否|Integer||
+|status|否|Integer||
+|pageIndex|否|Integer||
+|pageSize|否|Integer||
+|orderField|否|String||
+|orderSort|否|String||
+
+### 请求参数Json格式
+ 
+```
+{
+ "companyId" : "String",
+ "sword" : "String",
+ "tokenId" : "String",
+ "id" : "String",
+ "orderField" : "String",
+ "orderSort" : "String",
+ "searchBeans" : [{
+ "typeCode" : "String",
+ "typeName" : "String",
+ "dataType" : "String",
+ "isSingle" : "String",
+ "isLikeSearch" : "String",
+ "items" : [{
+ "itemName" : "String",
+ "itemValue" : "String",
+ "minValue" : "String",
+ "maxValue" : "String",
+ "isCustom" : "String",
+ "isRange" : "String",
+ "isSelect" : "String"
+ }],
+ "current" : {
+ "itemName" : "String",
+ "itemValue" : "String",
+ "minValue" : "String",
+ "maxValue" : "String",
+ "isCustom" : "String",
+ "isRange" : "String",
+ "isSelect" : "String"
+ },
+ "sword" : "String",
+ "pageIndex" : 0,
+ "pageSize" : 0,
+ "curPageNum" : 0,
+ "totalPage" : 0,
+ "totalCount" : 0
+ }],
+ "status" : 0,
+ "pageIndex" : 0,
+ "pageSize" : 0,
+ "orderField" : "String",
+ "orderSort" : "String"
+}
+```
+
+### 返回参数
+ 
+|参数名|必选|类型|说明|
+|:---- |:---|:----- |----- |
+|data|否|List||
+|--code|否|String| 编码|
+|--name|否|String| 名称|
+|msg|否|String||
+|code|否|String||
+|exceptionStackInfo|否|String||
+|traceId|否|String||
+
+
+### 返回参数Json格式
+ 
+```
+{
+ "data" : [{
+ "code" : "String",
+ "name" : "String"
+ }],
+ "msg" : "String",
+ "code" : "String",
+ "exceptionStackInfo" : "String",
+ "traceId" : "String"
+}
+```
