@@ -3,10 +3,9 @@
 import os
 import sys
 
-import httpx
-
 from config import config as app_config
 from conftest import _extract_token_id
+from utils.http_logging import create_logged_client
 
 
 def main() -> int:
@@ -22,7 +21,7 @@ def main() -> int:
     }
     login_url = app_config.get_base_url() + "/reabam-manage-login/user/login"
 
-    with httpx.Client(timeout=app_config.DEFAULT_TIMEOUT) as client:
+    with create_logged_client(timeout=app_config.DEFAULT_TIMEOUT) as client:
         response = client.post(login_url, json=payload)
 
     if response.status_code != 200:

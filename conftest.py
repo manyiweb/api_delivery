@@ -8,6 +8,7 @@ import pytest
 from config import config as app_config
 from utils.allure_helper import attach_text, step
 from utils.db_helper import cleanup_test_order
+from utils.http_logging import create_logged_client
 from utils.logger import logger
 from utils.notification import (
     NotificationSender,
@@ -55,7 +56,7 @@ def _extract_token_id(response_json):
 def client():
     """创建用于测试的 HTTP 客户端"""
     base_url = app_config.get_base_url()
-    with httpx.Client(base_url=base_url, timeout=app_config.DEFAULT_TIMEOUT) as c:
+    with create_logged_client(base_url=base_url, timeout=app_config.DEFAULT_TIMEOUT) as c:
         attach_text("接口基础地址", base_url)
         yield c
 
@@ -63,7 +64,7 @@ def client():
 @pytest.fixture(scope="session")
 def access_token():
     """创建用于测试的访问令牌"""
-    with httpx.Client(timeout=app_config.DEFAULT_TIMEOUT) as c:
+    with create_logged_client(timeout=app_config.DEFAULT_TIMEOUT) as c:
         resp = c.post(
             app_config.get_base_url() + "/reabam-manage-login/user/login",
             json={
