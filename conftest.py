@@ -40,10 +40,14 @@ def _extract_token_id(response_json):
     """从登录响应中提取 tokenId，失败时给出可定位的配置/认证错误。"""
     data = response_json.get("data") if isinstance(response_json, dict) else None
     token_id = data.get("tokenId") if isinstance(data, dict) else None
-    assert token_id, (
-        "登录接口未返回 tokenId；请检查 CI/CD Variables 中的 "
-        "LOGIN_MOBILE、LOGIN_WORD、BASE_URL/UAT_URL 是否配置正确"
-    )
+    if not token_id:
+        code = response_json.get("code") if isinstance(response_json, dict) else ""
+        msg = response_json.get("msg") if isinstance(response_json, dict) else ""
+        raise AssertionError(
+            "登录接口未返回 tokenId；请检查 CI/CD Variables 中的 "
+            "LOGIN_MOBILE、LOGIN_WORD、BASE_URL/UAT_URL 是否配置正确。"
+            f"后端返回 code={code}, msg={msg}"
+        )
     return token_id
 
 

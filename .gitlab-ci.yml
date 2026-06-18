@@ -145,6 +145,7 @@ smoke:
         exit 1
       fi
   script:
+    - .venv/bin/python scripts/check_login.py
     - .venv/bin/python -m pytest case -m smoke -v --alluredir="$ALLURE_RESULTS_DIR/smoke" --reruns 2 --reruns-delay 1
   artifacts:
     when: always
@@ -202,6 +203,7 @@ critical:
         exit 1
       fi
   script:
+    - .venv/bin/python scripts/check_login.py
     - .venv/bin/python -m pytest case -m critical -v --alluredir="$ALLURE_RESULTS_DIR/critical" --reruns 2 --reruns-delay 1
   artifacts:
     when: always
