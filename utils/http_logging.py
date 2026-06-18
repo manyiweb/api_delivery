@@ -1,31 +1,13 @@
-"""HTTP 请求/响应日志工具，默认脱敏敏感字段。"""
+"""HTTP 请求/响应日志工具。"""
 
 import json
 from typing import Any, Dict
 
 import httpx
 
-from utils.allure_helper import _is_sensitive_key
 from utils.logger import logger
 
 _MAX_LOG_CHARS = 4000
-
-
-def redact_data(data: Any) -> Any:
-    """递归脱敏 JSON-like 数据。"""
-    if isinstance(data, dict):
-        return {
-            key: "***" if _is_sensitive_key(key) else redact_data(value)
-            for key, value in data.items()
-        }
-
-    if isinstance(data, list):
-        return [redact_data(item) for item in data]
-
-    if isinstance(data, tuple):
-        return [redact_data(item) for item in data]
-
-    return data
 
 
 def _truncate(text: str) -> str:
@@ -35,7 +17,7 @@ def _truncate(text: str) -> str:
 
 
 def _format_json(data: Any) -> str:
-    return _truncate(json.dumps(redact_data(data), ensure_ascii=False, default=str))
+    return _truncate(json.dumps(data, ensure_ascii=False, default=str))
 
 
 def _body_as_json(request: httpx.Request) -> Any:

@@ -3,32 +3,12 @@ import logging
 import httpx
 import pytest
 
-from utils.http_logging import create_logged_client, redact_data
+from utils.http_logging import create_logged_client
 
 pytestmark = pytest.mark.unit
 
 
-def test_redact_data_masks_sensitive_fields():
-    payload = {
-        "mobile": "13800138000",
-        "loginWord": "plain-or-md5-password",
-        "nested": {
-            "tokenId": "token-value",
-            "sign": "signature",
-        },
-    }
-
-    assert redact_data(payload) == {
-        "mobile": "13800138000",
-        "loginWord": "***",
-        "nested": {
-            "tokenId": "***",
-            "sign": "***",
-        },
-    }
-
-
-def test_logged_client_logs_request_and_response_with_redaction(caplog):
+def test_logged_client_logs_request_and_response_payload(caplog):
     def handler(request):
         return httpx.Response(
             200,
@@ -51,8 +31,6 @@ def test_logged_client_logs_request_and_response_with_redaction(caplog):
     log_text = caplog.text
     assert "HTTP request: POST http://example.test/api/login?debug=1" in log_text
     assert '"mobile": "13800138000"' in log_text
-    assert '"loginWord": "***"' in log_text
-    assert "plain-or-md5-password" not in log_text
+    assert '"loginWord": "plain-or-md5-password"' in log_text
     assert "HTTP response: POST http://example.test/api/login?debug=1 -> 200" in log_text
-    assert '"tokenId": "***"' in log_text
-    assert "secret-token" not in log_text
+    assert '"tokenId": "secret-token"' in log_text
