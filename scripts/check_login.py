@@ -10,6 +10,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from config import config as app_config
 from conftest import _extract_token_id
+from utils.auth import normalize_login_word
 from utils.http_logging import create_logged_client
 
 
@@ -19,7 +20,7 @@ def main() -> int:
         "loginType": "checkstand",
         "appType": "pc",
         "appVersion": "1.6.2.1",
-        "loginWord": os.getenv("LOGIN_WORD", ""),
+        "loginWord": normalize_login_word(os.getenv("LOGIN_WORD", "")),
         "clientVersion": "25091901",
         "systemVersion": "2512.29.34",
         "companyId": "",

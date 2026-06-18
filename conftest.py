@@ -7,6 +7,7 @@ import pytest
 
 from config import config as app_config
 from utils.allure_helper import attach_text, step
+from utils.auth import normalize_login_word
 from utils.db_helper import cleanup_test_order
 from utils.http_logging import create_logged_client
 from utils.logger import logger
@@ -72,7 +73,7 @@ def access_token():
                 "loginType": "checkstand",
                 "appType": "pc",
                 "appVersion": "1.6.2.1",
-                "loginWord": os.getenv("LOGIN_WORD", ""),
+                "loginWord": normalize_login_word(os.getenv("LOGIN_WORD", "")),
                 "clientVersion": "25091901",
                 "systemVersion": "2512.29.34",
                 "companyId": ""

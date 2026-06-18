@@ -92,7 +92,7 @@ git ls-files | grep -E '^\.env$|^Jenkinsfile$'
 | `SIGN_UAT` | UAT sign | **是** | 否 | |
 | `WECHAT_WEBHOOK` | 企业微信机器人地址 | **是** | 否 | 失败通知用 |
 | `LOGIN_MOBILE` | 登录手机号 | 否 | 否 | |
-| `LOGIN_WORD` | 登录密码 MD5 | **是** | 否 | |
+| `LOGIN_WORD` | 登录密码，支持明文或 32 位 MD5 | **是** | 否 | 代码会在登录前自动转换为 MD5 |
 
 > 如果 Mask 选项提示不满足正则表达式，改用 **隐藏** 级别。
 
