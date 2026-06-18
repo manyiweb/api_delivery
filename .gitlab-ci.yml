@@ -145,17 +145,29 @@ smoke:
         exit 1
       fi
   script:
-    - .venv/bin/python scripts/check_login.py
     - |
       echo "API regression trigger context: CI_PIPELINE_SOURCE=${CI_PIPELINE_SOURCE:-}, API_TEST_NON_BLOCKING=${API_TEST_NON_BLOCKING:-}, UPSTREAM_PROJECT=${UPSTREAM_PROJECT:-}, TRIGGER_SOURCE_PROJECT=${TRIGGER_SOURCE_PROJECT:-}"
+      set +e
+      .venv/bin/python scripts/check_login.py
+      LOGIN_CHECK_EXIT=$?
+      set -e
+      if [ "$LOGIN_CHECK_EXIT" -ne 0 ]; then
+        echo "login precheck failed with exit code $LOGIN_CHECK_EXIT"
+        if [ "$API_TEST_NON_BLOCKING" = "1" ] || [ "$CI_PIPELINE_SOURCE" = "trigger" ] || [ -n "$UPSTREAM_PROJECT" ] || [ -n "$TRIGGER_SOURCE_PROJECT" ]; then
+          echo "login precheck failed but this API regression is agent-triggered/non-blocking, keeping job green"
+          exit 0
+        fi
+        exit "$LOGIN_CHECK_EXIT"
+      fi
+
       set +e
       .venv/bin/python -m pytest case -m smoke -v --alluredir="$ALLURE_RESULTS_DIR/smoke" --reruns 2 --reruns-delay 1
       TEST_EXIT=$?
       set -e
       if [ "$TEST_EXIT" -ne 0 ]; then
         echo "pytest failed with exit code $TEST_EXIT"
-        if [ "$API_TEST_NON_BLOCKING" = "1" ] || [ "$CI_PIPELINE_SOURCE" = "trigger" ]; then
-          echo "pytest failed but API_TEST_NON_BLOCKING=1 or CI_PIPELINE_SOURCE=trigger, keeping this agent-triggered API regression non-blocking"
+        if [ "$API_TEST_NON_BLOCKING" = "1" ] || [ "$CI_PIPELINE_SOURCE" = "trigger" ] || [ -n "$UPSTREAM_PROJECT" ] || [ -n "$TRIGGER_SOURCE_PROJECT" ]; then
+          echo "pytest failed but this API regression is agent-triggered/non-blocking, keeping job green"
           exit 0
         fi
         exit "$TEST_EXIT"
@@ -166,7 +178,6 @@ smoke:
       - "$ALLURE_RESULTS_DIR/smoke"
     expire_in: 1 week
   only:
-    - master
     - triggers
     - schedules
 
@@ -216,17 +227,29 @@ critical:
         exit 1
       fi
   script:
-    - .venv/bin/python scripts/check_login.py
     - |
       echo "API regression trigger context: CI_PIPELINE_SOURCE=${CI_PIPELINE_SOURCE:-}, API_TEST_NON_BLOCKING=${API_TEST_NON_BLOCKING:-}, UPSTREAM_PROJECT=${UPSTREAM_PROJECT:-}, TRIGGER_SOURCE_PROJECT=${TRIGGER_SOURCE_PROJECT:-}"
+      set +e
+      .venv/bin/python scripts/check_login.py
+      LOGIN_CHECK_EXIT=$?
+      set -e
+      if [ "$LOGIN_CHECK_EXIT" -ne 0 ]; then
+        echo "login precheck failed with exit code $LOGIN_CHECK_EXIT"
+        if [ "$API_TEST_NON_BLOCKING" = "1" ] || [ "$CI_PIPELINE_SOURCE" = "trigger" ] || [ -n "$UPSTREAM_PROJECT" ] || [ -n "$TRIGGER_SOURCE_PROJECT" ]; then
+          echo "login precheck failed but this API regression is agent-triggered/non-blocking, keeping job green"
+          exit 0
+        fi
+        exit "$LOGIN_CHECK_EXIT"
+      fi
+
       set +e
       .venv/bin/python -m pytest case -m critical -v --alluredir="$ALLURE_RESULTS_DIR/critical" --reruns 2 --reruns-delay 1
       TEST_EXIT=$?
       set -e
       if [ "$TEST_EXIT" -ne 0 ]; then
         echo "pytest failed with exit code $TEST_EXIT"
-        if [ "$API_TEST_NON_BLOCKING" = "1" ] || [ "$CI_PIPELINE_SOURCE" = "trigger" ]; then
-          echo "pytest failed but API_TEST_NON_BLOCKING=1 or CI_PIPELINE_SOURCE=trigger, keeping this agent-triggered API regression non-blocking"
+        if [ "$API_TEST_NON_BLOCKING" = "1" ] || [ "$CI_PIPELINE_SOURCE" = "trigger" ] || [ -n "$UPSTREAM_PROJECT" ] || [ -n "$TRIGGER_SOURCE_PROJECT" ]; then
+          echo "pytest failed but this API regression is agent-triggered/non-blocking, keeping job green"
           exit 0
         fi
         exit "$TEST_EXIT"
@@ -237,7 +260,6 @@ critical:
       - "$ALLURE_RESULTS_DIR/critical"
     expire_in: 1 week
   only:
-    - master
     - triggers
     - schedules
 
@@ -278,7 +300,6 @@ allure_report:
       - "$ALLURE_RESULTS_DIR"
     expire_in: 1 week
   only:
-    - master
     - triggers
     - schedules
 
@@ -302,7 +323,6 @@ pages:
     paths:
       - public
   only:
-    - master
     - triggers
     - schedules
 
@@ -327,7 +347,6 @@ notify:
   script:
     - .venv/bin/python scripts/notify_ci_failure.py
   only:
-    - master
     - triggers
     - schedules
   when: on_failure

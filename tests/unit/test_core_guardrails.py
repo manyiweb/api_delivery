@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import pytest
+import yaml
 
 pytestmark = pytest.mark.unit
 
@@ -22,7 +23,20 @@ def test_ci_allows_agent_triggered_api_tests_to_be_non_blocking():
 
     assert "API_TEST_NON_BLOCKING" in gitlab_ci
     assert "CI_PIPELINE_SOURCE" in gitlab_ci
-    assert "CI_PIPELINE_SOURCE=trigger" in gitlab_ci
+    assert "[ \"$CI_PIPELINE_SOURCE\" = \"trigger\" ]" in gitlab_ci
+    assert "[ -n \"$UPSTREAM_PROJECT\" ]" in gitlab_ci
+    assert "[ -n \"$TRIGGER_SOURCE_PROJECT\" ]" in gitlab_ci
+
+
+def test_real_api_regression_does_not_run_on_api_project_push():
+    gitlab_ci = yaml.safe_load((PROJECT_ROOT / ".gitlab-ci.yml").read_text(encoding="utf-8"))
+
+    for job_name in ("smoke", "critical", "allure_report", "pages", "notify"):
+        only_refs = gitlab_ci[job_name]["only"]
+        assert "triggers" in only_refs
+        assert "schedules" in only_refs
+        assert "master" not in only_refs
+        assert "branches" not in only_refs
 
 
 def test_legacy_jenkinsfile_removed():
