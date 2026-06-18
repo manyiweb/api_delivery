@@ -45,6 +45,7 @@ def _log_request(request: httpx.Request) -> None:
 
 
 def _log_response(response: httpx.Response) -> None:
+    response.read()
     request = response.request
     logger.info(
         "HTTP response: %s %s -> %s body=%s",

@@ -1,7 +1,12 @@
 """CI 登录前置检查，避免批量用例反复触发错误登录。"""
 
 import os
+from pathlib import Path
 import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from config import config as app_config
 from conftest import _extract_token_id
