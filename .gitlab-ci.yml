@@ -23,6 +23,7 @@ variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip-cache"
   # Allure 结果/报告目录
   ALLURE_RESULTS_DIR: "reports/allure-results"
+  ALLURE_MERGED_RESULTS_DIR: "reports/allure-merged-results"
   ALLURE_REPORT_DIR: "reports/allure-report"
   # 默认环境，可在 GitLab CI/CD Variables 中覆盖
   ENV: "fat"
@@ -277,12 +278,15 @@ allure_report:
     CHECK_RESULTS_EVERY_SECONDS: none
     KEEP_HISTORY: "1"
   before_script:
-    - mkdir -p "$ALLURE_REPORT_DIR"
+    - rm -rf "$ALLURE_MERGED_RESULTS_DIR"
+    - mkdir -p "$ALLURE_REPORT_DIR" "$ALLURE_MERGED_RESULTS_DIR"
   script:
     - |
       if command -v allure >/dev/null 2>&1; then
         allure --version
-        allure generate "$ALLURE_RESULTS_DIR" -o "$ALLURE_REPORT_DIR" --clean
+        find "$ALLURE_RESULTS_DIR" -mindepth 2 -type f -exec cp {} "$ALLURE_MERGED_RESULTS_DIR"/ \;
+        echo "Merged allure result files: $(find "$ALLURE_MERGED_RESULTS_DIR" -type f | wc -l | tr -d ' ')"
+        allure generate "$ALLURE_MERGED_RESULTS_DIR" -o "$ALLURE_REPORT_DIR" --clean
       else
         cat > "$ALLURE_REPORT_DIR/index.html" <<'HTML'
       <!doctype html>

@@ -39,6 +39,15 @@ def test_real_api_regression_does_not_run_on_api_project_push():
         assert "branches" not in only_refs
 
 
+def test_allure_report_flattens_nested_result_artifacts_before_generating():
+    gitlab_ci = (PROJECT_ROOT / ".gitlab-ci.yml").read_text(encoding="utf-8")
+
+    assert 'ALLURE_MERGED_RESULTS_DIR: "reports/allure-merged-results"' in gitlab_ci
+    assert 'rm -rf "$ALLURE_MERGED_RESULTS_DIR"' in gitlab_ci
+    assert 'find "$ALLURE_RESULTS_DIR" -mindepth 2 -type f -exec cp {} "$ALLURE_MERGED_RESULTS_DIR"/ \\;' in gitlab_ci
+    assert 'allure generate "$ALLURE_MERGED_RESULTS_DIR" -o "$ALLURE_REPORT_DIR" --clean' in gitlab_ci
+
+
 def test_legacy_jenkinsfile_removed():
     """迁移到 GitLab CI 后，不应再保留含明文凭证的 Jenkinsfile。"""
     assert not (PROJECT_ROOT / "Jenkinsfile").exists()
