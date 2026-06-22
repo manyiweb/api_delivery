@@ -39,6 +39,12 @@ def test_real_api_regression_does_not_run_on_api_project_push():
         assert "branches" not in only_refs
 
 
+def test_wechat_notify_runs_for_every_pipeline_result():
+    gitlab_ci = yaml.safe_load((PROJECT_ROOT / ".gitlab-ci.yml").read_text(encoding="utf-8"))
+
+    assert gitlab_ci["notify"]["when"] == "always"
+
+
 def test_allure_report_flattens_nested_result_artifacts_before_generating():
     gitlab_ci = (PROJECT_ROOT / ".gitlab-ci.yml").read_text(encoding="utf-8")
 

@@ -334,7 +334,7 @@ pages:
     - schedules
 
 # =========================================================
-# notify：失败时发送企业微信通知（带报告链接）
+# notify：流水线结束后发送企业微信通知（带报告链接）
 # =========================================================
 notify:
   stage: notify
@@ -356,4 +356,4 @@ notify:
   only:
     - triggers
     - schedules
-  when: on_failure
+  when: always
