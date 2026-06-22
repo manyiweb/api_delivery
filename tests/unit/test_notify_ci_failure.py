@@ -1,3 +1,7 @@
+import os
+import subprocess
+import sys
+
 import pytest
 
 from scripts.notify_ci_failure import build_pipeline_message, get_pipeline_status
@@ -32,3 +36,34 @@ def test_pipeline_message_describes_current_status(monkeypatch):
     assert "分支: main" in message
     assert "提交: abc123" in message
     assert "作者: 张三" in message
+
+
+def test_notify_script_can_run_from_ci_script_path_without_pythonpath():
+    code = """
+import os
+import runpy
+from unittest.mock import patch
+
+os.environ["WECHAT_WEBHOOK"] = "https://example.test/webhook"
+with patch("utils.notification.requests.post") as post:
+    post.return_value.raise_for_status.return_value = None
+    post.return_value.json.return_value = {"errcode": 0}
+    module = runpy.run_path("scripts/notify_ci_failure.py", run_name="notify_ci_failure_test")
+    exit_code = module["main"]()
+    assert exit_code == 0
+    assert post.called
+"""
+
+    env = os.environ.copy()
+    env.pop("PYTHONPATH", None)
+    result = subprocess.run(
+        [sys.executable, "-c", code],
+        cwd=os.getcwd(),
+        env=env,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+
+    assert result.returncode == 0, result.stderr
+    assert "No module named 'utils'" not in result.stderr
