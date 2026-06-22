@@ -67,7 +67,45 @@ def _case_parameters():
 def _case_id(case: dict[str, Any]) -> str:
     page_id = case.get("page_id") or "unknown"
     title = case.get("title") or case.get("url") or "未命名接口"
-    return f"{page_id}-{title}"
+    return f"{page_id} {title}"
+
+
+def _allure_display_title(case: dict[str, Any]) -> str:
+    """保持 ShowDoc 参数化用例在 Allure 中像业务用例一样可读。"""
+    return _case_id(case)
+
+
+def _catalog_path(case: dict[str, Any]) -> list[str]:
+    catalog_path = case.get("catalog_path") or []
+    if not isinstance(catalog_path, list):
+        return []
+    return [str(item) for item in catalog_path if item]
+
+
+def _allure_feature(case: dict[str, Any]) -> str:
+    first_catalog = next(iter(_catalog_path(case)), "会员")
+    return f"店务助手_智慧收银台/{first_catalog}"
+
+
+def _allure_story(case: dict[str, Any]) -> str:
+    catalog_path = _catalog_path(case)
+    if len(catalog_path) >= 2:
+        return "/".join(catalog_path[1:])
+    return "会员接口探活"
+
+
+def _set_allure_case_metadata(case: dict[str, Any]) -> None:
+    page_id = str(case.get("page_id") or "unknown")
+    method = str(case.get("method") or "POST").upper()
+    url = str(case.get("url") or "")
+
+    allure.dynamic.title(_allure_display_title(case))
+    allure.dynamic.feature(_allure_feature(case))
+    allure.dynamic.story(_allure_story(case))
+    allure.dynamic.parameter("case", _allure_display_title(case), mode=allure.parameter_mode.HIDDEN)
+    allure.dynamic.parameter("page_id", page_id)
+    allure.dynamic.parameter("method", method)
+    allure.dynamic.parameter("url", url)
 
 
 def _inject_runtime_values(payload: Any, token_id: str) -> Any:
@@ -113,6 +151,7 @@ class TestShowDocMemberSmoke:
     @pytest.mark.parametrize("case", _case_parameters(), ids=_case_id)
     @allure.story("会员接口探活")
     def test_member_showdoc_api_smoke(self, client, access_token, case):
+        _set_allure_case_metadata(case)
         method = str(case.get("method", "POST")).upper()
         url = str(case["url"])
         payload = _inject_runtime_values(deepcopy(case.get("request_body", {})), access_token)
