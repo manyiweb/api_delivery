@@ -5,8 +5,10 @@
 """
 import os
 import sys
+import json
 from datetime import datetime
 from pathlib import Path
+from urllib.parse import quote
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -41,7 +43,80 @@ def get_pipeline_status() -> tuple[str, str]:
     return status_map.get(status, ("已结束", "🔵"))
 
 
-def build_pipeline_message() -> str:
+def _zero_summary() -> dict[str, int]:
+    return {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "broken": 0,
+        "skipped": 0,
+    }
+
+
+def read_allure_summary(project_root: Path = PROJECT_ROOT) -> dict[str, int]:
+    """读取 Allure summary.json，返回用例统计。"""
+    summary_file = project_root / "reports" / "allure-report" / "widgets" / "summary.json"
+    if not summary_file.exists():
+        return _zero_summary()
+
+    try:
+        summary_json = json.loads(summary_file.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        logger.warning("读取 Allure summary.json 失败: %s", summary_file)
+        return _zero_summary()
+
+    statistic = summary_json.get("statistic") or {}
+    result = _zero_summary()
+    for key in result:
+        try:
+            result[key] = int(statistic.get(key) or 0)
+        except (TypeError, ValueError):
+            result[key] = 0
+    return result
+
+
+def has_test_errors(summary: dict[str, int]) -> bool:
+    return summary.get("failed", 0) > 0 or summary.get("broken", 0) > 0
+
+
+def build_test_result_text(summary: dict[str, int]) -> str:
+    if summary.get("total", 0) <= 0:
+        return "未读取到测试结果"
+    if has_test_errors(summary):
+        return "存在失败或异常"
+    return "全部通过"
+
+
+def build_notification_title(summary: dict[str, int]) -> str:
+    total = summary.get("total", 0)
+    passed = summary.get("passed", 0)
+    failed = summary.get("failed", 0)
+    broken = summary.get("broken", 0)
+
+    if total <= 0:
+        status_text, icon = get_pipeline_status()
+        return f"{icon} API 自动化测试{status_text}"
+    if failed or broken:
+        return f"🔴 API 自动化测试异常 失败{failed} 异常{broken}"
+    return f"🟢 API 自动化测试通过 {passed}/{total}"
+
+
+def build_allure_artifact_links() -> dict[str, str]:
+    """生成 GitLab artifact 链接，替代未启用 Pages 时的无效 CI_PAGES_URL。"""
+    project_url = get_env("CI_PROJECT_URL", "")
+    ref_name = quote(get_env("CI_COMMIT_REF_NAME", "master"), safe="")
+
+    if not project_url:
+        return {"browse": "", "download": ""}
+
+    base = f"{project_url}/-/jobs/artifacts/{ref_name}"
+    return {
+        "browse": f"{base}/browse/reports/allure-report?job=allure_report",
+        "download": f"{base}/download?job=allure_report",
+    }
+
+
+def build_pipeline_message(project_root: Path = PROJECT_ROOT) -> str:
     """构造企业微信流水线结果通知文本。"""
     project_name = get_env("CI_PROJECT_NAME", "api-auto-test")
     project_url = get_env("CI_PROJECT_URL", "")
@@ -50,18 +125,25 @@ def build_pipeline_message() -> str:
     branch = get_env("CI_COMMIT_REF_NAME", "")
     commit_sha = get_env("CI_COMMIT_SHORT_SHA", "")
     commit_author = get_env("CI_COMMIT_AUTHOR", "")
-    pages_url = get_env("CI_PAGES_URL", "")
     status_text, _ = get_pipeline_status()
+    summary = read_allure_summary(project_root)
+    links = build_allure_artifact_links()
 
-    # 如果 CI_PAGES_URL 未设置，尝试按常见格式拼一个备用地址
-    if not pages_url:
-        project_path = get_env("CI_PROJECT_PATH", "")
-        if project_path:
-            pages_url = f"https://{project_path.split('/')[0]}.gitlab.io/{project_path.split('/')[-1]}"
+    browse_line = (
+        f"报告在线浏览: {links['browse']}"
+        if links["browse"]
+        else "报告在线浏览: 请在 pipeline 的 allure_report job artifacts 中查看"
+    )
+    download_line = (
+        f"报告压缩包: {links['download']}"
+        if links["download"]
+        else "报告压缩包: 请在 pipeline 的 allure_report job artifacts 中下载"
+    )
 
-    report_line = f"Allure报告: {pages_url}" if pages_url else "Allure报告: 请查看 pipeline artifacts"
+    content = f"""[API自动化测试] 测试结果: {build_test_result_text(summary)}
 
-    content = f"""[API自动化测试] 流水线{status_text}
+总数: {summary['total']} | 通过: {summary['passed']} | 失败: {summary['failed']} | 异常: {summary['broken']} | 跳过: {summary['skipped']}
+流水线状态: {status_text}
 
 项目: {project_name}
 流水线: #{pipeline_id}
@@ -70,7 +152,8 @@ def build_pipeline_message() -> str:
 作者: {commit_author}
 时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
-{report_line}
+{browse_line}
+{download_line}
 流水线详情: {pipeline_url}
 项目主页: {project_url}
 """
@@ -84,9 +167,9 @@ def main() -> int:
         return 1
 
     sender = NotificationSender(wechat_webhook=webhook)
+    summary = read_allure_summary()
     content = build_pipeline_message()
-    status_text, icon = get_pipeline_status()
-    title = f"{icon} API 自动化测试流水线{status_text}"
+    title = build_notification_title(summary)
 
     results = sender.send_notification(content=content, title=title, notification_types=["wechat"])
     if results.get("wechat"):
