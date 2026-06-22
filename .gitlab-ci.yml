@@ -15,6 +15,8 @@
 # 这里使用 stages + only/except 的兼容写法。
 
 variables:
+  # macOS launchd service 的 PATH 较短，显式加入 Homebrew 命令目录
+  PATH: "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
   # Python 输出使用 UTF-8，避免 Windows/Linux 混用编码问题
   PYTHONUTF8: "1"
   # pip 缓存目录
@@ -279,6 +281,7 @@ allure_report:
   script:
     - |
       if command -v allure >/dev/null 2>&1; then
+        allure --version
         allure generate "$ALLURE_RESULTS_DIR" -o "$ALLURE_REPORT_DIR" --clean
       else
         cat > "$ALLURE_REPORT_DIR/index.html" <<'HTML'
